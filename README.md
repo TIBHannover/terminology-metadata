@@ -16,6 +16,8 @@ In addition, we provide SHACL shapes based on these recommendations in [OntoMeta
 
 > INFO: This recommendation is still a draft. Approval and discussion by a broader communiuty are required.
 
+This repository is archived at Zenodo: <https://www.doi.org/10.5281/zenodo.11103071>
+
 ## Further reading and sources
 
 * Arndt, S., Borgelt, H. und Strömert, P. (2023) „FAIR Ontology Metadata - Crucial Information for Understanding, Evaluation, and Application“. 2nd Ontologies4Chem Workshop 2023 (Ontologies4Chem 2023), Zenodo, 12 Oktober. doi: 10.5281/zenodo.10117899.
