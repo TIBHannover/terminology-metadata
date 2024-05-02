@@ -29,8 +29,8 @@ ontometa: rdf:type owl:Ontology ;
     # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
     <http://purl.org/dc/terms/abstract> "OntoMeta provides SHACL shapes for ontology metadata. It is intended for use in TIB Terminology Service. You may re-use (please refer back to our repo!) for your own services. Please note that adaptations might be necessary. If you have any remarks or questions get in touch with us at https://github.com/StroemPhi/Ontology-Metadata/issues"@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
-    <http://purl.org/dc/terms/created> "2024-04-19T15:10:00"^^xsd:dateTime;
-    <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/ontologymetadata/shape/20240419>;
+    <http://purl.org/dc/terms/created> "2024-05-02T11:42:00"^^xsd:dateTime;
+    <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/ontologymetadata/shape/20240502>;
     <http://purl.org/dc/terms/title> "Ontology Metadata Shape by TIB"@en, "TIB Metadatenshape für Ontologien";
     <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>;
     <http://purl.org/vocab/vann/preferredNamespacePrefix> "ontometa";
