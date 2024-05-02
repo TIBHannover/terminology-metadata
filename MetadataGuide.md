@@ -15,6 +15,8 @@ Creators and contributors:
 
 License: [CC BY 4.0 Deed Attribution 4.0 International ](https://creativecommons.org/licenses/by/4.0/)
 
+Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
+
 <div style="page-break-after: always;"></div>
 
 ## Table of contents

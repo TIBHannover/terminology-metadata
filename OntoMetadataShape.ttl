@@ -41,7 +41,8 @@ ontometa: rdf:type owl:Ontology ;
     dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng>;
     <http://purl.org/dc/terms/subject> <http://d-nb.info/gnd/4827894-4>, <http://d-nb.info/gnd/4410512-5> ;
     <http://usefulinc.com/ns/doap#repository> <tbd>;
-    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <https://www.iana.org/assignments/media-types/text/turtle> 
+    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <https://www.iana.org/assignments/media-types/text/turtle> ;
+    <http://purl.org/dc/terms/references> <https://www.doi.org/10.5281/zenodo.11103071>
     #<https://w3id.org/mod#hasFormalityLevel> 
 .
 
