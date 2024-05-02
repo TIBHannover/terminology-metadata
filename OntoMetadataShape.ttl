@@ -32,7 +32,7 @@ ontometa: rdf:type owl:Ontology ;
     <http://purl.org/dc/terms/created> "2024-05-02T11:42:00"^^xsd:dateTime;
     <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/ontologymetadata/shape/20240502>;
     <http://purl.org/dc/terms/title> "Ontology Metadata Shape by TIB"@en, "TIB Metadatenshape für Ontologien";
-    <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>, <https://orcid.org/0000-0000-0000-0000>;
+    <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0002-1019-9151>, <https://orcid.org/0000-0003-1043-4964>, <https://orcid.org/0000-0003-2499-7741>, <https://orcid.org/0000-0002-1595-3213> , <https://orcid.org/0000-0002-8280-0487> ;
     <http://purl.org/vocab/vann/preferredNamespacePrefix> "ontometa";
     <http://usefulinc.com/ns/doap#bug-database> <https://gitlab.com/TIBHannover/terminology/tib-terminology-service-issue-tracker> ;
     <http://www.loc.gov/premis/rdf/v3/documentation> <tbd> ;
