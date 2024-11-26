@@ -223,7 +223,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license)] ;
+        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
         # tbd/todo: add further licenses to the list of unaccepted licenses?
         # tbd/todo: discuss > redundant test?
