@@ -116,9 +116,9 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 
 ## Ontology license
 ### status: developer and external review needed
-
+### <http://purl.org/dc/terms/licence> has been added, since licence is a variant of license and thus the property may easily occur as a common mistake
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license)] ;
+        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:maxCount 1;
@@ -1361,20 +1361,22 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:name "Ontology logo/ depiction/ related visualizations"@en ;
     ];
 
-## Related identifiers
+## Alternative identifiers of the ontology
 ### status: developer and external review needed
+### This shape is probably confusing since the properties shall provide identifiers for the ontology, not related resources.
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi>)] ;
+        sh:path [sh:alternativePath (<http://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi> <http://purl.org/dc/elements/1.1/identifier>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
-            You should provide the ontology's related identifiers as IRIs.
+            You should provide the ontology's identifiers as IRIs.
+            The identifier used as the base uri of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri>.
             Recommended property: <http://purl.org/dc/terms/identifier>
             Example statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:identifier <https://doi.org/10.5281/zenodo.0000000> .
             Need help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/ 
         """@en ;
-        sh:description "This shape checks whether the ontology's related identifiers  are provided as IRIs. It produces an info message if they are not."@en ;
+        sh:description "This shape checks whether the ontology's related identifiers are provided as IRIs. It produces an info message if they are not."@en ;
         sh:name "Related identifiers"@en ;
     ];
 
@@ -1505,13 +1507,16 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
     sh:property [
         sh:path [sh:alternativePath (owl:versionInfo pav:version)];
         sh:severity sh:Info ;
-        sh:datatype xsd:string ;
+        sh:xone ( [sh:datatype xsd:string ;] [sh:datatype rdf:langString ;] );
+        #        sh:datatype xsd:string ;
         sh:message """
             You should provide textual information about the ontology version as an xsd:string. 
             It is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).
+            If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. 
             Recommended property: <http://www.w3.org/2002/07/owl#versionInfo>
             Example statement 1: <https://www.purl.org/SomeOntology> owl:versionInfo "2023-01-01"^^xsd:string .
             Example statement 2: <https://www.purl.org/SomeOntology> owl:versionInfo "1.0.0"^^xsd:string.
+            Example statement 3: <https://www.purl.org/SomeOntology> owl:versionInfo "Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024."@en.
             Need help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/ 
             """@en ;
         sh:description "This shape checks whether the ontology provides at most one textual version information as an xsd:string. It produces an info message if not."@en ;
