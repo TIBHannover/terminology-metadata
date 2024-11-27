@@ -275,7 +275,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:message """
             You must add the ontology creators. 
             You must list at least one person who was involved in developing the ontology.
-            Creators should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.
+            Creators should be referenced via PIDs, e.g. ORCID iDs for persons and RORs for organisations.
             If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
             Recommended property: <http://purl.org/dc/terms/creator>
         
@@ -1005,7 +1005,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:message """
             You should explicitly declare the ontology's root classes.
             This information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.
-            The repsective classes (if any) need to be provided via their identifier.
+            The respective classes (if any) need to be provided via their identifier.
             Recommended property: <http://purl.obolibrary.org/obo/IAO_0000700> 
             Example statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> .
             Need help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/ 
