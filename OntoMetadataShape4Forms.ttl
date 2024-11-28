@@ -1,0 +1,1446 @@
+@base <https://www.purl.org/ontologymetadata/shape> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix ontometa4forms:    <https://www.purl.org/ontologymetadata/shape4forms#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix shacl: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+
+ontometa4forms: rdf:type owl:Ontology ;
+    # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
+    dcterms:title "Ontology Metadata Shape by TIB"@en, "TIB Metadatenshape für Ontologien"@de;
+    dcterms:creator <https://orcid.org/0000-0002-1019-9151>, <https://orcid.org/0000-0003-1043-4964>, <https://orcid.org/0000-0003-2499-7741>, <https://orcid.org/0000-0002-1595-3213>, <https://orcid.org/0000-0002-8280-0487>;
+    dcterms:created "2024-05-02T11:42:00"^^xsd:dateTime;
+    dcterms:abstract "OntoMeta4Forms provides SHACL shapes for ontology metadata. It is intended for use in form generator applications, e.g. <https://ulb-darmstadt.github.io/shacl-form/#try-your-own>. You may re-use (please refer back to our repo!) for your own services. Please note that adaptations might be necessary. If you have any remarks or questions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en;
+    dcterms:subject <http://d-nb.info/gnd/4827894-4>, <http://d-nb.info/gnd/4410512-5>;
+    # dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
+    dcterms:modified "2024-11-28T13:22:00"^^xsd:dateTime;
+    vann:preferredNamespacePrefix "ontometa4forms";
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
+    doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+    schema:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+    owl:versionIRI <https://www.purl.org/ontologymetadata/shape/20240502_forms>;
+    bibo:status "active";
+    owl:priorVersion <https://www.purl.org/ontologymetadata/shape/20240502_forms>;
+    adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for form generarators."@en;
+    doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues>;
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20240502/MetadataGuide.md>;
+    doap:repository <https://github.com/TIBHannover/terminology-metadata>;
+    dcterms:references <https://doi.org/10.5281/zenodo.11103070>;
+    mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en;
+    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://www.w3.org/ns/formats/Turtle>;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20240502/MetadataGuide.md#7-relations-to-related-work>;
+.
+
+# Start of the Ontology Metadata Shape
+ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
+    sh:targetClass owl:Ontology ; 
+
+# MANDATORY METADATA
+
+## Ontology title
+### status: developer and external review needed
+    sh:property [
+        sh:path dcterms:title ; 
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:datatype rdf:langString ; 
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:uniqueLang true ;
+        sh:description """You must add an ontology title or label. The title must have a language tag. Only one title per language is accepted."""@en ;
+        sh:name "Ontology title"@en ;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+## Preferred ontology prefix/ acronym
+### status: developer and external review needed: add check for forbidden characters like - ? 
+    sh:property [
+        sh:path <http://purl.org/vocab/vann/preferredNamespacePrefix> ;
+        sh:severity sh:Warning;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:description "You must add the preferred ontology prefix as an xsd:string. Only one preferred prefix is accepted."@en ;
+        sh:name "Preferred ontology prefix/ acronym"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+
+## Ontology license
+### status: developer and external review needed
+
+    sh:property [
+        sh:path dcterms:license ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:nodeKind sh:IRI ;
+        # tbd/todo: add further licenses to the list of accepted licenses? 
+        sh:in (
+            <https://opendatacommons.org/licenses/by/1-0/>
+            <https://opendatacommons.org/licenses/pddl/1-0/>
+            <https://opendatacommons.org/licenses/odbl/1-0/>
+            <https://unlicense.org/>
+            <https://creativecommons.org/publicdomain/zero/1.0/legalcode>
+            <https://creativecommons.org/licenses/by/3.0/legalcode>
+            <https://creativecommons.org/licenses/by/4.0/legalcode>
+            <https://creativecommons.org/licenses/by/3.0/de/legalcode>
+            <https://creativecommons.org/licenses/by-sa/3.0/legalcode>
+            <https://creativecommons.org/licenses/by-sa/4.0/legalcode>
+            );
+        sh:description "You must add the ontology license. This metadata form promotes only open licenses."@en ;
+        sh:name "Ontology license"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+## Ontology creator(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path <http://purl.org/dc/terms/creator> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:description "You must add the ontology creators. Only URIs are accepted, e.g. ORCIDs (https://orcid.org/) or ROR (https://ror.org/) identifiers."@en ;
+        sh:nodeKind sh:IRI; 
+        sh:name "Ontology creator(s)"@en ;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+## Version information
+
+### Ontology version IRI
+#### status: developer and external review needed
+    sh:property [
+        sh:path  owl:versionIRI ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI;
+        sh:description "You must add the ontology's versionIRI. The ontology should be hosted on a version control system with release management in place, so that each version of the ontology can be referenced with a unique, stable versionIRI."@en ;
+        sh:name "Ontology version IRI"@en ;
+        sh:group ontometa4forms:VersionGroup;
+    ] ;
+
+
+### Ontology creation date
+### status: developer and external review needed
+    sh:property [
+        sh:path <http://purl.org/dc/terms/created> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:maxCount 1 ;
+        sh:datatype xsd:dateTime ;
+        sh:description "You must add the ontology creation date. Use xsd:dateTime format to do so."@en ;
+        sh:name "Ontology creation date"@en ;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+## Ontology abstract
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://purl.org/dc/terms/abstract> ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:description "You must add a short abstract describing the ontology. What is the ontology about? Which use case does it support? What is the motivation of the ontology? Please provide it, if knwon. Ideally use information provided by the ontology creators, e.g. in documentation, ontology homepage, papers or the like."@en ;
+        sh:name "Ontology abstract"@en ;
+        #sh:nodeKind sh:Literal ;
+        sh:datatype rdf:langString ;
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:uniqueLang true ;
+        sh:maxLength 500 ;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+
+## Ontology issue tracker
+### status: developer and external review needed
+    sh:property [
+        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "You must add the ontology's issue tracker. The ontology development should happen on a version control platform like GitLab or GitHub. The issue tracker should be available so that users of the ontology can report problems and suggestions regarding the ontology."@en ;
+        sh:name "Ontology issue tracker"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+    ] ;
+
+## Ontology documentation
+### status: developer and external review needed
+    sh:property [
+        sh:path  <http://www.loc.gov/premis/rdf/v3/documentation> ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:description "You must add a link to the ontology documentation."@en ;
+        sh:name "Ontology documentation"@en ; 
+        sh:group ontometa4forms:RelatedResources ;
+    ] ;
+
+# RECOMMENDED METADATA
+
+## Ontology contributor(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path  <http://purl.org/dc/terms/contributor> ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should add contributors to the ontology. Only URIs are accepted, e.g. ORCIDs (https://orcid.org/) or ROR (https://ror.org/) identifiers."@en ;
+        sh:name "Ontology contributor(s)"@en ;
+        sh:group ontometa4forms:FundingGroup ;
+    ] ;
+
+
+## Ontology funder
+### status: developer and external review needed
+    sh:property [
+        sh:path <https://schema.org/funder> ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should add funders of the ontology. Only URIs are accepted, e.g. RORs (https://ror.org/), Crossref Funder Registry IDs (https://www.crossref.org/services/funder-registry/) or comparable identifiers."@en ;
+        sh:name "Ontology funder"@en ;
+        sh:group ontometa4forms:FundingGroup;
+    ] ;
+
+## Ontology funding
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <https://schema.org/funding> ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should add grants from which the ontology development was funded. Only URIs are accepted, e.g. Crossref Grant ID (https://www.crossref.org/documentation/research-nexus/grants/) or comparable identifiers."@en ;
+        sh:name "Ontology funding (grant)"@en ;
+        sh:group ontometa4forms:FundingGroup;
+    ] ;
+
+
+## Ontology audience description
+### status: developer and external review needed
+    sh:property [
+        sh:path doap:audience ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:description "You should add a short description about the ontology audience. Who is supposed to use the ontology?"@en ;
+        skos:editorialNote "see also open comment at G-Doc: https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit?disco=AAAAwke7GNs" ;
+        sh:name "Ontology audience description"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ; 
+    ] ;
+
+
+## Ontology subject(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path dcterms:subject ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should add some subjects of the ontology. Only URIs will be accepted, e.g. identifiers of controlled vocabularies or ontologies. You can search for fitting terms on, e.g. TIB Terminology Service (https://terminology.tib.eu)."@en ;
+        sh:name "Ontology subject(s)"@en ;
+        sh:group ontometa4forms:BibliographicMetadataGroup
+    ] ;
+
+
+## Ontology annotation language(s)
+### status: developer and external review needed
+### add a list to make easier for forms
+    sh:property [
+        sh:path <https://schema.org/inLanguage>  ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        # sh:pattern "(^http://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$|^https://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$)" ; # for form replaced by list
+        sh:in (
+            <http://id.loc.gov/vocabulary/iso639-2/ara>
+            <http://id.loc.gov/vocabulary/iso639-2/ben>
+            <http://id.loc.gov/vocabulary/iso639-2/zbl>
+            <http://id.loc.gov/vocabulary/iso639-2/zho>
+            <http://id.loc.gov/vocabulary/iso639-2/cze>
+            <http://id.loc.gov/vocabulary/iso639-2/dan>
+            <http://id.loc.gov/vocabulary/iso639-2/nld>
+            <http://id.loc.gov/vocabulary/iso639-2/eng>
+            <http://id.loc.gov/vocabulary/iso639-2/fin>
+            <http://id.loc.gov/vocabulary/iso639-2/fra>
+            <http://id.loc.gov/vocabulary/iso639-2/ger>
+            <http://id.loc.gov/vocabulary/iso639-2/hin>
+            <http://id.loc.gov/vocabulary/iso639-2/ind>
+            <http://id.loc.gov/vocabulary/iso639-2/jpn>
+            <http://id.loc.gov/vocabulary/iso639-2/tlh>
+            <http://id.loc.gov/vocabulary/iso639-2/zxx>
+            <http://id.loc.gov/vocabulary/iso639-2/nor>
+            <http://id.loc.gov/vocabulary/iso639-2/pol>
+            <http://id.loc.gov/vocabulary/iso639-2/por>
+            <http://id.loc.gov/vocabulary/iso639-2/rus>
+            <http://id.loc.gov/vocabulary/iso639-2/spa>
+            <http://id.loc.gov/vocabulary/iso639-2/swe>
+            <http://id.loc.gov/vocabulary/iso639-2/mis>
+            <http://id.loc.gov/vocabulary/iso639-2/ukr>
+            <http://id.loc.gov/vocabulary/iso639-2/und>
+            <http://id.loc.gov/vocabulary/iso639-2/urd>
+            <http://id.loc.gov/vocabulary/iso639-2/tur>
+        );
+        sh:description "You should add the ontology annotation languages."@en ;
+        sh:name "Ontology annotation language(s)"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+
+## Applied logical framework
+### status: developer and external review needed
+### replace contraints by list of allowed values?
+    sh:property [
+        sh:path <https://w3id.org/mod#hasFormalityLevel>;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:description "You should clarify which logical framework is applied by the ontology, e.g. \"SKOS\", \"OWL2, EL profile\"."@en ;
+        sh:name "Applied logical framework description"@en ;
+        sh:group ontometa4forms:FormalizationMetadataGroup ;
+    ] ;
+
+
+## Ontology serialization/ file format
+### status: developer and external review needed
+    sh:property [
+        sh:path <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> ;
+        sh:severity sh:Info ;
+        sh:group ontometa4forms:FormalizationMetadataGroup ;
+        #sh:minCount 1 ;
+        sh:maxCount 1;
+        sh:in (
+            <http://www.w3.org/ns/formats/RDF_XML>
+            <http://www.w3.org/ns/formats/Turtle>
+            <https://www.iana.org/assignments/media-types/application/rdf+xml>
+            <https://www.iana.org/assignments/media-types/text/turtle>
+            );
+        sh:nodeKind sh:IRI ;
+        sh:description "You should add the ontology serialization/ file format. Only one value is allowed that should fit the serialization of the ontology file for which these metadata are produced."@en ; # the message makes sense in the metadata form generators, but not for creating ontology files in different serializations that re-use metadata of a specific serialization
+        sh:name "Ontology serialization/ file format"@en ;
+    ] ;
+
+## Ontology status
+### status: developer and external review needed
+### for later: dedicated ontology_status property missing - suggest to OBO? if available: use instead of bibo:status
+    sh:property [
+        sh:path <http://purl.org/ontology/bibo/status> ;
+        sh:severity sh:Info ;
+        sh:maxCount 1 ;
+        sh:in ("active" "inactive" "orphaned" "obsolete"); # alternative 1 > nice dropdowns in forms, can the items be language tagged?
+        #sh:minCount 1 ; 
+        #sh:datatype rdf:langString ; # alternative 2 properly language tagged
+        #sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern # alternative 2 properly language tagged
+        sh:description "You should declare the ontology maintenance status."@en ;
+        sh:name "Ontology status"@en ; 
+        sh:group ontometa4forms:VersionGroup ;
+    ] ;
+
+## Ontology code repository
+### status: developer and external review needed
+    sh:property [
+        sh:path <http://usefulinc.com/ns/doap#repository>;
+        sh:severity sh:Info ;
+        #sh:minCount 1;
+        sh:maxCount 1;
+        sh:nodeKind sh:IRI;
+        sh:description "You should provide the link to the ontology code repository."@en ;
+        sh:name "Ontology code repository"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+    ] ;
+
+## Ontology distributions/ products
+### status: developer and external review needed
+   sh:property [
+        sh:path <http://www.w3.org/ns/dcat#distribution>;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should provide links to alternative serializations of the ontology. The links provided should be stable and resolvable."@en ;
+        sh:name "Ontology distributions/ products"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+   ] ; 
+
+## Application example
+### status: developer and external review needed
+    sh:property [
+        sh:path <https://vocab.org/vann/example> ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should provide a link to an application example of the ontology. This can be a service or some other kind of demonstration."@en ;
+        sh:name "Application example"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+    ] ;
+
+## Related resource(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path dcterms:references ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should provide links to related resources of the ontology, e.g. publications, alignments and mappings, etc.."@en ;
+        sh:name "Related resource(s)"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+    ] ;
+
+
+## Citation suggestion
+### status: developer and external review needed
+    sh:property [
+        sh:path dcterms:bibliographicCitation ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:description "You should provide a citation suggestion for the ontology. The suggestion should include ontology creators, publication year, title, version information, versionIRI and the repository URI."@en ;
+        sh:name "Citation suggestion"@en ;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+## Ontology sources (derived from)
+### status: developer and external review needed
+    sh:property [
+        sh:path <http://purl.org/pav/derivedFrom>  ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should provide version IRIs of ontologies the current ontology has been derived from. These URIs should be stable and resolvable."@en ;
+        sh:name "Ontology sources (derived from)"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+    ];
+
+## Ontology root classes
+### status: developer and external review needed
+    sh:property [
+        sh:path <http://purl.obolibrary.org/obo/IAO_0000700> ;
+        sh:severity sh:Info ;
+        #sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You should name the preferred root classes, if the ontology has any. These can be used on tree visualizations of the class hierarchy of the ontology on services like Ontology Lookup Service (OLS) from EMBL-EBI."@en ;
+        sh:name "Ontology root classes"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+# OPTIONAL METADATA
+### status: developer and external review needed
+
+## Ontology description
+### status: developer and external review needed
+
+    sh:property [
+        sh:path  schema:description;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:Literal;
+        sh:datatype rdf:langString ;
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:uniqueLang true ;
+        sh:description "You can provide a longer description about the ontology in addition to its abstract. Only one description per language is accepted."@en ;
+        sh:name "Ontology description"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+
+## Alternative ontology title
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://purl.org/dc/terms/alternative>;
+        sh:severity sh:Info ;
+        sh:datatype rdf:langString ;
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:description "You can provide alternative titles of the ontology. You can provide more than one alternative title in each language."@en;
+        sh:name "Alternative ontology title"@en;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+## Alternative ontology prefix/ acronym
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://identifiers.org/idot/alternatePrefix> ;
+        sh:severity sh:Info ;
+        sh:datatype xsd:string ;
+        sh:description "You can provide an alternative ontology prefix. It should not contain hyphens."@en ;
+        sh:name "Alternative ontology prefix/ acronym"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+## Related version/ version history
+### status: see below
+
+### Prior ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://www.w3.org/2002/07/owl#priorVersion> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description """You can provide a link to the preceding version of the ontology if there is any. The URI should be a stable and resolvable versionIRI."""@en ;
+        sh:name "Prior ontology version"@en ;
+        sh:group ontometa4forms:VersionGroup ;
+    ] ;
+
+### Related ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://purl.org/dc/terms/hasVersion> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can provide links to related versions of the ontology if there are any. The URI should be a stable and resolvable versionIRI."@en ;
+        sh:name "Related ontology version"@en ;
+        sh:group ontometa4forms:VersionGroup ;
+    ] ;
+
+### Compatible ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://www.w3.org/2002/07/owl#backwardCompatibleWith> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can provide links to compatible versions of the ontology. The URI should be a stable and resolvable versionIRI."@en ;
+        sh:name "Compatible ontology version"@en ;
+        sh:group ontometa4forms:VersionGroup ;
+    ] ;
+
+### Incompatible ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://www.w3.org/2002/07/owl#incompatibleWith> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can provide links to incompatible versions of the ontology if applicable. The URI should be a stable and resolvable versionIRI."@en ;
+        sh:name "Incompatible ontology version"@en ;
+        sh:group ontometa4forms:VersionGroup ;
+    ] ;
+
+
+## Social media
+### status: intentionally no shape
+
+## KOS type
+### status: developer and external review needed
+
+    sh:property [
+        sh:path dcterms:type ;
+        sh:severity sh:Info ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:group ontometa4forms:FormalizationMetadataGroup ;
+        sh:in (
+            <http://w3id.org/nkos/nkostype#authority_file>
+            <http://w3id.org/nkos/nkostype#categorization_schema>
+            <http://w3id.org/nkos/nkostype#classification_schema>
+            <http://w3id.org/nkos/nkostype#dictionary>
+            <http://w3id.org/nkos/nkostype#gazetteer>
+            <http://w3id.org/nkos/nkostype#glossary>
+            <http://w3id.org/nkos/nkostype#list>
+            <http://w3id.org/nkos/nkostype#name_authority_list>
+            <http://w3id.org/nkos/nkostype#ontology>
+            <http://w3id.org/nkos/nkostype#pick_list>
+            <http://w3id.org/nkos/nkostype#semantic_network>
+            <http://w3id.org/nkos/nkostype#subject_heading_scheme>
+            <http://w3id.org/nkos/nkostype#synonym_ring>
+            <http://w3id.org/nkos/nkostype#taxonomy>
+            <http://w3id.org/nkos/nkostype#terminology>
+            <http://w3id.org/nkos/nkostype#thesaurus>
+            ) ;
+        sh:description "You can declare the KOS-type from the NKOS type vocabulary."@en ;
+        sh:name "KOS type"@en ;
+    ] ;
+
+## Example ontology identifier
+### status: developer and external review needed
+ 
+    sh:property [
+        sh:path <http://identifiers.org/idot/exampleIdentifier> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can name one example identifier of the ontology, e.g. the identifier of one of its classes."@en ;
+        sh:name "Example ontology identifier"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+## Ontology identifier pattern
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://identifiers.org/idot/identifierPattern> ;
+        sh:severity sh:Info ;
+        sh:datatype xsd:string ;
+        sh:maxCount 2 ; # 2 because when using camel case for classes and properties, majusclues are usually used for classes, minuscules for properties, so two patterns may be valid
+        sh:description "Youd can add an identifier pattern that demonstrates how idetifiers of the ontology classes, properties and individuals should be built."@en ;
+        sh:name "Ontology identifier pattern"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+
+## Ontology homepage
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://xmlns.com/foaf/0.1/homepage>;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        sh:description "You can provide the link of the ontology homepage."@en ;
+        sh:name "Ontology homepage"@en ;
+        sh:group ontometa4forms:RelatedResources;
+    ] ;
+
+## Ontology publisher
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://purl.org/dc/terms/publisher> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:xone (
+            # pattern sources: Wikidata entries of the identifier types
+            [sh:pattern "https://ror.org/([a-z0-9]{9})" ; ]
+            [sh:pattern "https://isni.org/isni/[0]{4}[0-9]{4}[0-9]{4}[0-9]{3}[0-9X]" ;]
+            [sh:pattern "https://d-nb.info/gnd/(|(1[012]?[0-9]{7}[0-9X]|[47][0-9]{6}-[0-9]|[1-9][0-9]{0,7}-[0-9X]|3[0-9]{7}[0-9X]))$" ;]
+        ) ;
+        sh:description "You can list the ontology publisher if any. Only URIs from the ROR, ISNI or GND namespace are accepted."@en ;
+        sh:name "Ontology publisher"@en ;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+## Ontology comments
+### status: developer and external review needed
+
+    sh:property [
+        sh:path rdfs:comment ;
+        sh:severity sh:Info ;
+        sh:datatype rdf:langString ;
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:description "You can provide comments about the ontology."@en ;
+        sh:name "Ontology comments"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+
+## Example ontology class
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://rdfs.org/ns/void#exampleResource> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can provide the identifiers of example classes of the ontology."@en ;
+        sh:name "Example ontology class"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+
+## Ontology mailing list
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://usefulinc.com/ns/doap#mailing-list> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        sh:description "You can add the ontology mailing list if available."@en ;
+        sh:name "Ontology mailing list"@en ;
+        sh:group ontometa4forms:ContactGroup ;
+    ];
+
+## Ontology logo/ depiction/ related visualizations
+### status: developer and external review needed
+### needs to be split for forms (and validation?)
+
+    sh:property [
+        sh:path <http://xmlns.com/foaf/0.1/logo> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can add links to images related to the ontology, e.g. diagrams or schemas visualizing the ontology classes and relations."@en ;
+        sh:name "Ontology logo/ depiction/ related visualizations"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+    ];
+
+## Related identifiers
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://purl.org/dc/terms/identifier> ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can provide alternative identifiers of the ontology, e.g. a DOI, a Wikidata entry, or comparable identifiers."@en ;
+        sh:name "Related identifiers"@en ;
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ];
+
+## Development environment
+#### status: intentionally no shape
+
+## Alignments/ mappings
+### status: developer and external review needed
+
+### Aligned resources
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <https://w3id.org/mod#hasEquivalencesWith>  ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can provide identifiers of aligned ontologies or resources."@en ;
+        sh:name "Aligned resources"@en ;
+        sh:group ontometa4forms:AlignmentsGroup ;
+    ];
+
+### Alignment files/ Mapping files
+### status: see shape "Related resources"
+
+## Competency Questions
+### status: developer and external review needed
+### mit Marc besprechen, ob man für den Form-generator beides zulassen kann
+
+    sh:property [
+        sh:path <https://w3id.org/mod#competencyQuestion> ;
+        sh:severity sh:Info ;
+        # sh:xone ( 
+            # [
+                sh:nodeKind sh:IRI ;
+                # ] 
+            # [sh:datatype rdf:langString ; sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+            # ] );
+        sh:description "You can provide the link to some competency questions for the ontology."@en ;
+        sh:name "Competency questions"@en ;
+        sh:group ontometa4forms:RelatedResources ;
+    ];
+
+## Applied methodology
+### status: intentionally no shape
+
+## Preferred ontology namespace
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
+        sh:severity sh:Info ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:description "You can declare the preferred namespace URI of the ontology."@en ;
+        sh:name "Preferred ontology namespace"@en ; 
+        sh:group ontometa4forms:IntrinsicGroup ;
+    ] ;
+
+
+## Ontology issue date
+### status: developer and external review needed
+
+    sh:property [
+        sh:path <http://purl.org/dc/terms/issued> ;
+        sh:severity sh:Info ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1 ;
+        sh:description "You can provide the date when the ontology was issued. The value should use xsd:dateTime format, e.g. 2024-11-28T11:11:12"@en ;
+        sh:name "Ontology issue date"@en ; 
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+### Ontology modification date
+### status: developer and external review needed
+
+    sh:property [
+        sh:path dcterms:modified;
+        sh:severity sh:Info ;
+        sh:datatype xsd:dateTime ;
+        sh:maxCount 1;
+        sh:description "You can provide the last modification date of the ontology in xsd:dateTime format, e.g. 2024-11-28T08:12:22"@en ;
+        sh:name "Ontology modification date"@en ;
+        sh:group ontometa4forms:BibliographicMetadataGroup ;
+    ] ;
+
+### Ontology version information
+### status: developer and external review needed
+
+    sh:property [
+        sh:path owl:versionInfo ;
+        sh:severity sh:Info ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string ;
+        sh:description "You can provide some textual information about the ontology version, e.g. a semantic versioning number as 2.0.1 or a date in xsd:date or xsd:dateTime format, e.g. 2024-11-26T18:00:01."@en ;
+        sh:name "Ontology version information"@en ;
+        sh:group ontometa4forms:VersionGroup ;
+    ] ;
+
+### Ontology version notes
+### status: developer and external review needed
+
+    sh:property [
+        sh:path adms:versionNotes ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:Literal ; 
+        sh:datatype rdf:langString ;
+        sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
+        sh:uniqueLang true ;
+        sh:description "You can add version notes, e.g. descriptions of the changes between this and the preceding version of the ontology."@en ; 
+        sh:name "Ontology version notes"@en ;
+        sh:group ontometa4forms:VersionGroup ;
+    ] ;
+
+# End of shape
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type owl:topDataProperty owl:topObjectProperty ) .
+
+ontometa4forms:BibliographicMetadataGroup   a sh:PropertyGroup ;
+  rdfs:label      "Bibliographic metadata" ;
+  sh:order 1.
+
+
+ontometa4forms:DateMetadataGroup   a sh:PropertyGroup ;
+  rdfs:label      "Dates" ;
+  sh:order 2.
+
+ontometa4forms:IntrinsicGroup a sh:PropertyGroup ;
+ rdfs:label "Intrinsic ontology data" ;
+  sh:order 3.
+
+ontometa4forms:FormalizationMetadataGroup   a sh:PropertyGroup ;
+  rdfs:label      "Formalization info" ;
+ sh:order 4.
+
+ontometa4forms:RelatedResources a sh:PropertyGroup ;
+ rdfs:label "Related resources" ;
+ sh:order 5.
+
+ ontometa4forms:AlignmentsGroup a sh:PropertyGroup ;
+ rdfs:label "Mappings and alignments" ;
+ sh:order 6.
+
+ontometa4forms:FundingGroup a sh:PropertyGroup ;
+ rdfs:label "Funders and acknowledgements" ;
+ sh:order 7.
+
+ontometa4forms:VersionGroup a sh:PropertyGroup ;
+ rdfs:label "Version information" ;
+ sh:order 8.
+
+ontometa4forms:ContactGroup a sh:PropertyGroup ;
+ rdfs:label "Contact information" ;
+ sh:order 9.
+
+
+# Could be used to add labels for list items in sh:in
+# <https://creativecommons.org/licenses/by-sa/4.0/deed> rdfs:label "".
+
+# <http://opendatacommons.org/licenses/by/summary/>
+# <https://opendatacommons.org/licenses/by/summary/>
+# <http://opendatacommons.org/licenses/by/1-0/>
+# <http://opendatacommons.org/licenses/by/1.0/>
+# <https://opendatacommons.org/licenses/by/1.0/>
+# <http://opendatacommons.org/licenses/pddl/1-0/>
+# <http://opendatacommons.org/licenses/pddl/summary/>
+# <https://opendatacommons.org/licenses/pddl/summary/>
+# <http://opendatacommons.org/licenses/pddl/1.0/>
+# <https://opendatacommons.org/licenses/pddl/1.0/>
+# <http://opendatacommons.org/licenses/odbl/summary/>
+# <https://opendatacommons.org/licenses/odbl/summary/>
+# <http://opendatacommons.org/licenses/odbl/1-0/>
+# <http://opendatacommons.org/licenses/odbl/1.0/>
+# <https://opendatacommons.org/licenses/odbl/1.0/>
+# <http://spdx.org/licenses/Unlicense.html>
+# <https://spdx.org/licenses/Unlicense.html>
+# <http://unlicense.org/>
+# <http://creativecommons.org/publicdomain/zero/1.0/>
+# <https://creativecommons.org/publicdomain/zero/1.0/>
+# <http://creativecommons.org/publicdomain/zero/1.0/legalcode>
+# <https://creativecommons.org/publicdomain/zero/1.0/deed>
+# <http://creativecommons.org/publicdomain/zero/1.0/deed>
+# <http://creativecommons.org/licenses/by/3.0/legalcode>
+# <https://creativecommons.org/licenses/by/3.0/deed>
+# <http://creativecommons.org/licenses/by/3.0/deed>
+# <http://creativecommons.org/licenses/by/3.0/>
+# <https://creativecommons.org/licenses/by/3.0/>
+# <https://creativecommons.org/licenses/by/3.0/de/deed>
+# <http://creativecommons.org/licenses/by/3.0/de/deed>
+# <http://creativecommons.org/licenses/by/3.0/de/legalcode>
+# <https://creativecommons.org/licenses/by/3.0/de/>
+# <http://creativecommons.org/licenses/by/3.0/de/>
+# <http://creativecommons.org/licenses/by-sa/3.0/legalcode>
+# <https://creativecommons.org/licenses/by-sa/3.0/deed>
+# <http://creativecommons.org/licenses/by-sa/3.0/deed>
+# <http://creativecommons.org/licenses/by-sa/3.0/>
+# <https://creativecommons.org/licenses/by-sa/3.0/>
+# <https://creativecommons.org/licenses/by/4.0/>
+# <http://creativecommons.org/licenses/by/4.0/>
+# <http://creativecommons.org/licenses/by/4.0/legalcode>
+# <https://creativecommons.org/licenses/by/4.0/deed>
+# <https://creativecommons.org/licenses/by/4.0/deed>
+# <http://creativecommons.org/licenses/by-sa/4.0/>
+# <https://creativecommons.org/licenses/by-sa/4.0/>
+# <http://creativecommons.org/licenses/by-sa/4.0/legalcode>
+# <http://creativecommons.org/licenses/by-sa/4.0/deed>
+# <https://creativecommons.org/licenses/by-sa/4.0/deed>
+
+
+# Other serializations for semantic data
+# tbd: not all are relevant or digestable by the TS
+# for the TS (OLS3) rdf+xml, turtle and obo are confirmed
+# no expected value for obo ontologies > Ontorowser mentions application/obo and text/obo, but these are specific to the service, not officially acknowledged: https://github.com/Novartis/ontobrowser/blob/master/doc/web_services.md
+# <http://www.w3.org/ns/formats/JSON-LD>
+# <http://www.w3.org/ns/formats/N3>
+# <http://www.w3.org/ns/formats/N-Triples>
+# <http://www.w3.org/ns/formats/N-Quads>
+# <http://www.w3.org/ns/formats/LD_Patch>
+# <http://www.w3.org/ns/formats/microdata>
+# <http://www.w3.org/ns/formats/OWL_XML>
+# <http://www.w3.org/ns/formats/OWL_Functional>
+# <http://www.w3.org/ns/formats/OWL_Manchester>
+# <http://www.w3.org/ns/formats/POWDER>
+# <http://www.w3.org/ns/formats/POWDER-S>
+# <http://www.w3.org/ns/formats/PROV-N>
+# <http://www.w3.org/ns/formats/PROV-XML>
+# <http://www.w3.org/ns/formats/RDFa>
+# <http://www.w3.org/ns/formats/RDF_JSON>
+# <http://www.w3.org/ns/formats/RIF_XML>
+# <http://www.w3.org/ns/formats/SPARQL_Results_XML>
+# <http://www.w3.org/ns/formats/SPARQL_Results_JSON>
+# <http://www.w3.org/ns/formats/SPARQL_Results_CSV>
+# <http://www.w3.org/ns/formats/SPARQL_Results_TSV>
+# <http://www.w3.org/ns/formats/TriG>
+# <https://www.iana.org/assignments/media-types/application/trig>
+# <https://www.iana.org/assignments/media-types/text/n3>
+# <https://www.iana.org/assignments/media-types/application/n-triples>
+# <https://www.iana.org/assignments/media-types/application/n-quads>
+# <https://www.iana.org/assignments/media-types/application/ld+json>
+
+# Languages resp. Labels for list istems in sh:in
+# URI	code	Label (English)	Label (French)
+<http://id.loc.gov/vocabulary/iso639-2/ara>	rdfs:label "Arabic" .
+<http://id.loc.gov/vocabulary/iso639-2/ben>	rdfs:label "Bengali" .
+<http://id.loc.gov/vocabulary/iso639-2/zbl>	rdfs:label "Blissymbols |  Blissymbolics" .
+<http://id.loc.gov/vocabulary/iso639-2/zho>	rdfs:label "Chinese" .
+<http://id.loc.gov/vocabulary/iso639-2/cze>	rdfs:label "Czech" .
+<http://id.loc.gov/vocabulary/iso639-2/dan>	rdfs:label "Danish" .
+<http://id.loc.gov/vocabulary/iso639-2/nld>	rdfs:label "Dutch |  Flemish" .
+<http://id.loc.gov/vocabulary/iso639-2/eng>	rdfs:label "English" .
+<http://id.loc.gov/vocabulary/iso639-2/fin>	rdfs:label "Finnish" .
+<http://id.loc.gov/vocabulary/iso639-2/fra>	rdfs:label "French" .
+<http://id.loc.gov/vocabulary/iso639-2/ger>	rdfs:label "German" .
+<http://id.loc.gov/vocabulary/iso639-2/hin>	rdfs:label "Hindi" .
+<http://id.loc.gov/vocabulary/iso639-2/ind> rdfs:label "Indonesian" .
+<http://id.loc.gov/vocabulary/iso639-2/jpn>	rdfs:label "Japanese" .
+<http://id.loc.gov/vocabulary/iso639-2/tlh>	rdfs:label "Klingon |  tlhIngan-Hol" .
+<http://id.loc.gov/vocabulary/iso639-2/zxx>	rdfs:label "No linguistic content |  Not applicable" .
+<http://id.loc.gov/vocabulary/iso639-2/nor>	rdfs:label "Norwegian" .
+<http://id.loc.gov/vocabulary/iso639-2/pol>	rdfs:label "Polish" .
+<http://id.loc.gov/vocabulary/iso639-2/por>	rdfs:label "Portuguese" .
+<http://id.loc.gov/vocabulary/iso639-2/rus>	rdfs:label "Russian" .
+<http://id.loc.gov/vocabulary/iso639-2/spa>	rdfs:label "Spanish |  Castilian" .
+<http://id.loc.gov/vocabulary/iso639-2/swe>	rdfs:label "Swedish" .
+<http://id.loc.gov/vocabulary/iso639-2/mis>	rdfs:label "Uncoded languages" .
+<http://id.loc.gov/vocabulary/iso639-2/ukr>	rdfs:label "Ukrainian".
+<http://id.loc.gov/vocabulary/iso639-2/und>	rdfs:label "Undetermined" .
+<http://id.loc.gov/vocabulary/iso639-2/urd>	rdfs:label "Urdu".
+<http://id.loc.gov/vocabulary/iso639-2/tur>	rdfs:label "Turkish" .
+# http://id.loc.gov/vocabulary/iso639-2/aar	aar	Afar	afar
+# http://id.loc.gov/vocabulary/iso639-2/abk	abk	Abkhazian	abkhaze
+# http://id.loc.gov/vocabulary/iso639-2/ace	ace	Achinese	aceh
+# http://id.loc.gov/vocabulary/iso639-2/ach	ach	Acoli	acoli
+# http://id.loc.gov/vocabulary/iso639-2/ada	ada	Adangme	adangme
+# http://id.loc.gov/vocabulary/iso639-2/ady	ady	Adyghe |  Adygei	adyghé
+# http://id.loc.gov/vocabulary/iso639-2/afa	afa	Afro-Asiatic languages	afro-asiatiques, langues
+# http://id.loc.gov/vocabulary/iso639-2/afh	afh	Afrihili	afrihili
+# http://id.loc.gov/vocabulary/iso639-2/afr	afr	Afrikaans	afrikaans
+# http://id.loc.gov/vocabulary/iso639-2/ain	ain	Ainu	aïnou
+# http://id.loc.gov/vocabulary/iso639-2/aka	aka	Akan	akan
+# http://id.loc.gov/vocabulary/iso639-2/akk	akk	Akkadian	akkadien
+# http://id.loc.gov/vocabulary/iso639-2/alb	alb	Albanian	albanais
+# http://id.loc.gov/vocabulary/iso639-2/ale	ale	Aleut	aléoute
+# http://id.loc.gov/vocabulary/iso639-2/alg	alg	Algonquian languages	algonquines, langues
+# http://id.loc.gov/vocabulary/iso639-2/alt	alt	Southern Altai	altai du Sud
+# http://id.loc.gov/vocabulary/iso639-2/amh	amh	Amharic	amharique
+# http://id.loc.gov/vocabulary/iso639-2/ang	ang	English, Old (ca.450-1100)	anglo-saxon (ca.450-1100)
+# http://id.loc.gov/vocabulary/iso639-2/anp	anp	Angika	angika
+# http://id.loc.gov/vocabulary/iso639-2/apa	apa	Apache languages	apaches, langues
+# http://id.loc.gov/vocabulary/iso639-2/arc	arc	Official Aramaic (700-300 BCE) |  Imperial Aramaic (700-300 BCE)	araméen d'empire (700-300 BCE)
+# http://id.loc.gov/vocabulary/iso639-2/arg	arg	Aragonese	aragonais
+# http://id.loc.gov/vocabulary/iso639-2/arm	arm	Armenian	arménien
+# http://id.loc.gov/vocabulary/iso639-2/arn	arn	Mapudungun |  Mapuche	mapudungun |  mapuche |  mapuce
+# http://id.loc.gov/vocabulary/iso639-2/arp	arp	Arapaho	arapaho
+# http://id.loc.gov/vocabulary/iso639-2/art	art	Artificial languages	artificielles, langues
+# http://id.loc.gov/vocabulary/iso639-2/arw	arw	Arawak	arawak
+# http://id.loc.gov/vocabulary/iso639-2/asm	asm	Assamese	assamais
+# http://id.loc.gov/vocabulary/iso639-2/ast	ast	Asturian |  Bable |  Leonese |  Asturleonese	asturien |  bable |  léonais |  asturoléonais
+# http://id.loc.gov/vocabulary/iso639-2/ath	ath	Athapascan languages	athapascanes, langues
+# http://id.loc.gov/vocabulary/iso639-2/aus	aus	Australian languages	australiennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/ava	ava	Avaric	avar
+# http://id.loc.gov/vocabulary/iso639-2/ave	ave	Avestan	avestique
+# http://id.loc.gov/vocabulary/iso639-2/awa	awa	Awadhi	awadhi
+# http://id.loc.gov/vocabulary/iso639-2/aym	aym	Aymara	aymara
+# http://id.loc.gov/vocabulary/iso639-2/aze	aze	Azerbaijani	azéri
+# http://id.loc.gov/vocabulary/iso639-2/bad	bad	Banda languages	banda, langues
+# http://id.loc.gov/vocabulary/iso639-2/bai	bai	Bamileke languages	bamiléké, langues
+# http://id.loc.gov/vocabulary/iso639-2/bak	bak	Bashkir	bachkir
+# http://id.loc.gov/vocabulary/iso639-2/bal	bal	Baluchi	baloutchi
+# http://id.loc.gov/vocabulary/iso639-2/bam	bam	Bambara	bambara
+# http://id.loc.gov/vocabulary/iso639-2/ban	ban	Balinese	balinais
+# http://id.loc.gov/vocabulary/iso639-2/baq	baq	Basque	basque
+# http://id.loc.gov/vocabulary/iso639-2/bas	bas	Basa	basa
+# http://id.loc.gov/vocabulary/iso639-2/bat	bat	Baltic languages	baltes, langues
+# http://id.loc.gov/vocabulary/iso639-2/bej	bej	Beja |  Bedawiyet	bedja
+# http://id.loc.gov/vocabulary/iso639-2/bel	bel	Belarusian	biélorusse
+# http://id.loc.gov/vocabulary/iso639-2/bem	bem	Bemba	bemba
+# http://id.loc.gov/vocabulary/iso639-2/ber	ber	Berber languages	berbères, langues
+# http://id.loc.gov/vocabulary/iso639-2/bho	bho	Bhojpuri	bhojpuri
+# http://id.loc.gov/vocabulary/iso639-2/bih	bih	Bihari languages	langues biharis
+# http://id.loc.gov/vocabulary/iso639-2/bik	bik	Bikol	bikol
+# http://id.loc.gov/vocabulary/iso639-2/bin	bin	Bini |  Edo	bini |  edo
+# http://id.loc.gov/vocabulary/iso639-2/bis	bis	Bislama	bichlamar
+# http://id.loc.gov/vocabulary/iso639-2/bla	bla	Siksika	blackfoot
+# http://id.loc.gov/vocabulary/iso639-2/bnt	bnt	Bantu languages	bantou, langues
+# http://id.loc.gov/vocabulary/iso639-2/bod	bod	Tibetan	tibétain
+# http://id.loc.gov/vocabulary/iso639-2/bos	bos	Bosnian	bosniaque
+# http://id.loc.gov/vocabulary/iso639-2/bra	bra	Braj	braj
+# http://id.loc.gov/vocabulary/iso639-2/bre	bre	Breton	breton
+# http://id.loc.gov/vocabulary/iso639-2/btk	btk	Batak languages	batak, langues
+# http://id.loc.gov/vocabulary/iso639-2/bua	bua	Buriat	bouriate
+# http://id.loc.gov/vocabulary/iso639-2/bug	bug	Buginese	bugi
+# http://id.loc.gov/vocabulary/iso639-2/bul	bul	Bulgarian	bulgare
+# http://id.loc.gov/vocabulary/iso639-2/bur	bur	Burmese	birman
+# http://id.loc.gov/vocabulary/iso639-2/byn	byn	Blin |  Bilin	blin |  bilen
+# http://id.loc.gov/vocabulary/iso639-2/cad	cad	Caddo	caddo
+# http://id.loc.gov/vocabulary/iso639-2/cai	cai	Central American Indian languages	amérindiennes de l'Amérique centrale,  langues
+# http://id.loc.gov/vocabulary/iso639-2/car	car	Galibi Carib	karib |  galibi |  carib
+# http://id.loc.gov/vocabulary/iso639-2/cat	cat	Catalan |  Valencian	catalan |  valencien
+# http://id.loc.gov/vocabulary/iso639-2/cau	cau	Caucasian languages	caucasiennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/ceb	ceb	Cebuano	cebuano
+# http://id.loc.gov/vocabulary/iso639-2/cel	cel	Celtic languages	celtiques, langues |  celtes, langues
+# http://id.loc.gov/vocabulary/iso639-2/ces	ces	Czech	tchèque
+# http://id.loc.gov/vocabulary/iso639-2/cha	cha	Chamorro	chamorro
+# http://id.loc.gov/vocabulary/iso639-2/chb	chb	Chibcha	chibcha
+# http://id.loc.gov/vocabulary/iso639-2/che	che	Chechen	tchétchène
+# http://id.loc.gov/vocabulary/iso639-2/chg	chg	Chagatai	djaghataï
+# http://id.loc.gov/vocabulary/iso639-2/chi	chi	Chinese	chinois
+# http://id.loc.gov/vocabulary/iso639-2/chk	chk	Chuukese	chuuk
+# http://id.loc.gov/vocabulary/iso639-2/chm	chm	Mari	mari
+# http://id.loc.gov/vocabulary/iso639-2/chn	chn	Chinook jargon	chinook, jargon
+# http://id.loc.gov/vocabulary/iso639-2/cho	cho	Choctaw	choctaw
+# http://id.loc.gov/vocabulary/iso639-2/chp	chp	Chipewyan |  Dene Suline	chipewyan
+# http://id.loc.gov/vocabulary/iso639-2/chr	chr	Cherokee	cherokee
+# http://id.loc.gov/vocabulary/iso639-2/chu	chu	Church Slavic |  Old Slavonic |  Church Slavonic |  Old Bulgarian |  Old Church Slavonic	slavon d'église |  vieux slave |  slavon liturgique |  vieux bulgare
+# http://id.loc.gov/vocabulary/iso639-2/chv	chv	Chuvash	tchouvache
+# http://id.loc.gov/vocabulary/iso639-2/chy	chy	Cheyenne	cheyenne
+# http://id.loc.gov/vocabulary/iso639-2/cmc	cmc	Chamic languages	chames, langues
+# http://id.loc.gov/vocabulary/iso639-2/cnr	cnr	Montenegrin	monténégrin
+# http://id.loc.gov/vocabulary/iso639-2/cop	cop	Coptic	copte
+# http://id.loc.gov/vocabulary/iso639-2/cor	cor	Cornish	cornique
+# http://id.loc.gov/vocabulary/iso639-2/cos	cos	Corsican	corse
+# http://id.loc.gov/vocabulary/iso639-2/cpe	cpe	Creoles and pidgins, English based	créoles et pidgins basés sur l'anglais
+# http://id.loc.gov/vocabulary/iso639-2/cpf	cpf	Creoles and pidgins, French-based	créoles et pidgins basés sur le français
+# http://id.loc.gov/vocabulary/iso639-2/cpp	cpp	Creoles and pidgins, Portuguese-based	créoles et pidgins basés sur le portugais
+# http://id.loc.gov/vocabulary/iso639-2/cre	cre	Cree	cree
+# http://id.loc.gov/vocabulary/iso639-2/crh	crh	Crimean Tatar |  Crimean Turkish	tatar de Crimé
+# http://id.loc.gov/vocabulary/iso639-2/crp	crp	Creoles and pidgins	créoles et pidgins
+# http://id.loc.gov/vocabulary/iso639-2/csb	csb	Kashubian	kachoube
+# http://id.loc.gov/vocabulary/iso639-2/cus	cus	Cushitic languages	couchitiques,  langues
+# http://id.loc.gov/vocabulary/iso639-2/cym	cym	Welsh	gallois
+# http://id.loc.gov/vocabulary/iso639-2/dak	dak	Dakota	dakota
+# http://id.loc.gov/vocabulary/iso639-2/dar	dar	Dargwa	dargwa
+# http://id.loc.gov/vocabulary/iso639-2/day	day	Land Dayak languages	dayak, langues
+# http://id.loc.gov/vocabulary/iso639-2/del	del	Delaware	delaware
+# http://id.loc.gov/vocabulary/iso639-2/den	den	Slave (Athapascan)	esclave (athapascan)
+# http://id.loc.gov/vocabulary/iso639-2/deu	deu	German	allemand
+# http://id.loc.gov/vocabulary/iso639-2/dgr	dgr	Tlicho |  Dogrib	tlicho |  dogrib
+# http://id.loc.gov/vocabulary/iso639-2/din	din	Dinka	dinka
+# http://id.loc.gov/vocabulary/iso639-2/div	div	Divehi |  Dhivehi |  Maldivian	maldivien
+# http://id.loc.gov/vocabulary/iso639-2/doi	doi	Dogri	dogri
+# http://id.loc.gov/vocabulary/iso639-2/dra	dra	Dravidian languages	dravidiennes,  langues
+# http://id.loc.gov/vocabulary/iso639-2/dsb	dsb	Lower Sorbian	bas-sorabe
+# http://id.loc.gov/vocabulary/iso639-2/dua	dua	Duala	douala
+# http://id.loc.gov/vocabulary/iso639-2/dum	dum	Dutch, Middle (ca.1050-1350)	néerlandais moyen (ca. 1050-1350)
+# http://id.loc.gov/vocabulary/iso639-2/dut	dut	Dutch |  Flemish	néerlandais |  flamand
+# http://id.loc.gov/vocabulary/iso639-2/dyu	dyu	Dyula	dioula
+# http://id.loc.gov/vocabulary/iso639-2/dzo	dzo	Dzongkha	dzongkha
+# http://id.loc.gov/vocabulary/iso639-2/efi	efi	Efik	efik
+# http://id.loc.gov/vocabulary/iso639-2/egy	egy	Egyptian (Ancient)	égyptien
+# http://id.loc.gov/vocabulary/iso639-2/eka	eka	Ekajuk	ekajuk
+# http://id.loc.gov/vocabulary/iso639-2/ell	ell	Greek, Modern (1453-)	grec moderne (après 1453)
+# http://id.loc.gov/vocabulary/iso639-2/elx	elx	Elamite	élamite
+# http://id.loc.gov/vocabulary/iso639-2/enm	enm	English, Middle (1100-1500)	anglais moyen (1100-1500)
+# http://id.loc.gov/vocabulary/iso639-2/epo	epo	Esperanto	espéranto
+# http://id.loc.gov/vocabulary/iso639-2/est	est	Estonian	estonien
+# http://id.loc.gov/vocabulary/iso639-2/eus	eus	Basque	basque
+# http://id.loc.gov/vocabulary/iso639-2/ewe	ewe	Ewe	éwé
+# http://id.loc.gov/vocabulary/iso639-2/ewo	ewo	Ewondo	éwondo
+# http://id.loc.gov/vocabulary/iso639-2/fan	fan	Fang	fang
+# http://id.loc.gov/vocabulary/iso639-2/fao	fao	Faroese	féroïen
+# http://id.loc.gov/vocabulary/iso639-2/fas	fas	Persian	persan
+# http://id.loc.gov/vocabulary/iso639-2/fat	fat	Fanti	fanti
+# http://id.loc.gov/vocabulary/iso639-2/fij	fij	Fijian	fidjien
+# http://id.loc.gov/vocabulary/iso639-2/fil	fil	Filipino |  Pilipino	filipino |  pilipino
+# http://id.loc.gov/vocabulary/iso639-2/fiu	fiu	Finno-Ugrian languages	finno-ougriennes,  langues
+# http://id.loc.gov/vocabulary/iso639-2/fon	fon	Fon	fon
+# http://id.loc.gov/vocabulary/iso639-2/fre	fre	French	français
+# http://id.loc.gov/vocabulary/iso639-2/frm	frm	French, Middle (ca.1400-1600)	français moyen (1400-1600)
+# http://id.loc.gov/vocabulary/iso639-2/fro	fro	French, Old (842-ca.1400)	français ancien (842-ca.1400)
+# http://id.loc.gov/vocabulary/iso639-2/frr	frr	Northern Frisian	frison septentrional
+# http://id.loc.gov/vocabulary/iso639-2/frs	frs	Eastern Frisian	frison oriental
+# http://id.loc.gov/vocabulary/iso639-2/fry	fry	Western Frisian	frison occidental
+# http://id.loc.gov/vocabulary/iso639-2/ful	ful	Fulah	peul
+# http://id.loc.gov/vocabulary/iso639-2/fur	fur	Friulian	frioulan
+# http://id.loc.gov/vocabulary/iso639-2/gaa	gaa	Ga	ga
+# http://id.loc.gov/vocabulary/iso639-2/gay	gay	Gayo	gayo
+# http://id.loc.gov/vocabulary/iso639-2/gba	gba	Gbaya	gbaya
+# http://id.loc.gov/vocabulary/iso639-2/gem	gem	Germanic languages	germaniques, langues
+# http://id.loc.gov/vocabulary/iso639-2/geo	geo	Georgian	géorgien
+# http://id.loc.gov/vocabulary/iso639-2/gez	gez	Geez	guèze
+# http://id.loc.gov/vocabulary/iso639-2/gil	gil	Gilbertese	kiribati
+# http://id.loc.gov/vocabulary/iso639-2/gla	gla	Gaelic |  Scottish Gaelic	gaélique |  gaélique écossais
+# http://id.loc.gov/vocabulary/iso639-2/gle	gle	Irish	irlandais
+# http://id.loc.gov/vocabulary/iso639-2/glg	glg	Galician	galicien
+# http://id.loc.gov/vocabulary/iso639-2/glv	glv	Manx	manx |  mannois
+# http://id.loc.gov/vocabulary/iso639-2/gmh	gmh	German, Middle High (ca.1050-1500)	allemand, moyen haut (ca. 1050-1500)
+# http://id.loc.gov/vocabulary/iso639-2/goh	goh	German, Old High (ca.750-1050)	allemand, vieux haut (ca. 750-1050)
+# http://id.loc.gov/vocabulary/iso639-2/gon	gon	Gondi	gond
+# http://id.loc.gov/vocabulary/iso639-2/gor	gor	Gorontalo	gorontalo
+# http://id.loc.gov/vocabulary/iso639-2/got	got	Gothic	gothique
+# http://id.loc.gov/vocabulary/iso639-2/grb	grb	Grebo	grebo
+# http://id.loc.gov/vocabulary/iso639-2/grc	grc	Greek, Ancient (to 1453)	grec ancien (jusqu'à 1453)
+# http://id.loc.gov/vocabulary/iso639-2/gre	gre	Greek, Modern (1453-)	grec moderne (après 1453)
+# http://id.loc.gov/vocabulary/iso639-2/grn	grn	Guarani	guarani
+# http://id.loc.gov/vocabulary/iso639-2/gsw	gsw	Swiss German |  Alemannic |  Alsatian	suisse alémanique |  alémanique |  alsacien
+# http://id.loc.gov/vocabulary/iso639-2/guj	guj	Gujarati	goudjrati
+# http://id.loc.gov/vocabulary/iso639-2/gwi	gwi	Gwich'in	gwich'in
+# http://id.loc.gov/vocabulary/iso639-2/hai	hai	Haida	haida
+# http://id.loc.gov/vocabulary/iso639-2/hat	hat	Haitian |  Haitian Creole	haïtien |  créole haïtien
+# http://id.loc.gov/vocabulary/iso639-2/hau	hau	Hausa	haoussa
+# http://id.loc.gov/vocabulary/iso639-2/haw	haw	Hawaiian	hawaïen
+# http://id.loc.gov/vocabulary/iso639-2/heb	heb	Hebrew	hébreu
+# http://id.loc.gov/vocabulary/iso639-2/her	her	Herero	herero
+# http://id.loc.gov/vocabulary/iso639-2/hil	hil	Hiligaynon	hiligaynon
+# http://id.loc.gov/vocabulary/iso639-2/him	him	Himachali languages |  Western Pahari languages	langues himachalis |  langues paharis occidentales
+# http://id.loc.gov/vocabulary/iso639-2/hit	hit	Hittite	hittite
+# http://id.loc.gov/vocabulary/iso639-2/hmn	hmn	Hmong |  Mong	hmong
+# http://id.loc.gov/vocabulary/iso639-2/hmo	hmo	Hiri Motu	hiri motu
+# http://id.loc.gov/vocabulary/iso639-2/hrv	hrv	Croatian	croate
+# http://id.loc.gov/vocabulary/iso639-2/hsb	hsb	Upper Sorbian	haut-sorabe
+# http://id.loc.gov/vocabulary/iso639-2/hun	hun	Hungarian	hongrois
+# http://id.loc.gov/vocabulary/iso639-2/hup	hup	Hupa	hupa
+# http://id.loc.gov/vocabulary/iso639-2/hye	hye	Armenian	arménien
+# http://id.loc.gov/vocabulary/iso639-2/iba	iba	Iban	iban
+# http://id.loc.gov/vocabulary/iso639-2/ibo	ibo	Igbo	igbo
+# http://id.loc.gov/vocabulary/iso639-2/ice	ice	Icelandic	islandais
+# http://id.loc.gov/vocabulary/iso639-2/ido	ido	Ido	ido
+# http://id.loc.gov/vocabulary/iso639-2/iii	iii	Sichuan Yi |  Nuosu	yi de Sichuan
+# http://id.loc.gov/vocabulary/iso639-2/ijo	ijo	Ijo languages	ijo, langues
+# http://id.loc.gov/vocabulary/iso639-2/iku	iku	Inuktitut	inuktitut
+# http://id.loc.gov/vocabulary/iso639-2/ile	ile	Interlingue |  Occidental	interlingue
+# http://id.loc.gov/vocabulary/iso639-2/ilo	ilo	Iloko	ilocano
+# http://id.loc.gov/vocabulary/iso639-2/ina	ina	Interlingua (International Auxiliary Language Association)	interlingua (langue auxiliaire internationale)
+# http://id.loc.gov/vocabulary/iso639-2/inc	inc	Indic languages	indo-aryennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/ine	ine	Indo-European languages	indo-européennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/inh	inh	Ingush	ingouche
+# http://id.loc.gov/vocabulary/iso639-2/ipk	ipk	Inupiaq	inupiaq
+# http://id.loc.gov/vocabulary/iso639-2/ira	ira	Iranian languages	iraniennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/iro	iro	Iroquoian languages	iroquoises, langues
+# http://id.loc.gov/vocabulary/iso639-2/isl	isl	Icelandic	islandais
+# http://id.loc.gov/vocabulary/iso639-2/ita	ita	Italian	italien
+# http://id.loc.gov/vocabulary/iso639-2/jav	jav	Javanese	javanais
+# http://id.loc.gov/vocabulary/iso639-2/jbo	jbo	Lojban	lojban
+# http://id.loc.gov/vocabulary/iso639-2/jpr	jpr	Judeo-Persian	judéo-persan
+# http://id.loc.gov/vocabulary/iso639-2/jrb	jrb	Judeo-Arabic	judéo-arabe
+# http://id.loc.gov/vocabulary/iso639-2/kaa	kaa	Kara-Kalpak	karakalpak
+# http://id.loc.gov/vocabulary/iso639-2/kab	kab	Kabyle	kabyle
+# http://id.loc.gov/vocabulary/iso639-2/kac	kac	Kachin |  Jingpho	kachin |  jingpho
+# http://id.loc.gov/vocabulary/iso639-2/kal	kal	Kalaallisut |  Greenlandic	groenlandais
+# http://id.loc.gov/vocabulary/iso639-2/kam	kam	Kamba	kamba
+# http://id.loc.gov/vocabulary/iso639-2/kan	kan	Kannada	kannada
+# http://id.loc.gov/vocabulary/iso639-2/kar	kar	Karen languages	karen, langues
+# http://id.loc.gov/vocabulary/iso639-2/kas	kas	Kashmiri	kashmiri
+# http://id.loc.gov/vocabulary/iso639-2/kat	kat	Georgian	géorgien
+# http://id.loc.gov/vocabulary/iso639-2/kau	kau	Kanuri	kanouri
+# http://id.loc.gov/vocabulary/iso639-2/kaw	kaw	Kawi	kawi
+# http://id.loc.gov/vocabulary/iso639-2/kaz	kaz	Kazakh	kazakh
+# http://id.loc.gov/vocabulary/iso639-2/kbd	kbd	Kabardian	kabardien
+# http://id.loc.gov/vocabulary/iso639-2/kha	kha	Khasi	khasi
+# http://id.loc.gov/vocabulary/iso639-2/khi	khi	Khoisan languages	khoïsan, langues
+# http://id.loc.gov/vocabulary/iso639-2/khm	khm	Central Khmer	khmer central
+# http://id.loc.gov/vocabulary/iso639-2/kho	kho	Khotanese |  Sakan	khotanais |  sakan
+# http://id.loc.gov/vocabulary/iso639-2/kik	kik	Kikuyu |  Gikuyu	kikuyu
+# http://id.loc.gov/vocabulary/iso639-2/kin	kin	Kinyarwanda	rwanda
+# http://id.loc.gov/vocabulary/iso639-2/kir	kir	Kirghiz |  Kyrgyz	kirghiz
+# http://id.loc.gov/vocabulary/iso639-2/kmb	kmb	Kimbundu	kimbundu
+# http://id.loc.gov/vocabulary/iso639-2/kok	kok	Konkani	konkani
+# http://id.loc.gov/vocabulary/iso639-2/kom	kom	Komi	kom
+# http://id.loc.gov/vocabulary/iso639-2/kon	kon	Kongo	kongo
+# http://id.loc.gov/vocabulary/iso639-2/kor	kor	Korean	coréen
+# http://id.loc.gov/vocabulary/iso639-2/kos	kos	Kosraean	kosrae
+# http://id.loc.gov/vocabulary/iso639-2/kpe	kpe	Kpelle	kpellé
+# http://id.loc.gov/vocabulary/iso639-2/krc	krc	Karachay-Balkar	karatchai balkar
+# http://id.loc.gov/vocabulary/iso639-2/krl	krl	Karelian	carélien
+# http://id.loc.gov/vocabulary/iso639-2/kro	kro	Kru languages	krou, langues
+# http://id.loc.gov/vocabulary/iso639-2/kru	kru	Kurukh	kurukh
+# http://id.loc.gov/vocabulary/iso639-2/kua	kua	Kuanyama |  Kwanyama	kuanyama |  kwanyama
+# http://id.loc.gov/vocabulary/iso639-2/kum	kum	Kumyk	koumyk
+# http://id.loc.gov/vocabulary/iso639-2/kur	kur	Kurdish	kurde
+# http://id.loc.gov/vocabulary/iso639-2/kut	kut	Kutenai	kutenai
+# http://id.loc.gov/vocabulary/iso639-2/lad	lad	Ladino	judéo-espagnol
+# http://id.loc.gov/vocabulary/iso639-2/lah	lah	Lahnda	lahnda
+# http://id.loc.gov/vocabulary/iso639-2/lam	lam	Lamba	lamba
+# http://id.loc.gov/vocabulary/iso639-2/lao	lao	Lao	lao
+# http://id.loc.gov/vocabulary/iso639-2/lat	lat	Latin	latin
+# http://id.loc.gov/vocabulary/iso639-2/lav	lav	Latvian	letton
+# http://id.loc.gov/vocabulary/iso639-2/lez	lez	Lezghian	lezghien
+# http://id.loc.gov/vocabulary/iso639-2/lim	lim	Limburgan |  Limburger |  Limburgish	limbourgeois
+# http://id.loc.gov/vocabulary/iso639-2/lin	lin	Lingala	lingala
+# http://id.loc.gov/vocabulary/iso639-2/lit	lit	Lithuanian	lituanien
+# http://id.loc.gov/vocabulary/iso639-2/lol	lol	Mongo	mongo
+# http://id.loc.gov/vocabulary/iso639-2/loz	loz	Lozi	lozi
+# http://id.loc.gov/vocabulary/iso639-2/ltz	ltz	Luxembourgish |  Letzeburgesch	luxembourgeois
+# http://id.loc.gov/vocabulary/iso639-2/lua	lua	Luba-Lulua	luba-lulua
+# http://id.loc.gov/vocabulary/iso639-2/lub	lub	Luba-Katanga	luba-katanga
+# http://id.loc.gov/vocabulary/iso639-2/lug	lug	Ganda	ganda
+# http://id.loc.gov/vocabulary/iso639-2/lui	lui	Luiseno	luiseno
+# http://id.loc.gov/vocabulary/iso639-2/lun	lun	Lunda	lunda
+# http://id.loc.gov/vocabulary/iso639-2/luo	luo	Luo (Kenya and Tanzania)	luo (Kenya et Tanzanie)
+# http://id.loc.gov/vocabulary/iso639-2/lus	lus	Lushai	lushai
+# http://id.loc.gov/vocabulary/iso639-2/mac	mac	Macedonian	macédonien
+# http://id.loc.gov/vocabulary/iso639-2/mad	mad	Madurese	madourais
+# http://id.loc.gov/vocabulary/iso639-2/mag	mag	Magahi	magahi
+# http://id.loc.gov/vocabulary/iso639-2/mah	mah	Marshallese	marshall
+# http://id.loc.gov/vocabulary/iso639-2/mai	mai	Maithili	maithili
+# http://id.loc.gov/vocabulary/iso639-2/mak	mak	Makasar	makassar
+# http://id.loc.gov/vocabulary/iso639-2/mal	mal	Malayalam	malayalam
+# http://id.loc.gov/vocabulary/iso639-2/man	man	Mandingo	mandingue
+# http://id.loc.gov/vocabulary/iso639-2/mao	mao	Maori	maori
+# http://id.loc.gov/vocabulary/iso639-2/map	map	Austronesian languages	austronésiennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/mar	mar	Marathi	marathe
+# http://id.loc.gov/vocabulary/iso639-2/mas	mas	Masai	massaï
+# http://id.loc.gov/vocabulary/iso639-2/may	may	Malay	malais
+# http://id.loc.gov/vocabulary/iso639-2/mdf	mdf	Moksha	moksa
+# http://id.loc.gov/vocabulary/iso639-2/mdr	mdr	Mandar	mandar
+# http://id.loc.gov/vocabulary/iso639-2/men	men	Mende	mendé
+# http://id.loc.gov/vocabulary/iso639-2/mga	mga	Irish, Middle (900-1200)	irlandais moyen (900-1200)
+# http://id.loc.gov/vocabulary/iso639-2/mic	mic	Mi'kmaq |  Micmac	mi'kmaq |  micmac
+# http://id.loc.gov/vocabulary/iso639-2/min	min	Minangkabau	minangkabau
+# http://id.loc.gov/vocabulary/iso639-2/mkd	mkd	Macedonian	macédonien
+# http://id.loc.gov/vocabulary/iso639-2/mkh	mkh	Mon-Khmer languages	môn-khmer, langues
+# http://id.loc.gov/vocabulary/iso639-2/mlg	mlg	Malagasy	malgache
+# http://id.loc.gov/vocabulary/iso639-2/mlt	mlt	Maltese	maltais
+# http://id.loc.gov/vocabulary/iso639-2/mnc	mnc	Manchu	mandchou
+# http://id.loc.gov/vocabulary/iso639-2/mni	mni	Manipuri	manipuri
+# http://id.loc.gov/vocabulary/iso639-2/mno	mno	Manobo languages	manobo, langues
+# http://id.loc.gov/vocabulary/iso639-2/moh	moh	Mohawk	mohawk
+# http://id.loc.gov/vocabulary/iso639-2/mon	mon	Mongolian	mongol
+# http://id.loc.gov/vocabulary/iso639-2/mos	mos	Mossi	moré
+# http://id.loc.gov/vocabulary/iso639-2/mri	mri	Maori	maori
+# http://id.loc.gov/vocabulary/iso639-2/msa	msa	Malay	malais
+# http://id.loc.gov/vocabulary/iso639-2/mul	mul	Multiple languages	multilingue
+# http://id.loc.gov/vocabulary/iso639-2/mun	mun	Munda languages	mounda, langues
+# http://id.loc.gov/vocabulary/iso639-2/mus	mus	Creek	muskogee
+# http://id.loc.gov/vocabulary/iso639-2/mwl	mwl	Mirandese	mirandais
+# http://id.loc.gov/vocabulary/iso639-2/mwr	mwr	Marwari	marvari
+# http://id.loc.gov/vocabulary/iso639-2/mya	mya	Burmese	birman
+# http://id.loc.gov/vocabulary/iso639-2/myn	myn	Mayan languages	maya, langues
+# http://id.loc.gov/vocabulary/iso639-2/myv	myv	Erzya	erza
+# http://id.loc.gov/vocabulary/iso639-2/nah	nah	Nahuatl languages	nahuatl, langues
+# http://id.loc.gov/vocabulary/iso639-2/nai	nai	North American Indian languages	nord-amérindiennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/nap	nap	Neapolitan	napolitain
+# http://id.loc.gov/vocabulary/iso639-2/nau	nau	Nauru	nauruan
+# http://id.loc.gov/vocabulary/iso639-2/nav	nav	Navajo |  Navaho	navaho
+# http://id.loc.gov/vocabulary/iso639-2/nbl	nbl	Ndebele, South |  South Ndebele	ndébélé du Sud
+# http://id.loc.gov/vocabulary/iso639-2/nde	nde	Ndebele, North |  North Ndebele	ndébélé du Nord
+# http://id.loc.gov/vocabulary/iso639-2/ndo	ndo	Ndonga	ndonga
+# http://id.loc.gov/vocabulary/iso639-2/nds	nds	Low German |  Low Saxon |  German, Low |  Saxon, Low	bas allemand |  bas saxon |  allemand, bas |  saxon, bas
+# http://id.loc.gov/vocabulary/iso639-2/nep	nep	Nepali	népalais
+# http://id.loc.gov/vocabulary/iso639-2/new	new	Nepal Bhasa |  Newari	nepal bhasa |  newari
+# http://id.loc.gov/vocabulary/iso639-2/nia	nia	Nias	nias
+# http://id.loc.gov/vocabulary/iso639-2/nic	nic	Niger-Kordofanian languages	nigéro-kordofaniennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/niu	niu	Niuean	niué
+# http://id.loc.gov/vocabulary/iso639-2/nno	nno	Norwegian Nynorsk |  Nynorsk, Norwegian	norvégien nynorsk |  nynorsk, norvégien
+# http://id.loc.gov/vocabulary/iso639-2/nob	nob	Bokmål, Norwegian |  Norwegian Bokmål	norvégien bokmål
+# http://id.loc.gov/vocabulary/iso639-2/nog	nog	Nogai	nogaï |  nogay
+# http://id.loc.gov/vocabulary/iso639-2/non	non	Norse, Old	norrois, vieux
+# http://id.loc.gov/vocabulary/iso639-2/nqo	nqo	N'Ko	n'ko
+# http://id.loc.gov/vocabulary/iso639-2/nso	nso	Pedi |  Sepedi |  Northern Sotho	pedi |  sepedi |  sotho du Nord
+# http://id.loc.gov/vocabulary/iso639-2/nub	nub	Nubian languages	nubiennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/nwc	nwc	Classical Newari |  Old Newari |  Classical Nepal Bhasa	newari classique
+# http://id.loc.gov/vocabulary/iso639-2/nya	nya	Chichewa |  Chewa |  Nyanja	chichewa |  chewa |  nyanja
+# http://id.loc.gov/vocabulary/iso639-2/nym	nym	Nyamwezi	nyamwezi
+# http://id.loc.gov/vocabulary/iso639-2/nyn	nyn	Nyankole	nyankolé
+# http://id.loc.gov/vocabulary/iso639-2/nyo	nyo	Nyoro	nyoro
+# http://id.loc.gov/vocabulary/iso639-2/nzi	nzi	Nzima	nzema
+# http://id.loc.gov/vocabulary/iso639-2/oci	oci	Occitan (post 1500)	occitan (après 1500)
+# http://id.loc.gov/vocabulary/iso639-2/oji	oji	Ojibwa	ojibwa
+# http://id.loc.gov/vocabulary/iso639-2/ori	ori	Oriya	oriya
+# http://id.loc.gov/vocabulary/iso639-2/orm	orm	Oromo	galla
+# http://id.loc.gov/vocabulary/iso639-2/osa	osa	Osage	osage
+# http://id.loc.gov/vocabulary/iso639-2/oss	oss	Ossetian |  Ossetic	ossète
+# http://id.loc.gov/vocabulary/iso639-2/ota	ota	Turkish, Ottoman (1500-1928)	turc ottoman (1500-1928)
+# http://id.loc.gov/vocabulary/iso639-2/oto	oto	Otomian languages	otomi, langues
+# http://id.loc.gov/vocabulary/iso639-2/paa	paa	Papuan languages	papoues, langues
+# http://id.loc.gov/vocabulary/iso639-2/pag	pag	Pangasinan	pangasinan
+# http://id.loc.gov/vocabulary/iso639-2/pal	pal	Pahlavi	pahlavi
+# http://id.loc.gov/vocabulary/iso639-2/pam	pam	Pampanga |  Kapampangan	pampangan
+# http://id.loc.gov/vocabulary/iso639-2/pan	pan	Panjabi |  Punjabi	pendjabi
+# http://id.loc.gov/vocabulary/iso639-2/pap	pap	Papiamento	papiamento
+# http://id.loc.gov/vocabulary/iso639-2/pau	pau	Palauan	palau
+# http://id.loc.gov/vocabulary/iso639-2/peo	peo	Persian, Old (ca.600-400 B.C.)	perse, vieux (ca. 600-400 av. J.-C.)
+# http://id.loc.gov/vocabulary/iso639-2/per	per	Persian	persan
+# http://id.loc.gov/vocabulary/iso639-2/phi	phi	Philippine languages	philippines, langues
+# http://id.loc.gov/vocabulary/iso639-2/phn	phn	Phoenician	phénicien
+# http://id.loc.gov/vocabulary/iso639-2/pli	pli	Pali	pali
+# http://id.loc.gov/vocabulary/iso639-2/pon	pon	Pohnpeian	pohnpei
+# http://id.loc.gov/vocabulary/iso639-2/pra	pra	Prakrit languages	prâkrit, langues
+# http://id.loc.gov/vocabulary/iso639-2/pro	pro	Provençal, Old (to 1500) | Occitan, Old (to 1500)	provençal ancien (jusqu'à 1500) |  occitan ancien (jusqu'à 1500)
+# http://id.loc.gov/vocabulary/iso639-2/pus	pus	Pushto |  Pashto	pachto
+# http://id.loc.gov/vocabulary/iso639-2/qaa-qtz	qaa-qtz	Reserved for local use	réservée à l'usage local
+# http://id.loc.gov/vocabulary/iso639-2/que	que	Quechua	quechua
+# http://id.loc.gov/vocabulary/iso639-2/raj	raj	Rajasthani	rajasthani
+# http://id.loc.gov/vocabulary/iso639-2/rap	rap	Rapanui	rapanui
+# http://id.loc.gov/vocabulary/iso639-2/rar	rar	Rarotongan |  Cook Islands Maori	rarotonga |  maori des îles Cook
+# http://id.loc.gov/vocabulary/iso639-2/roa	roa	Romance languages	romanes, langues
+# http://id.loc.gov/vocabulary/iso639-2/roh	roh	Romansh	romanche
+# http://id.loc.gov/vocabulary/iso639-2/rom	rom	Romany	tsigane
+# http://id.loc.gov/vocabulary/iso639-2/ron	ron	Romanian |  Moldavian |  Moldovan	roumain |  moldave
+# http://id.loc.gov/vocabulary/iso639-2/rum	rum	Romanian |  Moldavian |  Moldovan	roumain |  moldave
+# http://id.loc.gov/vocabulary/iso639-2/run	run	Rundi	rundi
+# http://id.loc.gov/vocabulary/iso639-2/rup	rup	Aromanian |  Arumanian |  Macedo-Romanian	aroumain |  macédo-roumain
+# http://id.loc.gov/vocabulary/iso639-2/sad	sad	Sandawe	sandawe
+# http://id.loc.gov/vocabulary/iso639-2/sag	sag	Sango	sango
+# http://id.loc.gov/vocabulary/iso639-2/sah	sah	Yakut	iakoute
+# http://id.loc.gov/vocabulary/iso639-2/sai	sai	South American Indian languages	sud-amérindiennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/sal	sal	Salishan languages	salishennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/sam	sam	Samaritan Aramaic	samaritain
+# http://id.loc.gov/vocabulary/iso639-2/san	san	Sanskrit	sanskrit
+# http://id.loc.gov/vocabulary/iso639-2/sas	sas	Sasak	sasak
+# http://id.loc.gov/vocabulary/iso639-2/sat	sat	Santali	santal
+# http://id.loc.gov/vocabulary/iso639-2/scn	scn	Sicilian	sicilien
+# http://id.loc.gov/vocabulary/iso639-2/sco	sco	Scots	écossais
+# http://id.loc.gov/vocabulary/iso639-2/sel	sel	Selkup	selkoupe
+# http://id.loc.gov/vocabulary/iso639-2/sem	sem	Semitic languages	sémitiques, langues
+# http://id.loc.gov/vocabulary/iso639-2/sga	sga	Irish, Old (to 900)	irlandais ancien (jusqu'à 900)
+# http://id.loc.gov/vocabulary/iso639-2/sgn	sgn	Sign Languages	langues des signes
+# http://id.loc.gov/vocabulary/iso639-2/shn	shn	Shan	chan
+# http://id.loc.gov/vocabulary/iso639-2/sid	sid	Sidamo	sidamo
+# http://id.loc.gov/vocabulary/iso639-2/sin	sin	Sinhala |  Sinhalese	singhalais
+# http://id.loc.gov/vocabulary/iso639-2/sio	sio	Siouan languages	sioux, langues
+# http://id.loc.gov/vocabulary/iso639-2/sit	sit	Sino-Tibetan languages	sino-tibétaines, langues
+# http://id.loc.gov/vocabulary/iso639-2/sla	sla	Slavic languages	slaves, langues
+# http://id.loc.gov/vocabulary/iso639-2/slk	slk	Slovak	slovaque
+# http://id.loc.gov/vocabulary/iso639-2/slo	slo	Slovak	slovaque
+# http://id.loc.gov/vocabulary/iso639-2/slv	slv	Slovenian	slovène
+# http://id.loc.gov/vocabulary/iso639-2/sma	sma	Southern Sami	sami du Sud
+# http://id.loc.gov/vocabulary/iso639-2/sme	sme	Northern Sami	sami du Nord
+# http://id.loc.gov/vocabulary/iso639-2/smi	smi	Sami languages	sames, langues
+# http://id.loc.gov/vocabulary/iso639-2/smj	smj	Lule Sami	sami de Lule
+# http://id.loc.gov/vocabulary/iso639-2/smn	smn	Inari Sami	sami d'Inari
+# http://id.loc.gov/vocabulary/iso639-2/smo	smo	Samoan	samoan
+# http://id.loc.gov/vocabulary/iso639-2/sms	sms	Skolt Sami	sami skolt
+# http://id.loc.gov/vocabulary/iso639-2/sna	sna	Shona	shona
+# http://id.loc.gov/vocabulary/iso639-2/snd	snd	Sindhi	sindhi
+# http://id.loc.gov/vocabulary/iso639-2/snk	snk	Soninke	soninké
+# http://id.loc.gov/vocabulary/iso639-2/sog	sog	Sogdian	sogdien
+# http://id.loc.gov/vocabulary/iso639-2/som	som	Somali	somali
+# http://id.loc.gov/vocabulary/iso639-2/son	son	Songhai languages	songhai, langues
+# http://id.loc.gov/vocabulary/iso639-2/sot	sot	Sotho, Southern	sotho du Sud
+# http://id.loc.gov/vocabulary/iso639-2/sqi	sqi	Albanian	albanais
+# http://id.loc.gov/vocabulary/iso639-2/srd	srd	Sardinian	sarde
+# http://id.loc.gov/vocabulary/iso639-2/srn	srn	Sranan Tongo	sranan tongo
+# http://id.loc.gov/vocabulary/iso639-2/srp	srp	Serbian	serbe
+# http://id.loc.gov/vocabulary/iso639-2/srr	srr	Serer	sérère
+# http://id.loc.gov/vocabulary/iso639-2/ssa	ssa	Nilo-Saharan languages	nilo-sahariennes, langues
+# http://id.loc.gov/vocabulary/iso639-2/ssw	ssw	Swati	swati
+# http://id.loc.gov/vocabulary/iso639-2/suk	suk	Sukuma	sukuma
+# http://id.loc.gov/vocabulary/iso639-2/sun	sun	Sundanese	soundanais
+# http://id.loc.gov/vocabulary/iso639-2/sus	sus	Susu	soussou
+# http://id.loc.gov/vocabulary/iso639-2/sux	sux	Sumerian	sumérien
+# http://id.loc.gov/vocabulary/iso639-2/swa	swa	Swahili	swahili
+# http://id.loc.gov/vocabulary/iso639-2/syc	syc	Classical Syriac	syriaque classique
+# http://id.loc.gov/vocabulary/iso639-2/syr	syr	Syriac	syriaque
+# http://id.loc.gov/vocabulary/iso639-2/tah	tah	Tahitian	tahitien
+# http://id.loc.gov/vocabulary/iso639-2/tai	tai	Tai languages	tai, langues
+# http://id.loc.gov/vocabulary/iso639-2/tam	tam	Tamil	tamoul
+# http://id.loc.gov/vocabulary/iso639-2/tat	tat	Tatar	tatar
+# http://id.loc.gov/vocabulary/iso639-2/tel	tel	Telugu	télougou
+# http://id.loc.gov/vocabulary/iso639-2/tem	tem	Timne	temne
+# http://id.loc.gov/vocabulary/iso639-2/ter	ter	Tereno	tereno
+# http://id.loc.gov/vocabulary/iso639-2/tet	tet	Tetum	tetum
+# http://id.loc.gov/vocabulary/iso639-2/tgk	tgk	Tajik	tadjik
+# http://id.loc.gov/vocabulary/iso639-2/tgl	tgl	Tagalog	tagalog
+# http://id.loc.gov/vocabulary/iso639-2/tha	tha	Thai	thaï
+# http://id.loc.gov/vocabulary/iso639-2/tib	tib	Tibetan	tibétain
+# http://id.loc.gov/vocabulary/iso639-2/tig	tig	Tigre	tigré
+# http://id.loc.gov/vocabulary/iso639-2/tir	tir	Tigrinya	tigrigna
+# http://id.loc.gov/vocabulary/iso639-2/tiv	tiv	Tiv	tiv
+# http://id.loc.gov/vocabulary/iso639-2/tkl	tkl	Tokelau	tokelau
+# http://id.loc.gov/vocabulary/iso639-2/tli	tli	Tlingit	tlingit
+# http://id.loc.gov/vocabulary/iso639-2/tmh	tmh	Tamashek	tamacheq
+# http://id.loc.gov/vocabulary/iso639-2/tog	tog	Tonga (Nyasa)	tonga (Nyasa)
+# http://id.loc.gov/vocabulary/iso639-2/ton	ton	Tonga (Tonga Islands)	tongan (Îles Tonga)
+# http://id.loc.gov/vocabulary/iso639-2/tpi	tpi	Tok Pisin	tok pisin
+# http://id.loc.gov/vocabulary/iso639-2/tsi	tsi	Tsimshian	tsimshian
+# http://id.loc.gov/vocabulary/iso639-2/tsn	tsn	Tswana	tswana
+# http://id.loc.gov/vocabulary/iso639-2/tso	tso	Tsonga	tsonga
+# http://id.loc.gov/vocabulary/iso639-2/tuk	tuk	Turkmen	turkmène
+# http://id.loc.gov/vocabulary/iso639-2/tum	tum	Tumbuka	tumbuka
+# http://id.loc.gov/vocabulary/iso639-2/tup	tup	Tupi languages	tupi, langues
+# http://id.loc.gov/vocabulary/iso639-2/tut	tut	Altaic languages	altaïques, langues
+# http://id.loc.gov/vocabulary/iso639-2/tvl	tvl	Tuvalu	tuvalu
+# http://id.loc.gov/vocabulary/iso639-2/twi	twi	Twi	twi
+# http://id.loc.gov/vocabulary/iso639-2/tyv	tyv	Tuvinian	touva
+# http://id.loc.gov/vocabulary/iso639-2/udm	udm	Udmurt	oudmourte
+# http://id.loc.gov/vocabulary/iso639-2/uga	uga	Ugaritic	ougaritique
+# http://id.loc.gov/vocabulary/iso639-2/uig	uig	Uighur |  Uyghur	ouïgour
+# http://id.loc.gov/vocabulary/iso639-2/umb	umb	Umbundu	umbundu
+# http://id.loc.gov/vocabulary/iso639-2/uzb	uzb	Uzbek	ouszbek
+# http://id.loc.gov/vocabulary/iso639-2/vai	vai	Vai	vaï
+# http://id.loc.gov/vocabulary/iso639-2/ven	ven	Venda	venda
+# http://id.loc.gov/vocabulary/iso639-2/vie	vie	Vietnamese	vietnamien
+# http://id.loc.gov/vocabulary/iso639-2/vol	vol	Volapük	volapük
+# http://id.loc.gov/vocabulary/iso639-2/vot	vot	Votic	vote
+# http://id.loc.gov/vocabulary/iso639-2/wak	wak	Wakashan languages	wakashanes, langues
+# http://id.loc.gov/vocabulary/iso639-2/wal	wal	Wolaitta |  Wolaytta	wolaitta |  wolaytta
+# http://id.loc.gov/vocabulary/iso639-2/war	war	Waray	waray
+# http://id.loc.gov/vocabulary/iso639-2/was	was	Washo	washo
+# http://id.loc.gov/vocabulary/iso639-2/wel	wel	Welsh	gallois
+# http://id.loc.gov/vocabulary/iso639-2/wen	wen	Sorbian languages	sorabes, langues
+# http://id.loc.gov/vocabulary/iso639-2/wln	wln	Walloon	wallon
+# http://id.loc.gov/vocabulary/iso639-2/wol	wol	Wolof	wolof
+# http://id.loc.gov/vocabulary/iso639-2/xal	xal	Kalmyk |  Oirat	kalmouk |  oïrat
+# http://id.loc.gov/vocabulary/iso639-2/xho	xho	Xhosa	xhosa
+# http://id.loc.gov/vocabulary/iso639-2/yao	yao	Yao	yao
+# http://id.loc.gov/vocabulary/iso639-2/yap	yap	Yapese	yapois
+# http://id.loc.gov/vocabulary/iso639-2/yid	yid	Yiddish	yiddish
+# http://id.loc.gov/vocabulary/iso639-2/yor	yor	Yoruba	yoruba
+# http://id.loc.gov/vocabulary/iso639-2/ypk	ypk	Yupik languages	yupik, langues
+# http://id.loc.gov/vocabulary/iso639-2/zap	zap	Zapotec	zapotèque
+# http://id.loc.gov/vocabulary/iso639-2/zen	zen	Zenaga	zenaga
+# http://id.loc.gov/vocabulary/iso639-2/zgh	zgh	Standard Moroccan Tamazight	amazighe standard marocain
+# http://id.loc.gov/vocabulary/iso639-2/zha	zha	Zhuang |  Chuang	zhuang |  chuang
+# http://id.loc.gov/vocabulary/iso639-2/znd	znd	Zande languages	zandé, langues
+# http://id.loc.gov/vocabulary/iso639-2/zul	zul	Zulu	zoulou
+# http://id.loc.gov/vocabulary/iso639-2/zun	zun	Zuni	zuni
+# http://id.loc.gov/vocabulary/iso639-2/zza	zza	Zaza |  Dimili |  Dimli |  Kirdki |  Kirmanjki |  Zazaki	zaza |  dimili |  dimli |  kirdki |  kirmanjki |  zazaki
