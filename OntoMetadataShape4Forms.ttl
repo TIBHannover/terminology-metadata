@@ -1,4 +1,4 @@
-@base <https://www.purl.org/ontologymetadata/shape> .
+@base <https://www.purl.org/ontologymetadata/shape4forms> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix cc: <http://creativecommons.org/ns#> .
@@ -38,9 +38,9 @@ ontometa4forms: rdf:type owl:Ontology ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
     doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
     schema:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
-    owl:versionIRI <https://www.purl.org/ontologymetadata/shape/20240502_forms>;
+    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4forms/20240502>;
     bibo:status "active";
-    owl:priorVersion <https://www.purl.org/ontologymetadata/shape/20240502_forms>;
+    owl:priorVersion <https://www.purl.org/ontologymetadata/shape4forms/20240502>;
     adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for form generarators."@en;
     doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues>;
     premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20240502/MetadataGuide.md>;
