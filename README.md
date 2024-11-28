@@ -16,6 +16,8 @@ In addition, we provide SHACL shapes based on these recommendations in [OntoMeta
 
 > INFO: This recommendation is still a draft. Approval and discussion by a broader communiuty are required.
 
+In [OntoMetadataShape4Forms.ttl](/OntoMetadataShape4Forms.ttl) you find a version of the shape that is optimized for the [form generator tool by ULB Darmstadt](https://github.com/ULB-Darmstadt/shacl-form). You can try it out on their [live demo instance](https://ulb-darmstadt.github.io/shacl-form/#try-your-own).
+
 This repository is archived at Zenodo: <https://www.doi.org/10.5281/zenodo.11103071>
 
 ## Further reading and sources
