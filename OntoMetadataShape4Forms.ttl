@@ -687,7 +687,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
         sh:group ontometa4forms:RelatedResources ;
     ];
 
-## Related identifiers
+## Alternative identifiers of the ontology
 ### status: developer and external review needed
 
     sh:property [
@@ -729,7 +729,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         # sh:xone ( 
             # [
-                sh:nodeKind sh:IRI ;
+                sh:nodeKind sh:IRI ; # inconsistent with ontometa:
                 # ] 
             # [sh:datatype rdf:langString ; sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
             # ] );
@@ -788,7 +788,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
         sh:path owl:versionInfo ;
         sh:severity sh:Info ;
         sh:maxCount 1 ;
-        sh:datatype xsd:string ;
+        sh:datatype xsd:string ; # not consistent with ontometa:
         sh:description "You can provide some textual information about the ontology version, e.g. a semantic versioning number as 2.0.1 or a date in xsd:date or xsd:dateTime format, e.g. 2024-11-26T18:00:01."@en ;
         sh:name "Ontology version information"@en ;
         sh:group ontometa4forms:VersionGroup ;
