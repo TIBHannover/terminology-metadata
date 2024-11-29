@@ -29,7 +29,8 @@ ontometa4forms: rdf:type owl:Ontology ;
     # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
     dcterms:title "Ontology Metadata Shape by TIB"@en, "TIB Metadatenshape für Ontologien"@de;
     dcterms:creator <https://orcid.org/0000-0002-1019-9151>, <https://orcid.org/0000-0003-1043-4964>, <https://orcid.org/0000-0003-2499-7741>, <https://orcid.org/0000-0002-1595-3213>, <https://orcid.org/0000-0002-8280-0487>;
-    dcterms:created "2024-05-02T11:42:00"^^xsd:dateTime;
+    dcterms:created "2025-01-01T00:00:00"^^xsd:dateTime;
+    <http://purl.org/dc/terms/modified> "2025-01-01T00:00:00"^^xsd:dateTime;
     dcterms:abstract "OntoMeta4Forms provides SHACL shapes for ontology metadata. It is intended for use in form generator applications, e.g. <https://ulb-darmstadt.github.io/shacl-form/#try-your-own>. You may re-use (please refer back to our repo!) for your own services. Please note that adaptations might be necessary. If you have any remarks or questions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en;
     dcterms:subject <http://d-nb.info/gnd/4827894-4>, <http://d-nb.info/gnd/4410512-5>;
     # dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
@@ -38,17 +39,16 @@ ontometa4forms: rdf:type owl:Ontology ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
     doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
     schema:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
-    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4forms/20240502>;
+    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4forms/20250101>;
     bibo:status "active";
-    owl:priorVersion <https://www.purl.org/ontologymetadata/shape4forms/20240502>;
     adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for form generarators."@en;
     doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues>;
-    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20240502/MetadataGuide.md>;
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250101/MetadataGuide.md>;
     doap:repository <https://github.com/TIBHannover/terminology-metadata>;
     dcterms:references <https://doi.org/10.5281/zenodo.11103070>;
     mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en;
     <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle>;
-    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20240502/MetadataGuide.md#7-relations-to-related-work>;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250101/MetadataGuide.md#7-relations-to-related-work>;
 .
 
 # Start of the Ontology Metadata Shape
