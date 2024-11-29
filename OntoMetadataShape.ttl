@@ -71,7 +71,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:uniqueLang true ;
-        sh:message """You should make the ontology title an rdf:langString by adding a language tag to it.\nThere may be only title per language.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should make the ontology title an rdf:langString by adding a language tag to it.\nThere may be only title per language.\nRecommended property: <http://purl.org/dc/terms/title>.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology title literal value is an rdf:langString and whether only one title per language is given. It produces an info message if the title does not carry a language tag or if several titles in the same language are present."@en ;
         sh:name "Ontology title - datatype"@en ;
     ] ;
