@@ -367,7 +367,7 @@ code {
   </script>
 <h1 id="ontology-metadata-recommendations-by-tib">Ontology metadata recommendations by TIB</h1>
 <p>Document status: <strong>DRAFT</strong></p>
-<p>Modification date: 2024-05-02</p>
+<p>Modification date: 2025-01-01</p>
 <p>Creators and contributors:</p>
 <!-- * [Last name, First Name  (Affiliation)](https://orcid.org/) -->
 <ul>
@@ -963,7 +963,7 @@ code {
 </ul>
 <h3 id="48-ontology-serialization-file-format">4.8 Ontology serialization/ file format</h3>
 <p>You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) <a href="#source6">[6]</a> or from the W3C resource Unique URIs for File Formats <a href="#source7">[7]</a>.</p>
-<p>Recommended property: <a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></p>
+<p>Recommended property: <a href="https://w3id.org/mod#hasSyntax">https://w3id.org/mod#hasSyntax</a></p>
 <p>Recommended controlled vocabularies:</p>
 <ul>
 <li><a href="https://www.w3.org/ns/formats">https://www.w3.org/ns/formats</a></li>
@@ -978,13 +978,14 @@ code {
 <p>Currently, there is no registered media type for obo format.</p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    omv:hasOntologySyntax &lt;http://www.w3.org/ns/formats/Turtle&gt; .
+    &lt;https://w3id.org/mod#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/Turtle&gt; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
 <li><a href="http://purl.org/dc/terms/format">http://purl.org/dc/terms/format</a></li>
 <li><a href="http://purl.org/dc/elements/1.1/format">http://purl.org/dc/elements/1.1/format</a></li>
 <li><a href="https://schema.org/encodingFormat">https://schema.org/encodingFormat</a></li>
+<li><a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -1707,7 +1708,7 @@ code {
 <tr>
 <td>4.8</td>
 <td>Serialization/ file format</td>
-<td><a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></td>
+<td><a href="https://w3id.org/mod#hasSyntax">https://w3id.org/mod#hasSyntax</a></td>
 <td></td>
 <td>x</td>
 <td></td>

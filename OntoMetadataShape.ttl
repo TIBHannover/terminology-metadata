@@ -42,7 +42,7 @@ ontometa: rdf:type owl:Ontology ;
     dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng>;
     <http://purl.org/dc/terms/subject> <http://d-nb.info/gnd/4827894-4>, <http://d-nb.info/gnd/4410512-5> ;
     <http://usefulinc.com/ns/doap#repository> <tbd>;
-    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <https://www.iana.org/assignments/media-types/text/turtle> ;
+    <https://w3id.org/mod#hasSyntax> <https://www.iana.org/assignments/media-types/text/turtle> ;
     <http://purl.org/dc/terms/references> <https://www.doi.org/10.5281/zenodo.11103071> ;
     <https://w3id.org/mod#hasFormalityLevel> "RDF(S), OWL, SHACL"@en ;
     dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
@@ -168,6 +168,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/legalcode> ;] 
             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/4.0> ;] 
 
             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/> ;] 
             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/> ;] 
@@ -227,6 +228,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:name "Ontology creator(s)"@en ;
     ] ;
 
+### discuss: switch to string/ literal following "FirstName LastName (ORCID)" 
     sh:property [
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Info ;
@@ -514,25 +516,25 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology serialization/ file format
 ### status: developer and external review needed
     sh:property [
-        sh:path [sh:alternativePath (<http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
+        sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource "Unique URIs for File Formats" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> omv:hasOntologySyntax <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource "Unique URIs for File Formats" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology specifies its serialization/ file format. It produces an info message if it does not."@en ;
         sh:name "Ontology serialization/ file format"@en ;
     ] ;
 
     sh:property [
-        sh:path <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>;
+        sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> omv:hasOntologySyntax <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology specifies its serialization/ file format via IRI. It produces an info message if it does not."@en ;
         sh:name "Ontology serialization/ file format - datatype"@en ; 
     ] ;
 
     sh:property [
-        sh:path <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>;
+        sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
         sh:severity sh:Info ;
         sh:maxCount 1;
         sh:xone (
@@ -570,7 +572,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
             # [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-quads> ;]
             # [sh:hasValue <https://www.iana.org/assignments/media-types/application/ld+json> ;]
             );
-        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> omv:hasOntologySyntax <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ]; <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology's serialization/ file format value is from a selection of the recommended controlled lists. It produces an info message if there is more than one value or when the value is not from the selection of the list."@en ;
         sh:name "Ontology serialization/ file format - controlled vocabulary value"@en ;
     ] ;

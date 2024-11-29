@@ -2,7 +2,7 @@
 
 Document status: **DRAFT**
 
-Modification date: 2024-05-02
+Modification date: 2025-01-01
 
 Creators and contributors:
 
@@ -649,7 +649,7 @@ SHACL validation rules:
 
 You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) [[6]](#source6) or from the W3C resource Unique URIs for File Formats [[7]](#source7).
 
-Recommended property: <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>
+Recommended property: <https://w3id.org/mod#hasSyntax>
 
 Recommended controlled vocabularies:
 
@@ -668,7 +668,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    omv:hasOntologySyntax <http://www.w3.org/ns/formats/Turtle> .
+    <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle> .
 ```
 
 Alternative properties:
@@ -676,6 +676,7 @@ Alternative properties:
 * <http://purl.org/dc/terms/format>
 * <http://purl.org/dc/elements/1.1/format>
 * <https://schema.org/encodingFormat>
+* <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>
 
 SHACL validation rules:
 
@@ -1515,7 +1516,7 @@ SHACL validation rules:
 | 4.5     | Subject(s)                                       | <http://purl.org/dc/terms/subject>                                            |           | x           |          | 0…*         |
 | 4.6     | Annotation language(s)                           | <http://purl.org/dc/terms/language>                                           |           | x           |          | 0…*         |
 | 4.7     | Applied logical framework                        | <https://w3id.org/mod#hasFormalityLevel>                                      |           | x           |          | 0...1       |
-| 4.8     | Serialization/ file format                       | <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>                  |           | x           |          | 0...1       |
+| 4.8     | Serialization/ file format                       | <https://w3id.org/mod#hasSyntax>                  |           | x           |          | 0...1       |
 | 4.9     | Status                                           | <http://purl.org/ontology/bibo/status>                                        |           | x           |          | 0...1       |
 | 4.10    | Code repository                                  | <http://usefulinc.com/ns/doap#repository>                                     |           | x           |          | 0...1       |
 | 4.11    | Distributions/ products                          | <http://www.w3.org/ns/dcat#distribution>                                      |           | x           |          | 0…*         |

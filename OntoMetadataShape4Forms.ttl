@@ -47,7 +47,7 @@ ontometa4forms: rdf:type owl:Ontology ;
     doap:repository <https://github.com/TIBHannover/terminology-metadata>;
     dcterms:references <https://doi.org/10.5281/zenodo.11103070>;
     mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en;
-    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://www.w3.org/ns/formats/Turtle>;
+    <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle>;
     mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20240502/MetadataGuide.md#7-relations-to-related-work>;
 .
 
@@ -330,7 +330,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology serialization/ file format
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> ;
+        sh:path <https://w3id.org/mod#hasSyntax> ;
         sh:severity sh:Info ;
         sh:group ontometa4forms:FormalizationMetadataGroup ;
         #sh:minCount 1 ;
