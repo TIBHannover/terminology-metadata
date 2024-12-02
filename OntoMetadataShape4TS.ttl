@@ -60,8 +60,8 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title schema:name schema:headline) ] ; 
         sh:severity sh:Warning ;
         sh:minCount 1 ;
-        sh:message """The ontology does not include its own title. Please provide it if known."""@en ; # optimized message for current TIB TS implementation
-        sh:description "This shape checks whether the ontology has a title or label. It produces a warning message if the title is missing. The ontology title is mandatory."@en ;
+        sh:message """The ontology does not include its own title. Please provide it if known.\nRecommended property: <http://purl.org/dc/terms/title>."""@en ; # optimized message for current TIB TS implementation
+        # sh:description "This shape checks whether the ontology has a title or label. It produces a warning message if the title is missing. The ontology title is mandatory."@en ;
         sh:name "Ontology title"@en ;
     ] ;
 
@@ -71,7 +71,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:datatype rdf:langString ;
         sh:uniqueLang true ;
         sh:message """You should make the ontology title an rdf:langString by adding a language tag to it.\nThere may be only title per language.\nRecommended property: <http://purl.org/dc/terms/title>.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology title literal value is an rdf:langString and whether only one title per language is given. It produces an info message if the title does not carry a language tag or if several titles in the same language are present."@en ;
+        # sh:description "This shape checks whether the ontology title literal value is an rdf:langString and whether only one title per language is given. It produces an info message if the title does not carry a language tag or if several titles in the same language are present."@en ;
         sh:name "Ontology title - datatype"@en ;
     ] ;
 
