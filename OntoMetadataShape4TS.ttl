@@ -61,7 +61,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:message """The ontology does not include its own title. Please provide it if known.\nRecommended property: <http://purl.org/dc/terms/title>."""@en ; # optimized message for current TIB TS implementation
-        # sh:description "This shape checks whether the ontology has a title or label. It produces a warning message if the title is missing. The ontology title is mandatory."@en ;
         sh:name "Ontology title"@en ;
     ] ;
 
@@ -70,8 +69,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:uniqueLang true ;
-        sh:message """You should make the ontology title an rdf:langString by adding a language tag to it.\nThere may be only title per language.\nRecommended property: <http://purl.org/dc/terms/title>.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        # sh:description "This shape checks whether the ontology title literal value is an rdf:langString and whether only one title per language is given. It produces an info message if the title does not carry a language tag or if several titles in the same language are present."@en ;
+        sh:message """The ontology title should be an rdf:langString, i.e. it should have a language tag.\nThere may be only title per language.\nRecommended property: <http://purl.org/dc/terms/title>.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en ."""@en ;
         sh:name "Ontology title - datatype"@en ;
     ] ;
 
@@ -83,7 +81,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message """The ontology does not declare its preferred prefix. Please provide it if known.\nIt must not contain hyphens or other special characters and should be written in lowercase.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespacePrefix>"""@en ; # optimized message for current TIB TS implementation
-        # sh:description "This shape checks whether the ontology declares a preferred namespace prefix. It produces a warning message if the ontology does not declare a preferred namespace prefix."@en ;
         sh:name "Preferred ontology prefix/ acronym"@en ;
     ] ;
 
@@ -91,8 +88,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://purl.org/vocab/vann/preferredNamespacePrefix> <https://w3id.org/mod#acronym>)];
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
-        sh:message """You should provide the ontology's preferred namespace prefix or acronym as an xsd:string.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespacePrefix>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology's preferred namespace prefix or acronym is an xsd:string. It produces an info message if it is not."@en ;
+        sh:message """The ontology should declare its preferred namespace prefix or acronym as an xsd:string.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespacePrefix>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string ."""@en ;
         sh:name "Preferred ontology prefix/ acronym - datatype"@en ;
     ] ;
 
@@ -178,7 +174,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
             # [sh:hasValue <> ;] 
             );
         sh:message """The ontology does not declare its own license. Please provide it, if known.\nRecommended property: <http://purl.org/dc/terms/license>"""@en ; # optimized message for current TIB TS 
-        sh:description "This shape checks whether the ontology provides a license IRI from a list of accepted open licenses. It produces a warning message if not."@en ;
         sh:name "Ontology license"@en ;
     ] ;
 
@@ -208,8 +203,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
         sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
         # sh:not [sh:hasValue <> ;] ; 
-        sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nYou must provide an open ontology license.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides a license IRI from a list of unaccepted, non-open licenses. It produces a warning message if it does."@en ;
+        sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nIt must be provided with an open ontology license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
         sh:name "Ontology license"@en ;
     ] ;
 
@@ -220,7 +214,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available.\nRecommended property: <http://purl.org/dc/terms/creator>"""@en ; # optimized message for current TIB TS 
-        sh:description "This shape checks whether the ontology provides information about its creator. It produces a warning message if no creator information is present."@en ;
         sh:name "Ontology creator(s)"@en ;
     ] ;
 
@@ -229,8 +222,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI; 
-        sh:message """You should provide the ontology creators as IRIs.\nPlease make sure to provide persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: <http://purl.org/dc/terms/creator>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology states its creator as an IRI. It produces an info message if creator information is given e.g. as xsd:string"@en ;
+        sh:message """The ontology should provide its creators as IRIs, in particular persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: <http://purl.org/dc/terms/creator>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" ."""@en ;
         sh:name "Ontology creator(s) - datatype"@en ;
     ] ;
 
@@ -244,7 +236,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message """The ontology does not declare a versionIRI. Please provide it, if known.\nRecommended property: <http://www.w3.org/2002/07/owl#versionIRI>"""@en ; # optimized message for current TIB TS 
-        sh:description "This shape checks whether the ontology provids exactly one versionIRI. It produces a warning message if none is found."@en ;
         sh:name "Ontology version IRI"@en ;
     ] ;
 
@@ -252,8 +243,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  owl:versionIRI ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI;
-        sh:message """You should state the versionIRI as an IRI. It should not be given as a sring or literal.\nRecommended property: <http://www.w3.org/2002/07/owl#versionIRI>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/1.0.0>.\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/2019-12-31> .\nExample statement 3 (text/turtle): <http://purl.obolibrary.org/obo/pco.owl> <http://www.w3.org/2002/07/owl#versionIRI> <http://purl.obolibrary.org/obo/pco/releases/2021-05-03/pco.owl> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology versionIRI is provided as an IRI (https://www.w3.org/TR/rdf11-concepts/#dfn-iri) (as compared to a literal). It produces an info message if it is not."@en ;
+        sh:message """The ontology should state its versionIRI as an IRI. It should not be given as a string or literal.\nRecommended property: <http://www.w3.org/2002/07/owl#versionIRI>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/1.0.0>.\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/2019-12-31> .\nExample statement 3 (text/turtle): <http://purl.obolibrary.org/obo/pco.owl> <http://www.w3.org/2002/07/owl#versionIRI> <http://purl.obolibrary.org/obo/pco/releases/2021-05-03/pco.owl> ."""@en ;
         sh:name "Ontology version IRI - datatype"@en ;
     ] ;
 
@@ -265,7 +255,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1;
         sh:maxCount 1 ;
         sh:message """The ontology does not declare its creation date. Please provide it, if known. Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44).\nRecommended property: <http://purl.org/dc/terms/created>"""@en ; # optimized message for current TIB TS 
-        sh:description "This shape checks whether the ontology provides its creation date. It produces a warning message if not."@en ;
         sh:name "Ontology creation date"@en ;
     ] ;
 
@@ -273,8 +262,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn prov:generatedAtTime )] ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
-        sh:message """You should provide the creation date of the ontology in xsd:dateTime format.\nRecommended property: <http://purl.org/dc/terms/created>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:created \"2020-11-19T00:00:00\"^^xsd:dateTime .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ; 
-        sh:description "This shape checks whether the ontology provides its creation date in xsd:dateTime format. It produces an info message if not."@en ;
+        sh:message """The ontology should provide its creation date in xsd:dateTime format.\nRecommended property: <http://purl.org/dc/terms/created>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:created \"2020-11-19T00:00:00\"^^xsd:dateTime ."""@en ; 
         sh:name "Ontology creation date - datatype"@en ; 
     ] ;
 
@@ -286,7 +274,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:message """The ontology does not contain an abstract. Please provide it, if knwon. The ontology abstract should not be longer than 500 characters.\nRecommended property: <http://purl.org/dc/terms/abstract>"""@en ; # optimized message for current TIB TS 
-        sh:description "This shape checks whether the ontology provides an abstract. It produces an info message if not."@en ;
         sh:name "Ontology abstract"@en ;
     ] ;
 
@@ -295,8 +282,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal ;
         sh:datatype rdf:langString ;
-        sh:message """You should provide the ontology abstract as an rdf:langString.\nRecommended property: <http://purl.org/dc/terms/abstract>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:abstract \"SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain.\"@en , \"SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun.\"@de .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides its abstract as an rdf:langString. It produces an info message if not."@en ;
+        sh:message """The ontology should provide its abstract as an rdf:langString.\nRecommended property: <http://purl.org/dc/terms/abstract>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:abstract \"SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain.\"@en , \"SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun.\"@de ."""@en ;
         sh:name "Ontology abstract - language"@en ;
     ] ;
 
@@ -304,8 +290,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
         sh:severity sh:Info ;
         sh:uniqueLang true ;
-        sh:message """You should provide only one ontology abstract per language.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides several abstracts in the same language. It produces an info message if it does."@en ;
+        sh:message """The ontology should provide only one ontology abstract per language."""@en ;
         sh:name "Ontology abstract - unique language"@en ;
     ] ;
 
@@ -313,8 +298,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
         sh:severity sh:Info ;
         sh:maxLength 500 ; 
-        sh:message """You should limit the ontology abstract to 500 characters maximum.\nThe TIB Terminology Service requires short ontology descriptions for a user-friendly ontology list.\nTo provide more information about the ontology, add an additional description (recommended property: <http://purl.org/dc/terms/description>) or add a reference to a related article (recommended property: <http://purl.org/dc/terms/isReferencedBy>).\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape cheks whether the ontology abstract is longer than 500 characters. It produces an info message if it does."@en ;
+        sh:message """The ontology should limit its abstract size to 500 characters maximum.\nThe TIB Terminology Service requires short ontology descriptions for a user-friendly ontology list.\nTo provide more information about the ontology, add an additional description (recommended property: <http://purl.org/dc/terms/description>) or add a reference to a related article (recommended property: <http://purl.org/dc/terms/isReferencedBy>)."""@en ;
         sh:name "Ontology abstract - length"@en ;
     ] ;
 
@@ -327,7 +311,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message """The ontology does not contain the link to its issue tracker. Please provide if available and known.\nRecommended property: <http://usefulinc.com/ns/doap#bug-database>"""@en ; # optimized message for current TIB TS 
-        sh:description "This shape checks whether the ontology references an issue tracker on its repository (e.g. at GitLab or GitHub). It creates a warning message, if it does not."@en ;
         sh:name "Ontology issue tracker"@en ;
     ] ;
 
@@ -340,7 +323,6 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: <http://www.loc.gov/premis/rdf/v3/documentation>"""@en ; # optimized message for current TIB TS
-        sh:description "This shape checks whether the ontology provides a link to its documentation. It produces warning message if it does not."@en ;
         sh:name "Ontology documentation"@en ; 
     ] ;
 
@@ -352,8 +334,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  [sh:alternativePath (dcterms:contributor dc:contributor schema:contributor pav:contributedBy)] ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """You should list all contributors to the ontology.\nContributors should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: <http://purl.org/dc/terms/contributor>\n\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings can be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ;<http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides information about its contributors. It produces an info message if no contributor information is present."@en ;
+        sh:message """The ontology should list all its contributors.\nContributors should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: <http://purl.org/dc/terms/contributor>\n\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings can be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ;<http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" ."""@en ;
         sh:name "Ontology contributor(s)"@en ;
     ] ;
 
@@ -361,8 +342,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  [sh:alternativePath (dcterms:contributor dc:contributor schema:contributor pav:contributedBy)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide the ontology contributor information as IRIs.\nPlease make sure to provide persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: <http://purl.org/dc/terms/contributor>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\n\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology states its contributors via IRIs. It produces an info message if contributor information is given e.g. as xsd:string."@en ;
+        sh:message """The ontology should provide its contributors as IRIs, in particular as persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: <http://purl.org/dc/terms/contributor>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\n\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" ."""@en ;
         sh:name "Ontology contributor(s) - datatype"@en ; 
     ] ;
 
@@ -372,8 +352,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <https://schema.org/funder> ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """If applicable, you should reference any institutions funding the work on the ontology.\nThe funding instution(s) should be referenced by PIDs, e.g. RORs (https://ror.org/) or Crossref Funder Registry IDs (https://www.crossref.org/services/funder-registry/)).\nRecommended property: <https://schema.org/funder>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funder> <https://ror.org/018mejw64> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology references funding information. It produces an info message if not."@en ;
+        sh:message """If applicable, the ontology should reference any institutions funding the work on the ontology.\nThe funding instution(s) should be referenced by PIDs, e.g. RORs (https://ror.org/) or Crossref Funder Registry IDs (https://www.crossref.org/services/funder-registry/)).\nRecommended property: <https://schema.org/funder>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funder> <https://ror.org/018mejw64> ."""@en ;
         sh:name "Ontology funder"@en ;
     ] ;
 
@@ -381,8 +360,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <https://schema.org/funder> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should reference any institutions funding your ontology via IRI.\nThe funding institution should be referenced by PIDs, e.g. RORs (https://ror.org/) or Crossref Funder Registry IDs (https://www.crossref.org/services/funder-registry/)).\nRecommended property: <https://schema.org/funder>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funder> <https://ror.org/018mejw64> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology references its funder via IRI. It produces an info message if it does not."@en ;
+        sh:message """The ontology should reference any institutions funding its development via IRI.\nThe funding institution should be referenced by PIDs, e.g. RORs (https://ror.org/) or Crossref Funder Registry IDs (https://www.crossref.org/services/funder-registry/)).\nRecommended property: <https://schema.org/funder>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funder> <https://ror.org/018mejw64> ."""@en ;
         sh:name "Ontology funder"@en ;
     ] ;
 
@@ -394,8 +372,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <https://schema.org/funding> ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """If applicable, you should reference the grant which funds the work on the ontology.\nThe grant should be referenced by PID, e.g. Crossref Grant ID (https://www.crossref.org/documentation/research-nexus/grants/)).\nRecommended property: <https://schema.org/funding>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funding> <https://doi.org/00.00000/000000000> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology references a grant funding the work on the ontology. It produces an info message if not."@en ;
+        sh:message """If applicable, the ontolo9gy should reference the grant which funds its development.\nThe grant should be referenced by PID, e.g. Crossref Grant ID (https://www.crossref.org/documentation/research-nexus/grants/)).\nRecommended property: <https://schema.org/funding>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funding> <https://doi.org/00.00000/000000000> ."""@en ;
         sh:name "Ontology funding (grant)"@en ;
     ] ;
 
@@ -403,8 +380,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <https://schema.org/funding> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should reference any grants funding your ontology via IRI.\nThe funding grant should be referenced by PID, e.g. Crossref Grant IDs (https://www.crossref.org/documentation/research-nexus/grants/)).\nRecommended property: <https://schema.org/funding>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funding> <https://doi.org/00.00000/000000000> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology references its funding grant via IRI. It produces an info message if it does not."@en ;
+        sh:message """The ontology should reference any grants funding its development via IRI.\nThe funding grant should be referenced by PID, e.g. Crossref Grant IDs (https://www.crossref.org/documentation/research-nexus/grants/)).\nRecommended property: <https://schema.org/funding>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://schema.org/funding> <https://doi.org/00.00000/000000000> ."""@en ;
         sh:name "Ontology funding (grant)"@en ;
     ] ;
 
@@ -416,8 +392,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """You should describe the intended audience of the ontology.\nThe audience description should be a short, language-tagged text.\nRecommended property: <http://usefulinc.com/ns/doap#audience>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology describes its audience. It produces an info message if audience information is missing."@en ;
+        sh:message """The ontology should describe its intended audience.\nThe audience description should be a short, language-tagged text.\nRecommended property: <http://usefulinc.com/ns/doap#audience>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en ."""@en ;
         skos:editorialNote "see also open comment at G-Doc: https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit?disco=AAAAwke7GNs" ;
         sh:name "Ontology audience description"@en ; 
     ] ;
@@ -426,8 +401,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (doap:audience schema:audience dcterms:audience)] ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
-        sh:message """You should provide the audience description of the ontology as an rdf:langString.\nRecommended property: <http://usefulinc.com/ns/doap#audience>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/ """@en ;
-        sh:description "This shape checks whether the ontology provides the audience description as an rdf:langString. It produces an info message if not."@en ;
+        sh:message """The ontology should provide its audience description as an rdf:langString.\nRecommended property: <http://usefulinc.com/ns/doap#audience>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en . """@en ;
         sh:name "Ontology audience description - language"@en ; 
     ] ;
 
@@ -438,8 +412,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path dcterms:subject ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """You should provide some keywords  to describe the subject(s) of your ontology.\nIt is recommended to use identifiers of controlled vocabularies or ontologies to do so.\nYou can search for fitting terms on TIB Terminology Service (https://terminology.tib.eu).\nRecommended property: <http://purl.org/dc/terms/subject>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides subjects. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide some keywords to describe its subject(s).\nIt is recommended to use identifiers of controlled vocabularies or ontologies to do so.\nYou can search for fitting terms on TIB Terminology Service (https://terminology.tib.eu).\nRecommended property: <http://purl.org/dc/terms/subject>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>."""@en ;
         sh:name "Ontology subject(s)"@en ;
     ] ;
 
@@ -447,8 +420,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path dcterms:subject ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide ontology subjects with IRIs from controlled vocabularies or ontologies.\nYou can search for fitting terms on TIB Terminology Service (https://terminology.tib.eu).\nRecommended property: <http://purl.org/dc/terms/subject>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides its subjects via IRIs. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide ontology subjects with IRIs from controlled vocabularies or ontologies.\nYou can search for fitting terms on TIB Terminology Service (https://terminology.tib.eu).\nRecommended property: <http://purl.org/dc/terms/subject>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>."""@en ;
         sh:name "Ontology subject(s) - datatype"@en ;
     ] ;
 
@@ -459,8 +431,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """You should provide information about the ontology annotation language(s) (e.g. for term labels, term definitions, etc.).\nYou should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotaed in that languge.\nRecommended controlled vocabulary: <http://id.loc.gov/vocabulary/iso639-2>\nRecommended property: <https://schema.org/inLanguage>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng>, <http://id.loc.gov/vocabulary/iso639-2/tgl> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology specifies the languages it covers (e.g. for term labels, term definitions, etc.). It produces an info message if no language information is given."@en ;
+        sh:message """The ontology should provide information about the ontology annotation language(s) (e.g. for term labels, term definitions, etc.).\nIt should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotaed in that languge.\nRecommended controlled vocabulary: <http://id.loc.gov/vocabulary/iso639-2>\nRecommended property: <https://schema.org/inLanguage>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng>, <http://id.loc.gov/vocabulary/iso639-2/tgl> ."""@en ;
         sh:name "Ontology annotation language(s)"@en ;
     ] ;
 
@@ -468,8 +439,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should specify the ontology annotation language(s) via IRIs.\nRecommended controlled vocabulary: <http://id.loc.gov/vocabulary/iso639-2>\nRecommended property: <https://schema.org/inLanguage>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng>, <http://id.loc.gov/vocabulary/iso639-2/tgl> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides information about its language coverage via IRIs. It produces an info message if it does not."@en ;
+        sh:message """The ontology should specify the ontology annotation language(s) via IRIs.\nRecommended controlled vocabulary: <http://id.loc.gov/vocabulary/iso639-2>\nRecommended property: <https://schema.org/inLanguage>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng>, <http://id.loc.gov/vocabulary/iso639-2/tgl> ."""@en ;
         sh:name "Ontology annotation language(s) - datatype"@en ;
     ] ;
 
@@ -477,8 +447,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
         sh:severity sh:Info ;
         sh:pattern "(^http://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$|^https://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$)" ;
-        sh:message """You should provide ontology annotation language values that match the pattern for language identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages' (cf. https://id.loc.gov/vocabulary/iso639-2.html).\nExample identifier: <http://id.loc.gov/vocabulary/iso639-2/tgl>\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the values for language coverage match the pattern for language identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages'. It produces an info message if they do not."@en ;
+        sh:message """The ontology should provide ontology annotation language values that match the pattern for language identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages' (cf. https://id.loc.gov/vocabulary/iso639-2.html).\nExample identifier: <http://id.loc.gov/vocabulary/iso639-2/tgl>"""@en ;
         sh:name "Ontology annotation language(s) - pattern"@en ; 
     ] ;
 
@@ -491,8 +460,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """You should state which logical framework the ontology applies.\nThe information can be given as a text, referring to the Semantic Web Standard (e.g. 'OWL 2') and possibly the OWL profile (e.g. 'OWL 2 EL profile').\nRecommended property: <https://w3id.org/mod#hasFormalityLevel>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> mod:hasFormalityLevel \"OWL version 2, EL profile\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology specifies the logical framework it applies. It produces an info message if the information is missing."@en ;
+        sh:message """The ontology should state which logical framework it applies.\nThe information can be given as a text, referring to the Semantic Web Standard (e.g. 'OWL 2') and possibly the OWL profile (e.g. 'OWL 2 EL profile').\nRecommended property: <https://w3id.org/mod#hasFormalityLevel>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> mod:hasFormalityLevel \"OWL version 2, EL profile\"@en ."""@en ;
         sh:name "Applied logical framework description"@en ;
     ] ;
 
@@ -500,8 +468,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <https://w3id.org/mod#hasFormalityLevel>;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
-        sh:message """You should provide the description of the logical framework applied by the ontology as an rdf:langString.\nRecommended property: <https://w3id.org/mod#hasFormalityLevel>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> mod:hasFormalityLevel \"OWL version 2, EL profile\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology's information about it applied logical framework is provided as an rdf:langString. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide the description its logical framework as an rdf:langString.\nRecommended property: <https://w3id.org/mod#hasFormalityLevel>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> mod:hasFormalityLevel \"OWL version 2, EL profile\"@en ."""@en ;
         sh:name "Applied logical framework description - language"@en ;
     ] ;
 
@@ -512,8 +479,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource "Unique URIs for File Formats" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology specifies its serialization/ file format. It produces an info message if it does not."@en ;
+        sh:message """The ontology should state its serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource "Unique URIs for File Formats" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/RDF_XML> ."""@en ;
         sh:name "Ontology serialization/ file format"@en ;
     ] ;
 
@@ -521,8 +487,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology specifies its serialization/ file format via IRI. It produces an info message if it does not."@en ;
+        sh:message """The ontology should state its serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/RDF_XML> ."""@en ;
         sh:name "Ontology serialization/ file format - datatype"@en ; 
     ] ;
 
@@ -565,8 +530,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
             # [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-quads> ;]
             # [sh:hasValue <https://www.iana.org/assignments/media-types/application/ld+json> ;]
             );
-        sh:message """You should state the ontology's serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ]; <http://www.w3.org/ns/formats/RDF_XML> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology's serialization/ file format value is from a selection of the recommended controlled lists. It produces an info message if there is more than one value or when the value is not from the selection of the list."@en ;
+        sh:message """The ontology should state its serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource \"Unique URIs for File Formats\" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ]; <http://www.w3.org/ns/formats/RDF_XML> ."""@en ;
         sh:name "Ontology serialization/ file format - controlled vocabulary value"@en ;
     ] ;
 
@@ -579,8 +543,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:datatype rdf:langString ;
-        sh:message """You should declare the current maintenance status of the ontology. You could use an English label to do so. We recommend using one of 'active', 'inactive', 'orphaned' or 'obsolete' (cf. https://obofoundry.org/docs/OntologyStatus.html).\nThe value you use should be language-tagged.\nRecommended property: <http://purl.org/ontology/bibo/status>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> bibo:status \"inactive\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides its maintenance status. It produces an info message, if the information is missing."@en ;
+        sh:message """The ontology should declare its current maintenance status. You could use an English label to do so. We recommend using one of 'active', 'inactive', 'orphaned' or 'obsolete' (cf. https://obofoundry.org/docs/OntologyStatus.html).\nThe value you use should be language-tagged.\nRecommended property: <http://purl.org/ontology/bibo/status>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> bibo:status \"inactive\"@en ."""@en ;
         sh:name "Ontology status"@en ; 
     ] ;
 
@@ -591,8 +554,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1;
         sh:maxCount 1;
-        sh:message """You should provide the link to the ontology's code repository.\nThe ontology should be on a code repository and the ontology should contain the repository's IRI.\nRecommended property: <http://usefulinc.com/ns/doap#repository>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:repository <https://github.com/SomeOrganisation/SomeOntology> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology povides a link to its code repository. It produces an info message, if the information is missing."@en ;
+        sh:message """The ontology should provide the link to its code repository.\nThe ontology should be on a code repository and the ontology should contain the repository's IRI.\nRecommended property: <http://usefulinc.com/ns/doap#repository>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:repository <https://github.com/SomeOrganisation/SomeOntology> ."""@en ;
         sh:name "Ontology code repository"@en ;
     ] ;
 
@@ -600,8 +562,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <http://usefulinc.com/ns/doap#repository>;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI;
-        sh:message """You should provide the link to the ontology's code repository as an IRI.\nRecommended property: <http://usefulinc.com/ns/doap#repository>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:repository <https://github.com/SomeOrganisation/SomeOntology> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology povides the link to its code repository as an IRI. It produces an info message, if the information is given as an xsd:string or the like."@en ;
+        sh:message """The ontology should provide the link to its code repository as an IRI.\nRecommended property: <http://usefulinc.com/ns/doap#repository>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:repository <https://github.com/SomeOrganisation/SomeOntology> ."""@en ;
         sh:name "Ontology code repository - datatype"@en ;
     ] ;
 
@@ -612,8 +573,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide IRIs to available alternative serializations or distributions of the ontology.\nRecommended property: <http://www.w3.org/ns/dcat#distribution>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcat:distribution <https://www.purl.org/SomeOntology.owl>, <https://www.purl.org/SomeOntology.json>, <https://www.purl.org/SomeOntology.ttl> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides links to alternative serializations. It produces an info message if the ontology is missing or not provided as an IRI."@en ;
+        sh:message """The ontology should provide IRIs to its available alternative serializations or distributions.\nRecommended property: <http://www.w3.org/ns/dcat#distribution>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcat:distribution <https://www.purl.org/SomeOntology.owl>, <https://www.purl.org/SomeOntology.json>, <https://www.purl.org/SomeOntology.ttl> ."""@en ;
         sh:name "Ontology distributions/ products"@en ;
    ] ; 
 
@@ -624,8 +584,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide a link to an application example of the ontology.\nIdeally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application or online service that uses the ontology.\nRecommended property: <https://vocab.org/vann/example>\nExample statement (text/turtle): <http://www.w3.org/ns/dcat> vann:example <https://www.w3.org/TR/vocab-dcat-2/#collection-of-examples> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides links to application examples. It produces an info message if the information is missing or not provided as an IRI."@en ;
+        sh:message """The ontology should provide a link to an example demonstrating its application.\nIdeally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application or online service that uses the ontology.\nRecommended property: <https://vocab.org/vann/example>\nExample statement (text/turtle): <http://www.w3.org/ns/dcat> vann:example <https://www.w3.org/TR/vocab-dcat-2/#collection-of-examples> ."""@en ;
         sh:name "Application example"@en ;
     ] ;
 
@@ -636,8 +595,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide references to resources related to the ontology via IRI.\nRelated recources could for example be publications introducing, discussing, evaluating or describing the ontology, recources containing alignments of your ontology to other ontologies, or any other resources that you would like to reference in your ontology.\nThe reference should be provided via PID, for example a DOI, if available.\nRecommended property: <http://purl.org/dc/terms/references>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:references <http://doi.org/10.00000/some0.ontolo> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides references to related resources as IRIs. It produces an info message if the information is missing or not provided as an IRI."@en ;
+        sh:message """The ontology should provide references to its related resources via IRI.\nRelated recources could for example be publications introducing, discussing, evaluating or describing the ontology, recources containing alignments of your ontology to other ontologies, or any other resources that you would like to reference in your ontology.\nThe reference should be provided via PID, for example a DOI, if available.\nRecommended property: <http://purl.org/dc/terms/references>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:references <http://doi.org/10.00000/some0.ontolo> ."""@en ;
         sh:name "Related resource(s)"@en ;
     ] ;
 
@@ -648,8 +606,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path dcterms:bibliographicCitation ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """You should provide information about how the ontology should be cited.\nThe information should be provided as an rdf:langString.\nRecommended property: <http://purl.org/dc/terms/bibliographicCitation>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:bibliographicCitation \"Last name, first name; last name, first name et al. (YYYY): Title. URL: https://w3id.org/SomeOntology/1.1.6\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape ckecks whether the ontology provides information about how it should be cited. It produces an info message if the information is missing."@en ;
+        sh:message """The ontology should provide information about how it should be cited.\nThe information should be provided as an rdf:langString.\nRecommended property: <http://purl.org/dc/terms/bibliographicCitation>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:bibliographicCitation \"Last name, first name; last name, first name et al. (YYYY): Title. URL: https://w3id.org/SomeOntology/1.1.6\"@en ."""@en ;
         sh:name "Citation suggestion"@en ;
     ] ;
 
@@ -660,8 +617,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should specify whether and from which other ontologies your ontology has been derived.\nThe reference should be made by an owl:versionIRI of the ontology from which the current ontology has been derived.\nRecommended property: <http://purl.org/pav/derivedFrom>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> pav:derivedFrom <https://www.purl.org/SomeOtherOntology/3.1.2> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides links to other ontologies it has been derived from. It produces an info message if the information is missing or not provided as IRIs."@en ;
+        sh:message """The ontology should specify whether and from which other ontologies it has been derived.\nThe reference should be made by an owl:versionIRI of the ontology from which the current ontology has been derived.\nRecommended property: <http://purl.org/pav/derivedFrom>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> pav:derivedFrom <https://www.purl.org/SomeOtherOntology/3.1.2> ."""@en ;
         sh:name "Ontology sources (derived from)"@en ;
     ];
 
@@ -672,8 +628,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should explicitly declare the ontology's root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe repsective classes (if any) need to be provided via their identifier.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology declares its preferred root classes. It produces an info message if the information is missing or the information is not provided as IRIs."@en ;
+        sh:message """The ontology should explicitly declare its root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe repsective classes (if any) need to be provided via their identifier.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> ."""@en ;
         sh:name "Ontology root classes"@en ;
     ] ;
 
@@ -688,8 +643,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal;
         sh:datatype rdf:langString ;
-        sh:message """You should provide the ontology description as an rdf:langString.\nRecommended property: <https://schema.org/description>\nExample statetement (text/turtle): <https://www.purl.org/SomeOntology> schema:description \"Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology description is an rdf:langString. It produces an info message if it is not."@en ;
+        sh:message """The ontology should provide the its description as an rdf:langString.\nRecommended property: <https://schema.org/description>\nExample statetement (text/turtle): <https://www.purl.org/SomeOntology> schema:description \"Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.\"@en ."""@en ;
         sh:name "Ontology description - language"@en ;
     ] ;
 
@@ -697,8 +651,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dc:description dcterms:description schema:description)] ;
         sh:severity sh:Info ;
         sh:uniqueLang true ;
-        sh:message """You should only provide one ontology description per language.\nRecommended property: <https://schema.org/description>\nExample statements (text/turtle): <https://www.purl.org/SomeOntology> schema:description \"Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.\"@en, \"Freitext, der die Ontologie und ihre Genese beschreibt. Hier können umfangreiche Hintergrundinformationen zur Ontologie gegeben werden, die über ein kurzes Abstract hinausgehen.\" .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether multiple ontology descriptions in the same language are present. It produces an info message if there are multiple descriptions in the same language."@en ;
+        sh:message """The ontology should only provide one ontology description per language.\nRecommended property: <https://schema.org/description>\nExample statements (text/turtle): <https://www.purl.org/SomeOntology> schema:description \"Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.\"@en, \"Freitext, der die Ontologie und ihre Genese beschreibt. Hier können umfangreiche Hintergrundinformationen zur Ontologie gegeben werden, die über ein kurzes Abstract hinausgehen.\" ."""@en ;
         sh:name "Ontology description - unique language"@en ;
     ] ;
 
@@ -710,8 +663,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://purl.org/dc/terms/alternative> <https://schema.org/alternateName> <https://schema.org/alternativeHeadline>)];
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
-        sh:message """You should provide the ontology's alternative title as an rdf:langString.\nRecommended property: <http://purl.org/dc/terms/alternative>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:alternative \"My Ontology\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en;
-        sh:description "This shape checks whether the ontology's alternative title is an rdf:langString. It produces an info message if it is not."@en;
+        sh:message """The ontology should provide its alternative title(s) as an rdf:langString.\nRecommended property: <http://purl.org/dc/terms/alternative>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:alternative \"My Ontology\"@en ."""@en;
         sh:name "Alternative ontology title - language"@en;
     ] ;
 
@@ -722,8 +674,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <http://identifiers.org/idot/alternatePrefix> ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
-        sh:message """You should provide the ontology's alternative prefix as an xsd:string.\nRecommended property: <http://identifiers.org/idot/alternatePrefix>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> idot:alternatePrefix \"mo\"^^xsd:string .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology's alternative prefix is an xsd:string. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide its alternative prefix as an xsd:string.\nRecommended property: <http://identifiers.org/idot/alternatePrefix>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> idot:alternatePrefix \"mo\"^^xsd:string ."""@en ;
         sh:name "Alternative ontology prefix/ acronym - datatype"@en ;
     ] ;
 
@@ -737,8 +688,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#priorVersion> <http://www.w3.org/ns/adms#prev> <http://purl.org/pav/previousVersion> <http://www.w3.org/ns/prov#wasRevisionOf> <http://purl.org/dc/terms/replaces> )] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide the ontology's prior version as an IRI.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://www.w3.org/2002/07/owl#priorVersion>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> owl:priorVersion <https://www.purl.org/SomeOntology/1.1.6> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description """This shape checks whether the ontology's prior version is provided as an IRI, ideally via a resolving versionIRI. It produces an info message if it is not."""@en ;
+        sh:message """The ontology should provide its prior version as an IRI.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://www.w3.org/2002/07/owl#priorVersion>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> owl:priorVersion <https://www.purl.org/SomeOntology/1.1.6> ."""@en ;
         sh:name "Prior ontology version"@en ;
     ] ;
 
@@ -749,8 +699,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://purl.org/pav/hasCurrentVersion> <https://schema.org/version> <http://purl.org/dc/terms/hasVersion>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide the ontology's related version as an IRI.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://purl.org/dc/terms/hasVersion>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.6> dcterms:isVersionOf <https://www.purl.org/SomeOntology>.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology's related versions are provided as IRIs, ideally via a resolving versionIRI. It produces an info message if they are not."@en ;
+        sh:message """The ontology should provide its related version as an IRI.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://purl.org/dc/terms/hasVersion>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.6> dcterms:isVersionOf <https://www.purl.org/SomeOntology>."""@en ;
         sh:name "Related ontology version"@en ;
     ] ;
 
@@ -761,8 +710,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <http://www.w3.org/2002/07/owl#backwardCompatibleWith> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide compatible versions of the ontology as IRIs.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://www.w3.org/2002/07/owl#backwardCompatibleWith>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> owl:backwardCompatibleWith <https://www.purl.org/SomeOntology/1.1.6> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides links to compatible versions of the ontology via IRIs. It produces an info message if they are not."@en ;
+        sh:message """The ontology should provide compatible versions of itself as IRIs.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://www.w3.org/2002/07/owl#backwardCompatibleWith>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> owl:backwardCompatibleWith <https://www.purl.org/SomeOntology/1.1.6> ."""@en ;
         sh:name "Compatible ontology version"@en ;
     ] ;
 
@@ -773,8 +721,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <http://www.w3.org/2002/07/owl#incompatibleWith> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide incompatible versions of the ontology as IRIs.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://www.w3.org/2002/07/owl#incompatibleWith>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> owl:incompatibleWith <https://www.purl.org/SomeOntology/1.1.6> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides links to incompatible versions of the ontology via IRIs. It produces an info message, if it does not."@en ;
+        sh:message """The ontology should provide incompatible versions of itself as IRIs.\nIdeally, a resolving ontology versionIRI should be used.\nRecommended property: <http://www.w3.org/2002/07/owl#incompatibleWith>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> owl:incompatibleWith <https://www.purl.org/SomeOntology/1.1.6> ."""@en ;
         sh:name "Incompatible ontology version"@en ;
     ] ;
 
@@ -789,8 +736,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path dcterms:type ;
         sh:severity sh:Info ;
         sh:maxCount 1 ;
-        sh:message """You should declare at most on KOS type for the resource. Use an identifier from the NKOS type vocabulary (https://nkos.dublincore.org/nkostype/nkostype.rdf).\nRecommended property: <http://purl.org/dc/terms/type>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> dcterms:type <http://w3id.org/nkos/nkostype#ontology> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology declares a KOS-type as an IRI from the NKOS type vocabulary. It produces an info message if it does not."@en ;
+        sh:message """The ontology should declare at most one KOS type for itself. Use an identifier from the NKOS type vocabulary (https://nkos.dublincore.org/nkostype/nkostype.rdf).\nRecommended property: <http://purl.org/dc/terms/type>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> dcterms:type <http://w3id.org/nkos/nkostype#ontology> ."""@en ;
         sh:name "KOS type"@en ;
     ] ;
 
@@ -815,8 +761,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
             [sh:hasValue <http://w3id.org/nkos/nkostype#terminology>]
             [sh:hasValue <http://w3id.org/nkos/nkostype#thesaurus>]
             ) ;
-        sh:message """The KOS type identifier should be provided as an IRI. The IRI should be one of the KOS types defined by the NKOS type vocabulary (https://nkos.dublincore.org/nkostype/nkostype.rdf).\nRecommended property: <http://purl.org/dc/terms/type>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> dcterms:type <http://w3id.org/nkos/nkostype#ontology> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology declares a KOS-type as an IRI from the NKOS type vocabulary. It produces an info message if it does not."@en ;
+        sh:message """The KOS type identifier should be provided as an IRI. The IRI should be one of the KOS types defined by the NKOS type vocabulary (https://nkos.dublincore.org/nkostype/nkostype.rdf).\nRecommended property: <http://purl.org/dc/terms/type>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology/1.1.7> dcterms:type <http://w3id.org/nkos/nkostype#ontology> ."""@en ;
         sh:name "KOS type"@en ;
     ] ;
 
@@ -827,8 +772,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <http://identifiers.org/idot/exampleIdentifier> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should declare an example identifier for the ontology as an IRI.\nRecommended property: <http://identifiers.org/idot/exampleIdentifier>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> idot:exampleIdentifier <https://www.purl.org/SomeOntology/1234-XY> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology declares example identifiers as IRIs. It produces an info message if it does not."@en ;
+        sh:message """The ontology should declare any example identifiers for the ontology as an IRI.\nRecommended property: <http://identifiers.org/idot/exampleIdentifier>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> idot:exampleIdentifier <https://www.purl.org/SomeOntology/1234-XY> ."""@en ;
         sh:name "Example ontology identifier"@en ;
     ] ;
 
@@ -840,8 +784,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
-        sh:message """You should provide the identifier pattern for the ontology as an xsd:string.\nRecommended property: <http://identifiers.org/idot/identifierPattern>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> idot:identifierPattern \"^\\d{4}-[A-Z]{2}$\"^^xsd:string .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology declares an identifier pattern as xsd:string. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide its identifier pattern as an xsd:string.\nRecommended property: <http://identifiers.org/idot/identifierPattern>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> idot:identifierPattern \"^\\d{4}-[A-Z]{2}$\"^^xsd:string ."""@en ;
         sh:name "Ontology identifier pattern"@en ;
     ] ;
 
@@ -854,8 +797,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
-        sh:message """You should provide the homepage of the ontology as an IRI.\nRecommended property: <http://xmlns.com/foaf/0.1/homepage>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> foaf:homepage <https://www.example.com/SomeOntologyInfo> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology homepage is provided as an IRI. It produces an info message if it is not."@en ;
+        sh:message """The ontology should provide its homepage as an IRI.\nRecommended property: <http://xmlns.com/foaf/0.1/homepage>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> foaf:homepage <https://www.example.com/SomeOntologyInfo> ."""@en ;
         sh:name "Ontology homepage"@en ;
     ] ;
 
@@ -872,8 +814,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
             [sh:pattern "https://isni.org/isni/[0]{4}[0-9]{4}[0-9]{4}[0-9]{3}[0-9X]" ;]
             [sh:pattern "https://d-nb.info/gnd/(|(1[012]?[0-9]{7}[0-9X]|[47][0-9]{6}-[0-9]|[1-9][0-9]{0,7}-[0-9X]|3[0-9]{7}[0-9X]))$" ;]
         ) ;
-        sh:message """You should specify the ontology publisher via ROR, ISNI or GND identifier.\nThe value you provide should be given as an IRI and match the identifier patterns.\nIf you use valid ROR, ISNI or GND identifiers, this should be the case.\nRecommended property: <http://purl.org/dc/terms/publisher>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:publisher <https://isni.org/isni/0000000121746694> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology specifies its publisher as an IRI belonging to the ROR, ISNI or GND namespace. It produces an info message if not."@en ;
+        sh:message """The ontology should specify its publisher via ROR, ISNI or GND identifier.\nThe value you provide should be given as an IRI and match the identifier patterns.\nIf you use valid ROR, ISNI or GND identifiers, this should be the case.\nRecommended property: <http://purl.org/dc/terms/publisher>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:publisher <https://isni.org/isni/0000000121746694> ."""@en ;
         sh:name "Ontology publisher"@en ;
     ] ;
 
@@ -884,8 +825,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path rdfs:comment ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
-        sh:message """You should provide any comments about the ontology as rdf:langString.\nRecommended property: <http://www.w3.org/2000/01/rdf-schema#comment>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> rdfs:comment \"SomeOntology does not actually exist.\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the comments about the ontology are provided as an rdf:langString. It produces an info message if they are not."@en ;
+        sh:message """Any comments about the ontology should be given as rdf:langStrings.\nRecommended property: <http://www.w3.org/2000/01/rdf-schema#comment>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> rdfs:comment \"SomeOntology does not actually exist.\"@en ."""@en ;
         sh:name "Ontology comments"@en ;
     ] ;
 
@@ -897,8 +837,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://www.w3.org/2004/02/skos/core#example> <http://rdfs.org/ns/void#exampleResource> )] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide example classes of the otology as IRIs.\nRecommended property: <http://rdfs.org/ns/void#exampleResource>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> void:exampleResource <https://www.purl.org/SomeClass> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether example classes of the ontology are provided as IRIs. It produces an info message if they are not."@en ;
+        sh:message """The ontology should provide its example classes as IRIs.\nRecommended property: <http://rdfs.org/ns/void#exampleResource>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> void:exampleResource <https://www.purl.org/SomeClass> ."""@en ;
         sh:name "Example ontology class - data type"@en ;
     ] ;
 
@@ -911,8 +850,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
-        sh:message """You should provide the ontology mailing list as an IRI.\nRecommended property: <http://usefulinc.com/ns/doap#mailing-list>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:mailing-list <someontology@list.de> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology mailing list is provided as an IRI. It produces an info message if it is not."@en ;
+        sh:message """The ontology should provide its mailing list as an IRI.\nRecommended property: <http://usefulinc.com/ns/doap#mailing-list>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:mailing-list <someontology@list.de> ."""@en ;
         sh:name "Ontology mailing list"@en ;
     ];
 
@@ -923,8 +861,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/logo> <https://schema.org/logo> <http://xmlns.com/foaf/0.1/depiction> <https://w3id.org/mod#depiction> <https://schema.org/image>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide links to depictions related to the ontology as IRIs.\nRecommended property: <http://xmlns.com/foaf/0.1/logo>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> foaf:logo <https://www.example.com/MyOntoLogo.jpg>\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/ """@en ;
-        sh:description "This shape checks whether the ontology's related depictions are provided via IRI. It produces an info message if they are not."@en ;
+        sh:message """The ontology should provide links to related depictions as IRIs.\nRecommended property: <http://xmlns.com/foaf/0.1/logo>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> foaf:logo <https://www.example.com/MyOntoLogo.jpg> """@en ;
         sh:name "Ontology logo/ depiction/ related visualizations"@en ;
     ];
 
@@ -936,8 +873,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi> <http://purl.org/dc/elements/1.1/identifier>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide the ontology's identifiers as IRIs.\nThe identifier used as the base uri of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri>.\nRecommended property: <http://purl.org/dc/terms/identifier>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:identifier <https://doi.org/10.5281/zenodo.0000000> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology's related identifiers are provided as IRIs. It produces an info message if they are not."@en ;
+        sh:message """The ontology should provide its identifiers as IRIs.\nThe identifier used as the base uri of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri>.\nRecommended property: <http://purl.org/dc/terms/identifier>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:identifier <https://doi.org/10.5281/zenodo.0000000> ."""@en ;
         sh:name "Related identifiers"@en ;
     ];
 
@@ -954,8 +890,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<https://w3id.org/mod#hasEquivalencesWith> <http://w3id.org/nkos#alignedWith>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide information about ontologies your ontology is aligned to as IRIs.\nRecommended property: <https://w3id.org/mod#hasEquivalencesWith>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> mod:hasEquivalencesWith <https://www.purl.org/SomeOtherOntology> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology references ontologies it is aligned to via IRIs. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide information about other ontologies it is aligned to as IRIs.\nRecommended property: <https://w3id.org/mod#hasEquivalencesWith>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> mod:hasEquivalencesWith <https://www.purl.org/SomeOtherOntology> ."""@en ;
         sh:name "Aligned resources"@en ;
     ];
 
@@ -969,8 +904,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <https://w3id.org/mod#competencyQuestion> ;
         sh:severity sh:Info ;
         sh:xone ( [sh:nodeKind sh:IRI ;] [sh:datatype rdf:langString ;] );
-        sh:message """You should provide the link to the ontology's competency questions as an IRI or provide the questions directly as an rdf:langString.\nRecommended property: <https://w3id.org/mod#competencyQuestion>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#competencyQuestion> \"Who developed an ontology?\"@en .\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#competencyQuestion> <https://www.example.com/SomeOntologyInfo/Questions#Q1> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides competency questions as rdf:langString or an IRI to an online document. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide the link to its competency questions as an IRI or provide the questions directly as an rdf:langString.\nRecommended property: <https://w3id.org/mod#competencyQuestion>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#competencyQuestion> \"Who developed an ontology?\"@en .\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#competencyQuestion> <https://www.example.com/SomeOntologyInfo/Questions#Q1> ."""@en ; # inconsistent with forms shape
         sh:name "Competency questions"@en ;
     ];
 
@@ -984,8 +918,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
         sh:severity sh:Info ;
         sh:maxCount 1 ;
-        sh:message """You should provide at most one preferred namespace URI for the ontology.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespaceUri>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/vocab/vann/preferredNamespaceUri> <https://w3id/Example/SomeOntology> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "The ontology should declare its preferred namespace URI."@en ;
+        sh:message """The ontology should provide at most one preferred namespace URI for the ontology.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespaceUri>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/vocab/vann/preferredNamespaceUri> <https://w3id/Example/SomeOntology> ."""@en ;
         sh:name "Preferred ontology namespace"@en ; 
     ] ;
 
@@ -993,8 +926,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide the ontology's preferred namespace URI as an IRI.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespaceUri>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/vocab/vann/preferredNamespaceUri> <https://w3id/Example/SomeOntology> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology declares its preferred namespace URI as an IRI. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide its preferred namespace URI as an IRI.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespaceUri>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/vocab/vann/preferredNamespaceUri> <https://w3id/Example/SomeOntology> ."""@en ;
         sh:name "Preferred ontology namespace - datatype"@en ;
     ] ;
 
@@ -1012,9 +944,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
         sh:maxCount 1 ;
-        # sh:message """You should provide at most one ontology issue date that conforms to xsd:dateTime.\nRecommended property: <http://purl.org/dc/terms/issued>\nExample statement: <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/> \"2023-11-21T00:00:00\"^^xsd:dateTime .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:message """WW91IHNob3VsZCBwcm92aWRlIGF0IG1vc3Qgb25lIG9udG9sb2d5IGlzc3VlIGRhdGUgdGhhdCBjb25mb3JtcyB0byB4c2Q6ZGF0ZVRpbWUuXG5SZWNvbW1lbmRlZCBwcm9wZXJ0eTogPGh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy9pc3N1ZWQ+XG5FeGFtcGxlIHN0YXRlbWVudDogPGh0dHBzOi8vd3d3LnB1cmwub3JnL1NvbWVPbnRvbG9neT4gPGh0dHA6Ly9wdXJsLm9yZy9kYy90ZXJtcy8+IFwiMjAyMy0xMS0yMVQwMDowMDowMFwiXl54c2Q6ZGF0ZVRpbWUgLlxuTmVlZCBoZWxwPyBMZWFybiBtb3JlIGFib3V0IFNIQUNMOiBodHRwczovL3d3dy53My5vcmcvVFIvMjAxNy9SRUMtc2hhY2wtMjAxNzA3MjAv"""^^xsd:base64Binary ;
-        sh:description "This shape checks whether the ontology's issue date conforms to xsd:dateTime. It produces an info message if it does not."@en ;
+        sh:message """The ontology should provide at most one issue date that conforms to xsd:dateTime.\nRecommended property: <http://purl.org/dc/terms/issued>\nExample statement: <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/> \"2023-11-21T00:00:00\"^^xsd:dateTime ."""@en ;
         sh:name "Ontology issue date - datatype"@en ; 
     ] ;
 
@@ -1026,8 +956,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
         sh:maxCount 1;
-        sh:message """You should provide at most one (the latest) ontology modification date in xsd:dateTime format.\nRecommended property: <http://purl.org/dc/terms/modified>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:modified \"2020-11-19T00:00:00\"^^xsd:dateTime.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides at most one modification date in xsd:dateTime format. It produces an info message if not."@en ;
+        sh:message """The ontology should provide at most one ontology modification date in xsd:dateTime format (ideally the latest).\nRecommended property: <http://purl.org/dc/terms/modified>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:modified \"2020-11-19T00:00:00\"^^xsd:dateTime."""@en ;
         sh:name "Ontology modification date"@en ;
     ] ;
 
@@ -1039,8 +968,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:xone ( [sh:datatype xsd:string ;] [sh:datatype rdf:langString ;] );
         #        sh:datatype xsd:string ;
-        sh:message """You should provide textual information about the ontology version as an xsd:string.\nIt is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).\nIf you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements.\nRecommended property: <http://www.w3.org/2002/07/owl#versionInfo>\nExample statement 1: <https://www.purl.org/SomeOntology> owl:versionInfo \"2023-01-01\"^^xsd:string .\nExample statement 2: <https://www.purl.org/SomeOntology> owl:versionInfo \"1.0.0\"^^xsd:string.\nExample statement 3: <https://www.purl.org/SomeOntology> owl:versionInfo \"Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024.\"@en.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides at most one textual version information as an xsd:string. It produces an info message if not."@en ;
+        sh:message """The ontology should provide textual information about its version as an xsd:string.\nIt is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).\nIf you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements.\nRecommended property: <http://www.w3.org/2002/07/owl#versionInfo>\nExample statement 1: <https://www.purl.org/SomeOntology> owl:versionInfo \"2023-01-01\"^^xsd:string .\nExample statement 2: <https://www.purl.org/SomeOntology> owl:versionInfo \"1.0.0\"^^xsd:string.\nExample statement 3: <https://www.purl.org/SomeOntology> owl:versionInfo \"Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024.\"@en."""@en ;
         sh:name "Ontology version information"@en ;
     ] ;
 
@@ -1048,8 +976,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (owl:versionInfo pav:version)];
         sh:severity sh:Info ;
         sh:maxCount 1 ;
-        sh:message """You should provide at most one textual information about the ontology version.\nThe value should be providee as an xsd:string.\nIt is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).\nRecommended property: <http://www.w3.org/2002/07/owl#versionInfo>\nExample statement 1: <https://www.purl.org/SomeOntology> owl:versionInfo \"2023-01-01\"^^xsd:string .\nExample statement 2: <https://www.purl.org/SomeOntology> owl:versionInfo \"1.0.0\"^^xsd:string.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology provides at most one textual version information as an xsd:string. It produces an info message if not."@en ;
+        sh:message """The ontology should provide at most one textual information about the ontology version.\nThe value should be provided as an xsd:string.\nIt is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).\nRecommended property: <http://www.w3.org/2002/07/owl#versionInfo>\nExample statement 1: <https://www.purl.org/SomeOntology> owl:versionInfo \"2023-01-01\"^^xsd:string .\nExample statement 2: <https://www.purl.org/SomeOntology> owl:versionInfo \"1.0.0\"^^xsd:string."""@en ;
         sh:name "Ontology version information"@en ;
     ] ;
 
@@ -1061,8 +988,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal ; 
         sh:datatype rdf:langString ;
-        sh:message """You should provide ontology version notes (e.g. notes on updates as compared to the previous version of the ontology) as an rdf:langString.\nRecommended property: <http://www.w3.org/ns/adms#versionNotes>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> adms:versionNotes \"Changes from 2000-01-12: add annotation properties: familyName [...]\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "The shape checks whether the ontology provides version notes as an rdf:langString. It produces an info message if not."@en ; 
+        sh:message """The ontology should provide its version notes (e.g. notes on updates as compared to the previous version of the ontology) as an rdf:langString.\nRecommended property: <http://www.w3.org/ns/adms#versionNotes>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> adms:versionNotes \"Changes from 2000-01-12: add annotation properties: familyName [...]\"@en ."""@en ;
         sh:name "Ontology version notes"@en ;
     ] ;
 
