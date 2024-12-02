@@ -71,7 +71,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:datatype rdf:langString ;
         sh:uniqueLang true ;
         sh:message """You should make the ontology title an rdf:langString by adding a language tag to it.\nThere may be only title per language.\nRecommended property: <http://purl.org/dc/terms/title>.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology title literal value is an rdf:langString and whether only one title per language is given. It produces an info message if the title does not carry a language tag or if several titles in the same language are present."@en ;
+        # sh:description "This shape checks whether the ontology title literal value is an rdf:langString and whether only one title per language is given. It produces an info message if the title does not carry a language tag or if several titles in the same language are present."@en ;
         sh:name "Ontology title - datatype"@en ;
     ] ;
 
@@ -82,8 +82,8 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not declare its preferred prefix. Please provide it if known."""@en ; # optimized message for current TIB TS implementation
-        sh:description "This shape checks whether the ontology declares a preferred namespace prefix. It produces a warning message if the ontology does not declare a preferred namespace prefix."@en ;
+        sh:message """The ontology does not declare its preferred prefix. Please provide it if known.\nIt must not contain hyphens or other special characters and should be written in lowercase.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespacePrefix>"""@en ; # optimized message for current TIB TS implementation
+        # sh:description "This shape checks whether the ontology declares a preferred namespace prefix. It produces a warning message if the ontology does not declare a preferred namespace prefix."@en ;
         sh:name "Preferred ontology prefix/ acronym"@en ;
     ] ;
 
@@ -91,7 +91,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (<http://purl.org/vocab/vann/preferredNamespacePrefix> <https://w3id.org/mod#acronym>)];
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
-        sh:message """You should provide the ontology's preferred namespace prefix or acronym as an xsd:string.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should provide the ontology's preferred namespace prefix or acronym as an xsd:string.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespacePrefix>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology's preferred namespace prefix or acronym is an xsd:string. It produces an info message if it is not."@en ;
         sh:name "Preferred ontology prefix/ acronym - datatype"@en ;
     ] ;
@@ -177,7 +177,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
 
             # [sh:hasValue <> ;] 
             );
-        sh:message """The ontology does not declare its own license. Please provide it, if known."""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not declare its own license. Please provide it, if known.\nRecommended property: <http://purl.org/dc/terms/license>"""@en ; # optimized message for current TIB TS 
         sh:description "This shape checks whether the ontology provides a license IRI from a list of accepted open licenses. It produces a warning message if not."@en ;
         sh:name "Ontology license"@en ;
     ] ;
@@ -219,7 +219,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Warning ;
         sh:minCount 1;
-        sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available."""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available.\nRecommended property: <http://purl.org/dc/terms/creator>"""@en ; # optimized message for current TIB TS 
         sh:description "This shape checks whether the ontology provides information about its creator. It produces a warning message if no creator information is present."@en ;
         sh:name "Ontology creator(s)"@en ;
     ] ;
@@ -243,7 +243,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not declare a versionIRI. Please provide it, if known."""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not declare a versionIRI. Please provide it, if known.\nRecommended property: <http://www.w3.org/2002/07/owl#versionIRI>"""@en ; # optimized message for current TIB TS 
         sh:description "This shape checks whether the ontology provids exactly one versionIRI. It produces a warning message if none is found."@en ;
         sh:name "Ontology version IRI"@en ;
     ] ;
@@ -264,7 +264,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:maxCount 1 ;
-        sh:message """The ontology does not declare its creation date. Please provide it, if known. Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44)"""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not declare its creation date. Please provide it, if known. Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44).\nRecommended property: <http://purl.org/dc/terms/created>"""@en ; # optimized message for current TIB TS 
         sh:description "This shape checks whether the ontology provides its creation date. It produces a warning message if not."@en ;
         sh:name "Ontology creation date"@en ;
     ] ;
@@ -285,7 +285,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
-        sh:message """The ontology does not contain an abstract. Please provide it, if knwon."""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not contain an abstract. Please provide it, if knwon. The ontology should not be longer than 500 characters.\nRecommended property: <http://purl.org/dc/terms/abstract>"""@en ; # optimized message for current TIB TS 
         sh:description "This shape checks whether the ontology provides an abstract. It produces an info message if not."@en ;
         sh:name "Ontology abstract"@en ;
     ] ;
@@ -313,7 +313,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
         sh:severity sh:Info ;
         sh:maxLength 500 ; 
-        sh:message """You should limit the ontology abstract to 500 characters maximum.\nThe TIB Terminology Service requires short ontology descriptions for a user-friendly ontology list.\nTo provide more information about the ontology, add an additional description (recommended property: <http://purl.org/dc/terms/escription>) or add a reference to a related article (recommended property: <http://purl.org/dc/terms/isReferencedBy>).\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should limit the ontology abstract to 500 characters maximum.\nThe TIB Terminology Service requires short ontology descriptions for a user-friendly ontology list.\nTo provide more information about the ontology, add an additional description (recommended property: <http://purl.org/dc/terms/description>) or add a reference to a related article (recommended property: <http://purl.org/dc/terms/isReferencedBy>).\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape cheks whether the ontology abstract is longer than 500 characters. It produces an info message if it does."@en ;
         sh:name "Ontology abstract - length"@en ;
     ] ;
@@ -326,7 +326,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not contain the link to its issue tracker. Please provide if available and known."""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not contain the link to its issue tracker. Please provide if available and known.\nRecommended property: <http://usefulinc.com/ns/doap#bug-database>"""@en ; # optimized message for current TIB TS 
         sh:description "This shape checks whether the ontology references an issue tracker on its repository (e.g. at GitLab or GitHub). It creates a warning message, if it does not."@en ;
         sh:name "Ontology issue tracker"@en ;
     ] ;
@@ -339,7 +339,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known."""@en ; # optimized message for current TIB TS
+        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: <http://www.loc.gov/premis/rdf/v3/documentation>"""@en ; # optimized message for current TIB TS
         sh:description "This shape checks whether the ontology provides a link to its documentation. It produces warning message if it does not."@en ;
         sh:name "Ontology documentation"@en ; 
     ] ;
