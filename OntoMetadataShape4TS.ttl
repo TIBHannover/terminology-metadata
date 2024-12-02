@@ -1012,7 +1012,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
         sh:maxCount 1 ;
-        sh:message """You should provide at most one ontology issue date that conforms to xsd:dateTime.\nRecommended property: <http://purl.org/dc/terms/issued>\nExample statement: <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/> \"2023-11-21T00:00:00\"^^xsd:dateTime .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/ """^^rdf:HTML ;
+        sh:message """You should provide at most one ontology issue date that conforms to xsd:dateTime.<br>Recommended property: <http://purl.org/dc/terms/issued><br>Example statement: <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/> \"2023-11-21T00:00:00\"^^xsd:dateTime .<br>Need help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/ """^^rdf:HTML ;
         sh:description "This shape checks whether the ontology's issue date conforms to xsd:dateTime. It produces an info message if it does not."@en ;
         sh:name "Ontology issue date - datatype"@en ; 
     ] ;
