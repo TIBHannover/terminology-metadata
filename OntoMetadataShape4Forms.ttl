@@ -34,7 +34,6 @@ ontometa4forms: rdf:type owl:Ontology ;
     dcterms:abstract "OntoMeta4Forms provides SHACL shapes for ontology metadata. It is intended for use in form generator applications, e.g. <https://ulb-darmstadt.github.io/shacl-form/#try-your-own>. You may re-use (please refer back to our repo!) for your own services. Please note that adaptations might be necessary. If you have any remarks or questions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en;
     dcterms:subject <http://d-nb.info/gnd/4827894-4>, <http://d-nb.info/gnd/4410512-5>;
     # dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
-    dcterms:modified "2024-11-28T13:22:00"^^xsd:dateTime;
     vann:preferredNamespacePrefix "ontometa4forms";
     dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
     doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
@@ -49,6 +48,7 @@ ontometa4forms: rdf:type owl:Ontology ;
     mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en;
     <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle>;
     mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250101/MetadataGuide.md#7-relations-to-related-work>;
+    <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/shape4ts> , <https://www.purl.org/ontologymetadata/shape>
 .
 
 # Start of the Ontology Metadata Shape

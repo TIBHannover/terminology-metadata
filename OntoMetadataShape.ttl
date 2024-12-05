@@ -46,6 +46,8 @@ ontometa: rdf:type owl:Ontology ;
     <http://purl.org/dc/terms/references> <https://www.doi.org/10.5281/zenodo.11103071> ;
     <https://w3id.org/mod#hasFormalityLevel> "RDF(S), OWL, SHACL"@en ;
     dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
+    <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/shape4ts> , <https://www.purl.org/ontologymetadata/shape4forms> ;
+    <https://vocab.org/vann/example> <https://drive.google.com/file/d/1euRdsdIfCKPV6vAb9ZcNOA-3FA_kvlCr/view?usp=sharing>
 .
 
 # Start of the Ontology Metadata Shape
