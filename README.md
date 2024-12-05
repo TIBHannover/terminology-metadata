@@ -26,7 +26,7 @@ See how you can use online validators with our shape:
 
 <!-- [![Watch the screencast](image)](video url) -->
 
-https://github.com/TIBHannover/terminology-metadata/blob/6-update-version-2024-05-02/visualizations/validate-metadata.mp4
+https://github.com/TIBHannover/terminology-metadata/raw/6-update-version-2024-05-02/visualizations/validate-metadata.mp4
 
 ## For ontology validation at TIB Terminology Service
 
