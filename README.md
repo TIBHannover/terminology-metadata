@@ -26,6 +26,8 @@ See how you can use online validators with our shape:
 
 <!-- [![Watch the screencast](image)](video url) -->
 
+https://github.com/TIBHannover/terminology-metadata/blob/6-update-version-2024-05-02/visualizations/validate-metadata.mp4
+
 ## For ontology validation at TIB Terminology Service
 
 In [OntoMetadataShape4TS.ttl](/OntoMetadataShape4TS.ttl) we provide a version of the recommendations that is adapted to the Ontology Suggestion Feature at [TIB Terminology Service](https://terminology.tib.eu). The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users not need to provide the meatdata as code.
