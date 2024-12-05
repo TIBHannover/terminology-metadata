@@ -24,6 +24,8 @@ See how you can use online validators with our shape:
 
 [![Watch the screencast](/visualizations/terminology_metadata-00001.jpg)](https://drive.google.com/file/d/1euRdsdIfCKPV6vAb9ZcNOA-3FA_kvlCr/view?usp=sharing)
 
+<iframe src="https://drive.google.com/file/d/1euRdsdIfCKPV6vAb9ZcNOA-3FA_kvlCr/preview" width="640" height="480" allow="autoplay"></iframe>
+
 <!-- [![Watch the screencast](image)](video url) -->
 
 ## For ontology validation at TIB Terminology Service
