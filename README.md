@@ -22,7 +22,7 @@ They are very fine-grained - each sh:PropertyShape tests a specific set of prope
 
 See how you can use online validators with our shape:
 
-[![Watch the screencast](/visualizations/terminology_metadata-00001.jpg)](https://tib.eu/cloud/s/DYxJDbdWBn774bd)
+[![Watch the screencast](/visualizations/terminology_metadata-00001.jpg)](https://av.tib.eu/media/47090)
 <!-- [![Watch the screencast](image)](video url) -->
 
 ## For ontology validation at TIB Terminology Service
