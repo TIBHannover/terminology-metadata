@@ -629,7 +629,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """The ontology should explicitly declare its root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe repsective classes (if any) need to be provided via their identifier.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> ."""@en ;
+        sh:message """The ontology should explicitly declare its root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe respective classes (if any) need to be provided via their identifier.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> ."""@en ;
         sh:name "Ontology root classes"@en ;
     ] ;
 
