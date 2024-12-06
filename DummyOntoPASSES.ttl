@@ -42,7 +42,7 @@
     dcterms:subject <https://purl.org/linsearch/inf> ;
     schema:inLanguage <https://id.loc.gov/vocabulary/iso639-2/deu> ;
     mod:hasFormalityLevel "The DummyOntoPASSES aplies OWL2 EL (cf. https://www.w3.org/TR/2012/REC-owl2-profiles-20121211/#OWL_2_EL)"@en ;
-    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://www.w3.org/ns/formats/Turtle> ;
+    <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle> ;
     <http://purl.org/ontology/bibo/status> "active"@en ;
     doap:repository <https://github.com/StroemPhi/Ontology-Metadata> ;
     <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/DummyOntoPASSES.owl> ;

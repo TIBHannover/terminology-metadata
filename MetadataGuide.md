@@ -2,7 +2,7 @@
 
 Document status: **DRAFT**
 
-Modification date: 2024-05-02
+Modification date: 2025-01-01
 
 Creators and contributors:
 
@@ -13,7 +13,7 @@ Creators and contributors:
 * [Strömert, Philip  (Technische Informationsbibliothek)](https://orcid.org/0000-0002-1595-3213)
 * [Vogt, Lars (Technische Informationsbibliothek)](https://orcid.org/0000-0002-8280-0487)
 
-License: [CC BY 4.0 Deed Attribution 4.0 International ](https://creativecommons.org/licenses/by/4.0/)
+License: [CC BY 4.0 Deed Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)
 
 Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
 
@@ -76,7 +76,7 @@ Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
     * [5.12 Example ontology class](#512-example-ontology-class)
     * [5.13 Ontology mailing list](#513-ontology-mailing-list)
     * [5.14 Ontology logo/ depictions/ related visualization](#514-ontology-logo-depiction-related-visualizations)
-    * [5.15 Related identifiers](#515-related-identifiers)
+    * [5.15 Alternative identifiers of the ontology](#515-alternative-identifiers-of-the-ontology)
     * [5.16 Development environment](#516-development-environment)
     * [5.17 Alignments/ mappings](#517-alignments-mappings)
         * [5.17.1 Aligned resources](#5171-aligned-resources)
@@ -268,6 +268,7 @@ Alternative properties:
 * <https://schema.org/license>
 * <http://creativecommons.org/ns#license>
 * <http://dbpedia.org/ontology/license>
+* <http://purl.org/dc/terms/licence> (is a mis-spelled variant of <http://purl.org/dc/terms/license>)
 
 SHACL validation rules:
 
@@ -648,7 +649,7 @@ SHACL validation rules:
 
 You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) [[6]](#source6) or from the W3C resource Unique URIs for File Formats [[7]](#source7).
 
-Recommended property: <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>
+Recommended property: <https://w3id.org/mod#hasSyntax>
 
 Recommended controlled vocabularies:
 
@@ -667,7 +668,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    omv:hasOntologySyntax <http://www.w3.org/ns/formats/Turtle> .
+    <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle> .
 ```
 
 Alternative properties:
@@ -675,6 +676,7 @@ Alternative properties:
 * <http://purl.org/dc/terms/format>
 * <http://purl.org/dc/elements/1.1/format>
 * <https://schema.org/encodingFormat>
+* <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>
 
 SHACL validation rules:
 
@@ -840,7 +842,7 @@ SHACL validation rules:
 
 ### 4.16 Ontology root classes
 
-You should explicitly declare the ontology's preferred root classes. Display tools like the [TIB Terminology Service][TIB TS] and other OLS-based services [[9]](#source9), [[10]](#source10) can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The repsective classes need to be provided via their identifier.
+You should explicitly declare the ontology's preferred root classes. Display tools like the [TIB Terminology Service][TIB TS] and other OLS-based services [[9]](#source9), [[10]](#source10) can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The respective classes need to be provided via their identifier.
 
 Recommended property: <http://purl.obolibrary.org/obo/IAO_0000700>
 
@@ -1235,9 +1237,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 5.15 Related identifiers
+### 5.15 Alternative identifiers of the ontology
 
-If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata.
+If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata. You should list here alternative URIs that may be used to identify your ontology. The identifier used as the base URI of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri> instead (cf. [5.20 Preferred ontology namespace](#520-preferred-ontology-namespace)).
 
 Recommended property: <http://purl.org/dc/terms/identifier>
 
@@ -1252,6 +1254,7 @@ Alternative properties:
 
 * <http://purl.org/ontology/bibo/doi>
 * <https://schema.org/identifier>
+* <http://purl.org/dc/elements/1.1/identifier>>
 
 SHACL validation rules:
 
@@ -1432,6 +1435,8 @@ SHACL validation rules:
 
 Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21. If you use such textual version information but do not use/have a Version URI, then we strongly recommend to also mint a version URI in which you use the textual version information as variable.
 
+If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. Alternatively, you could add the info to the version notes (cf. [5.24 Version notes](#524-version-notes)).
+
 Recommended property: <http://www.w3.org/2002/07/owl#versionInfo>
 
 Example 1 (text/turtle):
@@ -1448,13 +1453,21 @@ Example 2 (text/turtle):
     owl:versionInfo "1.0.0"^^xsd:string .
 ```
 
+Example 3 (text/turtle)
+:
+
+```Turtle
+<https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
+    owl:versionInfo "Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024."@en.
+```
+
 Alternative properties:
 
 * <http://purl.org/pav/version>
 
 SHACL validation rules:
 
-* `sh:datatype xsd:string`
+* `sh:xone ([sh:datatype xsd:string ;] [sh:datatype rdf:langString ;])`
 * `sh:maxCount 1`
 
 ### 5.24 Version notes
@@ -1503,7 +1516,7 @@ SHACL validation rules:
 | 4.5     | Subject(s)                                       | <http://purl.org/dc/terms/subject>                                            |           | x           |          | 0…*         |
 | 4.6     | Annotation language(s)                           | <http://purl.org/dc/terms/language>                                           |           | x           |          | 0…*         |
 | 4.7     | Applied logical framework                        | <https://w3id.org/mod#hasFormalityLevel>                                      |           | x           |          | 0...1       |
-| 4.8     | Serialization/ file format                       | <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>                  |           | x           |          | 0...1       |
+| 4.8     | Serialization/ file format                       | <https://w3id.org/mod#hasSyntax>                  |           | x           |          | 0...1       |
 | 4.9     | Status                                           | <http://purl.org/ontology/bibo/status>                                        |           | x           |          | 0...1       |
 | 4.10    | Code repository                                  | <http://usefulinc.com/ns/doap#repository>                                     |           | x           |          | 0...1       |
 | 4.11    | Distributions/ products                          | <http://www.w3.org/ns/dcat#distribution>                                      |           | x           |          | 0…*         |

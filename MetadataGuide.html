@@ -367,7 +367,7 @@ code {
   </script>
 <h1 id="ontology-metadata-recommendations-by-tib">Ontology metadata recommendations by TIB</h1>
 <p>Document status: <strong>DRAFT</strong></p>
-<p>Modification date: 2024-05-02</p>
+<p>Modification date: 2025-01-01</p>
 <p>Creators and contributors:</p>
 <!-- * [Last name, First Name  (Affiliation)](https://orcid.org/) -->
 <ul>
@@ -377,7 +377,7 @@ code {
 <li><a href="https://orcid.org/0000-0002-1595-3213">Strömert, Philip  (Technische Informationsbibliothek)</a></li>
 <li><a href="https://orcid.org/0000-0002-8280-0487">Vogt, Lars (Technische Informationsbibliothek)</a></li>
 </ul>
-<p>License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 Deed Attribution 4.0 International </a></p>
+<p>License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 Deed Attribution 4.0 International</a></p>
 <p>Zenodo archive: <a href="https://www.doi.org/10.5281/zenodo.11103071">https://www.doi.org/10.5281/zenodo.11103071</a></p>
 <div style="page-break-after: always;"></div>
 <h2 id="table-of-contents">Table of contents</h2>
@@ -453,7 +453,7 @@ code {
 <li><a href="#512-example-ontology-class">5.12 Example ontology class</a></li>
 <li><a href="#513-ontology-mailing-list">5.13 Ontology mailing list</a></li>
 <li><a href="#514-ontology-logo-depiction-related-visualizations">5.14 Ontology logo/ depictions/ related visualization</a></li>
-<li><a href="#515-related-identifiers">5.15 Related identifiers</a></li>
+<li><a href="#515-alternative-identifiers-of-the-ontology">5.15 Alternative identifiers of the ontology</a></li>
 <li><a href="#516-development-environment">5.16 Development environment</a></li>
 <li><a href="#517-alignments-mappings">5.17 Alignments/ mappings</a>
 <ul>
@@ -691,6 +691,7 @@ code {
 <li><a href="https://schema.org/license">https://schema.org/license</a></li>
 <li><a href="http://creativecommons.org/ns#license">http://creativecommons.org/ns#license</a></li>
 <li><a href="http://dbpedia.org/ontology/license">http://dbpedia.org/ontology/license</a></li>
+<li><a href="http://purl.org/dc/terms/licence">http://purl.org/dc/terms/licence</a> (is a mis-spelled variant of <a href="http://purl.org/dc/terms/license">http://purl.org/dc/terms/license</a>)</li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -962,7 +963,7 @@ code {
 </ul>
 <h3 id="48-ontology-serialization-file-format">4.8 Ontology serialization/ file format</h3>
 <p>You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) <a href="#source6">[6]</a> or from the W3C resource Unique URIs for File Formats <a href="#source7">[7]</a>.</p>
-<p>Recommended property: <a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></p>
+<p>Recommended property: <a href="https://w3id.org/mod#hasSyntax">https://w3id.org/mod#hasSyntax</a></p>
 <p>Recommended controlled vocabularies:</p>
 <ul>
 <li><a href="https://www.w3.org/ns/formats">https://www.w3.org/ns/formats</a></li>
@@ -977,13 +978,14 @@ code {
 <p>Currently, there is no registered media type for obo format.</p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    omv:hasOntologySyntax &lt;http://www.w3.org/ns/formats/Turtle&gt; .
+    &lt;https://w3id.org/mod#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/Turtle&gt; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
 <li><a href="http://purl.org/dc/terms/format">http://purl.org/dc/terms/format</a></li>
 <li><a href="http://purl.org/dc/elements/1.1/format">http://purl.org/dc/elements/1.1/format</a></li>
 <li><a href="https://schema.org/encodingFormat">https://schema.org/encodingFormat</a></li>
+<li><a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -1371,8 +1373,8 @@ code {
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
-<h3 id="515-related-identifiers">5.15 Related identifiers</h3>
-<p>If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata.</p>
+<h3 id="515-alternative-identifiers-of-the-ontology">5.15 Alternative identifiers of the ontology</h3>
+<p>If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata. You should list here alternative URIs that may be used to identify your ontology. The identifier used as the base URI of the ontology should be provided with <a href="http://purl.org/vocab/vann/preferredNamespaceUri">http://purl.org/vocab/vann/preferredNamespaceUri</a> instead (cf. <a href="#520-preferred-ontology-namespace">5.20 Preferred ontology namespace</a>).</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/identifier">http://purl.org/dc/terms/identifier</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
@@ -1382,6 +1384,7 @@ code {
 <ul>
 <li><a href="http://purl.org/ontology/bibo/doi">http://purl.org/ontology/bibo/doi</a></li>
 <li><a href="https://schema.org/identifier">https://schema.org/identifier</a></li>
+<li><a href="http://purl.org/dc/elements/1.1/identifier">http://purl.org/dc/elements/1.1/identifier</a>&gt;</li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -1502,6 +1505,7 @@ code {
 </ul>
 <h3 id="523-textual-version-information">5.23 Textual version information</h3>
 <p>Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21. If you use such textual version information but do not use/have a Version URI, then we strongly recommend to also mint a version URI in which you use the textual version information as variable.</p>
+<p>If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. Alternatively, you could add the info to the version notes (cf. <a href="#524-version-notes">5.24 Version notes</a>).</p>
 <p>Recommended property: <a href="http://www.w3.org/2002/07/owl#versionInfo">http://www.w3.org/2002/07/owl#versionInfo</a></p>
 <p>Example 1 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
@@ -1511,13 +1515,18 @@ code {
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
     owl:versionInfo &quot;1.0.0&quot;^^xsd:string .
 </div></code></pre>
+<p>Example 3 (text/turtle)
+:</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
+    owl:versionInfo &quot;Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024.&quot;@en.
+</div></code></pre>
 <p>Alternative properties:</p>
 <ul>
 <li><a href="http://purl.org/pav/version">http://purl.org/pav/version</a></li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:datatype xsd:string</code></li>
+<li><code>sh:xone ([sh:datatype xsd:string ;] [sh:datatype rdf:langString ;])</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
 <h3 id="524-version-notes">5.24 Version notes</h3>
@@ -1699,7 +1708,7 @@ code {
 <tr>
 <td>4.8</td>
 <td>Serialization/ file format</td>
-<td><a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></td>
+<td><a href="https://w3id.org/mod#hasSyntax">https://w3id.org/mod#hasSyntax</a></td>
 <td></td>
 <td>x</td>
 <td></td>
