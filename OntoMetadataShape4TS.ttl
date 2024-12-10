@@ -738,7 +738,7 @@ Recommended property: https://schema.org/funder
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https://www.purl<span class="hljs-meta">.org</span>/SomeOntology&gt; &lt;https://schema<span class="hljs-meta">.org</span>/funder&gt; &lt;https://<span class="hljs-keyword">ror</span><span class="hljs-meta">.org</span>/<span class="hljs-number">018</span>mejw64&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://schema.org/funder&gt; &lt;https://ror.org/018mejw64&gt; .
 </code></pre>
 </p>
 """@en ;
