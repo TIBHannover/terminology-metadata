@@ -323,7 +323,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: http://www.loc.gov/premis/rdf/v3/documentation."""@en ;
+        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: http://www.loc.gov/premis/rdf/v3/documentation"""@en ;
         sh:name "Ontology documentation"@en ; 
     ] ;
 
@@ -402,7 +402,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (doap:audience schema:audience dcterms:audience)] ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
-        sh:message """The ontology should provide its audience description as an rdf:langString.\nRecommended property: <http://usefulinc.com/ns/doap#audience>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en . """@en ;
+        sh:message """The ontology should provide its audience description as an rdf:langString.\n\nRecommended property: <http://usefulinc.com/ns/doap#audience>\n\nExample statement (text/turtle): &#60;https://www.purl.org/SomeOntology&#62; doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en . """@en ;
         sh:name "Ontology audience description - language"@en ; 
     ] ;
 
