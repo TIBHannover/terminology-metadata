@@ -78,7 +78,25 @@ Recommended property: http://purl.org/dc/terms/title
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:uniqueLang true ;
-        sh:message """The ontology title should be an rdf:langString, i.e. it should have a language tag.\nThere may be only title per language.\nRecommended property: http://purl.org/dc/terms/title.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en ."""@en ;
+        sh:message """
+<p>
+The ontology title should be an rdf:langString, i.e. it should have a language tag.
+</p>
+<p>
+There may be only title per language.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/title
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-symbol">dcterms:</span>title <span class="hljs-string">"Some Ontology"</span><span class="hljs-variable">@en</span> .
+</code></pre>
+</p>
+"""@en ;
+        # sh:message """The ontology title should be an rdf:langString, i.e. it should have a language tag.\nThere may be only title per language.\nRecommended property: http://purl.org/dc/terms/title.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en ."""@en ;
         sh:name "Ontology title - datatype"@en ;
     ] ;
 
@@ -89,7 +107,18 @@ Recommended property: http://purl.org/dc/terms/title
         sh:severity sh:Warning;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not declare its preferred prefix. Please provide it if known.\nIt must not contain hyphens or other special characters and should be written in lowercase.\nRecommended property: http://purl.org/vocab/vann/preferredNamespacePrefix"""@en ;
+        sh:message """
+<p>
+The ontology does not declare its preferred prefix. Please provide it if known.
+</p>
+<p>
+It must not contain hyphens or other special characters and should be written in lowercase.
+</p>
+<p>
+Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
+</p>
+"""@en ;
+        # sh:message """The ontology does not declare its preferred prefix. Please provide it if known.\nIt must not contain hyphens or other special characters and should be written in lowercase.\nRecommended property: http://purl.org/vocab/vann/preferredNamespacePrefix"""@en ;
         sh:name "Preferred ontology prefix/ acronym"@en ;
     ] ;
 
@@ -97,7 +126,22 @@ Recommended property: http://purl.org/dc/terms/title
         sh:path [sh:alternativePath (<http://purl.org/vocab/vann/preferredNamespacePrefix> <https://w3id.org/mod#acronym>)];
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
-        sh:message """The ontology should declare its preferred namespace prefix or acronym as an xsd:string.\nRecommended property: http://purl.org/vocab/vann/preferredNamespacePrefix\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string ."""@en ;
+        sh:message """
+<p>
+The ontology should declare its preferred namespace prefix or acronym as an xsd:string.
+</p>
+<p>
+Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; vann:preferredNamespacePrefix "so"^^xsd:string .</span>
+</code></pre>
+</p>
+"""@en ;
+        # sh:message """The ontology should declare its preferred namespace prefix or acronym as an xsd:string.\nRecommended property: http://purl.org/vocab/vann/preferredNamespacePrefix\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string ."""@en ;
         sh:name "Preferred ontology prefix/ acronym - datatype"@en ;
     ] ;
 
@@ -182,7 +226,15 @@ Recommended property: http://purl.org/dc/terms/title
 
             # [sh:hasValue <> ;] 
             );
-        sh:message """The ontology does not declare its own license. Please provide it, if known.\nRecommended property: http://purl.org/dc/terms/license"""@en ;
+        sh:message """
+<p>
+The ontology does not declare its own license. Please provide it, if known.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/license
+</p>
+"""@en ;
+        # sh:message """The ontology does not declare its own license. Please provide it, if known.\nRecommended property: http://purl.org/dc/terms/license"""@en ;
         sh:name "Ontology license"@en ;
     ] ;
 
@@ -212,7 +264,40 @@ Recommended property: http://purl.org/dc/terms/title
         sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
         sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
         # sh:not [sh:hasValue <> ;] ; 
-        sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nIt must be provided with an open ontology license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: http://purl.org/dc/terms/license\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
+        sh:message """
+<p>
+The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition: https://opendefinition.org/licenses/
+</p>
+<p>
+It must be provided with an open ontology license in order to be added to TIB Terminology Service.
+</p>
+<p>
+The license must be given as an IRI.
+</p>
+<p>
+The following licenses are not accepted at TIB Terminology Service:
+</p>
+<p>
+<ul>
+<li><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode</a></li>
+<li><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode</a></li>
+<li><a href="https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode">https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode</a></li>
+<li><a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode">https://creativecommons.org/licenses/by-nd/4.0/legalcode</a></li>
+<li><a href="https://creativecommons.org/licenses/by-nd/3.0/de/legalcode">https://creativecommons.org/licenses/by-nd/3.0/de/legalcode</a></li>
+</ul>
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/license
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:license &lt;http:/</span><span class="hljs-regexp">/creativecommons.org/</span>licenses<span class="hljs-regexp">/by/</span><span class="hljs-number">4.0</span><span class="hljs-regexp">/&gt; .</span>
+</code></pre>
+</p>
+"""@en ;
+        # sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nIt must be provided with an open ontology license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: http://purl.org/dc/terms/license\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
         sh:name "Ontology license"@en ;
     ] ;
 
