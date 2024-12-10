@@ -1410,7 +1410,9 @@ Recommended property: http://www.w3.org/ns/dcat#distribution
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; &lt;http://www.w3.org/ns/dcat#distribution&gt; </span>
+<pre>
+    <code class="lang-Turtle">
+    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt;  </span> &lt;<span class="hljs-string">http:</span><span class="hljs-comment">//www.w3.org/ns/dcat#distribution&gt; </span>
     &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.owl&gt;, </span>
     &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.json&gt;, </span>
     &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.ttl&gt; .</span>
