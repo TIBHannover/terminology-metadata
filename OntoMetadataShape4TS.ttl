@@ -174,7 +174,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
 
             # [sh:hasValue <> ;] 
             );
-        sh:message """The ontology does not declare its own license. Please provide it, if known.\nRecommended property: \"http://purl.org/dc/terms/license\""""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not declare its own license. Please provide it, if known.\nRecommended property: http://purl.org/dc/terms/license"""@en ;
         sh:name "Ontology license"@en ;
     ] ;
 
@@ -204,7 +204,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
         sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
         # sh:not [sh:hasValue <> ;] ; 
-        sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nIt must be provided with an open ontology license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: \"http://purl.org/dc/terms/license\"\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
+        sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nIt must be provided with an open ontology license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: http://purl.org/dc/terms/license\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
         sh:name "Ontology license"@en ;
     ] ;
 
@@ -214,7 +214,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Warning ;
         sh:minCount 1;
-        sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available.\nRecommended property: \"http://purl.org/dc/terms/creator\n"""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available.\nRecommended property: http://purl.org/dc/terms/creator"""@en ; # optimized message for current TIB TS 
         sh:name "Ontology creator(s)"@en ;
     ] ;
 
@@ -223,7 +223,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI; 
-        sh:message """The ontology should provide its creators as IRIs, in particular persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: \"http://purl.org/dc/terms/creator\"\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" ."""@en ;
+        sh:message """The ontology should provide its creators as IRIs, in particular persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: http://purl.org/dc/terms/creator\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" ."""@en ;
         sh:name "Ontology creator(s) - datatype"@en ;
     ] ;
 
@@ -236,7 +236,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not declare a versionIRI. Please provide it, if known.\nRecommended property: \"http://www.w3.org/2002/07/owl#versionIRI\""""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not declare a versionIRI. Please provide it, if known.\nRecommended property: http://www.w3.org/2002/07/owl#versionIRI"""@en ; # optimized message for current TIB TS 
         sh:name "Ontology version IRI"@en ;
     ] ;
 
@@ -244,7 +244,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path  owl:versionIRI ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI;
-        sh:message """The ontology should state its versionIRI as an IRI. It should not be given as a string or literal.\nRecommended property: \"http://www.w3.org/2002/07/owl#versionIRI\"\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/1.0.0>.\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/2019-12-31> .\nExample statement 3 (text/turtle): <http://purl.obolibrary.org/obo/pco.owl> <http://www.w3.org/2002/07/owl#versionIRI> <http://purl.obolibrary.org/obo/pco/releases/2021-05-03/pco.owl> ."""@en ;
+        sh:message """The ontology should state its versionIRI as an IRI. It should not be given as a string or literal.\nRecommended property: http://www.w3.org/2002/07/owl#versionIRI\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/1.0.0>.\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/2019-12-31> .\nExample statement 3 (text/turtle): <http://purl.obolibrary.org/obo/pco.owl> <http://www.w3.org/2002/07/owl#versionIRI> <http://purl.obolibrary.org/obo/pco/releases/2021-05-03/pco.owl> ."""@en ;
         sh:name "Ontology version IRI - datatype"@en ;
     ] ;
 
@@ -255,7 +255,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:maxCount 1 ;
-        sh:message """The ontology does not declare its creation date. Please provide it, if known. Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44).\nRecommended property: \"http://purl.org/dc/terms/created\""""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not declare its creation date. Please provide it, if known. Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44).\nRecommended property: http://purl.org/dc/terms/created"""@en ; # optimized message for current TIB TS 
         sh:name "Ontology creation date"@en ;
     ] ;
 
@@ -263,7 +263,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn prov:generatedAtTime )] ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
-        sh:message """The ontology should provide its creation date in xsd:dateTime format.\nRecommended property: \"http://purl.org/dc/terms/created\"\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:created \"2020-11-19T00:00:00\"^^xsd:dateTime ."""@en ; 
+        sh:message """The ontology should provide its creation date in xsd:dateTime format.\nRecommended property: http://purl.org/dc/terms/created\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:created \"2020-11-19T00:00:00\"^^xsd:dateTime ."""@en ; 
         sh:name "Ontology creation date - datatype"@en ; 
     ] ;
 
@@ -274,7 +274,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
-        sh:message """The ontology does not contain an abstract. Please provide it, if knwon. The ontology abstract should not be longer than 500 characters.\nRecommended property: \"http://purl.org/dc/terms/abstract\""""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not contain an abstract. Please provide it, if knwon. The ontology abstract should not be longer than 500 characters.\nRecommended property: http://purl.org/dc/terms/abstract"""@en ; # optimized message for current TIB TS 
         sh:name "Ontology abstract"@en ;
     ] ;
 
@@ -283,7 +283,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal ;
         sh:datatype rdf:langString ;
-        sh:message """The ontology should provide its abstract as an rdf:langString.\nRecommended property: \"http://purl.org/dc/terms/abstract\"\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:abstract \"SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain.\"@en , \"SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun.\"@de ."""@en ;
+        sh:message """The ontology should provide its abstract as an rdf:langString.\nRecommended property: http://purl.org/dc/terms/abstract\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:abstract \"SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain.\"@en , \"SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun.\"@de ."""@en ;
         sh:name "Ontology abstract - language"@en ;
     ] ;
 
@@ -299,7 +299,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
         sh:severity sh:Info ;
         sh:maxLength 500 ; 
-        sh:message """The ontology should limit its abstract size to 500 characters maximum.\nThe TIB Terminology Service requires short ontology descriptions for a user-friendly ontology list.\nTo provide more information about the ontology, add an additional description (recommended property: \"http://purl.org/dc/terms/description\") or add a reference to a related article (recommended property: \"http://purl.org/dc/terms/isReferencedBy\")."""@en ;
+        sh:message """The ontology should limit its abstract size to 500 characters maximum.\nThe TIB Terminology Service requires short ontology descriptions for a user-friendly ontology list.\nTo provide more information about the ontology, add an additional description (recommended property: http://purl.org/dc/terms/description) or add a reference to a related article (recommended property: http://purl.org/dc/terms/isReferencedBy)."""@en ;
         sh:name "Ontology abstract - length"@en ;
     ] ;
 
@@ -311,7 +311,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not contain the link to its issue tracker. Please provide it if available and known.\nRecommended property: \"http://usefulinc.com/ns/doap#bug-database\""""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not contain the link to its issue tracker. Please provide it if available and known.\nRecommended property: http://usefulinc.com/ns/doap#bug-database"""@en ; # optimized message for current TIB TS 
         sh:name "Ontology issue tracker"@en ;
     ] ;
 
@@ -323,7 +323,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: \"http://www.loc.gov/premis/rdf/v3/documentation\"."""@en ;
+        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: http://www.loc.gov/premis/rdf/v3/documentation."""@en ;
         sh:name "Ontology documentation"@en ; 
     ] ;
 
