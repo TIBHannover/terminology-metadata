@@ -323,7 +323,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: \"http://www.loc.gov/premis/rdf/v3/documentation\"."""@en ; # optimized message for current TIB TS
+        sh:message """The ontology does not contain the link to its documentation. Please provide it, if known.\nRecommended property: \"http://www.loc.gov/premis/rdf/v3/documentation\"."""@en ;
         sh:name "Ontology documentation"@en ; 
     ] ;
 
