@@ -419,7 +419,8 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
 The ontology should provide ontology subjects with IRIs from controlled vocabularies or ontologies.
 </p>
 <p>
-You can search for fitting terms on TIB Terminology Service https://terminology.tib.eu.
+You can search for fitting terms on TIB Terminology Service https://terminology.tib.eu
+.
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/subject
