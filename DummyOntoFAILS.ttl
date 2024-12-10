@@ -11,6 +11,7 @@
 
 
 <https://www.purl.org/ontologymetadata/DummyOntoFAILS> rdf:type owl:Ontology ;
-dcterms:license <https://creativecommons.org/licenses/by-nd/3.0/de/legalcode>.
+dcterms:license <https://creativecommons.org/licenses/by-nd/3.0/de/legalcode> ;
+dcterms:creator "John Doe" .
 
 <https://www.purl.org/ontologymetadata/DummyOntoFAILS#1> a owl:Class .
