@@ -92,11 +92,11 @@ Recommended property: http://purl.org/dc/terms/title
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-symbol">dcterms:</span>title <span class="hljs-string">"Some Ontology"</span><span class="hljs-variable">@en</span> .
+<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>dc<span class="hljs-regexp">/terms/</span>title&gt; <span class="hljs-string">"Some Ontology"</span>@en .
 </code></pre>
 </p>
 """@en ;
-        # sh:message """The ontology title should be an rdf:langString, i.e. it should have a language tag.\nThere may be only one title per language.\nRecommended property: http://purl.org/dc/terms/title.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en ."""@en ;
+        # sh:message """The ontology title should be an rdf:langString, i.e. it should have a language tag.\nThere may be only one title per language.\nRecommended property: http://purl.org/dc/terms/title.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/title> \"Some Ontology\"@en ."""@en ;
         sh:name "Ontology title - datatype"@en ;
     ] ;
 
@@ -137,11 +137,11 @@ Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; vann:preferredNamespacePrefix "so"^^xsd:string .</span>
+<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>vocab<span class="hljs-regexp">/vann/</span>preferredNamespacePrefix&gt; <span class="hljs-string">"so"</span>^^xsd:string .
 </code></pre>
 </p>
 """@en ;
-        # sh:message """The ontology should declare its preferred namespace prefix or acronym as an xsd:string.\nRecommended property: http://purl.org/vocab/vann/preferredNamespacePrefix\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string ."""@en ;
+        # sh:message """The ontology should declare its preferred namespace prefix or acronym as an xsd:string.\nRecommended property: http://purl.org/vocab/vann/preferredNamespacePrefix\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/vocab/vann/preferredNamespacePrefix> \"so\"^^xsd:string ."""@en ;
         sh:name "Preferred ontology prefix/ acronym - datatype"@en ;
     ] ;
 
@@ -303,11 +303,11 @@ Recommended property: http://purl.org/dc/terms/license
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:license &lt;http:/</span><span class="hljs-regexp">/creativecommons.org/</span>licenses<span class="hljs-regexp">/by/</span><span class="hljs-number">4.0</span><span class="hljs-regexp">/&gt; .</span>
+<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>dc<span class="hljs-regexp">/terms/</span>license&gt; &lt;http:<span class="hljs-regexp">//</span>creativecommons.org<span class="hljs-regexp">/licenses/</span>by<span class="hljs-regexp">/4.0/</span>&gt; .
 </code></pre>
 </p>
 """@en ;
-        # sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nThe ontology must be provided with an open license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: http://purl.org/dc/terms/license\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
+        # sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nThe ontology must be provided with an open license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: http://purl.org/dc/terms/license\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
         sh:name "Ontology license"@en ;
     ] ;
 
@@ -868,7 +868,6 @@ Example statement (text/turtle):
     <span class="hljs-meta">@en</span> .
     </code>
 </pre>
-
 </p>
 """@en ;
         # sh:message """The ontology should describe its intended audience.\nThe audience description should be a short, language-tagged text.\nRecommended property: <http://usefulinc.com/ns/doap#audience>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en ."""@en ;
@@ -1573,11 +1572,15 @@ Recommended property: http://purl.obolibrary.org/obo/IAO_0000700
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; obo:IAO_0000700 &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOntology<span class="hljs-regexp">/12345654544545&gt; .</span>
-</code></pre>
+<pre>
+    <code class="lang-Turtle">
+    &lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.obolibrary.org/</span>obo<span class="hljs-regexp">/IAO_0000700&gt; &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOntology<span class="hljs-regexp">/12345654544545&gt; .</span>
+    </code>
+</pre>
+
 </p>
 """@en ;
-        # sh:message """The ontology should explicitly declare its root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe respective classes (if any) need to be provided via their identifier.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> ."""@en ;
+        # sh:message """The ontology should explicitly declare its root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe respective classes (if any) need to be provided via their identifier.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.obolibrary.org/obo/IAO_0000700> <https://www.purl.org/SomeOntology/12345654544545> ."""@en ;
         sh:name "Ontology root classes"@en ;
     ] ;
 
