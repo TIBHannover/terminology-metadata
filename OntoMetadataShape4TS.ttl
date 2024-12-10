@@ -279,11 +279,11 @@ The following licenses are not accepted at TIB Terminology Service:
 </p>
 <p>
 <ul>
-<li><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode</a></li>
-<li><a href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode</a></li>
-<li><a href="https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode">https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode</a></li>
-<li><a href="https://creativecommons.org/licenses/by-nd/4.0/legalcode">https://creativecommons.org/licenses/by-nd/4.0/legalcode</a></li>
-<li><a href="https://creativecommons.org/licenses/by-nd/3.0/de/legalcode">https://creativecommons.org/licenses/by-nd/3.0/de/legalcode</a></li>
+<li>https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode</li>
+<li>https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode</li>
+<li>https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode</li>
+<li>https://creativecommons.org/licenses/by-nd/4.0/legalcode</li>
+<li>https://creativecommons.org/licenses/by-nd/3.0/de/legalcode</li>
 </ul>
 </p>
 <p>
@@ -307,7 +307,27 @@ Example statement (text/turtle):
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Warning ;
         sh:minCount 1;
-        sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available.\nRecommended property: http://purl.org/dc/terms/creator"""@en ; # optimized message for current TIB TS 
+        sh:message """
+<p>
+The ontology does not name its creators. Please provide them if known.
+</p>
+<p>
+This information is required for licenses that require attribution.
+</p>
+<p>
+Use ORCID, ROR or comparable identifiers for people and organisations if available:
+</p>
+<p>
+<ul>
+<li>https://orcid.org/</li>
+<li>https://ror.org/</li>
+</ul>
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/creator
+</p>
+"""@en ;
+        # sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available.\nRecommended property: http://purl.org/dc/terms/creator"""@en ;
         sh:name "Ontology creator(s)"@en ;
     ] ;
 
@@ -316,7 +336,41 @@ Example statement (text/turtle):
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI; 
-        sh:message """The ontology should provide its creators as IRIs, in particular persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: http://purl.org/dc/terms/creator\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" ."""@en ;
+        sh:message """
+<p>
+The ontology should provide its creators as IRIs, in particular persistent identifiers (PIDs) should be used wherever possible, e.g. ORCiDs for persons and RORs for organisations.
+</p>
+<p>
+If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/creator
+</p>
+<p>
+Example statement 1 (text/turtle):
+</p>
+<p>
+<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/creator</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt;.
+&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span><span class="hljs-keyword">type</span> <span class="hljs-symbol">foaf:</span>Person .
+</code></pre>
+</p>
+<p>
+Plain name strings could be provided in addition (for readability).
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/creator</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt;.
+
+&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span>type <span class="hljs-symbol">foaf:</span>Person ;
+    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/first</span>Name&gt; <span class="hljs-string">"Max"</span> ;
+    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/last</span>Name&gt; <span class="hljs-string">"Muster"</span> .
+</code></pre>
+
+</p>
+"""@en ;
+        # sh:message """The ontology should provide its creators as IRIs, in particular persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: http://purl.org/dc/terms/creator\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> \"Max\" ;\n        <http://xmlns.com/foaf/0.1/lastName> \"Muster\" ."""@en ;
         sh:name "Ontology creator(s) - datatype"@en ;
     ] ;
 
