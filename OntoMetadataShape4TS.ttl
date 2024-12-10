@@ -413,7 +413,26 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path dcterms:subject ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
-        sh:message """The ontology should provide some keywords to describe its subject(s).\nIt is recommended to use identifiers of controlled vocabularies or ontologies to do so.\nYou can search for fitting terms on TIB Terminology Service (https://terminology.tib.eu).\nRecommended property: http://purl.org/dc/terms/subject\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>."""@en ;
+        # sh:message """The ontology should provide some keywords to describe its subject(s).\nIt is recommended to use identifiers of controlled vocabularies or ontologies to do so.\nYou can search for fitting terms on TIB Terminology Service (https://terminology.tib.eu).\nRecommended property: http://purl.org/dc/terms/subject\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:subject <https://d-nb.info/gnd/4067537-3>, <https://d-nb.info/gnd/4070177-3>, <http://uri.gbv.de/terminology/bk/42.15>, <https://github.com/tibonto/dfgfo/201-03>."""@en ;
+        sh:message """
+<p>
+The ontology should provide ontology subjects with IRIs from controlled vocabularies or ontologies.
+</p>
+<p>
+You can search for fitting terms on TIB Terminology Service https://terminology.tib.eu.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/subject
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<pre>
+<code class="lang-Turtle">
+&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:subject &lt;https:/</span><span class="hljs-regexp">/d-nb.info/g</span>nd<span class="hljs-regexp">/4067537-3&gt;, &lt;https:/</span><span class="hljs-regexp">/d-nb.info/g</span>nd<span class="hljs-regexp">/4070177-3&gt;, &lt;http:/</span><span class="hljs-regexp">/uri.gbv.de/</span>terminology<span class="hljs-regexp">/bk/</span><span class="hljs-number">42.15</span>&gt;, &lt;https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/tibonto/</span>dfgfo<span class="hljs-regexp">/201-03&gt; .</span>
+</code>
+</pre>
+"""@en ;
         sh:name "Ontology subject(s)"@en ;
     ] ;
 
