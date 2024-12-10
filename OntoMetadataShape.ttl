@@ -335,7 +335,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        # sh:message """The ontology does not contain the link to its issue tracker. Please provide if available and known."""@en ; # optimized message for current TIB TS 
         sh:message """You must provide an IRI for the ontology's issue tracker or another location where bugs and suggestions for the ontology can be reported.\nRecommended property: <http://usefulinc.com/ns/doap#bug-database>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:bug-database <https://github.com/SomeOrganisation/SomeOntology/issues> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology references an issue tracker on its repository (e.g. at GitLab or GitHub). It creates a warning message, if it does not."@en ;
         sh:name "Ontology issue tracker"@en ;

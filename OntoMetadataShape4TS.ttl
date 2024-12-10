@@ -311,7 +311,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:message """The ontology does not contain the link to its issue tracker. Please provide it if available and known.\nRecommended property: <http://usefulinc.com/ns/doap#bug-database>"""@en ; # optimized message for current TIB TS 
+        sh:message """The ontology does not contain the link to its issue tracker. Please provide it if available and known.\nRecommended property: http://usefulinc.com/ns/doap#bug-database"""@en ; # optimized message for current TIB TS 
         sh:name "Ontology issue tracker"@en ;
     ] ;
 
