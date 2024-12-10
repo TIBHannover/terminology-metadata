@@ -61,7 +61,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title schema:name schema:headline) ] ; 
         sh:severity sh:Warning ;
         sh:minCount 1 ;
-        sh:message """The ontology does not include its own title. Please provide it if known.\nRecommended property: \"http://purl.org/dc/terms/title\"."""@en ;
+        sh:message """The ontology does not include its own title. Please provide it if known.\nRecommended property: http://purl.org/dc/terms/title"""@en ;
         sh:name "Ontology title"@en ;
     ] ;
 
@@ -70,7 +70,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:uniqueLang true ;
-        sh:message """The ontology title should be an rdf:langString, i.e. it should have a language tag.\nThere may be only title per language.\nRecommended property: \"http://purl.org/dc/terms/title\".\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en ."""@en ;
+        sh:message """The ontology title should be an rdf:langString, i.e. it should have a language tag.\nThere may be only title per language.\nRecommended property: http://purl.org/dc/terms/title.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en ."""@en ;
         sh:name "Ontology title - datatype"@en ;
     ] ;
 
