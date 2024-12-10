@@ -1410,13 +1410,14 @@ Recommended property: http://www.w3.org/ns/dcat#distribution
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; dcat:distribution &lt;https://www.purl.org/SomeOntology.owl&gt;, </span>
+<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; &lt;http://www.w3.org/ns/dcat#distribution&gt; </span>
+    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.owl&gt;, </span>
     &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.json&gt;, </span>
     &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.ttl&gt; .</span>
 </code></pre>
 </p>
 """@en ;
-        # sh:message """The ontology should provide IRIs to its available alternative serializations or distributions.\nRecommended property: <http://www.w3.org/ns/dcat#distribution>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcat:distribution <https://www.purl.org/SomeOntology.owl>, <https://www.purl.org/SomeOntology.json>, <https://www.purl.org/SomeOntology.ttl> ."""@en ;
+        # sh:message """The ontology should provide IRIs to its available alternative serializations or distributions.\nRecommended property: <http://www.w3.org/ns/dcat#distribution>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/SomeOntology.owl>, <https://www.purl.org/SomeOntology.json>, <https://www.purl.org/SomeOntology.ttl> ."""@en ;
         sh:name "Ontology distributions/ products"@en ;
    ] ; 
 
