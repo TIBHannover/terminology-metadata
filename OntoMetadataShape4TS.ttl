@@ -860,8 +860,15 @@ Recommended property: http://usefulinc.com/ns/doap#audience
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https://www.purl.org/SomeOntology&gt; doap:audience "This ontology <span class="hljs-keyword">is</span> intended <span class="hljs-keyword">for</span> researchers <span class="hljs-keyword">in</span> derivational morphology, a branch <span class="hljs-keyword">of</span> linguistics."@en .
-</code></pre>
+<pre>
+    <code class="lang-Turtle">
+    <span class="hljs-variable">&lt;https://www.purl.org/SomeOntology&gt;</span>
+    <span class="hljs-variable">&lt;http://usefulinc.com/ns/doap#audience&gt;</span>
+    <span class="hljs-string">"This ontology is intended for researchers in derivational morphology, a branch of linguistics."</span>
+    <span class="hljs-meta">@en</span> .
+    </code>
+</pre>
+
 </p>
 """@en ;
         # sh:message """The ontology should describe its intended audience.\nThe audience description should be a short, language-tagged text.\nRecommended property: <http://usefulinc.com/ns/doap#audience>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> doap:audience \"This ontology is intended for researchers in derivational morphology, a branch of linguistics.\"@en ."""@en ;
