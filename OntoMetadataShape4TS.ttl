@@ -92,7 +92,7 @@ Recommended property: http://purl.org/dc/terms/title
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>dc<span class="hljs-regexp">/terms/</span>title&gt; <span class="hljs-string">"Some Ontology"</span>@en .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/title&gt; &quot;Some Ontology&quot;@en .
 </code></pre>
 </p>
 """@en ;
@@ -137,7 +137,7 @@ Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>vocab<span class="hljs-regexp">/vann/</span>preferredNamespacePrefix&gt; <span class="hljs-string">"so"</span>^^xsd:string .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/vocab/vann/preferredNamespacePrefix&gt; "so"^^xsd:string .
 </code></pre>
 </p>
 """@en ;
@@ -303,7 +303,11 @@ Recommended property: http://purl.org/dc/terms/license
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>dc<span class="hljs-regexp">/terms/</span>license&gt; &lt;http:<span class="hljs-regexp">//</span>creativecommons.org<span class="hljs-regexp">/licenses/</span>by<span class="hljs-regexp">/4.0/</span>&gt; .
+<pre>
+    <code class="language-Turtle">
+        &lt;https://www.purl.org/SomeOntology&gt; 
+        &lt;http://purl.org/dc/terms/license&gt; 
+        &lt;http://creativecommons.org/licenses/by/4.0/&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -364,8 +368,8 @@ Recommended property: http://purl.org/dc/terms/creator
 Example statement 1 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/creator</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt;.
-&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span><span class="hljs-keyword">type</span> <span class="hljs-symbol">foaf:</span>Person .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt;.
+&lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person .
 </code></pre>
 </p>
 <p>
@@ -375,11 +379,11 @@ Plain name strings could be provided in addition (for readability).
 Example statement 2 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/creator</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt;.
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt;.
 
-&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span>type <span class="hljs-symbol">foaf:</span>Person ;
-    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/first</span>Name&gt; <span class="hljs-string">"Max"</span> ;
-    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/last</span>Name&gt; <span class="hljs-string">"Muster"</span> .
+&lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person ;
+    &lt;http://xmlns.com/foaf/0.1/firstName&gt; "Max" ;
+    &lt;http://xmlns.com/foaf/0.1/lastName&gt; "Muster" .
 </code></pre>
 
 </p>
@@ -424,21 +428,21 @@ Recommended property: http://www.w3.org/2002/07/owl#versionIRI
 Example statement 1 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/www.w3.org/</span><span class="hljs-number">2002</span><span class="hljs-regexp">/07/</span>owl<span class="hljs-comment">#versionIRI&gt; &lt;https://www.purl.org/SomeOntology/1.0.0&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://www.w3.org/2002/07/owl#versionIRI&gt; &lt;https://www.purl.org/SomeOntology/1.0.0&gt; .
 </code></pre>
 </p>
 <p>
 Example statement 2 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/www.w3.org/</span><span class="hljs-number">2002</span><span class="hljs-regexp">/07/</span>owl<span class="hljs-comment">#versionIRI&gt; &lt;https://www.purl.org/SomeOntology/2019-12-31&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://www.w3.org/2002/07/owl#versionIRI&gt; &lt;https://www.purl.org/SomeOntology/2019-12-31&gt; .
 </code></pre>
 </p>
 <p>
 Example statement 3 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http:<span class="hljs-regexp">//</span>purl.obolibrary.org<span class="hljs-regexp">/obo/</span>pco.owl&gt; &lt;http:<span class="hljs-regexp">//</span>www.w3.org<span class="hljs-regexp">/2002/</span><span class="hljs-number">07</span><span class="hljs-regexp">/owl#versionIRI&gt; &lt;http:/</span><span class="hljs-regexp">/purl.obolibrary.org/</span>obo<span class="hljs-regexp">/pco/</span>releases<span class="hljs-regexp">/2021-05-03/</span>pco.owl&gt; .
+<pre><code class="language-Turtle">&lt;http://purl.obolibrary.org/obo/pco.owl&gt; &lt;http://www.w3.org/2002/07/owl#versionIRI&gt; &lt;http://purl.obolibrary.org/obo/pco/releases/2021-05-03/pco.owl&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -483,7 +487,7 @@ Recommended property: http://purl.org/dc/terms/created
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-keyword">https</span>://www.purl.org/SomeOntology&gt; dcterms:created <span class="hljs-string">"2020-11-19T00:00:00"</span>^^xsd:<span class="hljs-keyword">dateTime</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:created "2020-11-19T00:00:00"^^xsd:dateTime .
 </code></pre>
 </p>
 """@en ;
@@ -529,9 +533,9 @@ Recommended property: http://purl.org/dc/terms/abstract
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; dcterms:abstract </span>
-    <span class="hljs-string">"SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain."</span><span class="hljs-meta">@en</span> , 
-    <span class="hljs-string">"SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun."</span><span class="hljs-meta">@de</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:abstract 
+    "SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain."@en , 
+    "SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun."@de .
 </code></pre>
 
 </p>
@@ -646,8 +650,8 @@ Recommended property: http://purl.org/dc/terms/contributor
 Example statement 1 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/contributor</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; .
-&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span><span class="hljs-keyword">type</span> <span class="hljs-symbol">foaf:</span>Person .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/contributor&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt; .
+&lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person .
 </code></pre>
 </p>
 <p>
@@ -657,10 +661,10 @@ Plain name strings can be provided in addition (for readability).
 Example statement 2 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/contributor</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt;.
-&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span>type <span class="hljs-symbol">foaf:</span>Person ;
-    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/first</span>Name&gt; <span class="hljs-string">"Max"</span> ;
-    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/last</span>Name&gt; <span class="hljs-string">"Muster"</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/contributor&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt;.
+&lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person ;
+    &lt;http://xmlns.com/foaf/0.1/firstName&gt; "Max" ;
+    &lt;http://xmlns.com/foaf/0.1/lastName&gt; "Muster" .
 </code></pre>
 </p>
 """@en ;
@@ -686,8 +690,8 @@ Recommended property: http://purl.org/dc/terms/contributor
 Example statement 1 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/contributor</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt;.
-&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span><span class="hljs-keyword">type</span> <span class="hljs-symbol">foaf:</span>Person .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/contributor&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt;.
+&lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person .
 </code></pre>
 </p>
 <p>
@@ -697,10 +701,10 @@ Plain name strings could be provided in addition (for readability).
 Example statement 2 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/purl.org/dc</span><span class="hljs-regexp">/terms/contributor</span>&gt; &lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; .
-&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/orcid.org/</span><span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>-<span class="hljs-number">0000</span>&gt; <span class="hljs-symbol">rdf:</span>type <span class="hljs-symbol">foaf:</span>Person ; 
-    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/first</span>Name&gt; <span class="hljs-string">"Max"</span> ;
-    &lt;<span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/xmlns.com/foaf</span><span class="hljs-regexp">/0.1/last</span>Name&gt; <span class="hljs-string">"Muster"</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/contributor&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt; .
+&lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person ; 
+    &lt;http://xmlns.com/foaf/0.1/firstName&gt; "Max" ;
+    &lt;http://xmlns.com/foaf/0.1/lastName&gt; "Muster" .
 </code></pre>
 </p>
 """@en ;
@@ -774,7 +778,7 @@ Recommended property: https://schema.org/funder
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https://www.purl<span class="hljs-meta">.org</span>/SomeOntology&gt; &lt;https://schema<span class="hljs-meta">.org</span>/funder&gt; &lt;https://<span class="hljs-keyword">ror</span><span class="hljs-meta">.org</span>/<span class="hljs-number">018</span>mejw64&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://schema.org/funder&gt; &lt;https://ror.org/018mejw64&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -804,7 +808,7 @@ Recommended property: https://schema.org/funding
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;https:/</span><span class="hljs-regexp">/schema.org/</span>funding&gt; &lt;https:<span class="hljs-regexp">//</span>doi.org<span class="hljs-regexp">/00.00000/</span><span class="hljs-number">000000000</span>&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://schema.org/funding&gt; &lt;https://doi.org/00.00000/000000000&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -830,7 +834,7 @@ Recommended property: https://schema.org/funding
 Example statement (text/turtle): 
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;https:/</span><span class="hljs-regexp">/schema.org/</span>funding&gt; &lt;https:<span class="hljs-regexp">//</span>doi.org<span class="hljs-regexp">/00.00000/</span><span class="hljs-number">000000000</span>&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://schema.org/funding&gt; &lt;https://doi.org/00.00000/000000000&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -861,11 +865,11 @@ Example statement (text/turtle):
 </p>
 <p>
 <pre>
-    <code class="lang-Turtle">
-    <span class="hljs-variable">&lt;https://www.purl.org/SomeOntology&gt;</span>
-    <span class="hljs-variable">&lt;http://usefulinc.com/ns/doap#audience&gt;</span>
-    <span class="hljs-string">"This ontology is intended for researchers in derivational morphology, a branch of linguistics."</span>
-    <span class="hljs-meta">@en</span> .
+    <code class="language-Turtle">
+    &lt;https://www.purl.org/SomeOntology&gt;
+    &lt;http://usefulinc.com/ns/doap#audience&gt;
+    "This ontology is intended for researchers in derivational morphology, a branch of linguistics."
+    @en .
     </code>
 </pre>
 </p>
@@ -890,7 +894,7 @@ Recommended property: http://usefulinc.com/ns/doap#audience
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https://www.purl.org/SomeOntology&gt; doap:audience "This ontology <span class="hljs-keyword">is</span> intended <span class="hljs-keyword">for</span> researchers <span class="hljs-keyword">in</span> derivational morphology, a branch <span class="hljs-keyword">of</span> linguistics."@en .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; doap:audience "This ontology is intended for researchers in derivational morphology, a branch of linguistics."@en .
 </code></pre>
 </p>
 """@en ;
@@ -920,8 +924,8 @@ Recommended property: http://purl.org/dc/terms/subject
 Example statement (text/turtle):
 </p>
 <pre>
-<code class="lang-Turtle">
-&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:subject &lt;https:/</span><span class="hljs-regexp">/d-nb.info/g</span>nd<span class="hljs-regexp">/4067537-3&gt;, &lt;https:/</span><span class="hljs-regexp">/d-nb.info/g</span>nd<span class="hljs-regexp">/4070177-3&gt;, &lt;http:/</span><span class="hljs-regexp">/uri.gbv.de/</span>terminology<span class="hljs-regexp">/bk/</span><span class="hljs-number">42.15</span>&gt;, &lt;https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/tibonto/</span>dfgfo<span class="hljs-regexp">/201-03&gt; .</span>
+<code class="language-Turtle">
+&lt;https://www.purl.org/SomeOntology&gt; dcterms:subject &lt;https://d-nb.info/gnd/4067537-3&gt;, &lt;https://d-nb.info/gnd/4070177-3&gt;, &lt;http://uri.gbv.de/terminology/bk/42.15&gt;, &lt;https://github.com/tibonto/dfgfo/201-03&gt; .
 </code>
 </pre>
 """@en ;
@@ -946,11 +950,11 @@ Recommended property: http://purl.org/dc/terms/subject
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; dcterms:subject </span>
-    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//d-nb.info/gnd/4067537-3&gt;,</span>
-    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//d-nb.info/gnd/4070177-3&gt;,</span>
-    &lt;<span class="hljs-string">http:</span><span class="hljs-comment">//uri.gbv.de/terminology/bk/42.15&gt;,</span>
-    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//github.com/tibonto/dfgfo/201-03&gt;.</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:subject 
+    &lt;https://d-nb.info/gnd/4067537-3&gt;,
+    &lt;https://d-nb.info/gnd/4070177-3&gt;,
+    &lt;http://uri.gbv.de/terminology/bk/42.15&gt;,
+    &lt;https://github.com/tibonto/dfgfo/201-03&gt;.
 </code></pre>
 </p>
 """@en ;
@@ -982,8 +986,8 @@ Recommended property: https://schema.org/inLanguage
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:language &lt;http:/</span><span class="hljs-regexp">/id.loc.gov/</span>vocabulary<span class="hljs-regexp">/iso639-2/</span>eng&gt;, 
-    &lt;http:<span class="hljs-regexp">//i</span>d.loc.gov<span class="hljs-regexp">/vocabulary/i</span>so639-<span class="hljs-number">2</span><span class="hljs-regexp">/tgl&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:language &lt;http://id.loc.gov/vocabulary/iso639-2/eng&gt;, 
+    &lt;http://id.loc.gov/vocabulary/iso639-2/tgl&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1009,8 +1013,8 @@ Recommended property: https://schema.org/inLanguage
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:language &lt;http:/</span><span class="hljs-regexp">/id.loc.gov/</span>vocabulary<span class="hljs-regexp">/iso639-2/</span>eng&gt;, 
-    &lt;http:<span class="hljs-regexp">//i</span>d.loc.gov<span class="hljs-regexp">/vocabulary/i</span>so639-<span class="hljs-number">2</span><span class="hljs-regexp">/tgl&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:language &lt;http://id.loc.gov/vocabulary/iso639-2/eng&gt;, 
+    &lt;http://id.loc.gov/vocabulary/iso639-2/tgl&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1057,7 +1061,7 @@ The information can be given as a text, referring to the Semantic Web Standard (
 Recommended property: https://w3id.org/mod#hasFormalityLevel
 </p>
 <p>
-<pre><code class="lang-Turtle">Example statement (text<span class="hljs-regexp">/turtle): &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-string">mod:</span>hasFormalityLevel <span class="hljs-string">"OWL version 2, EL profile"</span><span class="hljs-meta">@en</span> .
+<pre><code class="language-Turtle">Example statement (text/turtle): &lt;https://www.purl.org/SomeOntology&gt; mod:hasFormalityLevel "OWL version 2, EL profile"@en .
 </code></pre>
 </p>
 """@en ;
@@ -1080,7 +1084,7 @@ Recommended property: https://w3id.org/mod#hasFormalityLevel
 Example statement (text/turtle): 
 </p>
 <p>
-<pre><code class="lang-Turtle">Example statement (text<span class="hljs-regexp">/turtle): &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-string">mod:</span>hasFormalityLevel <span class="hljs-string">"OWL version 2, EL profile"</span><span class="hljs-meta">@en</span> .
+<pre><code class="language-Turtle">Example statement (text/turtle): &lt;https://www.purl.org/SomeOntology&gt; mod:hasFormalityLevel "OWL version 2, EL profile"@en .
 </code></pre>
 </p>
 """@en ;
@@ -1145,13 +1149,14 @@ Recommended property: https://w3id.org/mod#hasSyntax
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;https:/</span><span class="hljs-regexp">/w3id.org/m</span>od<span class="hljs-comment">#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/RDF_XML&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://w3id.org/mod#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/RDF_XML&gt; .
 </code></pre>
 </p>
 """@en ;
         # sh:message """The ontology should state its serialization/ file format.\nThe value should be provided as an IRI.\nWe recommend to provide the information about the media type/ file format of your ontology as one of the values from the Media Types list of the Internet Assigned Number Authority (IANA) (cf. https://www.iana.org/assignments/media-types/media-types.xhtml) or from the W3C resource "Unique URIs for File Formats" <https://www.w3.org/ns/formats/>:\n\nIn order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:\n    - <https://www.iana.org/assignments/media-types/application/rdf+xml> resp. <http://www.w3.org/ns/formats/RDF_XML>\n    - <https://www.iana.org/assignments/media-types/text/turtle> resp. <http://www.w3.org/ns/formats/Turtle>\n    - OBO format (cf. http://purl.obolibrary.org/obo/oboformat/spec.html)\nCurrently, there is no registered media type for obo format.\nRecommended property: <https://w3id.org/mod#hasSyntax>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/RDF_XML> ."""@en ;
         sh:name "Ontology serialization/ file format"@en ;
     ] ;
+# <pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://w3id.org/mod#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/RDF_XML&gt; .
 
     sh:property [
         sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
@@ -1207,7 +1212,7 @@ Recommended property: https://w3id.org/mod#hasSyntax
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;https:/</span><span class="hljs-regexp">/w3id.org/m</span>od<span class="hljs-comment">#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/RDF_XML&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://w3id.org/mod#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/RDF_XML&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1304,7 +1309,7 @@ Recommended property: https://w3id.org/mod#hasSyntax
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;https:/</span><span class="hljs-regexp">/w3id.org/m</span>od<span class="hljs-comment">#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/RDF_XML&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://w3id.org/mod#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/RDF_XML&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1338,7 +1343,7 @@ Recommended property: http://purl.org/ontology/bibo/status
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-symbol">bibo:</span>status <span class="hljs-string">"inactive"</span><span class="hljs-variable">@en</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; bibo:status "inactive"@en .
 </code></pre>
 </p>
 """@en ;
@@ -1367,7 +1372,7 @@ Recommended property: http://usefulinc.com/ns/doap#repository
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; doap:repository &lt;https:/</span><span class="hljs-regexp">/github.com/</span>SomeOrganisation<span class="hljs-regexp">/SomeOntology&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; doap:repository &lt;https://github.com/SomeOrganisation/SomeOntology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1390,7 +1395,7 @@ Recommended property: http://usefulinc.com/ns/doap#repository
 Example statement (text/turtle): 
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; doap:repository &lt;https:/</span><span class="hljs-regexp">/github.com/</span>SomeOrganisation<span class="hljs-regexp">/SomeOntology&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; doap:repository &lt;https://github.com/SomeOrganisation/SomeOntology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1417,11 +1422,11 @@ Example statement (text/turtle):
 </p>
 <p>
 <pre>
-    <code class="lang-Turtle">
-    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt;  </span> &lt;<span class="hljs-string">http:</span><span class="hljs-comment">//www.w3.org/ns/dcat#distribution&gt; </span>
-    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.owl&gt;, </span>
-    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.json&gt;, </span>
-    &lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology.ttl&gt; .</span>
+    <code class="language-Turtle">
+    &lt;https://www.purl.org/SomeOntology&gt;   &lt;http://www.w3.org/ns/dcat#distribution&gt; 
+    &lt;https://www.purl.org/SomeOntology.owl&gt;, 
+    &lt;https://www.purl.org/SomeOntology.json&gt;, 
+    &lt;https://www.purl.org/SomeOntology.ttl&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1450,7 +1455,7 @@ Recommended property: https://vocab.org/vann/example
 Example statement (text/turtle): 
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http:<span class="hljs-regexp">//</span>www.w3.org<span class="hljs-regexp">/ns/</span>dcat&gt; vann:example &lt;https:<span class="hljs-regexp">//</span>www.w3.org<span class="hljs-regexp">/TR/</span>vocab-dcat-<span class="hljs-number">2</span><span class="hljs-regexp">/#collection-of-examples&gt; .</span>
+<pre><code class="language-Turtle">&lt;http://www.w3.org/ns/dcat&gt; vann:example &lt;https://www.w3.org/TR/vocab-dcat-2/#collection-of-examples&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1482,7 +1487,7 @@ Recommended property: http://purl.org/dc/terms/references
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:references &lt;http:/</span><span class="hljs-regexp">/doi.org/</span><span class="hljs-number">10.00000</span><span class="hljs-regexp">/some0.ontolo&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:references &lt;http://doi.org/10.00000/some0.ontolo&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1511,7 +1516,7 @@ Recommended property: http://purl.org/dc/terms/bibliographicCitation
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:bibliographicCitation "Last name, first name; last name, first name et al. (YYYY): Title. URL: https:/</span><span class="hljs-regexp">/w3id.org/</span>SomeOntology<span class="hljs-regexp">/1.1.6"@en .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:bibliographicCitation "Last name, first name; last name, first name et al. (YYYY): Title. URL: https://w3id.org/SomeOntology/1.1.6"@en .
 </code></pre>
 </p>
 """@en ;
@@ -1540,7 +1545,7 @@ Recommended property: http://purl.org/pav/derivedFrom
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; pav:derivedFrom &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOtherOntology<span class="hljs-regexp">/3.1.2&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; pav:derivedFrom &lt;https://www.purl.org/SomeOtherOntology/3.1.2&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1573,8 +1578,8 @@ Example statement (text/turtle):
 </p>
 <p>
 <pre>
-    <code class="lang-Turtle">
-    &lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.obolibrary.org/</span>obo<span class="hljs-regexp">/IAO_0000700&gt; &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOntology<span class="hljs-regexp">/12345654544545&gt; .</span>
+    <code class="language-Turtle">
+    &lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.obolibrary.org/obo/IAO_0000700&gt; &lt;https://www.purl.org/SomeOntology/12345654544545&gt; .
     </code>
 </pre>
 
@@ -1606,7 +1611,7 @@ Recommended property: https://schema.org/description
 Example statetement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; schema:description "Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."@en .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; schema:description "Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."@en .
 </code></pre>
 </p>
 <p>
@@ -1631,9 +1636,9 @@ Recommended property: https://schema.org/description
 Example statements (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-string">https:</span><span class="hljs-comment">//www.purl.org/SomeOntology&gt; schema:description </span>
-    <span class="hljs-string">"Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."</span><span class="hljs-meta">@en</span>,
-    <span class="hljs-string">"Freitext, der die Ontologie und ihre Genese beschreibt. Hier können umfangreiche Hintergrundinformationen zur Ontologie gegeben werden, die über ein kurzes Abstract hinausgehen."</span><span class="hljs-meta">@de</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; schema:description 
+    "Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."@en,
+    "Freitext, der die Ontologie und ihre Genese beschreibt. Hier können umfangreiche Hintergrundinformationen zur Ontologie gegeben werden, die über ein kurzes Abstract hinausgehen."@de .
 </code></pre>
 </p>
 """@en ;
@@ -1660,7 +1665,7 @@ Recommended property: http://purl.org/dc/terms/alternative
 Example statement (text/turtle): 
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-symbol">dcterms:</span>alternative <span class="hljs-string">"My Ontology"</span><span class="hljs-variable">@en</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:alternative "My Ontology"@en .
 </code></pre>
 </p>
 """@en;
@@ -1686,7 +1691,7 @@ Recommended property: http://identifiers.org/idot/alternatePrefix
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; ido<span class="hljs-variable">t:alternatePrefix</span> <span class="hljs-string">"mo"</span>^^xsd:<span class="hljs-built_in">string</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; idot:alternatePrefix "mo"^^xsd:string .
 </code></pre>
 </p>
 """@en ;
@@ -1718,7 +1723,7 @@ Recommended property: http://www.w3.org/2002/07/owl#priorVersion
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; <span class="hljs-keyword">ow</span><span class="hljs-variable">l:priorVersion</span> &lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology/<span class="hljs-number">1.1</span>.<span class="hljs-number">6</span>&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; owl:priorVersion &lt;https://www.purl.org/SomeOntology/1.1.6&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1747,7 +1752,7 @@ Recommended property: http://purl.org/dc/terms/hasVersion
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology/</span><span class="hljs-number">1.1</span>.<span class="hljs-number">6</span>&gt; dcterms:isVersionOf &lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology/1.1.6&gt; dcterms:isVersionOf &lt;https://www.purl.org/SomeOntology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1776,7 +1781,7 @@ Recommended property: http://www.w3.org/2002/07/owl#backwardCompatibleWith
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology/</span><span class="hljs-number">1.1</span>.<span class="hljs-number">7</span>&gt; owl:backwardCompatibleWith &lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology/</span><span class="hljs-number">1.1</span>.<span class="hljs-number">6</span>&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology/1.1.7&gt; owl:backwardCompatibleWith &lt;https://www.purl.org/SomeOntology/1.1.6&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1805,7 +1810,7 @@ Recommended property: http://www.w3.org/2002/07/owl#incompatibleWith
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology/</span><span class="hljs-number">1.1</span>.<span class="hljs-number">7</span>&gt; owl:incompatibleWith &lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology/</span><span class="hljs-number">1.1</span>.<span class="hljs-number">6</span>&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology/1.1.7&gt; owl:incompatibleWith &lt;https://www.purl.org/SomeOntology/1.1.6&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1838,7 +1843,7 @@ Recommended property: http://purl.org/dc/terms/type
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology/</span><span class="hljs-number">1.1</span>.<span class="hljs-number">7</span>&gt; dcterms:type &lt;http:<span class="hljs-regexp">//</span>w3id.org<span class="hljs-regexp">/nkos/</span>nkostype<span class="hljs-comment">#ontology&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology/1.1.7&gt; dcterms:type &lt;http://w3id.org/nkos/nkostype#ontology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1881,7 +1886,7 @@ Recommended property: http://purl.org/dc/terms/type
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology/</span><span class="hljs-number">1.1</span>.<span class="hljs-number">7</span>&gt; dcterms:type &lt;http:<span class="hljs-regexp">//</span>w3id.org<span class="hljs-regexp">/nkos/</span>nkostype<span class="hljs-comment">#ontology&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology/1.1.7&gt; dcterms:type &lt;http://w3id.org/nkos/nkostype#ontology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1907,7 +1912,7 @@ Recommended property: http://identifiers.org/idot/exampleIdentifier
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; idot:exampleIdentifier &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOntology<span class="hljs-regexp">/1234-XY&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; idot:exampleIdentifier &lt;https://www.purl.org/SomeOntology/1234-XY&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -1934,7 +1939,7 @@ Recommended property: http://identifiers.org/idot/identifierPattern
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; ido<span class="hljs-variable">t:identifierPattern</span> <span class="hljs-string">"^\\d{4}-[A-Z]{2}$"</span>^^xsd:<span class="hljs-built_in">string</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; idot:identifierPattern "^\\d{4}-[A-Z]{2}$"^^xsd:string .
 </code></pre>
 </p>
 """@en ;
@@ -1962,7 +1967,7 @@ Recommended property: http://xmlns.com/foaf/0.1/homepage
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; foaf:homepage &lt;https:/</span><span class="hljs-regexp">/www.example.com/</span>SomeOntologyInfo&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; foaf:homepage &lt;https://www.example.com/SomeOntologyInfo&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2000,7 +2005,7 @@ Recommended property: http://purl.org/dc/terms/publisher
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:publisher &lt;https:/</span><span class="hljs-regexp">/isni.org/i</span>sni<span class="hljs-regexp">/0000000121746694&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:publisher &lt;https://isni.org/isni/0000000121746694&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2026,7 +2031,7 @@ Recommended property: http://www.w3.org/2000/01/rdf-schema#comment
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-symbol">rdfs:</span>comment <span class="hljs-string">"SomeOntology does not actually exist."</span><span class="hljs-variable">@en</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; rdfs:comment "SomeOntology does not actually exist."@en .
 </code></pre>
 </p>
 """@en ;
@@ -2053,7 +2058,7 @@ Recommended property: http://rdfs.org/ns/void#exampleResource
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; void:exampleResource &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeClass&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; void:exampleResource &lt;https://www.purl.org/SomeClass&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2081,7 +2086,7 @@ Recommended property: http://usefulinc.com/ns/doap#mailing-list
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle"><span class="hljs-tag">&lt;<span class="hljs-name">https:</span>//<span class="hljs-attr">www.purl.org</span>/<span class="hljs-attr">SomeOntology</span>&gt;</span> doap:mailing-list <span class="hljs-tag">&lt;<span class="hljs-name">someontology@list.de</span>&gt;</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; doap:mailing-list &lt;someontology@list.de&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2107,7 +2112,7 @@ Recommended property: http://xmlns.com/foaf/0.1/logo
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; foaf:logo &lt;https:/</span><span class="hljs-regexp">/www.example.com/</span>MyOntoLogo.jpg&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; foaf:logo &lt;https://www.example.com/MyOntoLogo.jpg&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2137,7 +2142,7 @@ Recommended property: http://purl.org/dc/terms/identifier
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; dcterms:identifier &lt;https:/</span><span class="hljs-regexp">/doi.org/</span><span class="hljs-number">10.5281</span><span class="hljs-regexp">/zenodo.0000000&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:identifier &lt;https://doi.org/10.5281/zenodo.0000000&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2169,7 +2174,7 @@ Recommended property: https://w3id.org/mod#hasEquivalencesWith
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; mod:hasEquivalencesWith &lt;https:/</span><span class="hljs-regexp">/www.purl.org/</span>SomeOtherOntology&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; mod:hasEquivalencesWith &lt;https://www.purl.org/SomeOtherOntology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2198,14 +2203,14 @@ Recommended property: https://w3id.org/mod#competencyQuestion
 Example statement 1 (text/turtle): 
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;https:/</span><span class="hljs-regexp">/w3id.org/m</span>od<span class="hljs-comment">#competencyQuestion&gt; "Who developed an ontology?"@en .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://w3id.org/mod#competencyQuestion&gt; "Who developed an ontology?"@en .
 </code></pre>
 </p>
 <p>
 Example statement 2 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;https:/</span><span class="hljs-regexp">/w3id.org/m</span>od<span class="hljs-comment">#competencyQuestion&gt; &lt;https://www.example.com/SomeOntologyInfo/Questions#Q1&gt; .</span>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;https://w3id.org/mod#competencyQuestion&gt; &lt;https://www.example.com/SomeOntologyInfo/Questions#Q1&gt; .
 </code></pre>
 </p>
 """@en ; # inconsistent with forms shape
@@ -2234,7 +2239,7 @@ Recommended property: http://purl.org/vocab/vann/preferredNamespaceUri
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>vocab<span class="hljs-regexp">/vann/</span>preferredNamespaceUri&gt; &lt;https:<span class="hljs-regexp">//</span>w3id<span class="hljs-regexp">/Example/</span>SomeOntology&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/vocab/vann/preferredNamespaceUri&gt; &lt;https://w3id/Example/SomeOntology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2257,7 +2262,7 @@ Recommended property: http://purl.org/vocab/vann/preferredNamespaceUri
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>vocab<span class="hljs-regexp">/vann/</span>preferredNamespaceUri&gt; &lt;https:<span class="hljs-regexp">//</span>w3id<span class="hljs-regexp">/Example/</span>SomeOntology&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/vocab/vann/preferredNamespaceUri&gt; &lt;https://w3id/Example/SomeOntology&gt; .
 </code></pre>
 </p>
 """@en ;
@@ -2290,7 +2295,7 @@ Recommended property: http://purl.org/dc/terms/issued
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;https:<span class="hljs-regexp">//</span>www.purl.org<span class="hljs-regexp">/SomeOntology&gt; &lt;http:/</span><span class="hljs-regexp">/purl.org/</span>dc<span class="hljs-regexp">/terms/</span>&gt; <span class="hljs-string">"2023-11-21T00:00:00"</span>^^xsd:dateTime .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/&gt; "2023-11-21T00:00:00"^^xsd:dateTime .
 </code></pre>
 </p>
 """@en ;
@@ -2317,7 +2322,7 @@ Recommended property: http://purl.org/dc/terms/modified
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-keyword">https</span>://www.purl.org/SomeOntology&gt; dcterms:modified <span class="hljs-string">"2020-11-19T00:00:00"</span>^^xsd:<span class="hljs-keyword">dateTime</span>.
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:modified "2020-11-19T00:00:00"^^xsd:dateTime.
 </code></pre>
 </p>
 """@en ;
@@ -2350,21 +2355,21 @@ Recommended property: http://www.w3.org/2002/07/owl#versionInfo
 Example statement 1 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; <span class="hljs-keyword">ow</span><span class="hljs-variable">l:versionInfo</span> <span class="hljs-string">"2023-01-01"</span>^^xsd:<span class="hljs-built_in">string</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; owl:versionInfo "2023-01-01"^^xsd:string .
 </code></pre>
 </p>
 <p>
 Example statement 2 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; <span class="hljs-keyword">ow</span><span class="hljs-variable">l:versionInfo</span> <span class="hljs-string">"1.0.0"</span>^^xsd:<span class="hljs-built_in">string</span>.
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; owl:versionInfo "1.0.0"^^xsd:string.
 </code></pre>
 </p>
 <p>
 Example statement 3:
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; <span class="hljs-keyword">ow</span><span class="hljs-variable">l:versionInfo</span> <span class="hljs-string">"Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024."</span>@en.
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; owl:versionInfo "Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024."@en.
 </code></pre>
 </p>
 """@en ;
@@ -2403,14 +2408,14 @@ Recommended property: http://www.w3.org/2002/07/owl#versionInfo
 Example statement 1 (text/turtle): 
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; <span class="hljs-keyword">ow</span><span class="hljs-variable">l:versionInfo</span> <span class="hljs-string">"2023-01-01"</span>^^xsd:<span class="hljs-built_in">string</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; owl:versionInfo "2023-01-01"^^xsd:string .
 </code></pre>
 </p>
 <p>
 Example statement 2 (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;http<span class="hljs-variable">s:</span>//www.purl.org/SomeOntology&gt; <span class="hljs-keyword">ow</span><span class="hljs-variable">l:versionInfo</span> <span class="hljs-string">"1.0.0"</span>^^xsd:<span class="hljs-built_in">string</span>.
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; owl:versionInfo "1.0.0"^^xsd:string.
 </code></pre>
 </p>
 """@en ;
@@ -2437,7 +2442,7 @@ Recommended property: http://www.w3.org/ns/adms#versionNotes
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="lang-Turtle">&lt;<span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/www.purl.org/</span>SomeOntology&gt; <span class="hljs-symbol">adms:</span>versionNotes <span class="hljs-string">"Changes from 2000-01-12: add annotation properties: familyName [...]"</span><span class="hljs-variable">@en</span> .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; adms:versionNotes "Changes from 2000-01-12: add annotation properties: familyName [...]"@en .
 </code></pre>
 </p>
 """@en ;
