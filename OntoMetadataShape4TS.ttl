@@ -1056,7 +1056,10 @@ The information can be given as a text, referring to the Semantic Web Standard (
 Recommended property: https://w3id.org/mod#hasFormalityLevel
 </p>
 <p>
-<pre><code class="language-Turtle">Example statement (text/turtle): &lt;https://www.purl.org/SomeOntology&gt; mod:hasFormalityLevel "OWL version 2, EL profile"@en .
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; mod:hasFormalityLevel &quot;OWL version 2, EL profile&quot;@en .
 </code></pre>
 </p>
 """@en ;
