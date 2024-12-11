@@ -303,12 +303,7 @@ Recommended property: http://purl.org/dc/terms/license
 Example statement (text/turtle):
 </p>
 <p>
-<pre>
-    <code class="language-Turtle">
-        &lt;https://www.purl.org/SomeOntology&gt; 
-        &lt;http://purl.org/dc/terms/license&gt; 
-        &lt;http://creativecommons.org/licenses/by/4.0/&gt; .
-</code></pre>
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/license&gt; &lt;http://creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
 </p>
 """@en ;
         # sh:message """The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition (https://opendefinition.org/licenses/).\nThe ontology must be provided with an open license in order to be added to TIB Terminology Service.\nThe license must be given as an IRI.\nThe following licenses are not accepted at TIB Terminology Service:\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode\n    - https://creativecommons.org/licenses/by-nd/4.0/legalcode\n    - https://creativecommons.org/licenses/by-nd/3.0/de/legalcode\nRecommended property: http://purl.org/dc/terms/license\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/license> <http://creativecommons.org/licenses/by/4.0/> ."""@en ;
@@ -1487,7 +1482,7 @@ Recommended property: http://purl.org/dc/terms/references
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; dcterms:references &lt;http://doi.org/10.00000/some0.ontolo&gt; .
+<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/references&gt; &lt;http://doi.org/10.00000/some0.ontolo&gt; .
 </code></pre>
 </p>
 """@en ;
