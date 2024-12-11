@@ -1059,7 +1059,7 @@ Recommended property: https://w3id.org/mod#hasFormalityLevel
 Example statement (text/turtle):
 </p>
 <p>
-<pre><code class="language-Turtle">&lt;https://www.purl.org/SomeOntology&gt; mod:hasFormalityLevel &quot;OWL version 2, EL profile&quot;@en .
+<pre><code class="language-Turtle">&lt;<a>https://www.purl.org/SomeOntology</a>&gt; &lt;<a>https://w3id.org/mod#hasFormalityLevel</a>&gt; &quot;OWL version 2, EL profile&quot;@en .
 </code></pre>
 </p>
 """@en ;
