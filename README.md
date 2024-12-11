@@ -38,6 +38,8 @@ In [OntoMetadataShape4Forms.ttl](/OntoMetadataShape4Forms.ttl) you find a versio
 
 The shapes are not as granular as the ones for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of `sh:alternativePath` constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes.
 
+https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418
+
 ## Further reading and sources
 
 * Arndt, S., Borgelt, H. und Strömert, P. (2023) „FAIR Ontology Metadata - Crucial Information for Understanding, Evaluation, and Application“. 2nd Ontologies4Chem Workshop 2023 (Ontologies4Chem 2023), Zenodo, 12 Oktober. doi: 10.5281/zenodo.10117899.
