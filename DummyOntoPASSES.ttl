@@ -46,7 +46,7 @@
     <http://purl.org/ontology/bibo/status> "active"@en ;
     doap:repository <https://github.com/StroemPhi/Ontology-Metadata> ;
     <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/DummyOntoPASSES.owl> ;
-    <https://vocab.org/vann/example> <https://www.purl.org/ontologymetadata/DummyOntoPASSES/docs/descriptionOfUse> ;
+    <http://purl.org/vocab/vann/example> <https://www.purl.org/ontologymetadata/DummyOntoPASSES/docs/descriptionOfUse> ;
     dcterms:isReferencedBy <https://zenodo.org/record/0000000> ;
     dcterms:bibliographicCitation "TIB (2023): DummyOntoPASSES. An ontology demonstrating rich ontology metadata. PURL: https://www.purl.org/ontologymetadata/DummyOntoPASSES."@en ;
     pav:derivedFrom <http://www.purl.org/SomeOtherOntology/0.0.1> ;

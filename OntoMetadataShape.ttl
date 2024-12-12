@@ -47,7 +47,7 @@ ontometa: rdf:type owl:Ontology ;
     <https://w3id.org/mod#hasFormalityLevel> "RDF(S), OWL, SHACL"@en ;
     dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
     <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/shape4ts> , <https://www.purl.org/ontologymetadata/shape4forms> ;
-    <https://vocab.org/vann/example> <https://drive.google.com/file/d/1euRdsdIfCKPV6vAb9ZcNOA-3FA_kvlCr/view?usp=sharing>
+    <http://purl.org/vocab/vann/example> <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-by-ontology-engineers>
 .
 
 # Start of the Ontology Metadata Shape
@@ -62,7 +62,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title schema:name schema:headline) ] ; 
         sh:severity sh:Warning ;
         sh:minCount 1 ;
-        # sh:message """The ontology does not include its own title. Please provide it if known."""@en ; # optimized message for current TIB TS implementation
         sh:message """You must add an ontology title or label. The title should be an rdf:langString.\nRecommended property: <http://purl.org/dc/terms/title>.\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:title \"Some Ontology\"@en .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology has a title or label. It produces a warning message if the title is missing. The ontology title is mandatory."@en ;
         sh:name "Ontology title"@en ;
@@ -85,7 +84,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        # sh:message """The ontology does not declare its preferred prefix. Please provide it if known."""@en ; # optimized message for current TIB TS implementation
         sh:message """You must declare at most one preferred namespace prefix or acronym for the ontology.\nIt must not contain hyphens or other special characters and should be written in lowercase.\nRecommended property: <http://purl.org/vocab/vann/preferredNamespacePrefix>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> vann:preferredNamespacePrefix \"so\"^^xsd:string .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology declares a preferred namespace prefix. It produces a warning message if the ontology does not declare a preferred namespace prefix."@en ;
         sh:name "Preferred ontology prefix/ acronym"@en ;
@@ -181,7 +179,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 
             # [sh:hasValue <> ;] 
             );
-        # sh:message """The ontology does not declare its own license. Please provide it, if known."""@en ; # optimized message for current TIB TS 
         sh:message """You must provide exactly one ontology license.\nThe license must be open (Read more about open licenses at https://opendefinition.org/licenses/).\nThe license must be given as an IRI from the following list:\n\n    - <https://opendatacommons.org/licenses/by/1-0/>\n    - <https://opendatacommons.org/licenses/pddl/1-0/>\n    - <https://opendatacommons.org/licenses/odbl/1-0/>\n    - <https://unlicense.org/>\n    - <https://creativecommons.org/publicdomain/zero/1.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by/4.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/de/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/4.0/legalcode>\n\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .\nYou want to use a different open license? File an issue at https://gitlab.com/TIBHannover/terminology/tib-terminology-service-issue-tracker/-/issues\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides a license IRI from a list of accepted open licenses. It produces a warning message if not."@en ;
         sh:name "Ontology license"@en ;
@@ -224,13 +221,11 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Warning ;
         sh:minCount 1;
-        # sh:message """The ontology does not name its creators. Please provide them if known. This information is required for licenses that require attribution. Use ORCID, ROR or comparable identifiers for people and organisations if available."""@en ; # optimized message for current TIB TS 
         sh:message """You must add the ontology creators.\nYou must list at least one person who was involved in developing the ontology.\nCreators should be referenced via PIDs, e.g. ORCIDs for persons and RORs for organisations.\nIf an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.\nRecommended property: <http://purl.org/dc/terms/creator>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>. <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person .\nPlain name strings could be provided in addition (for readability).\nExample statement 2 (text/turtle):\n    <https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>\n    <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; <http://xmlns.com/foaf/0.1/firstName> "Max" ;\n        <http://xmlns.com/foaf/0.1/lastName> "Muster" .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides information about its creator. It produces a warning message if no creator information is present."@en ;
         sh:name "Ontology creator(s)"@en ;
     ] ;
 
-### discuss: switch to string/ literal following "FirstName LastName (ORCID)" 
     sh:property [
         sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
         sh:severity sh:Info ;
@@ -249,7 +244,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        # sh:message """The ontology does not declare a versionIRI. Please provide it, if known."""@en ; # optimized message for current TIB TS 
         sh:message """You must add a versionIRI to the ontology.\nThe versionIRI should be stable and resolvable, i.e. a fixed version of the ontology should be retrievable from the provided IRI.\nIt is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).\nRecommended property: <http://www.w3.org/2002/07/owl#versionIRI>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/1.0.0>.\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/2019-12-31> .\nExample statement 3 (text/turtle): <http://purl.obolibrary.org/obo/pco.owl> <http://www.w3.org/2002/07/owl#versionIRI> <http://purl.obolibrary.org/obo/pco/releases/2021-05-03/pco.owl> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provids exactly one versionIRI. It produces a warning message if none is found."@en ;
         sh:name "Ontology version IRI"@en ;
@@ -271,7 +265,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:maxCount 1 ;
-        # sh:message """The ontology does not declare its creation date. Please provide it, if known. Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44)"""@en ; # optimized message for current TIB TS 
         sh:message """You must add a creation date to the ontology.\nYou must provide exactly one date in xsd:dateTime format.\nRecommended property: <http://purl.org/dc/terms/created>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:created \"2020-11-19T00:00:00\"^^xsd:dateTime .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides its creation date. It produces a warning message if not."@en ;
         sh:name "Ontology creation date"@en ;
@@ -293,7 +286,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
-        # sh:message """The ontology does not contain an abstract. Please provide it, if knwon."""@en ; # optimized message for current TIB TS 
         sh:message """You must provide a short abstract about the ontology and its scope.\nRecommended property: <http://purl.org/dc/terms/abstract>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:abstract \"SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain.\"@en , \"SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun.\"@de .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides an abstract. It produces an info message if not."@en ;
         sh:name "Ontology abstract"@en ;
@@ -348,7 +340,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        # sh:message """The ontology does not contain the link to its documentation. Please provide it, if known."""@en ; # optimized message for current TIB TS
         sh:message """You must provide an IRI to the ontology documentation.\nRecommended property: <http://www.loc.gov/premis/rdf/v3/documentation>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> premis:documentation <https://www.purl.org/SomeOntology/Documentation> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides a link to its documentation. It produces warning message if it does not."@en ;
         sh:name "Ontology documentation"@en ; 
@@ -542,7 +533,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:maxCount 1;
         sh:xone (
         # tbd: not all are relevant or digestable by the TS
-        # for the TS rdf+xml, turtle and obo are confirmed
+        # for the TS rdf+xml, turtle and obo are confirmed, obo will not be supported by OLS4
         # no expected value for obo ontologies > Ontorowser mentions application/obo and text/obo, but these are specific to the service, not officially acknowledged: https://github.com/Novartis/ontobrowser/blob/master/doc/web_services.md
             # [sh:hasValue <http://www.w3.org/ns/formats/JSON-LD> ;] 
             # [sh:hasValue <http://www.w3.org/ns/formats/N3> ;] 
@@ -630,11 +621,11 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 ## Application example
 ### status: developer and external review needed
     sh:property [
-        sh:path <https://vocab.org/vann/example> ;
+        sh:path <https://purl.org/vocab/vann/example> ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should provide a link to an application example of the ontology.\nIdeally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application or online service that uses the ontology.\nRecommended property: <https://vocab.org/vann/example>\nExample statement (text/turtle): <http://www.w3.org/ns/dcat> vann:example <https://www.w3.org/TR/vocab-dcat-2/#collection-of-examples> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should provide a link to an application example of the ontology.\nIdeally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application or online service that uses the ontology.\nRecommended property: <http://purl.org/vocab/vann/example>\nExample statement (text/turtle): <http://www.w3.org/ns/dcat> vann:example <https://www.w3.org/TR/vocab-dcat-2/#collection-of-examples> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides links to application examples. It produces an info message if the information is missing or not provided as an IRI."@en ;
         sh:name "Application example"@en ;
     ] ;
@@ -928,6 +919,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 
 ## Ontology logo/ depiction/ related visualizations
 ### status: developer and external review needed
+### needs to be split for forms and validation? > logo should be its own datum, depictions and visualizations can go together
 
     sh:property [
         sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/logo> <https://schema.org/logo> <http://xmlns.com/foaf/0.1/depiction> <https://w3id.org/mod#depiction> <https://schema.org/image>)] ;
@@ -948,7 +940,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:nodeKind sh:IRI ;
         sh:message """You should provide the ontology's identifiers as IRIs.\nThe identifier used as the base uri of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri>.\nRecommended property: <http://purl.org/dc/terms/identifier>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:identifier <https://doi.org/10.5281/zenodo.0000000> .\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology's related identifiers are provided as IRIs. It produces an info message if they are not."@en ;
-        sh:name "Related identifiers"@en ;
+        sh:name "Alternative identifiers of the ontology"@en ;
     ];
 
 ## Development environment
@@ -1047,7 +1039,6 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:path [sh:alternativePath (owl:versionInfo pav:version)];
         sh:severity sh:Info ;
         sh:xone ( [sh:datatype xsd:string ;] [sh:datatype rdf:langString ;] );
-        #        sh:datatype xsd:string ;
         sh:message """You should provide textual information about the ontology version as an xsd:string.\nIt is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).\nIf you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements.\nRecommended property: <http://www.w3.org/2002/07/owl#versionInfo>\nExample statement 1 (text/turtle): <https://www.purl.org/SomeOntology> owl:versionInfo \"2023-01-01\"^^xsd:string .\nExample statement 2 (text/turtle): <https://www.purl.org/SomeOntology> owl:versionInfo \"1.0.0\"^^xsd:string.\nExample statement 3: <https://www.purl.org/SomeOntology> owl:versionInfo \"Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024.\"@en.\nNeed help? Learn more about SHACL: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides at most one textual version information as an xsd:string. It produces an info message if not."@en ;
         sh:name "Ontology version information"@en ;

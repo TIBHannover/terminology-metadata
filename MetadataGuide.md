@@ -758,7 +758,7 @@ SHACL validation rules:
 
 How to use an ontology is often helpfully demonstrated by application examples and visualizations that give a glimpse about how the ontology can be used to structure actual data. If you have such application examples, these might be better found, if you link to them from the ontology. These application examples could be part of the ontology documentation, formal serializations applying the ontology or even technical applications that make use of the ontology.
 
-Recommended property: <https://vocab.org/vann/example>
+Recommended property: <http://purl.org/vocab/vann/example>
 
 Example (text/turtle):
 
@@ -1487,7 +1487,7 @@ Example (text/turtle):
 
 Alternative properties:
 
-* <https://vocab.org/vann/changes>
+* <http://purl.org/vocab/vann/changes>
 
 SHACL validation rules:
 
@@ -1520,7 +1520,7 @@ SHACL validation rules:
 | 4.9     | Status                                           | <http://purl.org/ontology/bibo/status>                                        |           | x           |          | 0...1       |
 | 4.10    | Code repository                                  | <http://usefulinc.com/ns/doap#repository>                                     |           | x           |          | 0...1       |
 | 4.11    | Distributions/ products                          | <http://www.w3.org/ns/dcat#distribution>                                      |           | x           |          | 0…*         |
-| 4.12    | Application example                              | <https://vocab.org/vann/example>                                              |           | x           |          | 0…*         |
+| 4.12    | Application example                              | <http://purl.org/vocab/vann/example>                                              |           | x           |          | 0…*         |
 | 4.13    | Related resource(s)                              | <http://purl.org/dc/terms/references>                                         |           | x           |          | 0…*         |
 | 4.14    | Citation suggestion                              | <http://purl.org/dc/terms/bibliographicCitation>                              |           | x           |          | 0…*         |
 | 4.15    | Ontology sources (derived from)                  | <http://purl.org/pav/derivedFrom>                                             |           | x           |          | 0…*         |
