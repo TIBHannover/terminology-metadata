@@ -22,15 +22,15 @@ They are very fine-grained - each sh:PropertyShape tests a specific set of prope
 
 See how you can use online validators with our shape:
 
-<!-- [![Watch the screencast](/visualizations/terminology_metadata-00001.jpg)](https://drive.google.com/file/d/1euRdsdIfCKPV6vAb9ZcNOA-3FA_kvlCr/view?usp=sharing) -->
-
-<!-- [![Watch the screencast](image)](video url) -->
-
 https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a
 
 ## For ontology validation at TIB Terminology Service
 
 In [OntoMetadataShape4TS.ttl](/OntoMetadataShape4TS.ttl) we provide a version of the recommendations that is adapted to the Ontology Suggestion Feature at [TIB Terminology Service](https://terminology.tib.eu). The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users not need to provide the meatdata as code.
+
+See how the shape is used in the suggestion feature:
+
+https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7
 
 ## For metadata form generators
 
