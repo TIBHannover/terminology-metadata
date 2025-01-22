@@ -412,6 +412,9 @@ The ontology does not declare a versionIRI. Please provide it, if known.
 <p>
 Recommended property: http://www.w3.org/2002/07/owl#versionIRI
 </p>
+<p>
+Example value: https://www.purl.org/SomeOntology/1.0.0
+</p>
 """@en ; 
         sh:name "Ontology version IRI"@en ;
     ] ;
