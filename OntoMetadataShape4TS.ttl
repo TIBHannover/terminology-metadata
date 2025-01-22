@@ -89,6 +89,9 @@ There may be only one title per language.
 Recommended property: http://purl.org/dc/terms/title
 </p>
 <p>
+Example value: Product Supply Network Vocabulary (psn)
+</p>
+<p>
 Example statement (text/turtle):
 </p>
 <p>
@@ -116,6 +119,9 @@ It must not contain hyphens or other special characters and should be written in
 <p>
 Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
 </p>
+<p>
+Example value: bfo
+</p>
 """@en ;
         sh:name "Preferred ontology prefix/ acronym"@en ;
     ] ;
@@ -130,6 +136,9 @@ The ontology should declare its preferred namespace prefix or acronym as an xsd:
 </p>
 <p>
 Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
+</p>
+<p>
+Example value: bfo
 </p>
 <p>
 Example statement (text/turtle):
@@ -229,6 +238,9 @@ The ontology does not declare its own license. Please provide it, if known.
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/license
+</p>
+<p>
+Example value: https://creativecommons.org/licenses/by/4.0/
 </p>
 """@en ;
         sh:name "Ontology license"@en ;
@@ -334,6 +346,9 @@ https://ror.org/
 <p>
 Recommended property: http://purl.org/dc/terms/creator
 </p>
+<p>
+Example value: https://orcid.org/0000-0002-1584-4316, https://orcid.org/0000-0002-1584-4315
+</p>
 """@en ;
         sh:name "Ontology creator(s)"@en ;
     ] ;
@@ -413,6 +428,9 @@ The ontology should state its versionIRI as an IRI. It should not be given as a 
 Recommended property: http://www.w3.org/2002/07/owl#versionIRI
 </p>
 <p>
+Example value: https://www.purl.org/SomeOntology/1.0.0
+</p>
+<p>
 Example statement 1 (text/turtle):
 </p>
 <p>
@@ -454,6 +472,9 @@ Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44).
 <p>
 Recommended property: http://purl.org/dc/terms/created
 </p>
+<p>
+Example value: 2024-12-12T11:18:44
+</p>
 """@en ;
         sh:name "Ontology creation date"@en ;
     ] ;
@@ -468,6 +489,9 @@ The ontology should provide its creation date in xsd:dateTime format.
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/created
+</p>
+<p>
+Example value: 2024-12-12T11:18:44
 </p>
 <p>
 Example statement (text/turtle):
@@ -497,6 +521,9 @@ The ontology abstract should not be longer than 500 characters.
 <p>
 Recommended property: http://purl.org/dc/terms/abstract
 </p>
+<p>
+Example value: The ONTOLOGY NAME defines a range of classes and properties which can be applied to fulfill a SPECIFIED TASK in a particular domain.
+</p>
 """@en ;
         sh:name "Ontology abstract"@en ;
     ] ;
@@ -518,7 +545,7 @@ Example statement (text/turtle):
 </p>
 <p>
 <pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/abstract&gt; 
-    &quot;SomeOntology defines a range of classes and properties which can be applied to do stuff in a particular domain.&quot;@en , 
+    &quot;SomeOntology defines a range of classes and properties which can be applied to fulfill a SPECIFIED TASK in a particular domain.&quot;@en , 
     &quot;SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun.&quot;@de .
 </code></pre>
 
@@ -582,6 +609,9 @@ The ontology does not contain the link to its issue tracker. Please provide it i
 <p>
 Recommended property: http://usefulinc.com/ns/doap#bug-database
 </p>
+<p>
+Example value: https://github.com/tibonto/DFG-Fachsystematik-Ontology/issues
+</p>
 """@en ;
         sh:name "Ontology issue tracker"@en ;
     ] ;
@@ -600,6 +630,9 @@ The ontology does not contain the link to its documentation. Please provide it, 
 </p>
 <p>
 Recommended property: http://www.loc.gov/premis/rdf/v3/documentation
+</p>
+<p>
+Example value: https://international-data-spaces-association.github.io/InformationModel/docs/index.html#
 </p>
 """@en ;
         sh:name "Ontology documentation"@en ; 
