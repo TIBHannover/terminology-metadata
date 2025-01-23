@@ -367,7 +367,7 @@ code {
   </script>
 <h1 id="ontology-metadata-recommendations-by-tib">Ontology metadata recommendations by TIB</h1>
 <p>Document status: <strong>DRAFT</strong></p>
-<p>Modification date: 2025-01-01</p>
+<p>Modification date: 2025-01-31</p>
 <p>Creators and contributors:</p>
 <!-- * [Last name, First Name  (Affiliation)](https://orcid.org/) -->
 <ul>
@@ -392,7 +392,7 @@ code {
 <li><a href="#2-how-to-read-this-document">How to read this document</a>
 <ul>
 <li><a href="#21-chapter-structure-and-wording">2.1 Chapter structure and wording</a></li>
-<li><a href="#22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</a></li>
+<li><a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a></li>
 <li><a href="#23-prefixes-used-in-this-document">2.3 Prefixes used in this document</a></li>
 <li><a href="#24-acronyms">2.4 Acronyms</a></li>
 </ul>
@@ -486,7 +486,7 @@ code {
 <p>In order to avoid these problems, metadata management should be part of the ontology engineering process: The metadata of an ontology should be part of the ontology's code base or the ontology itself. This would make the ontology resp. its code base the single source of truth for its own metadata.</p>
 <p>It is therefore mandatory that an ontology provides its own metadata with machine-understandable semantics and established terms from metadata ontologies and controlled vocabularies. The metadata need to be as or even more persistent than the ontology itself. <a href="https://www.go-fair.org/fair-principles/r1-metadata-richly-described-plurality-accurate-relevant-attributes/" title="FAIR Principles. Principle R1. GO FAIR. URL: &lt;https://www.go-fair.org/fair-principles/&gt;. Last accessed: 28 April 2023.">Principle R1</a> of the FAIR principles <a href="#source2">[1]</a> furthermore recommends to not just provide metadata that allow the discovery of an ontology (e.g. title, ontology prefix, authors), but to add metadata that richly describe the contents of the ontology and the conditions of its creation and use (cf. <a href="#12-why-ontology-metadata">1.2 Why ontology metadata?</a>).</p>
 <p>With this document, <em>TIB - Leibniz Information Centre for Science and Technology University Library</em> provides a practical guide for metadata management of ontologies. It gives recommendations on required, recommended and optional metadata for ontologies. As there are currently several recommendations available (cf. <a href="#source13">[13]</a>, <a href="#source14">[14]</a>, <a href="#source15">[15]</a>, <a href="#source16">[16]</a>, <a href="#source17">[17]</a>, <a href="#source18">[18]</a>, <a href="#source19">[19]</a>, <a href="#source20">[20]</a>, <a href="#source21">[21]</a>, <a href="#source22">[22]</a>, <a href="#source23">[23]</a>), this guide will provide recommendations on ontology metadata that particularly adress the publishing of ontologies on the <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>.</p>
-<p>In addition, we provide shapes for SHACL validators based on these recommendations (cf. <a href="#22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</a>).</p>
+<p>In addition, we provide shapes for SHACL validators based on these recommendations (cf. <a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a>).</p>
 <h2 id="1-ontology-metadata">1 Ontology metadata</h2>
 <h3 id="11-how-to-provide-ontology-metadata">1.1 How to provide ontology metadata?</h3>
 <p>Ontology metadata must be provided in a machine-understandable format. We therefore recommend to provide them as a part of the ontology itself: The metadata should be statements about the ontology that use dedicated annotation, object or data properties, to guarantee a good level of granularity and distinguishability of the metadata.</p>
@@ -513,14 +513,26 @@ code {
 <li>recommend controlled vocabularies where appropriate</li>
 <li>provide examples in text/turtle serialization</li>
 <li>list alternative properties that may also be used to provide the metadatum</li>
-<li>specify SHACL validation rules (cf. section <a href="#22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</a>)</li>
+<li>specify SHACL validation rules (cf. section <a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a>)</li>
 </ul>
 <p>Subproperties to any properties mentioned will not be implied, but explicitly listed in the &quot;alternative properties&quot; part of each section.</p>
-<h3 id="22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</h3>
-<p>This guide is a human-readable specification. In addition, we also provide a SHACL specification of these recommendations that can be used for data validation.</p>
-<p>The shape can be used with SHACL validators to test ontologies for any violations of required metadata at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a> and to get suggestions for recommended metadata. We recommend the online SHACL validators <a href="https://shacl.org/playground/" title="Holger Knublauch (n/a): SHACL Playground. URL: https://shacl.org/playground/. Last accessed: 22 April 2024.">SHACL Playground</a>, <a href="https://shacl-playground.zazuko.com/">SHACL Playground by Zazuko</a> or <a href="https://shacl-play.sparna.fr/play/">SHACL Play!</a> for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.</p>
-<p>The shape is available in a single file at <a href="https://www.purl.org/ontologymetadata/shape">https://www.purl.org/ontologymetadata/shape</a>.</p>
-<p>The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section <a href="https://www.w3.org/TR/skos-reference/#L1170">4.6.2. SKOS Concept Schemes and OWL Ontologies</a> of the <a href="https://www.w3.org/TR/2009/REC-skos-reference-20090818/">SKOS Reference document</a>).</p>
+<h3 id="22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</h3>
+<p>This guide is a human-readable specification. In addition, we also provide SHACL specifications of these recommendations that can be/are used for three different purposes.</p>
+<ol>
+<li>
+<p>Data validation <br>
+A shape for data validation can be retrieved from <a href="https://www.purl.org/ontologymetadata/shape">https://www.purl.org/ontologymetadata/shape</a> and can be used with SHACL validators to test ontologies for any violations of required metadata by <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a> and to get suggestions for recommended metadata. We recommend the online SHACL validators <a href="https://shacl.org/playground/" title="Holger Knublauch (n/a): SHACL Playground. URL: https://shacl.org/playground/. Last accessed: 22 April 2024.">SHACL Playground</a>, <a href="https://shacl-playground.zazuko.com/">SHACL Playground by Zazuko</a> or <a href="https://shacl-play.sparna.fr/play/">SHACL Play!</a> for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.<br>
+The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section <a href="https://www.w3.org/TR/skos-reference/#L1170">4.6.2. SKOS Concept Schemes and OWL Ontologies</a> of the <a href="https://www.w3.org/TR/2009/REC-skos-reference-20090818/">SKOS Reference document</a>). A video demonstration of how to use this is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a">https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a</a>.</p>
+</li>
+<li>
+<p>Data validation at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a><br>
+The shape at <a href="https://www.purl.org/ontologymetadata/shape4ts">https://www.purl.org/ontologymetadata/shape4ts</a> is applied in the Ontology Suggestion Feature at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>. The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code. A video demonstration on how this is applied is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7">https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7</a></p>
+</li>
+<li>
+<p>Data generation <br>
+A shape for form generators and code generation can be retrieved from <a href="https://www.purl.org/ontologymetadata/shape4forms">https://www.purl.org/ontologymetadata/shape4forms</a>. It can for example be used with the <a href="https://github.com/ULB-Darmstadt/shacl-form">form generator tool by ULB Darmstadt</a> which has a <a href="https://ulb-darmstadt.github.io/shacl-form/#try-your-own">live demo instance</a>. This shape is not as granular as the one for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of <code>sh:alternativePath</code> constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes. A video demonstration on how to apply this is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418">https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418</a>.</p>
+</li>
+</ol>
 <h3 id="23-prefixes-used-in-this-document">2.3 Prefixes used in this document</h3>
 <p>Code examples will usually provide full IRIs of statement subjects and objects. Properties will be presented in prefixed notation. The table provides the prefix definitions:</p>
 <table>

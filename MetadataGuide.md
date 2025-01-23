@@ -2,7 +2,7 @@
 
 Document status: **DRAFT**
 
-Modification date: 2025-01-01
+Modification date: 2025-01-31
 
 Creators and contributors:
 
@@ -27,7 +27,7 @@ Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
     * [1.2 Why ontology metadata?](#12-why-ontology-metadata)
 2. [How to read this document](#2-how-to-read-this-document)
     * [2.1 Chapter structure and wording](#21-chapter-structure-and-wording)
-    * [2.2 Metadata validation with SHACL](#22-metadata-validation-with-shacl)
+    * [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl)
     * [2.3 Prefixes used in this document](#23-prefixes-used-in-this-document)
     * [2.4 Acronyms](#24-acronyms)
 3. [Mandatory Metadata](#3-mandatory-metadata)
@@ -109,7 +109,7 @@ It is therefore mandatory that an ontology provides its own metadata with machin
 
 With this document, *TIB - Leibniz Information Centre for Science and Technology University Library* provides a practical guide for metadata management of ontologies. It gives recommendations on required, recommended and optional metadata for ontologies. As there are currently several recommendations available (cf. [[13]](#source13), [[14]](#source14), [[15]](#source15), [[16]](#source16), [[17]](#source17), [[18]](#source18), [[19]](#source19), [[20]](#source20), [[21]](#source21), [[22]](#source22), [[23]](#source23)), this guide will provide recommendations on ontology metadata that particularly adress the publishing of ontologies on the [TIB Terminology Service][TIB TS].
 
-In addition, we provide shapes for SHACL validators based on these recommendations (cf. [2.2 Metadata validation with SHACL](#22-metadata-validation-with-shacl)).
+In addition, we provide shapes for SHACL validators based on these recommendations (cf. [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl)).
 
 ## 1 Ontology metadata
 
@@ -145,19 +145,23 @@ This guide tries to use clear wording to distinguish absolute requirements (*mus
 * recommend controlled vocabularies where appropriate
 * provide examples in text/turtle serialization
 * list alternative properties that may also be used to provide the metadatum
-* specify SHACL validation rules (cf. section [2.2 Metadata validation with SHACL](#22-metadata-validation-with-shacl))
+* specify SHACL validation rules (cf. section [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl))
 
 Subproperties to any properties mentioned will not be implied, but explicitly listed in the "alternative properties" part of each section.
 
-### 2.2 Metadata validation with SHACL
+### 2.2 Metadata recommendations and SHACL
 
-This guide is a human-readable specification. In addition, we also provide a SHACL specification of these recommendations that can be used for data validation.
+This guide is a human-readable specification. In addition, we also provide SHACL specifications of these recommendations that can be/are used for three different purposes.
 
-The shape can be used with SHACL validators to test ontologies for any violations of required metadata at [TIB Terminology Service][TIB TS] and to get suggestions for recommended metadata. We recommend the online SHACL validators [SHACL Playground][shacl-playground], [SHACL Playground by Zazuko](https://shacl-playground.zazuko.com/) or [SHACL Play!](https://shacl-play.sparna.fr/play/) for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.
+1. Data validation <br>
+A shape for data validation can be retrieved from <https://www.purl.org/ontologymetadata/shape> and can be used with SHACL validators to test ontologies for any violations of required metadata by [TIB Terminology Service][TIB TS] and to get suggestions for recommended metadata. We recommend the online SHACL validators [SHACL Playground][shacl-playground], [SHACL Playground by Zazuko](https://shacl-playground.zazuko.com/) or [SHACL Play!](https://shacl-play.sparna.fr/play/) for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.<br>
+The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section [4.6.2. SKOS Concept Schemes and OWL Ontologies](https://www.w3.org/TR/skos-reference/#L1170) of the [SKOS Reference document](https://www.w3.org/TR/2009/REC-skos-reference-20090818/)). A video demonstration of how to use this is given at our GitHub repository: <https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a>.
 
-The shape is available in a single file at <https://www.purl.org/ontologymetadata/shape>.
+2. Data validation at [TIB Terminology Service][TIB TS]<br>
+The shape at <https://www.purl.org/ontologymetadata/shape4ts> is applied in the Ontology Suggestion Feature at [TIB Terminology Service][TIB TS]. The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code. A video demonstration on how this is applied is given at our GitHub repository: <https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7>
 
-The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section [4.6.2. SKOS Concept Schemes and OWL Ontologies](https://www.w3.org/TR/skos-reference/#L1170) of the [SKOS Reference document](https://www.w3.org/TR/2009/REC-skos-reference-20090818/)).
+3. Data generation <br>
+A shape for form generators and code generation can be retrieved from <https://www.purl.org/ontologymetadata/shape4forms>. It can for example be used with the [form generator tool by ULB Darmstadt](https://github.com/ULB-Darmstadt/shacl-form) which has a [live demo instance](https://ulb-darmstadt.github.io/shacl-form/#try-your-own). This shape is not as granular as the one for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of `sh:alternativePath` constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes. A video demonstration on how to apply this is given at our GitHub repository: <https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418>.
 
 ### 2.3 Prefixes used in this document
 
