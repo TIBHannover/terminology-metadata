@@ -473,7 +473,7 @@ Example statement 3 (text/turtle):
 The ontology does not declare its creation date. Please provide it, if known.
 </p>
 <p>
-Use the xsd:dateTime format to do so (e.g. 2024-12-12T11:18:44).
+Use the xsd:date or xsd:dateTime format to do so (e.g. 2024-12-12 or 2024-12-12T11:18:44).
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/created
@@ -488,10 +488,10 @@ Example value: 2024-12-12T11:18:44
     sh:property [
         sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn prov:generatedAtTime )] ;
         sh:severity sh:Info ;
-        sh:datatype xsd:dateTime ;
+        sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );
         sh:message """
 <p>
-The ontology should provide its creation date in xsd:dateTime format.
+The ontology should provide its creation date in xsd:date or xsd:dateTime format.
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/created
@@ -2245,11 +2245,11 @@ Example statement (text/turtle):
                 )
             ] ;
         sh:severity sh:Info ;
-        sh:datatype xsd:dateTime ;
+        sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );
         sh:maxCount 1 ;
         sh:message """
 <p>
-The ontology should provide at most one issue date that conforms to xsd:dateTime.
+The ontology should provide at most one issue date that conforms to xsd:date or xsd:dateTime.
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/issued
@@ -2271,11 +2271,11 @@ Example statement (text/turtle):
     sh:property [
         sh:path [sh:alternativePath (dcterms:modified schema:dateModified pav:curatedOn pav:lastUpdateOn)];
         sh:severity sh:Info ;
-        sh:datatype xsd:dateTime ;
+        sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );
         sh:maxCount 1;
         sh:message """
 <p>
-The ontology should provide at most one ontology modification date in xsd:dateTime format (ideally the latest).
+The ontology should provide at most one ontology modification date in xsd:date or xsd:dateTime format (ideally the latest).
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/modified
