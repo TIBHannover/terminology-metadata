@@ -101,11 +101,119 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology license
 ### status: developer and external review needed
 ### <http://purl.org/dc/terms/licence> has been added, since licence is a variant of license and thus the property may easily occur as a common mistake
+
+#### ORIGINAL SHAPE TO BE DELETED WHEN FINE-GRANULAR SHAPES ARE READY
+
+    # sh:property [
+    #     sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+    #     sh:severity sh:Warning ;
+    #     sh:minCount 1;
+    #     sh:maxCount 1;
+    #     # tbd/todo: add further licenses to the list of accepted licenses? 
+    #     sh:xone (
+    #         [sh:hasValue <http://opendatacommons.org/licenses/by/summary/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/by/summary/> ;] 
+    #         [sh:hasValue <http://opendatacommons.org/licenses/by/1-0/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/by/1-0/> ;] 
+    #         [sh:hasValue <http://opendatacommons.org/licenses/by/1.0/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/by/1.0/> ;] 
+
+    #         [sh:hasValue <http://opendatacommons.org/licenses/pddl/1-0/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/pddl/1-0/> ;] 
+    #         [sh:hasValue <http://opendatacommons.org/licenses/pddl/summary/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/pddl/summary/> ;] 
+    #         [sh:hasValue <http://opendatacommons.org/licenses/pddl/1.0/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/pddl/1.0/> ;] 
+
+    #         [sh:hasValue <http://opendatacommons.org/licenses/odbl/summary/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/odbl/summary/> ;] 
+    #         [sh:hasValue <http://opendatacommons.org/licenses/odbl/1-0/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/odbl/1-0/> ;] 
+    #         [sh:hasValue <http://opendatacommons.org/licenses/odbl/1.0/> ;] 
+    #         [sh:hasValue <https://opendatacommons.org/licenses/odbl/1.0/> ;] 
+
+    #         [sh:hasValue <http://spdx.org/licenses/Unlicense.html> ;]
+    #         [sh:hasValue <https://spdx.org/licenses/Unlicense.html> ;]
+    #         [sh:hasValue <http://unlicense.org/> ;]
+    #         [sh:hasValue <https://unlicense.org/> ;]
+
+    #         [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/> ;] 
+    #         [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/> ;] 
+    #         [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
+    #         [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
+            
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/3.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/3.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/3.0/deed> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/3.0/deed> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/3.0/> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/3.0/> ;]
+
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/deed> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/deed> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/> ;] 
+
+    #         [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/> ;] 
+
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/4.0/> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/4.0/> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by/4.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/4.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by/4.0> ;] 
+
+    #         [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
+    #         [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
+    #         [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
+
+    #         # [sh:hasValue <> ;] 
+    #         );
+    #     sh:message """You must provide exactly one ontology license.\nThe license must be open (Read more about open licenses at https://opendefinition.org/licenses/).\nThe license must be given as an IRI from the following list:\n\n    - <https://opendatacommons.org/licenses/by/1-0/>\n    - <https://opendatacommons.org/licenses/pddl/1-0/>\n    - <https://opendatacommons.org/licenses/odbl/1-0/>\n    - <https://unlicense.org/>\n    - <https://creativecommons.org/publicdomain/zero/1.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by/4.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/de/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/4.0/legalcode>\n\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .\nYou want to use a different open license? File an issue at https://gitlab.com/TIBHannover/terminology/tib-terminology-service-issue-tracker/-/issues\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+    #     sh:description "This shape checks whether the ontology provides a license IRI from a list of accepted open licenses. It produces a warning message if not."@en ;
+    #     sh:name "Ontology license"@en ;
+    # ] ;
+
+#### test for too many (n > 2) ontology licenses
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:severity sh:Warning ;
+        sh:maxCount 1;
+        sh:message """The ontology has more than one license. It should give at most one license.\nThe license must be open (Read more about open licenses at https://opendefinition.org/licenses/).\nThe license must be given as an IRI from the following list:\n\n    - <https://opendatacommons.org/licenses/by/1-0/>\n    - <https://opendatacommons.org/licenses/pddl/1-0/>\n    - <https://opendatacommons.org/licenses/odbl/1-0/>\n    - <https://unlicense.org/>\n    - <https://creativecommons.org/publicdomain/zero/1.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by/4.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/de/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/4.0/legalcode>\n\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .\nYou want to use a different open license? File an issue at https://gitlab.com/TIBHannover/terminology/tib-terminology-service-issue-tracker/-/issues\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:description "This shape checks whether the ontology provides more than one licensefor the ontology. It produces a warning message if it does."@en ;
+        sh:name "Ontology license - too many values"@en ;
+    ] ;
+
+#### test for too few (n < 1) ontology licenses
+
     sh:property [
         sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
         sh:minCount 1;
-        sh:maxCount 1;
+        sh:message """The ontology does not have a license.\nThe license must be open (Read more about open licenses at https://opendefinition.org/licenses/).\nThe license must be given as an IRI from the following list:\n\n    - <https://opendatacommons.org/licenses/by/1-0/>\n    - <https://opendatacommons.org/licenses/pddl/1-0/>\n    - <https://opendatacommons.org/licenses/odbl/1-0/>\n    - <https://unlicense.org/>\n    - <https://creativecommons.org/publicdomain/zero/1.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by/4.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/de/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/4.0/legalcode>\n\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .\nYou want to use a different open license? File an issue at https://gitlab.com/TIBHannover/terminology/tib-terminology-service-issue-tracker/-/issues\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:description "This shape checks whether the ontology provides a license. It produces a warning message if not."@en ;
+        sh:name "Ontology license - too few values"@en ;
+    ] ;
+
+#### test for accepted licenses (still needs to be adapted)
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ; # test whether it makes sense to combine the list with the nodeKInd constraint
         # tbd/todo: add further licenses to the list of accepted licenses? 
         sh:xone (
             [sh:hasValue <http://opendatacommons.org/licenses/by/summary/> ;] 
@@ -179,11 +287,13 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 
             # [sh:hasValue <> ;] 
             );
-        sh:message """You must provide exactly one ontology license.\nThe license must be open (Read more about open licenses at https://opendefinition.org/licenses/).\nThe license must be given as an IRI from the following list:\n\n    - <https://opendatacommons.org/licenses/by/1-0/>\n    - <https://opendatacommons.org/licenses/pddl/1-0/>\n    - <https://opendatacommons.org/licenses/odbl/1-0/>\n    - <https://unlicense.org/>\n    - <https://creativecommons.org/publicdomain/zero/1.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by/4.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/de/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/4.0/legalcode>\n\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .\nYou want to use a different open license? File an issue at https://gitlab.com/TIBHannover/terminology/tib-terminology-service-issue-tracker/-/issues\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """The ontology provides a license but the value is not in the list of accepted licenses or it is not provided as an IRI.\nThe license must be open (Read more about open licenses at https://opendefinition.org/licenses/).\nThe license must be given as an IRI from the following list:\n\n    - <https://opendatacommons.org/licenses/by/1-0/>\n    - <https://opendatacommons.org/licenses/pddl/1-0/>\n    - <https://opendatacommons.org/licenses/odbl/1-0/>\n    - <https://unlicense.org/>\n    - <https://creativecommons.org/publicdomain/zero/1.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by/4.0/legalcode>\n    - <https://creativecommons.org/licenses/by/3.0/de/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/3.0/legalcode>\n    - <https://creativecommons.org/licenses/by-sa/4.0/legalcode>\n\nRecommended property: <http://purl.org/dc/terms/license>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:license <http://creativecommons.org/licenses/by/4.0/> .\nYou want to use a different open license? File an issue at https://gitlab.com/TIBHannover/terminology/tib-terminology-service-issue-tracker/-/issues\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology provides a license IRI from a list of accepted open licenses. It produces a warning message if not."@en ;
-        sh:name "Ontology license"@en ;
+        sh:name "Ontology license - accpeted licenses and node kind"@en ;
     ] ;
 
+#### test for unaccepted licenses
+#### TEST SHAPE WITH A LITERAL VALUE THAT BELONGS TO THE LIST AND ONE THAT DOES NOT
     sh:property [
         sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
