@@ -374,7 +374,7 @@ Alternative properties:
 
 SHACL validation rules:
 
-* `sh:datatype xsd:dateTime`
+* `sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );`
 * `sh:maxCount 1`
 * `sh:minCount 1`
 
@@ -1408,7 +1408,7 @@ Alternative properties:
 
 SHACL validation rules:
 
-* `sh:datatype xsd:dateTime`
+* `sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );`
 * `sh:maxCount 1`
 
 ### 5.22 Modification date
@@ -1432,7 +1432,7 @@ Alternative properties:
 
 SHACL validation rules:
 
-* `sh:datatype xsd:dateTime`
+* `sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );`
 * `sh:maxCount 1`
 
 ### 5.23 Textual version information
