@@ -731,7 +731,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
 ## Application example
 ### status: developer and external review needed
     sh:property [
-        sh:path <https://purl.org/vocab/vann/example> ;
+        sh:path <http://purl.org/vocab/vann/example> ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
