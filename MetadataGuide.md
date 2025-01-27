@@ -609,7 +609,7 @@ SHACL validation rules:
 
 ### 4.6 Ontology annotation language(s)
 
-If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotaed in that languge.
+If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotated in that language.
 
 Recommended property: <http://purl.org/dc/terms/language>
 
