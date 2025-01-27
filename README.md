@@ -6,6 +6,8 @@ In particular, it addresses ontology engineers who would like to publish their o
 
 An introduction and overview is given in the [Metadata Guide](/MetadataGuide.md).
 
+In addition, we provide SHACL shapes based on these recommendations for three different applications as documented below. The target class of these shapes is owl:Ontology, so that they can only be used to validate entities that declare themselves as an instance of owl:Ontology, and also code generated with these shapes, will declare entities as instances of owl:Ontology.
+
 This repository is archived at Zenodo: <https://www.doi.org/10.5281/zenodo.11103071>
 
 > INFO: This recommendation is still a draft. Approval and discussion by a broader communiuty are required.

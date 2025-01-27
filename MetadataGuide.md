@@ -163,6 +163,8 @@ The shape at <https://www.purl.org/ontologymetadata/shape4ts> is applied in the 
 3. Data generation <br>
 A shape for form generators and code generation can be retrieved from <https://www.purl.org/ontologymetadata/shape4forms>. It can for example be used with the [form generator tool by ULB Darmstadt](https://github.com/ULB-Darmstadt/shacl-form) which has a [live demo instance](https://ulb-darmstadt.github.io/shacl-form/#try-your-own). This shape is not as granular as the one for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of `sh:alternativePath` constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes. A video demonstration on how to apply this is given at our GitHub repository: <https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418>.
 
+All three versions of the shape have the target class owl:Ontology, so that they can only be used to validate entities that declare themselves as an instance of owl:Ontology, and also code generated with these shapes, will declare entities as instances of owl:Ontology.
+
 ### 2.3 Prefixes used in this document
 
 Code examples will usually provide full IRIs of statement subjects and objects. Properties will be presented in prefixed notation. The table provides the prefix definitions:
