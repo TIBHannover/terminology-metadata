@@ -1117,7 +1117,7 @@ Example statement (text/turtle):
 The ontology should provide information about the ontology annotation language(s) (e.g. for term labels, term definitions, etc.).
 </p>
 <p>
-It should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotaed in that languge.
+It should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotated in that language.
 </p>
 <p>
 Recommended controlled vocabulary: http://id.loc.gov/vocabulary/iso639-2
