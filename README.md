@@ -21,7 +21,9 @@ For example, the following online SHACL validators are available and have been t
 
 * [SHACL Playground](https://shacl.org/playground/)
 * [SHACL Playground by Zazuko](https://shacl-playground.zazuko.com/)
-* [SHACL Play!](https://shacl-play.sparna.fr/play/)
+* [SHACL Play!](https://shacl-play.sparna.fr/play/validate) (if you are new to SHACL, we recommend this online validator!)
+
+PLEASE NOTE that browser extensions (e.g. Citavi) may interfer when using such validators - they may parse the Turtle code and insert text snippets that make the code unparsable due to syntactic errors. You should switch such extensions off, if you encounter such problems!
 
 See how you can use online validators with our shape:
 
