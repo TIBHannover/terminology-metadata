@@ -12,7 +12,9 @@ This repository is archived at Zenodo: <https://www.doi.org/10.5281/zenodo.11103
 
 > INFO: This recommendation is still a draft. Approval and discussion by a broader communiuty are required.
 
-## For ontology validation by ontology engineers
+## Metadata recommendations in SHACL
+
+### For ontology validation by ontology engineers
 
 In addition to the [MetadataGuide.md](/MetadataGuide.md), we provide SHACL shapes based on these recommendations in [OntoMetadataShape.ttl](/OntoMetadataShape.ttl) which can also be reached via <https://www.purl.org/ontologymetadata/shape>. These shapes can be used in SHACL validators to check whether an ontology meets the recommendations.
 They are very fine-grained - each sh:PropertyShape tests a specific set of properties that may occur in an ontology. For each violated constraint, a detailed message adresses how the constraint violation may be fixed. The messages provide examples in Turtle, so that ontology engineers can easily adapt their own code to the recommendation.
@@ -29,7 +31,7 @@ See how you can use online validators with our shape:
 
 <https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a>
 
-## For ontology validation at TIB Terminology Service
+### For ontology validation at TIB Terminology Service
 
 In [OntoMetadataShape4TS.ttl](/OntoMetadataShape4TS.ttl) (also <https://www.purl.org/ontologymetadata/shape4ts>) we provide a version of the recommendations that is adapted to the Ontology Suggestion Feature at [TIB Terminology Service](https://terminology.tib.eu). The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code.
 
@@ -37,7 +39,7 @@ See how the shape is used in the suggestion feature:
 
 <https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7>
 
-## For metadata form generators
+### For metadata form generators
 
 In [OntoMetadataShape4Forms.ttl](/OntoMetadataShape4Forms.ttl) (also <https://www.purl.org/ontologymetadata/shape4forms>) you find a version of the shape that is optimized for the [form generator tool by ULB Darmstadt](https://github.com/ULB-Darmstadt/shacl-form). You can try it out on their [live demo instance](https://ulb-darmstadt.github.io/shacl-form/#try-your-own).
 
