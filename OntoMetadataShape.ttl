@@ -783,7 +783,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:message """You should explicitly declare the ontology's root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe respective classes (if any) need to be provided via their identifier.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> .\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
+        sh:message """You should explicitly declare the ontology's root classes.\nThis information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.\nThe respective classes (if any) need to be provided via their identifier.\nThis information should best be provided or defined by the ontology maintainers or engineers. If you are not the maintainer or engineer, you should leave this empty.\nRecommended property: <http://purl.obolibrary.org/obo/IAO_0000700>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> obo:IAO_0000700 <https://www.purl.org/SomeOntology/12345654544545> .\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
         sh:description "This shape checks whether the ontology declares its preferred root classes. It produces an info message if the information is missing or the information is not provided as IRIs."@en ;
         sh:name "Ontology root classes"@en ;
     ] ;

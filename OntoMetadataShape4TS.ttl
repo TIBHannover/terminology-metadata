@@ -1697,6 +1697,9 @@ This information can be used for tree-like visualizations of the class hierarchy
 The respective classes (if any) need to be provided via their identifier.
 </p>
 <p>
+This information should best be provided or defined by the ontology maintainers or engineers. If you are not the maintainer or engineer, you should leave this empty.
+</p>
+<p>
 Recommended property: http://purl.obolibrary.org/obo/IAO_0000700
 </p>
 <p>

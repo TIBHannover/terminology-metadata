@@ -443,7 +443,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
-        sh:description "You should name the preferred root classes, if the ontology has any. These can be used on tree visualizations of the class hierarchy of the ontology on services like Ontology Lookup Service (OLS) from EMBL-EBI."@en ;
+        sh:description "You should name the preferred root classes, if the ontology has any. These can be used on tree visualizations of the class hierarchy of the ontology on services like Ontology Lookup Service (OLS) from EMBL-EBI. This information should best be provided or defined by the ontology maintainers or engineers. If you are not the maintainer or engineer, you should leave this empty."@en ;
         sh:name "Ontology root classes"@en ;
         sh:group ontometa4forms:IntrinsicGroup ;
     ] ;
