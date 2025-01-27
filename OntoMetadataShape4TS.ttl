@@ -161,7 +161,7 @@ Example statement (text/turtle):
 #### ORIGINAL SHAPE TO BE DELETED IF THE NEW ONES TURN OUT FINE
 
 #     sh:property [
-#         sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+#         sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
 #         sh:severity sh:Warning ;
 #         sh:minCount 1;
 #         sh:maxCount 1;
@@ -255,7 +255,7 @@ Example statement (text/turtle):
 #### test for too many (n > 2) ontology licenses
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
         sh:maxCount 1;
         sh:message """
@@ -274,7 +274,7 @@ Example value: https://creativecommons.org/licenses/by/4.0/
 
 #### test for too few (n < 1) ontology licenses
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:message """
@@ -294,7 +294,7 @@ Example value: https://creativecommons.org/licenses/by/4.0/
 #### test for accepted licenses
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ; # test whether this is well-combined with the sh:xone constraint
         # tbd/todo: add further licenses to the list of accepted licenses? 
@@ -387,7 +387,7 @@ Example value: https://creativecommons.org/licenses/by/4.0/
 #### test for unaccepted licenses
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license dcterms:rights schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
         sh:severity sh:Warning ;
         # tbd/todo: add further licenses to the list of unaccepted licenses?
         # tbd/todo: discuss > redundant test?
