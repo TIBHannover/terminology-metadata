@@ -30,7 +30,7 @@
     vann:preferredNamespacePrefix "DOP"^^xsd:string ;
     mod:acronym "DOP"^^xsd:string ;
     dcterms:license <https://creativecommons.org/licenses/by/3.0/> ;
-    dc:creator <https://orcid.org/0000-0000-0000-0000>;
+    dcterms:creator <https://orcid.org/0000-0000-0000-0000>;
     owl:versionIRI <https://www.purl.org/ontologymetadata/DummyOntoPASSES/0.1> ;
     dcterms:created "2023-08-31T10:15:00"^^xsd:dateTime ;
     dcterms:modified "2023-08-31T10:19:00"^^xsd:dateTime ;
