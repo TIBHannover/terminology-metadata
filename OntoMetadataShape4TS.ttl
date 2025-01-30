@@ -8,17 +8,20 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix idot: <http://identifiers.org/idot/> .
 @prefix mod: <https://w3id.org/mod#> .
+@prefix obo: <http://purl.obolibrary.org/obo/>.
 @prefix ontometa4ts:    <https://www.purl.org/ontologymetadata/shape4ts#> .
+@prefix omv: <http://omv.ontoware.org/2005/05/ontology#>.
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix pav: <http://purl.org/pav/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
+@prefix sdo: <https://schema.org/> .
 @prefix sh:    <http://www.w3.org/ns/shacl#> .
-@prefix shacl: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
@@ -27,27 +30,36 @@
 
 ontometa4ts: rdf:type owl:Ontology ;
     # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
-    <http://purl.org/dc/terms/abstract> "OntoMeta provides SHACL shapes for ontology metadata. It is intended for use in TIB Terminology Service. You may re-use (please refer back to our repo!) for your own services. Please note that adaptations might be necessary. If you have any remarks or questions get in touch with us at https://github.com/StroemPhi/Ontology-Metadata/issues"@en ;
-    dcterms:license <https://creativecommons.org/licenses/by/4.0/>;
-    <http://purl.org/dc/terms/created> "2024-05-02T11:42:00"^^xsd:dateTime;
-    <http://purl.org/dc/terms/modified> "2025-01-31T00:00:00"^^xsd:dateTime;
-    <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/ontologymetadata/shape4ts/20250131>;
-    <http://purl.org/dc/terms/title> "Ontology Metadata Shape by TIB"@en, "TIB Metadatenshape für Ontologien"@de;
-    <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0002-1019-9151>, <https://orcid.org/0000-0003-1043-4964>, <https://orcid.org/0000-0003-2499-7741>, <https://orcid.org/0000-0002-1595-3213> , <https://orcid.org/0000-0002-8280-0487> ;
-    <http://purl.org/vocab/vann/preferredNamespacePrefix> "ontometa";
-    <http://usefulinc.com/ns/doap#bug-database> <https://github.com/TIBHannover/terminology-metadata/issues> ;
-    <http://www.loc.gov/premis/rdf/v3/documentation> <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md> ;
-    <http://purl.org/ontology/bibo/status> "active"@en ;
-    <http://usefulinc.com/ns/doap#audience> "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
-    dcterms:language <http://id.loc.gov/vocabulary/iso639-2/eng>;
-    <http://purl.org/dc/terms/subject> <http://d-nb.info/gnd/4827894-4>, <http://d-nb.info/gnd/4410512-5> ;
-    <http://usefulinc.com/ns/doap#repository> <tbd>;
-    <https://w3id.org/mod#hasSyntax> <https://www.iana.org/assignments/media-types/text/turtle> ;
-    <http://purl.org/dc/terms/references> <https://www.doi.org/10.5281/zenodo.11103071> ;
-    <https://w3id.org/mod#hasFormalityLevel> "RDF(S), OWL, SHACL"@en ;
+    dcterms:title "Ontology Metadata Shape by TIB for ontology metadata validation at TIB Terminology Service"@en,
+      "TIB Metadatenshape für Ontologien zur Validierung von Ontologie-Metadaten auf dem TIB Terminology Service"@de;
+    dcterms:abstract "OntoMeta4TS provides SHACL shapes for ontology metadata validation at TIB Terminology Service. If you have any remarks, questions or questions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
+    dcterms:created "2024-05-02T11:42:00"^^xsd:dateTime;
+    dcterms:modified "2025-01-31T00:00:00"^^xsd:dateTime;
+    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4ts/20250131>;
+    dcterms:creator <https://orcid.org/0000-0002-1019-9151>,
+      <https://orcid.org/0000-0003-1043-4964>,
+      <https://orcid.org/0000-0003-2499-7741>,
+      <https://orcid.org/0000-0002-1595-3213>,
+      <https://orcid.org/0000-0002-8280-0487> ;
+    vann:preferredNamespacePrefix "ontometa4ts";
+    doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues> ;
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md> ,
+      <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-at-tib-terminology-service>;
+    bibo:status "active"@en ;
+    doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+    sdo:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+    dcterms:subject <http://d-nb.info/gnd/4827894-4>,
+      <http://d-nb.info/gnd/4410512-5> ;
+    doap:repository <https://github.com/TIBHannover/terminology-metadata>;
+    mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
+    mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en ;
+    dcterms:references <https://www.doi.org/10.5281/zenodo.11103071> ;
     dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
-    <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/shape4forms> , <https://www.purl.org/ontologymetadata/shape> ;
-    <http://purl.org/vocab/vann/example> <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-at-tib-terminology-service>
+    dcat:distribution <https://www.purl.org/ontologymetadata/shape4forms> , <https://www.purl.org/ontologymetadata/shape> ;
+    vann:example <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-at-tib-terminology-service>;
+    adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for TIB Terminology Service."@en;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md#7-relations-to-related-work>;
 .
 
 # Start of the Ontology Metadata Shape
@@ -59,7 +71,7 @@ ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology title
 ### status: developer and external review needed
     sh:property [              
-        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title schema:name schema:headline) ] ; 
+        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title sdo:name sdo:headline) ] ; 
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:message """
@@ -77,7 +89,7 @@ Example value: Product Supply Network Vocabulary (psn)
     ] ;
 
     sh:property [             
-        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title schema:name  schema:headline) ] ; 
+        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title sdo:name  sdo:headline) ] ; 
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:uniqueLang true ;
@@ -108,7 +120,7 @@ Example statement (text/turtle):
 ## Preferred ontology prefix/ acronym
 ### status: developer and external review needed: add check for forbidden characters like - ? 
     sh:property [
-        sh:path [sh:alternativePath ( <http://purl.org/vocab/vann/preferredNamespacePrefix> <https://w3id.org/mod#acronym> )];
+        sh:path [sh:alternativePath ( vann:preferredNamespacePrefix mod:acronym )];
         sh:severity sh:Warning;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -130,7 +142,7 @@ Example value: bfo
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/vocab/vann/preferredNamespacePrefix> <https://w3id.org/mod#acronym>)];
+        sh:path [sh:alternativePath (vann:preferredNamespacePrefix mod:acronym)];
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:message """
@@ -161,7 +173,7 @@ Example statement (text/turtle):
 #### ORIGINAL SHAPE TO BE DELETED IF THE NEW ONES TURN OUT FINE
 
 #     sh:property [
-#         sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+#         sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
 #         sh:severity sh:Warning ;
 #         sh:minCount 1;
 #         sh:maxCount 1;
@@ -255,7 +267,7 @@ Example statement (text/turtle):
 #### test for too many (n > 2) ontology licenses
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
         sh:severity sh:Warning ;
         sh:maxCount 1;
         sh:message """
@@ -274,7 +286,7 @@ Example value: https://creativecommons.org/licenses/by/4.0/
 
 #### test for too few (n < 1) ontology licenses
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:message """
@@ -294,7 +306,7 @@ Example value: https://creativecommons.org/licenses/by/4.0/
 #### test for accepted licenses
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ; # test whether this is well-combined with the sh:xone constraint
         # tbd/todo: add further licenses to the list of accepted licenses? 
@@ -387,7 +399,7 @@ Example value: https://creativecommons.org/licenses/by/4.0/
 #### test for unaccepted licenses
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:license  schema:license cc:license dbo:license <http://purl.org/dc/terms/licence>)] ;
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
         sh:severity sh:Warning ;
         # tbd/todo: add further licenses to the list of unaccepted licenses?
         # tbd/todo: discuss > redundant test?
@@ -460,7 +472,7 @@ Example statement (text/turtle):
 ## Ontology creator(s)
 ### status: developer and external review needed
     sh:property [
-        sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
+        sh:path  [sh:alternativePath (dc:creator dcterms:creator sdo:creator pav:createdBy prov:wasAttributedTo sdo:accountablePerson sdo:author)];
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:message """
@@ -495,7 +507,7 @@ Example value: https://orcid.org/0000-0002-1584-4316, https://orcid.org/0000-000
 
 ### discuss: switch to string/ literal following "FirstName LastName (ORCID)" 
     sh:property [
-        sh:path  [sh:alternativePath (dc:creator dcterms:creator schema:creator pav:createdBy prov:wasAttributedTo schema:accountablePerson schema:author)];
+        sh:path  [sh:alternativePath (dc:creator dcterms:creator sdo:creator pav:createdBy prov:wasAttributedTo sdo:accountablePerson sdo:author)];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI; 
         sh:message """
@@ -601,7 +613,7 @@ Example statement 3 (text/turtle):
 ### Ontology creation date
 ### status: developer and external review needed
     sh:property [
-        sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn prov:generatedAtTime )] ;
+        sh:path [sh:alternativePath (dcterms:created sdo:dateCreated pav:createdOn prov:generatedAtTime )] ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:maxCount 1 ;
@@ -623,7 +635,7 @@ Example value: 2024-12-12T11:18:44
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:created schema:dateCreated pav:createdOn prov:generatedAtTime )] ;
+        sh:path [sh:alternativePath (dcterms:created sdo:dateCreated pav:createdOn prov:generatedAtTime )] ;
         sh:severity sh:Info ;
         sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );
         sh:message """
@@ -651,7 +663,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:message """
@@ -672,7 +684,7 @@ Example value: The ONTOLOGY NAME defines a range of classes and properties which
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal ;
         sh:datatype rdf:langString ;
@@ -698,7 +710,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
         sh:severity sh:Info ;
         sh:uniqueLang true ;
         sh:message """
@@ -710,7 +722,7 @@ The ontology should provide only one ontology abstract per language.
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:abstract <https://schema.org/abstract>)] ;
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
         sh:severity sh:Info ;
         sh:maxLength 500 ; 
         sh:message """
@@ -740,7 +752,7 @@ or add a reference to a related article using the property http://purl.org/dc/te
 ## Ontology issue tracker
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
+        sh:path doap:bug-database ;
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
@@ -762,7 +774,7 @@ Example value: https://github.com/tibonto/DFG-Fachsystematik-Ontology/issues
 ## Ontology documentation
 ### status: developer and external review needed
     sh:property [
-        sh:path  <http://www.loc.gov/premis/rdf/v3/documentation> ;
+        sh:path  premis:documentation ;
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
@@ -786,7 +798,7 @@ Example value: https://international-data-spaces-association.github.io/Informati
 ## Ontology contributor(s)
 ### status: developer and external review needed
     sh:property [
-        sh:path  [sh:alternativePath (dcterms:contributor dc:contributor schema:contributor pav:contributedBy)] ;
+        sh:path  [sh:alternativePath (dcterms:contributor dc:contributor sdo:contributor pav:contributedBy)] ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message """
@@ -830,7 +842,7 @@ Example statement 2 (text/turtle):
     ] ;
 
     sh:property [
-        sh:path  [sh:alternativePath (dcterms:contributor dc:contributor schema:contributor pav:contributedBy)] ;
+        sh:path  [sh:alternativePath (dcterms:contributor dc:contributor sdo:contributor pav:contributedBy)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -873,7 +885,7 @@ Example statement 2 (text/turtle):
 ## Ontology funder
 ### status: developer and external review needed
     sh:property [
-        sh:path <https://schema.org/funder> ;
+        sh:path sdo:funder ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message """
@@ -908,7 +920,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path <https://schema.org/funder> ;
+        sh:path sdo:funder ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -947,7 +959,7 @@ Example statement (text/turtle):
 ### Funding: the link is not useful, because CrossRef does not offer a searchable database.
 
     sh:property [
-        sh:path <https://schema.org/funding> ;
+        sh:path sdo:funding ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message """
@@ -972,7 +984,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path <https://schema.org/funding> ;
+        sh:path sdo:funding ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -1000,7 +1012,7 @@ Example statement (text/turtle):
 ## Ontology audience description
 ### status: developer and external review needed
     sh:property [
-        sh:path [sh:alternativePath (doap:audience schema:audience dcterms:audience)] ;
+        sh:path [sh:alternativePath (doap:audience sdo:audience dcterms:audience)] ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -1027,7 +1039,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (doap:audience schema:audience dcterms:audience)] ;
+        sh:path [sh:alternativePath (doap:audience sdo:audience dcterms:audience)] ;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message """
@@ -1109,7 +1121,7 @@ Example statement (text/turtle):
 ## Ontology annotation language(s)
 ### status: developer and external review needed
     sh:property [
-        sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
+        sh:path [sh:alternativePath (dcterms:language sdo:inLanguage) ];
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message """
@@ -1138,7 +1150,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
+        sh:path [sh:alternativePath (dcterms:language sdo:inLanguage) ];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -1164,7 +1176,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:language <https://schema.org/inLanguage>) ];
+        sh:path [sh:alternativePath (dcterms:language sdo:inLanguage) ];
         sh:severity sh:Info ;
         sh:pattern "(^http://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$|^https://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$)" ;
         sh:message """
@@ -1186,7 +1198,7 @@ Recommended property: https://schema.org/inLanguage
 ### status: developer and external review needed
 #### external comment Giacomo: Logical framework: the user needs a reference to a half-way authoritative list of frameworks (OWL? SKOS? RDF? OBO?) showing how they separate (wie sie sich voneinander abgrenzen)
     sh:property [
-        sh:path <https://w3id.org/mod#hasFormalityLevel>;
+        sh:path mod:hasFormalityLevel;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -1212,7 +1224,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path <https://w3id.org/mod#hasFormalityLevel>;
+        sh:path mod:hasFormalityLevel;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message """
@@ -1237,7 +1249,7 @@ Example statement (text/turtle):
 ## Ontology serialization/ file format
 ### status: developer and external review needed
     sh:property [
-        sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
+        sh:path [sh:alternativePath (mod:hasSyntax omv:hasOntologySyntax dcterms:format dc:format) ];
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message """
@@ -1298,7 +1310,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
+        sh:path [sh:alternativePath (mod:hasSyntax omv:hasOntologySyntax dcterms:format dc:format) ];
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -1359,7 +1371,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (<https://w3id.org/mod#hasSyntax> <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://purl.org/dc/terms/format> <http://purl.org/dc/elements/1.1/format>) ];
+        sh:path [sh:alternativePath (mod:hasSyntax omv:hasOntologySyntax dcterms:format dc:format) ];
         sh:severity sh:Info ;
         sh:maxCount 1;
         sh:xone (
@@ -1458,7 +1470,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 ### for later: dedicated ontology_status property missing - suggest to OBO? if available: use instead of bibo:status
     sh:property [
-        sh:path <http://purl.org/ontology/bibo/status> ;
+        sh:path bibo:status ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -1490,7 +1502,7 @@ Example statement (text/turtle):
 ## Ontology code repository
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#repository>;
+        sh:path doap:repository;
         sh:severity sh:Info ;
         sh:minCount 1;
         sh:maxCount 1;
@@ -1516,7 +1528,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#repository>;
+        sh:path doap:repository;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI;
         sh:message """
@@ -1540,7 +1552,7 @@ Example statement (text/turtle):
 ## Ontology distributions/ products
 ### status: developer and external review needed
    sh:property [
-        sh:path [ sh:alternativePath (<http://www.w3.org/ns/dcat#distribution> schema:distribution dcterms:hasFormat)];
+        sh:path [ sh:alternativePath (dcat:distribution sdo:distribution dcterms:hasFormat)];
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -1567,7 +1579,7 @@ Example statement (text/turtle):
 ## Application example
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.org/vocab/vann/example> ;
+        sh:path vann:example ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -1627,7 +1639,7 @@ Example statement (text/turtle):
 ## Citation suggestion
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+        sh:path dcterms:bibliographicCitation ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:message """
@@ -1654,7 +1666,7 @@ Example statement (text/turtle):
 ## Ontology sources (derived from)
 ### status: developer and external review needed
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/pav/derivedFrom> <http://www.w3.org/ns/prov#wasDerivedFrom>)] ;
+        sh:path [sh:alternativePath (pav:derivedFrom <http://www.w3.org/ns/prov#wasDerivedFrom>)] ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -1682,7 +1694,7 @@ Example statement (text/turtle):
 ## Ontology root classes
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.obolibrary.org/obo/IAO_0000700> ;
+        sh:path obo:IAO_0000700 ;
         sh:severity sh:Info ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -1721,7 +1733,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path  [sh:alternativePath (dc:description dcterms:description schema:description)];
+        sh:path  [sh:alternativePath (dc:description dcterms:description sdo:description)];
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal;
         sh:datatype rdf:langString ;
@@ -1746,7 +1758,7 @@ Example statetement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path [sh:alternativePath (dc:description dcterms:description schema:description)] ;
+        sh:path [sh:alternativePath (dc:description dcterms:description sdo:description)] ;
         sh:severity sh:Info ;
         sh:uniqueLang true ;
         sh:message """
@@ -1774,7 +1786,7 @@ Example statements (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/alternative> <https://schema.org/alternateName> <https://schema.org/alternativeHeadline>)];
+        sh:path [sh:alternativePath (dcterms:alternative sdo:alternateName sdo:alternativeHeadline)];
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:message """
@@ -1799,7 +1811,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://identifiers.org/idot/alternatePrefix> ;
+        sh:path idot:alternatePrefix ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:message """
@@ -1827,7 +1839,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<http://www.w3.org/2002/07/owl#priorVersion> <http://www.w3.org/ns/adms#prev> <http://purl.org/pav/previousVersion> <http://www.w3.org/ns/prov#wasRevisionOf> <http://purl.org/dc/terms/replaces> )] ;
+        sh:path [sh:alternativePath (owl:priorVersion adms:prev pav:previousVersion <http://www.w3.org/ns/prov#wasRevisionOf> dcterms:replaces )] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -1855,7 +1867,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/pav/hasCurrentVersion> <https://schema.org/version> <http://purl.org/dc/terms/hasVersion>)] ;
+        sh:path [sh:alternativePath (pav:hasCurrentVersion sdo:version dcterms:hasVersion)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -1883,7 +1895,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://www.w3.org/2002/07/owl#backwardCompatibleWith> ;
+        sh:path owl:backwardCompatibleWith ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -1911,7 +1923,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://www.w3.org/2002/07/owl#incompatibleWith> ;
+        sh:path owl:incompatibleWith ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -2013,7 +2025,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
  
     sh:property [
-        sh:path <http://identifiers.org/idot/exampleIdentifier> ;
+        sh:path idot:exampleIdentifier ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -2038,7 +2050,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<http://identifiers.org/idot/identifierPattern> <https://bioregistry.io/schema/#0000008>)] ;
+        sh:path [sh:alternativePath (idot:identifierPattern <https://bioregistry.io/schema/#0000008>)] ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:maxCount 1 ;
@@ -2065,7 +2077,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/homepage> <http://xmlns.com/foaf/0.1/page>)] ;
+        sh:path [sh:alternativePath (foaf:homepage foaf:page)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
@@ -2091,7 +2103,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/publisher> <http://purl.org/dc/elements/1.1/publisher> <https://schema.org/publisher>)] ;
+        sh:path [sh:alternativePath (dcterms:publisher dc:publisher sdo:publisher)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:xone (
@@ -2154,7 +2166,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<http://www.w3.org/2004/02/skos/core#example> <http://rdfs.org/ns/void#exampleResource> )] ;
+        sh:path [sh:alternativePath (skos:example void:exampleResource )] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -2180,7 +2192,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#mailing-list> ;
+        sh:path doap:mailing-list ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
@@ -2207,7 +2219,7 @@ Example statement (text/turtle):
 ### needs to be split for forms and validation? > logo should be its own datum, depictions and visualizations can go together
 
     sh:property [
-        sh:path [sh:alternativePath (<http://xmlns.com/foaf/0.1/logo> <https://schema.org/logo> <http://xmlns.com/foaf/0.1/depiction> <https://w3id.org/mod#depiction> <https://schema.org/image>)] ;
+        sh:path [sh:alternativePath (foaf:logo sdo:logo foaf:depiction mod:depiction sdo:image)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -2233,7 +2245,7 @@ Example statement (text/turtle):
 ### This shape is probably confusing since the properties shall provide identifiers for the ontology, not related resources.
 
     sh:property [
-        sh:path [sh:alternativePath (<http://purl.org/dc/terms/identifier> <http://purl.org/ontology/bibo/doi> <http://purl.org/dc/elements/1.1/identifier>)] ;
+        sh:path [sh:alternativePath (dcterms:identifier bibo:doi dc:identifier)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -2267,7 +2279,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (<https://w3id.org/mod#hasEquivalencesWith> <http://w3id.org/nkos#alignedWith>)] ;
+        sh:path [sh:alternativePath (mod:hasEquivalencesWith <http://w3id.org/nkos#alignedWith>)] ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -2295,7 +2307,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <https://w3id.org/mod#competencyQuestion> ;
+        sh:path mod:competencyQuestion ;
         sh:severity sh:Info ;
         sh:xone ( [sh:nodeKind sh:IRI ;] [sh:datatype rdf:langString ;] );
         sh:message """
@@ -2330,7 +2342,7 @@ Example statement 2 (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
+        sh:path vann:preferredNamespaceUri ;
         sh:severity sh:Info ;
         sh:maxCount 1 ;
         sh:message """
@@ -2352,7 +2364,7 @@ Example statement (text/turtle):
     ] ;
 
     sh:property [
-        sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
+        sh:path vann:preferredNamespaceUri ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """
@@ -2379,9 +2391,9 @@ Example statement (text/turtle):
     sh:property [
         sh:path [
             sh:alternativePath (
-                <http://purl.org/dc/terms/issued>
-                <https://schema.org/datePublished>
-                <https://schema.org/dateIssued>
+                dcterms:issued
+                sdo:datePublished
+                sdo:dateIssued
                 )
             ] ;
         sh:severity sh:Info ;
@@ -2409,7 +2421,7 @@ Example statement (text/turtle):
 ### status: developer and external review needed
 
     sh:property [
-        sh:path [sh:alternativePath (dcterms:modified schema:dateModified pav:curatedOn pav:lastUpdateOn)];
+        sh:path [sh:alternativePath (dcterms:modified sdo:dateModified pav:curatedOn pav:lastUpdateOn)];
         sh:severity sh:Info ;
         sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );
         sh:maxCount 1;

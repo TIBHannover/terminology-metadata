@@ -173,6 +173,7 @@ Code examples will usually provide full IRIs of statement subjects and objects. 
 |-|-|
 |adms|<http://www.w3.org/ns/adms#>|
 |bibo|<http://purl.org/ontology/bibo/>|
+|dc|<http://purl.org/dc/elements/1.1/>|
 |dcat|<http://www.w3.org/ns/dcat#>|
 |dcterms|<http://purl.org/dc/terms/>|
 |doap|<http://usefulinc.com/ns/doap#>|
@@ -186,7 +187,7 @@ Code examples will usually provide full IRIs of statement subjects and objects. 
 |premis|<http://www.loc.gov/premis/rdf/v3/>|
 |rdf|<http://www.w3.org/1999/02/22-rdf-syntax-ns#>|
 |rdfs|<http://www.w3.org/2000/01/rdf-schema#>|
-|schema|<https://schema.org/>|
+|sdo|<https://schema.org/>|
 |sh|<http://www.w3.org/ns/shacl#>|
 |vann|<http://purl.org/vocab/vann/>|
 |void|<http://rdfs.org/ns/void#>|
@@ -299,11 +300,11 @@ Example 1 (text/turtle):
 Example 2 (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
+<https://www.purl.org/SomeOntology> dcterms:creator <https://orcid.org/0000-0000-0000-0000>.
 
 <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; 
-    <http://xmlns.com/foaf/0.1/firstName> "Max" ;
-    <http://xmlns.com/foaf/0.1/lastName> "Muster" .
+    foaf:firstName "Max" ;
+    foaf:lastName "Muster" .
 ```
 
 Alternative properties:
@@ -337,7 +338,7 @@ Example 2 (text/turtle)
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/2019-12-31> .
+    owl:versionIRI <https://www.purl.org/SomeOntology/2019-12-31> .
 ```
 
 Example 3 (text/turtle):
@@ -504,7 +505,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    schema:funder <https://ror.org/018mejw64> .
+    sdo:funder <https://ror.org/018mejw64> .
 ```
 
 Alternative properties:
@@ -528,14 +529,14 @@ Example 1 (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    schema:funding <https://doi.org/00.00000/000000000> .
+    sdo:funding <https://doi.org/00.00000/000000000> .
 ```
 
 Example 2 (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    schema:funding "The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789)."@en .
+    sdo:funding "The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789)."@en .
 ```
 
 Alternative properties: n/a
@@ -885,7 +886,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology; 
-    schema:description "Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."@en .
+    sdo:description "Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."@en .
 ```
 
 Alternative properties:

@@ -8,7 +8,10 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix idot: <http://identifiers.org/idot/> .
 @prefix mod: <https://w3id.org/mod#> .
+@prefix obo: <http://purl.obolibrary.org/obo/>.
 @prefix ontometa4forms:    <https://www.purl.org/ontologymetadata/shape4forms#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix pav: <http://purl.org/pav/> .
@@ -16,9 +19,8 @@
 @prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema: <https://schema.org/> .
+@prefix sdo: <https://schema.org/> .
 @prefix sh:    <http://www.w3.org/ns/shacl#> .
-@prefix shacl: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
@@ -28,28 +30,34 @@
 ontometa4forms: rdf:type owl:Ontology ;
     # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
     dcterms:title "Ontology Metadata Shape by TIB"@en, "TIB Metadatenshape für Ontologien"@de;
-    dcterms:creator <https://orcid.org/0000-0002-1019-9151>, <https://orcid.org/0000-0003-1043-4964>, <https://orcid.org/0000-0003-2499-7741>, <https://orcid.org/0000-0002-1595-3213>, <https://orcid.org/0000-0002-8280-0487>;
-    dcterms:created "2025-01-31T00:00:00"^^xsd:dateTime;
-    <http://purl.org/dc/terms/modified> "2025-01-31T00:00:00"^^xsd:dateTime;
-    dcterms:abstract "OntoMeta4Forms provides SHACL shapes for ontology metadata. It is intended for use in form generator applications, e.g. <https://ulb-darmstadt.github.io/shacl-form/#try-your-own>. You may re-use (please refer back to our repo!) for your own services. Please note that adaptations might be necessary. If you have any remarks or questions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en;
-    dcterms:subject <http://d-nb.info/gnd/4827894-4>, <http://d-nb.info/gnd/4410512-5>;
-    dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
-    vann:preferredNamespacePrefix "ontometa4forms";
+    dcterms:abstract "OntoMeta4Forms provides SHACL shapes for ontology metadata. It is intended for use in form generator applications, e.g. <https://ulb-darmstadt.github.io/shacl-form/#try-your-own>. If you have any remarks, questions or suggestions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
-    doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
-    schema:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+    dcterms:created "2025-01-31T00:00:00"^^xsd:dateTime;
+    dcterms:modified "2025-01-31T00:00:00"^^xsd:dateTime;
     owl:versionIRI <https://www.purl.org/ontologymetadata/shape4forms/20250131>;
-    bibo:status "active";
-    adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for form generarators."@en;
+    dcterms:creator <https://orcid.org/0000-0002-1019-9151>,
+      <https://orcid.org/0000-0003-1043-4964>,
+      <https://orcid.org/0000-0003-2499-7741>,
+      <https://orcid.org/0000-0002-1595-3213>,
+      <https://orcid.org/0000-0002-8280-0487>;
+    vann:preferredNamespacePrefix "ontometa4forms";
     doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues>;
-    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md>;
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md>, 
+      <https://github.com/TIBHannover/terminology-metadata/tree/main#for-metadata-form-generators>;
+    bibo:status "active";
+    doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+    sdo:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+    dcterms:subject <http://d-nb.info/gnd/4827894-4>,
+      <http://d-nb.info/gnd/4410512-5>;
     doap:repository <https://github.com/TIBHannover/terminology-metadata>;
-    dcterms:references <https://doi.org/10.5281/zenodo.11103070>;
+    mod:hasSyntax <http://www.w3.org/ns/formats/Turtle>;
     mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en;
-    <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle>;
+    dcterms:references <https://doi.org/10.5281/zenodo.11103070>;
+    dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
+    dcat:distribution <https://www.purl.org/ontologymetadata/shape4ts> , <https://www.purl.org/ontologymetadata/shape> ;
+    vann:example <https://github.com/TIBHannover/terminology-metadata/tree/main#for-metadata-form-generators> ;
+    adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for form generarators."@en;
     mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md#7-relations-to-related-work>;
-    <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/shape4ts> , <https://www.purl.org/ontologymetadata/shape> ;
-    vann:example <https://github.com/TIBHannover/terminology-metadata/tree/main#for-metadata-form-generators> 
 .
 
 # Start of the Ontology Metadata Shape
@@ -75,7 +83,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Preferred ontology prefix/ acronym
 ### status: developer and external review needed: add check for forbidden characters like - ? 
     sh:property [
-        sh:path <http://purl.org/vocab/vann/preferredNamespacePrefix> ;
+        sh:path vann:preferredNamespacePrefix ;
         sh:severity sh:Warning;
         sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -116,7 +124,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology creator(s)
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.org/dc/terms/creator> ;
+        sh:path dcterms:creator ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:description "You must add the ontology creators. Only URIs are accepted, e.g. ORCIDs (https://orcid.org/) or ROR (https://ror.org/) identifiers."@en ;
@@ -144,7 +152,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### Ontology creation date
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.org/dc/terms/created> ;
+        sh:path dcterms:created ;
         sh:severity sh:Warning ;
         sh:minCount 1;
         sh:maxCount 1 ;
@@ -158,7 +166,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/dc/terms/abstract> ;
+        sh:path dcterms:abstract ;
         sh:severity sh:Warning ;
         sh:minCount 1 ;
         sh:description "You must add a short abstract describing the ontology. What is the ontology about? Which use case does it support? What is the motivation of the ontology? Please provide it, if knwon. Ideally use information provided by the ontology creators, e.g. in documentation, ontology homepage, papers or the like."@en ;
@@ -175,7 +183,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology issue tracker
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#bug-database> ;
+        sh:path doap:bug-database ;
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
@@ -188,7 +196,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology documentation
 ### status: developer and external review needed
     sh:property [
-        sh:path  <http://www.loc.gov/premis/rdf/v3/documentation> ;
+        sh:path  premis:documentation ;
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
@@ -203,7 +211,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology contributor(s)
 ### status: developer and external review needed
     sh:property [
-        sh:path  <http://purl.org/dc/terms/contributor> ;
+        sh:path  dcterms:contributor ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -216,7 +224,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology funder
 ### status: developer and external review needed
     sh:property [
-        sh:path <https://schema.org/funder> ;
+        sh:path sdo:funder ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -229,7 +237,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <https://schema.org/funding> ;
+        sh:path sdo:funding ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -272,7 +280,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 ### add a list to make easier for forms
     sh:property [
-        sh:path <https://schema.org/inLanguage>  ;
+        sh:path sdo:inLanguage  ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -316,7 +324,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 ### replace contraints by list of allowed values?
     sh:property [
-        sh:path <https://w3id.org/mod#hasFormalityLevel>;
+        sh:path mod:hasFormalityLevel;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:maxCount 1 ;
@@ -331,7 +339,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology serialization/ file format
 ### status: developer and external review needed
     sh:property [
-        sh:path <https://w3id.org/mod#hasSyntax> ;
+        sh:path mod:hasSyntax ;
         sh:severity sh:Info ;
         sh:group ontometa4forms:FormalizationMetadataGroup ;
         #sh:minCount 1 ;
@@ -351,7 +359,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 ### for later: dedicated ontology_status property missing - suggest to OBO? if available: use instead of bibo:status
     sh:property [
-        sh:path <http://purl.org/ontology/bibo/status> ;
+        sh:path bibo:status ;
         sh:severity sh:Info ;
         sh:maxCount 1 ;
         sh:in ("active" "inactive" "orphaned" "obsolete"); # alternative 1 > nice dropdowns in forms, can the items be language tagged?
@@ -366,7 +374,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology code repository
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#repository>;
+        sh:path doap:repository;
         sh:severity sh:Info ;
         #sh:minCount 1;
         sh:maxCount 1;
@@ -379,7 +387,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology distributions/ products
 ### status: developer and external review needed
    sh:property [
-        sh:path <http://www.w3.org/ns/dcat#distribution>;
+        sh:path dcat:distribution;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -391,7 +399,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Application example
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.org/vocab/vann/example> ;
+        sh:path vann:example ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -427,7 +435,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology sources (derived from)
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.org/pav/derivedFrom>  ;
+        sh:path pav:derivedFrom  ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -439,7 +447,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ## Ontology root classes
 ### status: developer and external review needed
     sh:property [
-        sh:path <http://purl.obolibrary.org/obo/IAO_0000700> ;
+        sh:path obo:IAO_0000700 ;
         sh:severity sh:Info ;
         #sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -455,7 +463,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path  schema:description;
+        sh:path  sdo:description;
         sh:severity sh:Info ;
         sh:nodeKind sh:Literal;
         sh:datatype rdf:langString ;
@@ -471,7 +479,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/dc/terms/alternative>;
+        sh:path dcterms:alternative;
         sh:severity sh:Info ;
         sh:datatype rdf:langString ;
         sh:languageIn   ( "en" "de" "ar" "bn" "cs" "da" "es" "fi" "fr" "hi" "it" "ja" "nl" "no" "pl" "ru" "sv" "tr" "uk" "zh")  ; # liste verlängern
@@ -484,7 +492,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://identifiers.org/idot/alternatePrefix> ;
+        sh:path idot:alternatePrefix ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:description "You can provide an alternative ontology prefix. It should not contain hyphens."@en ;
@@ -499,7 +507,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://www.w3.org/2002/07/owl#priorVersion> ;
+        sh:path owl:priorVersion ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description """You can provide a link to the preceding version of the ontology if there is any. The URI should be a stable and resolvable versionIRI."""@en ;
@@ -511,7 +519,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/dc/terms/hasVersion> ;
+        sh:path dcterms:hasVersion ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can provide links to related versions of the ontology if there are any. The URI should be a stable and resolvable versionIRI."@en ;
@@ -523,7 +531,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://www.w3.org/2002/07/owl#backwardCompatibleWith> ;
+        sh:path owl:backwardCompatibleWith ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can provide links to compatible versions of the ontology. The URI should be a stable and resolvable versionIRI."@en ;
@@ -535,7 +543,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://www.w3.org/2002/07/owl#incompatibleWith> ;
+        sh:path owl:incompatibleWith ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can provide links to incompatible versions of the ontology if applicable. The URI should be a stable and resolvable versionIRI."@en ;
@@ -582,7 +590,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
  
     sh:property [
-        sh:path <http://identifiers.org/idot/exampleIdentifier> ;
+        sh:path idot:exampleIdentifier ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can name one example identifier of the ontology, e.g. the identifier of one of its classes."@en ;
@@ -594,7 +602,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://identifiers.org/idot/identifierPattern> ;
+        sh:path idot:identifierPattern ;
         sh:severity sh:Info ;
         sh:datatype xsd:string ;
         sh:maxCount 2 ; # 2 because when using camel case for classes and properties, majusclues are usually used for classes, minuscules for properties, so two patterns may be valid
@@ -608,7 +616,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://xmlns.com/foaf/0.1/homepage>;
+        sh:path foaf:homepage;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
@@ -621,7 +629,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/dc/terms/publisher> ;
+        sh:path dcterms:publisher ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:xone (
@@ -653,7 +661,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://rdfs.org/ns/void#exampleResource> ;
+        sh:path void:exampleResource ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can provide the identifiers of example classes of the ontology."@en ;
@@ -666,7 +674,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://usefulinc.com/ns/doap#mailing-list> ;
+        sh:path doap:mailing-list ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
@@ -680,7 +688,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### needs to be split for forms and validation? > logo should be its own datum, depictions and visualizations can go together
 
     sh:property [
-        sh:path <http://xmlns.com/foaf/0.1/logo> ;
+        sh:path foaf:logo ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can add links to images related to the ontology, e.g. diagrams or schemas visualizing the ontology classes and relations."@en ;
@@ -692,7 +700,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/dc/terms/identifier> ;
+        sh:path dcterms:identifier ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can provide alternative identifiers of the ontology, e.g. a DOI, a Wikidata entry, or comparable identifiers."@en ;
@@ -710,7 +718,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <https://w3id.org/mod#hasEquivalencesWith>  ;
+        sh:path mod:hasEquivalencesWith  ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:description "You can provide identifiers of aligned ontologies or resources."@en ;
@@ -726,7 +734,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### mit Marc besprechen, ob man für den Form-generator beides zulassen kann
 
     sh:property [
-        sh:path <https://w3id.org/mod#competencyQuestion> ;
+        sh:path mod:competencyQuestion ;
         sh:severity sh:Info ;
         # sh:xone ( 
             # [
@@ -746,7 +754,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/vocab/vann/preferredNamespaceUri> ;
+        sh:path vann:preferredNamespaceUri ;
         sh:severity sh:Info ;
         sh:maxCount 1 ;
         sh:nodeKind sh:IRI ;
@@ -760,7 +768,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
 ### status: developer and external review needed
 
     sh:property [
-        sh:path <http://purl.org/dc/terms/issued> ;
+        sh:path dcterms:issued ;
         sh:severity sh:Info ;
         sh:datatype xsd:dateTime ;
         sh:maxCount 1 ;
