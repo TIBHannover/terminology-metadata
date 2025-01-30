@@ -674,7 +674,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    <https://w3id.org/mod#hasSyntax> <http://www.w3.org/ns/formats/Turtle> .
+    mod:hasSyntax> <http://www.w3.org/ns/formats/Turtle> .
 ```
 
 Alternative properties:
