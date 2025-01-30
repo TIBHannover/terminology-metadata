@@ -553,6 +553,10 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <td><a href="http://purl.org/ontology/bibo/">http://purl.org/ontology/bibo/</a></td>
 </tr>
 <tr>
+<td>dc</td>
+<td><a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a></td>
+</tr>
+<tr>
 <td>dcat</td>
 <td><a href="http://www.w3.org/ns/dcat#">http://www.w3.org/ns/dcat#</a></td>
 </tr>
@@ -605,7 +609,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <td><a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></td>
 </tr>
 <tr>
-<td>schema</td>
+<td>sdo</td>
 <td><a href="https://schema.org/">https://schema.org/</a></td>
 </tr>
 <tr>
@@ -721,11 +725,11 @@ A shape for form generators and code generation can be retrieved from <a href="h
     dcterms:creator &lt;https://orcid.org/0000-0000-0000-0000&gt; .
 </div></code></pre>
 <p>Example 2 (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt;.
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; dcterms:creator &lt;https://orcid.org/0000-0000-0000-0000&gt;.
 
 &lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person ; 
-    &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Max&quot; ;
-    &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Muster&quot; .
+    foaf:firstName &quot;Max&quot; ;
+    foaf:lastName &quot;Muster&quot; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -750,7 +754,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </div></code></pre>
 <p>Example 2 (text/turtle)</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    &lt;http://www.w3.org/2002/07/owl#versionIRI&gt; &lt;https://www.purl.org/SomeOntology/2019-12-31&gt; .
+    owl:versionIRI &lt;https://www.purl.org/SomeOntology/2019-12-31&gt; .
 </div></code></pre>
 <p>Example 3 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;http://purl.obolibrary.org/obo/pco.owl&gt; rdf:type owl:Ontology ;
@@ -778,7 +782,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
+<li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] [sh:datatype xsd:gYearMonth ;] [sh:datatype xsd:gYear ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:minCount 1</code></li>
 </ul>
@@ -869,7 +873,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <p>Recommended property: <a href="https://schema.org/funder">https://schema.org/funder</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    schema:funder &lt;https://ror.org/018mejw64&gt; .
+    sdo:funder &lt;https://ror.org/018mejw64&gt; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -886,11 +890,11 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <p>Recommended property: <a href="https://schema.org/funding">https://schema.org/funding</a></p>
 <p>Example 1 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    schema:funding &lt;https://doi.org/00.00000/000000000&gt; .
+    sdo:funding &lt;https://doi.org/00.00000/000000000&gt; .
 </div></code></pre>
 <p>Example 2 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    schema:funding &quot;The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789).&quot;@en .
+    sdo:funding &quot;The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789).&quot;@en .
 </div></code></pre>
 <p>Alternative properties: n/a</p>
 <p>SHACL validation rules:</p>
@@ -991,7 +995,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <p>Currently, there is no registered media type for obo format.</p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    &lt;https://w3id.org/mod#hasSyntax&gt; &lt;http://www.w3.org/ns/formats/Turtle&gt; .
+    mod:hasSyntax&gt; &lt;http://www.w3.org/ns/formats/Turtle&gt; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -1136,7 +1140,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <p>Recommended property: <a href="https://schema.org/description">https://schema.org/description</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology; 
-    schema:description &quot;Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.&quot;@en .
+    sdo:description &quot;Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.&quot;@en .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -1495,7 +1499,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
+<li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
 <h3 id="522-modification-date">5.22 Modification date</h3>
@@ -1513,7 +1517,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:xone ( [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
+<li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
 <h3 id="523-textual-version-information">5.23 Textual version information</h3>
