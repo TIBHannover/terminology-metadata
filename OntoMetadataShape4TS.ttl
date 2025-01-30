@@ -779,7 +779,7 @@ Example value: https://github.com/tibonto/DFG-Fachsystematik-Ontology/issues
         sh:severity sh:Warning ;
         sh:nodeKind sh:IRI ;
         sh:minCount 1 ;
-        sh:maxCount 1 ;
+        # sh:maxCount 1 ;
         sh:message """
 <p>
 The ontology does not contain the link to its documentation. Please provide it, if known.
