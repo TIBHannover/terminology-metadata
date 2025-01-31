@@ -2,7 +2,7 @@
 
 Document status: **DRAFT**
 
-Modification date: 2024-05-02
+Modification date: 2025-01-31
 
 Creators and contributors:
 
@@ -13,7 +13,7 @@ Creators and contributors:
 * [Strömert, Philip  (Technische Informationsbibliothek)](https://orcid.org/0000-0002-1595-3213)
 * [Vogt, Lars (Technische Informationsbibliothek)](https://orcid.org/0000-0002-8280-0487)
 
-License: [CC BY 4.0 Deed Attribution 4.0 International ](https://creativecommons.org/licenses/by/4.0/)
+License: [CC BY 4.0 Deed Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/)
 
 Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
 
@@ -27,7 +27,7 @@ Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
     * [1.2 Why ontology metadata?](#12-why-ontology-metadata)
 2. [How to read this document](#2-how-to-read-this-document)
     * [2.1 Chapter structure and wording](#21-chapter-structure-and-wording)
-    * [2.2 Metadata validation with SHACL](#22-metadata-validation-with-shacl)
+    * [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl)
     * [2.3 Prefixes used in this document](#23-prefixes-used-in-this-document)
     * [2.4 Acronyms](#24-acronyms)
 3. [Mandatory Metadata](#3-mandatory-metadata)
@@ -76,7 +76,7 @@ Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
     * [5.12 Example ontology class](#512-example-ontology-class)
     * [5.13 Ontology mailing list](#513-ontology-mailing-list)
     * [5.14 Ontology logo/ depictions/ related visualization](#514-ontology-logo-depiction-related-visualizations)
-    * [5.15 Related identifiers](#515-related-identifiers)
+    * [5.15 Alternative identifiers of the ontology](#515-alternative-identifiers-of-the-ontology)
     * [5.16 Development environment](#516-development-environment)
     * [5.17 Alignments/ mappings](#517-alignments-mappings)
         * [5.17.1 Aligned resources](#5171-aligned-resources)
@@ -109,7 +109,7 @@ It is therefore mandatory that an ontology provides its own metadata with machin
 
 With this document, *TIB - Leibniz Information Centre for Science and Technology University Library* provides a practical guide for metadata management of ontologies. It gives recommendations on required, recommended and optional metadata for ontologies. As there are currently several recommendations available (cf. [[13]](#source13), [[14]](#source14), [[15]](#source15), [[16]](#source16), [[17]](#source17), [[18]](#source18), [[19]](#source19), [[20]](#source20), [[21]](#source21), [[22]](#source22), [[23]](#source23)), this guide will provide recommendations on ontology metadata that particularly adress the publishing of ontologies on the [TIB Terminology Service][TIB TS].
 
-In addition, we provide shapes for SHACL validators based on these recommendations (cf. [2.2 Metadata validation with SHACL](#22-metadata-validation-with-shacl)).
+In addition, we provide shapes for SHACL validators based on these recommendations (cf. [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl)).
 
 ## 1 Ontology metadata
 
@@ -145,19 +145,25 @@ This guide tries to use clear wording to distinguish absolute requirements (*mus
 * recommend controlled vocabularies where appropriate
 * provide examples in text/turtle serialization
 * list alternative properties that may also be used to provide the metadatum
-* specify SHACL validation rules (cf. section [2.2 Metadata validation with SHACL](#22-metadata-validation-with-shacl))
+* specify SHACL validation rules (cf. section [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl))
 
 Subproperties to any properties mentioned will not be implied, but explicitly listed in the "alternative properties" part of each section.
 
-### 2.2 Metadata validation with SHACL
+### 2.2 Metadata recommendations and SHACL
 
-This guide is a human-readable specification. In addition, we also provide a SHACL specification of these recommendations that can be used for data validation.
+This guide is a human-readable specification. In addition, we also provide SHACL specifications of these recommendations that can be/are used for three different purposes.
 
-The shape can be used with SHACL validators to test ontologies for any violations of required metadata at [TIB Terminology Service][TIB TS] and to get suggestions for recommended metadata. We recommend the online SHACL validators [SHACL Playground][shacl-playground], [SHACL Playground by Zazuko](https://shacl-playground.zazuko.com/) or [SHACL Play!](https://shacl-play.sparna.fr/play/) for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.
+1. Data validation <br>
+A shape for data validation can be retrieved from <https://www.purl.org/ontologymetadata/shape> and can be used with SHACL validators to test ontologies for any violations of required metadata by [TIB Terminology Service][TIB TS] and to get suggestions for recommended metadata. We recommend the online SHACL validators [SHACL Playground][shacl-playground], [SHACL Playground by Zazuko](https://shacl-playground.zazuko.com/) or [SHACL Play!](https://shacl-play.sparna.fr/play/) for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.<br>
+The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section [4.6.2. SKOS Concept Schemes and OWL Ontologies](https://www.w3.org/TR/skos-reference/#L1170) of the [SKOS Reference document](https://www.w3.org/TR/2009/REC-skos-reference-20090818/)). A video demonstration of how to use this is given at our GitHub repository: <https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a>.
 
-The shape is available in a single file at <https://www.purl.org/ontologymetadata/shape>.
+2. Data validation at [TIB Terminology Service][TIB TS]<br>
+The shape at <https://www.purl.org/ontologymetadata/shape4ts> is applied in the Ontology Suggestion Feature at [TIB Terminology Service][TIB TS]. The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code. A video demonstration on how this is applied is given at our GitHub repository: <https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7>
 
-The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section [4.6.2. SKOS Concept Schemes and OWL Ontologies](https://www.w3.org/TR/skos-reference/#L1170) of the [SKOS Reference document](https://www.w3.org/TR/2009/REC-skos-reference-20090818/)).
+3. Data generation <br>
+A shape for form generators and code generation can be retrieved from <https://www.purl.org/ontologymetadata/shape4forms>. It can for example be used with the [form generator tool by ULB Darmstadt](https://github.com/ULB-Darmstadt/shacl-form) which has a [live demo instance](https://ulb-darmstadt.github.io/shacl-form/#try-your-own). This shape is not as granular as the one for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of `sh:alternativePath` constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes. A video demonstration on how to apply this is given at our GitHub repository: <https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418>.
+
+All three versions of the shape have the target class owl:Ontology, so that they can only be used to validate entities that declare themselves as an instance of owl:Ontology, and also code generated with these shapes, will declare entities as instances of owl:Ontology.
 
 ### 2.3 Prefixes used in this document
 
@@ -167,6 +173,7 @@ Code examples will usually provide full IRIs of statement subjects and objects. 
 |-|-|
 |adms|<http://www.w3.org/ns/adms#>|
 |bibo|<http://purl.org/ontology/bibo/>|
+|dc|<http://purl.org/dc/elements/1.1/>|
 |dcat|<http://www.w3.org/ns/dcat#>|
 |dcterms|<http://purl.org/dc/terms/>|
 |doap|<http://usefulinc.com/ns/doap#>|
@@ -180,7 +187,7 @@ Code examples will usually provide full IRIs of statement subjects and objects. 
 |premis|<http://www.loc.gov/premis/rdf/v3/>|
 |rdf|<http://www.w3.org/1999/02/22-rdf-syntax-ns#>|
 |rdfs|<http://www.w3.org/2000/01/rdf-schema#>|
-|schema|<https://schema.org/>|
+|sdo|<https://schema.org/>|
 |sh|<http://www.w3.org/ns/shacl#>|
 |vann|<http://purl.org/vocab/vann/>|
 |void|<http://rdfs.org/ns/void#>|
@@ -268,6 +275,7 @@ Alternative properties:
 * <https://schema.org/license>
 * <http://creativecommons.org/ns#license>
 * <http://dbpedia.org/ontology/license>
+* <http://purl.org/dc/terms/licence> (is a mis-spelled variant of <http://purl.org/dc/terms/license>)
 
 SHACL validation rules:
 
@@ -292,11 +300,11 @@ Example 1 (text/turtle):
 Example 2 (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntology> <http://purl.org/dc/terms/creator> <https://orcid.org/0000-0000-0000-0000>.
+<https://www.purl.org/SomeOntology> dcterms:creator <https://orcid.org/0000-0000-0000-0000>.
 
 <https://orcid.org/0000-0000-0000-0000> rdf:type foaf:Person ; 
-    <http://xmlns.com/foaf/0.1/firstName> "Max" ;
-    <http://xmlns.com/foaf/0.1/lastName> "Muster" .
+    foaf:firstName "Max" ;
+    foaf:lastName "Muster" .
 ```
 
 Alternative properties:
@@ -330,7 +338,7 @@ Example 2 (text/turtle)
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    <http://www.w3.org/2002/07/owl#versionIRI> <https://www.purl.org/SomeOntology/2019-12-31> .
+    owl:versionIRI <https://www.purl.org/SomeOntology/2019-12-31> .
 ```
 
 Example 3 (text/turtle):
@@ -369,7 +377,7 @@ Alternative properties:
 
 SHACL validation rules:
 
-* `sh:datatype xsd:dateTime`
+* `sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] [sh:datatype xsd:gYearMonth ;] [sh:datatype xsd:gYear ;] );`
 * `sh:maxCount 1`
 * `sh:minCount 1`
 
@@ -497,7 +505,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    schema:funder <https://ror.org/018mejw64> .
+    sdo:funder <https://ror.org/018mejw64> .
 ```
 
 Alternative properties:
@@ -521,14 +529,14 @@ Example 1 (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    schema:funding <https://doi.org/00.00000/000000000> .
+    sdo:funding <https://doi.org/00.00000/000000000> .
 ```
 
 Example 2 (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    schema:funding "The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789)."@en .
+    sdo:funding "The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789)."@en .
 ```
 
 Alternative properties: n/a
@@ -602,7 +610,7 @@ SHACL validation rules:
 
 ### 4.6 Ontology annotation language(s)
 
-If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotaed in that languge.
+If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotated in that language.
 
 Recommended property: <http://purl.org/dc/terms/language>
 
@@ -648,7 +656,7 @@ SHACL validation rules:
 
 You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) [[6]](#source6) or from the W3C resource Unique URIs for File Formats [[7]](#source7).
 
-Recommended property: <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>
+Recommended property: <https://w3id.org/mod#hasSyntax>
 
 Recommended controlled vocabularies:
 
@@ -667,7 +675,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
-    omv:hasOntologySyntax <http://www.w3.org/ns/formats/Turtle> .
+    mod:hasSyntax> <http://www.w3.org/ns/formats/Turtle> .
 ```
 
 Alternative properties:
@@ -675,6 +683,7 @@ Alternative properties:
 * <http://purl.org/dc/terms/format>
 * <http://purl.org/dc/elements/1.1/format>
 * <https://schema.org/encodingFormat>
+* <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>
 
 SHACL validation rules:
 
@@ -756,7 +765,7 @@ SHACL validation rules:
 
 How to use an ontology is often helpfully demonstrated by application examples and visualizations that give a glimpse about how the ontology can be used to structure actual data. If you have such application examples, these might be better found, if you link to them from the ontology. These application examples could be part of the ontology documentation, formal serializations applying the ontology or even technical applications that make use of the ontology.
 
-Recommended property: <https://vocab.org/vann/example>
+Recommended property: <http://purl.org/vocab/vann/example>
 
 Example (text/turtle):
 
@@ -840,7 +849,7 @@ SHACL validation rules:
 
 ### 4.16 Ontology root classes
 
-You should explicitly declare the ontology's preferred root classes. Display tools like the [TIB Terminology Service][TIB TS] and other OLS-based services [[9]](#source9), [[10]](#source10) can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The repsective classes need to be provided via their identifier.
+You should explicitly declare the ontology's preferred root classes. Display tools like the [TIB Terminology Service][TIB TS] and other OLS-based services [[9]](#source9), [[10]](#source10) can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The respective classes need to be provided via their identifier. This information should best be provided or defined by the ontology maintainers or engineers.
 
 Recommended property: <http://purl.obolibrary.org/obo/IAO_0000700>
 
@@ -877,7 +886,7 @@ Example (text/turtle):
 
 ```Turtle
 <https://www.purl.org/SomeOntology> rdf:type owl:Ontology; 
-    schema:description "Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."@en .
+    sdo:description "Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract."@en .
 ```
 
 Alternative properties:
@@ -1235,9 +1244,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 5.15 Related identifiers
+### 5.15 Alternative identifiers of the ontology
 
-If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata.
+If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata. You should list here alternative URIs that may be used to identify your ontology. The identifier used as the base URI of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri> instead (cf. [5.20 Preferred ontology namespace](#520-preferred-ontology-namespace)).
 
 Recommended property: <http://purl.org/dc/terms/identifier>
 
@@ -1252,6 +1261,7 @@ Alternative properties:
 
 * <http://purl.org/ontology/bibo/doi>
 * <https://schema.org/identifier>
+* <http://purl.org/dc/elements/1.1/identifier>>
 
 SHACL validation rules:
 
@@ -1401,7 +1411,7 @@ Alternative properties:
 
 SHACL validation rules:
 
-* `sh:datatype xsd:dateTime`
+* `sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );`
 * `sh:maxCount 1`
 
 ### 5.22 Modification date
@@ -1425,12 +1435,14 @@ Alternative properties:
 
 SHACL validation rules:
 
-* `sh:datatype xsd:dateTime`
+* `sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );`
 * `sh:maxCount 1`
 
 ### 5.23 Textual version information
 
 Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21. If you use such textual version information but do not use/have a Version URI, then we strongly recommend to also mint a version URI in which you use the textual version information as variable.
+
+If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. Alternatively, you could add the info to the version notes (cf. [5.24 Version notes](#524-version-notes)).
 
 Recommended property: <http://www.w3.org/2002/07/owl#versionInfo>
 
@@ -1448,13 +1460,21 @@ Example 2 (text/turtle):
     owl:versionInfo "1.0.0"^^xsd:string .
 ```
 
+Example 3 (text/turtle)
+:
+
+```Turtle
+<https://www.purl.org/SomeOntology> rdf:type owl:Ontology ;
+    owl:versionInfo "Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024."@en.
+```
+
 Alternative properties:
 
 * <http://purl.org/pav/version>
 
 SHACL validation rules:
 
-* `sh:datatype xsd:string`
+* `sh:xone ([sh:datatype xsd:string ;] [sh:datatype rdf:langString ;])`
 * `sh:maxCount 1`
 
 ### 5.24 Version notes
@@ -1474,7 +1494,7 @@ Example (text/turtle):
 
 Alternative properties:
 
-* <https://vocab.org/vann/changes>
+* <http://purl.org/vocab/vann/changes>
 
 SHACL validation rules:
 
@@ -1503,11 +1523,11 @@ SHACL validation rules:
 | 4.5     | Subject(s)                                       | <http://purl.org/dc/terms/subject>                                            |           | x           |          | 0…*         |
 | 4.6     | Annotation language(s)                           | <http://purl.org/dc/terms/language>                                           |           | x           |          | 0…*         |
 | 4.7     | Applied logical framework                        | <https://w3id.org/mod#hasFormalityLevel>                                      |           | x           |          | 0...1       |
-| 4.8     | Serialization/ file format                       | <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>                  |           | x           |          | 0...1       |
+| 4.8     | Serialization/ file format                       | <https://w3id.org/mod#hasSyntax>                  |           | x           |          | 0...1       |
 | 4.9     | Status                                           | <http://purl.org/ontology/bibo/status>                                        |           | x           |          | 0...1       |
 | 4.10    | Code repository                                  | <http://usefulinc.com/ns/doap#repository>                                     |           | x           |          | 0...1       |
 | 4.11    | Distributions/ products                          | <http://www.w3.org/ns/dcat#distribution>                                      |           | x           |          | 0…*         |
-| 4.12    | Application example                              | <https://vocab.org/vann/example>                                              |           | x           |          | 0…*         |
+| 4.12    | Application example                              | <http://purl.org/vocab/vann/example>                                              |           | x           |          | 0…*         |
 | 4.13    | Related resource(s)                              | <http://purl.org/dc/terms/references>                                         |           | x           |          | 0…*         |
 | 4.14    | Citation suggestion                              | <http://purl.org/dc/terms/bibliographicCitation>                              |           | x           |          | 0…*         |
 | 4.15    | Ontology sources (derived from)                  | <http://purl.org/pav/derivedFrom>                                             |           | x           |          | 0…*         |

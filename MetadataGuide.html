@@ -367,7 +367,7 @@ code {
   </script>
 <h1 id="ontology-metadata-recommendations-by-tib">Ontology metadata recommendations by TIB</h1>
 <p>Document status: <strong>DRAFT</strong></p>
-<p>Modification date: 2024-05-02</p>
+<p>Modification date: 2025-01-31</p>
 <p>Creators and contributors:</p>
 <!-- * [Last name, First Name  (Affiliation)](https://orcid.org/) -->
 <ul>
@@ -377,7 +377,7 @@ code {
 <li><a href="https://orcid.org/0000-0002-1595-3213">Strömert, Philip  (Technische Informationsbibliothek)</a></li>
 <li><a href="https://orcid.org/0000-0002-8280-0487">Vogt, Lars (Technische Informationsbibliothek)</a></li>
 </ul>
-<p>License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 Deed Attribution 4.0 International </a></p>
+<p>License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 Deed Attribution 4.0 International</a></p>
 <p>Zenodo archive: <a href="https://www.doi.org/10.5281/zenodo.11103071">https://www.doi.org/10.5281/zenodo.11103071</a></p>
 <div style="page-break-after: always;"></div>
 <h2 id="table-of-contents">Table of contents</h2>
@@ -392,7 +392,7 @@ code {
 <li><a href="#2-how-to-read-this-document">How to read this document</a>
 <ul>
 <li><a href="#21-chapter-structure-and-wording">2.1 Chapter structure and wording</a></li>
-<li><a href="#22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</a></li>
+<li><a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a></li>
 <li><a href="#23-prefixes-used-in-this-document">2.3 Prefixes used in this document</a></li>
 <li><a href="#24-acronyms">2.4 Acronyms</a></li>
 </ul>
@@ -453,7 +453,7 @@ code {
 <li><a href="#512-example-ontology-class">5.12 Example ontology class</a></li>
 <li><a href="#513-ontology-mailing-list">5.13 Ontology mailing list</a></li>
 <li><a href="#514-ontology-logo-depiction-related-visualizations">5.14 Ontology logo/ depictions/ related visualization</a></li>
-<li><a href="#515-related-identifiers">5.15 Related identifiers</a></li>
+<li><a href="#515-alternative-identifiers-of-the-ontology">5.15 Alternative identifiers of the ontology</a></li>
 <li><a href="#516-development-environment">5.16 Development environment</a></li>
 <li><a href="#517-alignments-mappings">5.17 Alignments/ mappings</a>
 <ul>
@@ -486,7 +486,7 @@ code {
 <p>In order to avoid these problems, metadata management should be part of the ontology engineering process: The metadata of an ontology should be part of the ontology's code base or the ontology itself. This would make the ontology resp. its code base the single source of truth for its own metadata.</p>
 <p>It is therefore mandatory that an ontology provides its own metadata with machine-understandable semantics and established terms from metadata ontologies and controlled vocabularies. The metadata need to be as or even more persistent than the ontology itself. <a href="https://www.go-fair.org/fair-principles/r1-metadata-richly-described-plurality-accurate-relevant-attributes/" title="FAIR Principles. Principle R1. GO FAIR. URL: &lt;https://www.go-fair.org/fair-principles/&gt;. Last accessed: 28 April 2023.">Principle R1</a> of the FAIR principles <a href="#source2">[1]</a> furthermore recommends to not just provide metadata that allow the discovery of an ontology (e.g. title, ontology prefix, authors), but to add metadata that richly describe the contents of the ontology and the conditions of its creation and use (cf. <a href="#12-why-ontology-metadata">1.2 Why ontology metadata?</a>).</p>
 <p>With this document, <em>TIB - Leibniz Information Centre for Science and Technology University Library</em> provides a practical guide for metadata management of ontologies. It gives recommendations on required, recommended and optional metadata for ontologies. As there are currently several recommendations available (cf. <a href="#source13">[13]</a>, <a href="#source14">[14]</a>, <a href="#source15">[15]</a>, <a href="#source16">[16]</a>, <a href="#source17">[17]</a>, <a href="#source18">[18]</a>, <a href="#source19">[19]</a>, <a href="#source20">[20]</a>, <a href="#source21">[21]</a>, <a href="#source22">[22]</a>, <a href="#source23">[23]</a>), this guide will provide recommendations on ontology metadata that particularly adress the publishing of ontologies on the <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>.</p>
-<p>In addition, we provide shapes for SHACL validators based on these recommendations (cf. <a href="#22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</a>).</p>
+<p>In addition, we provide shapes for SHACL validators based on these recommendations (cf. <a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a>).</p>
 <h2 id="1-ontology-metadata">1 Ontology metadata</h2>
 <h3 id="11-how-to-provide-ontology-metadata">1.1 How to provide ontology metadata?</h3>
 <p>Ontology metadata must be provided in a machine-understandable format. We therefore recommend to provide them as a part of the ontology itself: The metadata should be statements about the ontology that use dedicated annotation, object or data properties, to guarantee a good level of granularity and distinguishability of the metadata.</p>
@@ -513,14 +513,27 @@ code {
 <li>recommend controlled vocabularies where appropriate</li>
 <li>provide examples in text/turtle serialization</li>
 <li>list alternative properties that may also be used to provide the metadatum</li>
-<li>specify SHACL validation rules (cf. section <a href="#22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</a>)</li>
+<li>specify SHACL validation rules (cf. section <a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a>)</li>
 </ul>
 <p>Subproperties to any properties mentioned will not be implied, but explicitly listed in the &quot;alternative properties&quot; part of each section.</p>
-<h3 id="22-metadata-validation-with-shacl">2.2 Metadata validation with SHACL</h3>
-<p>This guide is a human-readable specification. In addition, we also provide a SHACL specification of these recommendations that can be used for data validation.</p>
-<p>The shape can be used with SHACL validators to test ontologies for any violations of required metadata at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a> and to get suggestions for recommended metadata. We recommend the online SHACL validators <a href="https://shacl.org/playground/" title="Holger Knublauch (n/a): SHACL Playground. URL: https://shacl.org/playground/. Last accessed: 22 April 2024.">SHACL Playground</a>, <a href="https://shacl-playground.zazuko.com/">SHACL Playground by Zazuko</a> or <a href="https://shacl-play.sparna.fr/play/">SHACL Play!</a> for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.</p>
-<p>The shape is available in a single file at <a href="https://www.purl.org/ontologymetadata/shape">https://www.purl.org/ontologymetadata/shape</a>.</p>
-<p>The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section <a href="https://www.w3.org/TR/skos-reference/#L1170">4.6.2. SKOS Concept Schemes and OWL Ontologies</a> of the <a href="https://www.w3.org/TR/2009/REC-skos-reference-20090818/">SKOS Reference document</a>).</p>
+<h3 id="22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</h3>
+<p>This guide is a human-readable specification. In addition, we also provide SHACL specifications of these recommendations that can be/are used for three different purposes.</p>
+<ol>
+<li>
+<p>Data validation <br>
+A shape for data validation can be retrieved from <a href="https://www.purl.org/ontologymetadata/shape">https://www.purl.org/ontologymetadata/shape</a> and can be used with SHACL validators to test ontologies for any violations of required metadata by <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a> and to get suggestions for recommended metadata. We recommend the online SHACL validators <a href="https://shacl.org/playground/" title="Holger Knublauch (n/a): SHACL Playground. URL: https://shacl.org/playground/. Last accessed: 22 April 2024.">SHACL Playground</a>, <a href="https://shacl-playground.zazuko.com/">SHACL Playground by Zazuko</a> or <a href="https://shacl-play.sparna.fr/play/">SHACL Play!</a> for performing evaluations. Turtle or json-ld are common input format. SHACL Play! also allows to use IRIs for shapes and ontologies.<br>
+The shape can also be used to evaluate metadata of instances of skos:ConceptScheme. The instances of skos:ConceptScheme need to be declared as instances of owl:Ontology to trigger the shapes (cf. also section <a href="https://www.w3.org/TR/skos-reference/#L1170">4.6.2. SKOS Concept Schemes and OWL Ontologies</a> of the <a href="https://www.w3.org/TR/2009/REC-skos-reference-20090818/">SKOS Reference document</a>). A video demonstration of how to use this is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a">https://github.com/user-attachments/assets/c5d6be07-3bfb-44ab-ae65-e3f75b8e883a</a>.</p>
+</li>
+<li>
+<p>Data validation at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a><br>
+The shape at <a href="https://www.purl.org/ontologymetadata/shape4ts">https://www.purl.org/ontologymetadata/shape4ts</a> is applied in the Ontology Suggestion Feature at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>. The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code. A video demonstration on how this is applied is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7">https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7</a></p>
+</li>
+<li>
+<p>Data generation <br>
+A shape for form generators and code generation can be retrieved from <a href="https://www.purl.org/ontologymetadata/shape4forms">https://www.purl.org/ontologymetadata/shape4forms</a>. It can for example be used with the <a href="https://github.com/ULB-Darmstadt/shacl-form">form generator tool by ULB Darmstadt</a> which has a <a href="https://ulb-darmstadt.github.io/shacl-form/#try-your-own">live demo instance</a>. This shape is not as granular as the one for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of <code>sh:alternativePath</code> constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes. A video demonstration on how to apply this is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418">https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418</a>.</p>
+</li>
+</ol>
+<p>All three versions of the shape have the target class owl:Ontology, so that they can only be used to validate entities that declare themselves as an instance of owl:Ontology, and also code generated with these shapes, will declare entities as instances of owl:Ontology.</p>
 <h3 id="23-prefixes-used-in-this-document">2.3 Prefixes used in this document</h3>
 <p>Code examples will usually provide full IRIs of statement subjects and objects. Properties will be presented in prefixed notation. The table provides the prefix definitions:</p>
 <table>
@@ -538,6 +551,10 @@ code {
 <tr>
 <td>bibo</td>
 <td><a href="http://purl.org/ontology/bibo/">http://purl.org/ontology/bibo/</a></td>
+</tr>
+<tr>
+<td>dc</td>
+<td><a href="http://purl.org/dc/elements/1.1/">http://purl.org/dc/elements/1.1/</a></td>
 </tr>
 <tr>
 <td>dcat</td>
@@ -592,7 +609,7 @@ code {
 <td><a href="http://www.w3.org/2000/01/rdf-schema#">http://www.w3.org/2000/01/rdf-schema#</a></td>
 </tr>
 <tr>
-<td>schema</td>
+<td>sdo</td>
 <td><a href="https://schema.org/">https://schema.org/</a></td>
 </tr>
 <tr>
@@ -691,6 +708,7 @@ code {
 <li><a href="https://schema.org/license">https://schema.org/license</a></li>
 <li><a href="http://creativecommons.org/ns#license">http://creativecommons.org/ns#license</a></li>
 <li><a href="http://dbpedia.org/ontology/license">http://dbpedia.org/ontology/license</a></li>
+<li><a href="http://purl.org/dc/terms/licence">http://purl.org/dc/terms/licence</a> (is a mis-spelled variant of <a href="http://purl.org/dc/terms/license">http://purl.org/dc/terms/license</a>)</li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -707,11 +725,11 @@ code {
     dcterms:creator &lt;https://orcid.org/0000-0000-0000-0000&gt; .
 </div></code></pre>
 <p>Example 2 (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; &lt;http://purl.org/dc/terms/creator&gt; &lt;https://orcid.org/0000-0000-0000-0000&gt;.
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; dcterms:creator &lt;https://orcid.org/0000-0000-0000-0000&gt;.
 
 &lt;https://orcid.org/0000-0000-0000-0000&gt; rdf:type foaf:Person ; 
-    &lt;http://xmlns.com/foaf/0.1/firstName&gt; &quot;Max&quot; ;
-    &lt;http://xmlns.com/foaf/0.1/lastName&gt; &quot;Muster&quot; .
+    foaf:firstName &quot;Max&quot; ;
+    foaf:lastName &quot;Muster&quot; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -736,7 +754,7 @@ code {
 </div></code></pre>
 <p>Example 2 (text/turtle)</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    &lt;http://www.w3.org/2002/07/owl#versionIRI&gt; &lt;https://www.purl.org/SomeOntology/2019-12-31&gt; .
+    owl:versionIRI &lt;https://www.purl.org/SomeOntology/2019-12-31&gt; .
 </div></code></pre>
 <p>Example 3 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;http://purl.obolibrary.org/obo/pco.owl&gt; rdf:type owl:Ontology ;
@@ -764,7 +782,7 @@ code {
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:datatype xsd:dateTime</code></li>
+<li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] [sh:datatype xsd:gYearMonth ;] [sh:datatype xsd:gYear ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:minCount 1</code></li>
 </ul>
@@ -855,7 +873,7 @@ code {
 <p>Recommended property: <a href="https://schema.org/funder">https://schema.org/funder</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    schema:funder &lt;https://ror.org/018mejw64&gt; .
+    sdo:funder &lt;https://ror.org/018mejw64&gt; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -872,11 +890,11 @@ code {
 <p>Recommended property: <a href="https://schema.org/funding">https://schema.org/funding</a></p>
 <p>Example 1 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    schema:funding &lt;https://doi.org/00.00000/000000000&gt; .
+    sdo:funding &lt;https://doi.org/00.00000/000000000&gt; .
 </div></code></pre>
 <p>Example 2 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    schema:funding &quot;The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789).&quot;@en .
+    sdo:funding &quot;The authors (Some Ontology Workgroup) would like to thank the Government of Some Country or Some Other Funding Institution for their funding and support within Some Funding Program (project number 123456789).&quot;@en .
 </div></code></pre>
 <p>Alternative properties: n/a</p>
 <p>SHACL validation rules:</p>
@@ -931,7 +949,7 @@ code {
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
 <h3 id="46-ontology-annotation-languages">4.6 Ontology annotation language(s)</h3>
-<p>If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotaed in that languge.</p>
+<p>If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotated in that language.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/language">http://purl.org/dc/terms/language</a></p>
 <p>Recommended controlled vocabulary: <a href="http://id.loc.gov/vocabulary/iso639-2">http://id.loc.gov/vocabulary/iso639-2</a></p>
 <p>Example (text/turtle):</p>
@@ -962,7 +980,7 @@ code {
 </ul>
 <h3 id="48-ontology-serialization-file-format">4.8 Ontology serialization/ file format</h3>
 <p>You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) <a href="#source6">[6]</a> or from the W3C resource Unique URIs for File Formats <a href="#source7">[7]</a>.</p>
-<p>Recommended property: <a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></p>
+<p>Recommended property: <a href="https://w3id.org/mod#hasSyntax">https://w3id.org/mod#hasSyntax</a></p>
 <p>Recommended controlled vocabularies:</p>
 <ul>
 <li><a href="https://www.w3.org/ns/formats">https://www.w3.org/ns/formats</a></li>
@@ -977,13 +995,14 @@ code {
 <p>Currently, there is no registered media type for obo format.</p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
-    omv:hasOntologySyntax &lt;http://www.w3.org/ns/formats/Turtle&gt; .
+    mod:hasSyntax&gt; &lt;http://www.w3.org/ns/formats/Turtle&gt; .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
 <li><a href="http://purl.org/dc/terms/format">http://purl.org/dc/terms/format</a></li>
 <li><a href="http://purl.org/dc/elements/1.1/format">http://purl.org/dc/elements/1.1/format</a></li>
 <li><a href="https://schema.org/encodingFormat">https://schema.org/encodingFormat</a></li>
+<li><a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -1043,7 +1062,7 @@ code {
 </ul>
 <h3 id="412-application-example">4.12 Application example</h3>
 <p>How to use an ontology is often helpfully demonstrated by application examples and visualizations that give a glimpse about how the ontology can be used to structure actual data. If you have such application examples, these might be better found, if you link to them from the ontology. These application examples could be part of the ontology documentation, formal serializations applying the ontology or even technical applications that make use of the ontology.</p>
-<p>Recommended property: <a href="https://vocab.org/vann/example">https://vocab.org/vann/example</a></p>
+<p>Recommended property: <a href="http://purl.org/vocab/vann/example">http://purl.org/vocab/vann/example</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;http://www.w3.org/ns/dcat&gt; rdf:type owl:Ontology ;
     vann:example &lt;https://www.w3.org/TR/vocab-dcat-2/#collection-of-examples&gt; .
@@ -1098,7 +1117,7 @@ code {
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
 <h3 id="416-ontology-root-classes">4.16 Ontology root classes</h3>
-<p>You should explicitly declare the ontology's preferred root classes. Display tools like the <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a> and other OLS-based services <a href="#source9">[9]</a>, <a href="#source10">[10]</a> can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The repsective classes need to be provided via their identifier.</p>
+<p>You should explicitly declare the ontology's preferred root classes. Display tools like the <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a> and other OLS-based services <a href="#source9">[9]</a>, <a href="#source10">[10]</a> can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The respective classes need to be provided via their identifier. This information should best be provided or defined by the ontology maintainers or engineers.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000700">http://purl.obolibrary.org/obo/IAO_0000700</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
@@ -1121,7 +1140,7 @@ code {
 <p>Recommended property: <a href="https://schema.org/description">https://schema.org/description</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology; 
-    schema:description &quot;Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.&quot;@en .
+    sdo:description &quot;Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.&quot;@en .
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -1371,8 +1390,8 @@ code {
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
-<h3 id="515-related-identifiers">5.15 Related identifiers</h3>
-<p>If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata.</p>
+<h3 id="515-alternative-identifiers-of-the-ontology">5.15 Alternative identifiers of the ontology</h3>
+<p>If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata. You should list here alternative URIs that may be used to identify your ontology. The identifier used as the base URI of the ontology should be provided with <a href="http://purl.org/vocab/vann/preferredNamespaceUri">http://purl.org/vocab/vann/preferredNamespaceUri</a> instead (cf. <a href="#520-preferred-ontology-namespace">5.20 Preferred ontology namespace</a>).</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/identifier">http://purl.org/dc/terms/identifier</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
@@ -1382,6 +1401,7 @@ code {
 <ul>
 <li><a href="http://purl.org/ontology/bibo/doi">http://purl.org/ontology/bibo/doi</a></li>
 <li><a href="https://schema.org/identifier">https://schema.org/identifier</a></li>
+<li><a href="http://purl.org/dc/elements/1.1/identifier">http://purl.org/dc/elements/1.1/identifier</a>&gt;</li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -1479,7 +1499,7 @@ code {
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:datatype xsd:dateTime</code></li>
+<li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
 <h3 id="522-modification-date">5.22 Modification date</h3>
@@ -1497,11 +1517,12 @@ code {
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:datatype xsd:dateTime</code></li>
+<li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
 <h3 id="523-textual-version-information">5.23 Textual version information</h3>
 <p>Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21. If you use such textual version information but do not use/have a Version URI, then we strongly recommend to also mint a version URI in which you use the textual version information as variable.</p>
+<p>If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. Alternatively, you could add the info to the version notes (cf. <a href="#524-version-notes">5.24 Version notes</a>).</p>
 <p>Recommended property: <a href="http://www.w3.org/2002/07/owl#versionInfo">http://www.w3.org/2002/07/owl#versionInfo</a></p>
 <p>Example 1 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
@@ -1511,13 +1532,18 @@ code {
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
     owl:versionInfo &quot;1.0.0&quot;^^xsd:string .
 </div></code></pre>
+<p>Example 3 (text/turtle)
+:</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntology&gt; rdf:type owl:Ontology ;
+    owl:versionInfo &quot;Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024.&quot;@en.
+</div></code></pre>
 <p>Alternative properties:</p>
 <ul>
 <li><a href="http://purl.org/pav/version">http://purl.org/pav/version</a></li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
-<li><code>sh:datatype xsd:string</code></li>
+<li><code>sh:xone ([sh:datatype xsd:string ;] [sh:datatype rdf:langString ;])</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
 <h3 id="524-version-notes">5.24 Version notes</h3>
@@ -1530,7 +1556,7 @@ code {
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
-<li><a href="https://vocab.org/vann/changes">https://vocab.org/vann/changes</a></li>
+<li><a href="http://purl.org/vocab/vann/changes">http://purl.org/vocab/vann/changes</a></li>
 </ul>
 <p>SHACL validation rules:</p>
 <ul>
@@ -1699,7 +1725,7 @@ code {
 <tr>
 <td>4.8</td>
 <td>Serialization/ file format</td>
-<td><a href="http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax">http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax</a></td>
+<td><a href="https://w3id.org/mod#hasSyntax">https://w3id.org/mod#hasSyntax</a></td>
 <td></td>
 <td>x</td>
 <td></td>
@@ -1735,7 +1761,7 @@ code {
 <tr>
 <td>4.12</td>
 <td>Application example</td>
-<td><a href="https://vocab.org/vann/example">https://vocab.org/vann/example</a></td>
+<td><a href="http://purl.org/vocab/vann/example">http://purl.org/vocab/vann/example</a></td>
 <td></td>
 <td>x</td>
 <td></td>

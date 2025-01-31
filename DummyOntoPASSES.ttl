@@ -1,22 +1,28 @@
 @base <https://www.purl.org/ontologymetadata/DummyOntoPASSES> .
 @prefix : <https://www.purl.org/ontologymetadata/DummyOntoPASSES#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix idot: <http://identifiers.org/idot/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix obo: <http://purl.obolibrary.org/obo/>.
+@prefix omv: <http://omv.ontoware.org/2005/05/ontology#>.
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sssom: <https://w3id.org/sssom/>.
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix vann: <http://purl.org/vocab/vann/> .
-@prefix mod: <https://w3id.org/mod#> .
-@prefix adms: <http://www.w3.org/ns/adms#> .
-@prefix doap: <http://usefulinc.com/ns/doap#> .
-@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
-@prefix schema: <https://schema.org/> .
-@prefix pav: <http://purl.org/pav/> .
-@prefix idot: <http://identifiers.org/idot/> .
-@prefix sssom: <https://w3id.org/sssom/>.
 
 #Mandatory metadata
 <https://www.purl.org/ontologymetadata/DummyOntoPASSES> rdf:type owl:Ontology ;
@@ -24,7 +30,7 @@
     vann:preferredNamespacePrefix "DOP"^^xsd:string ;
     mod:acronym "DOP"^^xsd:string ;
     dcterms:license <https://creativecommons.org/licenses/by/3.0/> ;
-    dc:creator <https://orcid.org/0000-0000-0000-0000>;
+    dcterms:creator <https://orcid.org/0000-0000-0000-0000>;
     owl:versionIRI <https://www.purl.org/ontologymetadata/DummyOntoPASSES/0.1> ;
     dcterms:created "2023-08-31T10:15:00"^^xsd:dateTime ;
     dcterms:modified "2023-08-31T10:19:00"^^xsd:dateTime ;
@@ -37,20 +43,22 @@
 #Recommended metadata
     dcterms:contributor <0000-0000-0000-0000> ;
     #contact data missing - won't add
-    schema:funder <https://ror.org/018mejw64> ;
+    sdo:funder <https://ror.org/018mejw64> ;
+    sdo:funding <http://example.com/a-grant-id> ;
     doap:audience "DummyOntoPASSES has been developed for ontology engineers to demonstrate ontology metadata recommendations by TIB Terminology Service. It can be used with the TIB Terminology Service Ontology Metadata Shape in SHACL validators and should trigger no violations or warnings."@en ;
     dcterms:subject <https://purl.org/linsearch/inf> ;
-    schema:inLanguage <https://id.loc.gov/vocabulary/iso639-2/deu> ;
+    sdo:inLanguage <https://id.loc.gov/vocabulary/iso639-2/deu> ;
     mod:hasFormalityLevel "The DummyOntoPASSES aplies OWL2 EL (cf. https://www.w3.org/TR/2012/REC-owl2-profiles-20121211/#OWL_2_EL)"@en ;
-    <http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax> <http://www.w3.org/ns/formats/Turtle> ;
-    <http://purl.org/ontology/bibo/status> "active"@en ;
+    mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
+    bibo:status "active"@en ;
     doap:repository <https://github.com/StroemPhi/Ontology-Metadata> ;
-    <http://www.w3.org/ns/dcat#distribution> <https://www.purl.org/ontologymetadata/DummyOntoPASSES.owl> ;
-    <https://vocab.org/vann/example> <https://www.purl.org/ontologymetadata/DummyOntoPASSES/docs/descriptionOfUse> ;
+    dcat:distribution <https://www.purl.org/ontologymetadata/DummyOntoPASSES.owl> ;
+    vann:example <https://www.purl.org/ontologymetadata/DummyOntoPASSES/docs/descriptionOfUse> ;
     dcterms:isReferencedBy <https://zenodo.org/record/0000000> ;
+    dcterms:references <https://example.com/some-paper-referenced-by-the-ontology> ;
     dcterms:bibliographicCitation "TIB (2023): DummyOntoPASSES. An ontology demonstrating rich ontology metadata. PURL: https://www.purl.org/ontologymetadata/DummyOntoPASSES."@en ;
     pav:derivedFrom <http://www.purl.org/SomeOtherOntology/0.0.1> ;
-    <http://purl.obolibrary.org/obo/IAO_0000700> <https://www.purl.org/ontologymetadata/DummyOntoPASSES#1> ;
+    obo:IAO_0000700 <https://www.purl.org/ontologymetadata/DummyOntoPASSES#1> ;
 
 
 #Optional metadata
@@ -58,26 +66,25 @@
     dcterms:alternative "An alternative title of the ontology,e.g. a working title for the ontology draft."@en ;
     idot:alternatePrefix "dop01" ;
     owl:priorVersion <https://www.purl.org/ontologymetadata/DummyOntoPASSES/0.0> ;
-    schema:version <https://www.purl.org/ontologymetadata/DummyOntoPASSES/0.3> ;
+    sdo:version <https://www.purl.org/ontologymetadata/DummyOntoPASSES/0.3> ;
     owl:backwardCompatibleWith <https://www.purl.org/ontologymetadata/DummyOntoPASSES/0.0> ;
     owl:incompatibleWith <https://www.purl.org/ontologymetadata/DummyOntoPASSES/0.3> ;
-    <http://xmlns.com/foaf/0.1/holdsAccount> <https://ontology.social/@DummyOntoPASSES>;
+    foaf:holdsAccount <https://ontology.social/@DummyOntoPASSES>;
     dcterms:type <http://w3id.org/nkos/nkostype#ontology> ;
     <http://identifiers.org/exampleIdentifier> <https://www.purl.org/ontologymetadata/DummyOntoPASSES#1> ;
-    <http://identifiers.org/idot/identifierPattern> "[0-9]+" ;
-    dcterms:format <https://www.iana.org/assignments/media-types/application/rdf+xml> ;
-    <http://xmlns.com/foaf/0.1/homepage> <https://purl.org/OntoMeta/home> ;
+    idot:identifierPattern "[0-9]+" ;
+    foaf:homepage <https://purl.org/OntoMeta/home> ;
     dcterms:publisher <https://isni.org/isni/0000000121746694>, <https://d-nb.info/gnd/1080328793> ;
     rdfs:comment "Some remark about the ontology."@en ;
-    <http://rdfs.org/ns/void#exampleResource> <https://www.purl.org/ontologymetadata/DummyOntoPASSES#1> ;
-    <http://usefulinc.com/ns/doap#mailing-list> <mailto://mail@example.com>;
-    <http://xmlns.com/foaf/0.1/logo> <https://www.purl.org/ontologymetadata/DummyOntoPASSES/docs/logo.png> ;
-    <http://purl.org/ontology/bibo/doi> <http://doi.org/10.000000/example>;
-    <http://purl.org/pav/createdWith> "Visual Studio Code"@en;
-    <https://w3id.org/mod#hasEquivalencesWith> <https://www.purl.org/ontologymetadata/DummyOntoFAILS>;
+    void:exampleResource <https://www.purl.org/ontologymetadata/DummyOntoPASSES#1> ;
+    doap:mailing-list <mailto://mail@example.com>;
+    foaf:logo <https://www.purl.org/ontologymetadata/DummyOntoPASSES/docs/logo.png> ;
+    bibo:doi <http://doi.org/10.000000/example>;
+    pav:createdWith "Visual Studio Code"@en;
+    mod:hasEquivalencesWith <https://www.purl.org/ontologymetadata/DummyOntoFAILS>;
     <https://w3id.org/sssom/mapping_set_references> [sssom:mapping_set_id <https://www.purl.org/ontologymetadata/DummyOntoPASSES2DummyOntoFAILS> ;] ;
-    <https://w3id.org/mod#competencyQuestion> <ttp://www.purl.org/OntoMeta/DummyOntoPASSES/docs/CompetencyQuestions#1> ;
-    <http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringMethodology> "name of an ontology engineering methodology or description of the applied ontology"@en ;
+    mod:competencyQuestion <ttp://www.purl.org/OntoMeta/DummyOntoPASSES/docs/CompetencyQuestions#1> ;
+    omv:usedOntologyEngineeringMethodology "name of an ontology engineering methodology or description of the applied ontology"@en ;
     vann:preferredNamespaceUri <https://www.purl.org/ontologymetadata/DummyOntoPASSES> ;
 
 # not yet categorized

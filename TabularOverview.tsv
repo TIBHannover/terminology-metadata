@@ -15,11 +15,11 @@ order number	section	metadatum	Preferred property	Mandatory	Recommended	Optional
 14	4.5	Subject(s)	<http://purl.org/dc/terms/subject>		x		0…*	true	true	false	true	false	false	true	false	true	true	true	false	false
 15	4.6	Annotation language(s)	<http://purl.org/dc/terms/language>		x		0…*	true	true	false	false	false	false	true	false	false	false	true	false	false
 16	4.7	Applied logical framework	<https://w3id.org/mod#hasFormalityLevel>		x		0...1	false	true	false	true	false	false	true	false	false	false	false	false	false
-17	4.8	Serialization/ file format	<http://omv.ontoware.org/2005/05/ontology#hasOntologySyntax>		x		0...1	true	true	false	false	false	false	true	false	false	false	true	false	false
+17	4.8	Serialization/ file format	<https://w3id.org/mod#hasSyntax>		x		0...1	true	true	false	false	false	false	true	false	false	false	true	false	false
 18	4.9	Status	<http://purl.org/ontology/bibo/status>		x		0...1	true	false	false	true	true	true	true	true	true	true	true	false	true
 19	4.10	Code repository	<http://usefulinc.com/ns/doap#repository>		x		0...1	false	true	false	true	false	false	true	false	false	true	false	true	false
 20	4.11	Distributions/ products	<http://www.w3.org/ns/dcat#distribution>		x		0…*	true	true	false	false	false	false	true	false	true	false	true	false	false
-21	4.12	Application example	<https://vocab.org/vann/example>		x		0…*	false	true	false	true	false	false	true	false	false	false	false	false	false
+21	4.12	Application example	<http://purl.org/vocab/vann/example>		x		0…*	false	true	false	true	false	false	true	false	false	false	false	false	false
 22	4.13	Related resource(s)	<http://purl.org/dc/terms/references>		x		0…*	true	true	false	false	true	true	true	false	true	true	true	true	false
 23	4.14	Citation suggestion	<http://purl.org/dc/terms/bibliographicCitation>		x		0…*	false	true	false	false	true	true	true	true	false	false	true	false	false
 24	4.15	Ontology sources (derived from)	<http://purl.org/pav/derivedFrom>		x		0…*	true	true	false	true	true	true	true	true	true	false	true	false	false

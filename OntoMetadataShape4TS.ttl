@@ -1,0 +1,2566 @@
+@base <https://www.purl.org/ontologymetadata/shape4ts> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dash: <http://datashapes.org/dash#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix idot: <http://identifiers.org/idot/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix obo: <http://purl.obolibrary.org/obo/>.
+@prefix ontometa4ts:    <https://www.purl.org/ontologymetadata/shape4ts#> .
+@prefix omv: <http://omv.ontoware.org/2005/05/ontology#>.
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sdo: <https://schema.org/> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+
+ontometa4ts: rdf:type owl:Ontology ;
+    # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
+    dcterms:title "Ontology Metadata Shape by TIB for ontology metadata validation at TIB Terminology Service"@en,
+      "TIB Metadatenshape für Ontologien zur Validierung von Ontologie-Metadaten auf dem TIB Terminology Service"@de;
+    dcterms:abstract "OntoMeta4TS provides SHACL shapes for ontology metadata validation at TIB Terminology Service. If you have any remarks, questions or questions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
+    dcterms:created "2024-05-02T11:42:00"^^xsd:dateTime;
+    dcterms:modified "2025-01-31T00:00:00"^^xsd:dateTime;
+    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4ts/20250131>;
+    dcterms:creator <https://orcid.org/0000-0002-1019-9151>,
+      <https://orcid.org/0000-0003-1043-4964>,
+      <https://orcid.org/0000-0003-2499-7741>,
+      <https://orcid.org/0000-0002-1595-3213>,
+      <https://orcid.org/0000-0002-8280-0487> ;
+    vann:preferredNamespacePrefix "ontometa4ts";
+    doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues> ;
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md> ,
+      <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-at-tib-terminology-service>;
+    bibo:status "active"@en ;
+    doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+    sdo:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+    dcterms:subject <http://d-nb.info/gnd/4827894-4>,
+      <http://d-nb.info/gnd/4410512-5> ;
+    doap:repository <https://github.com/TIBHannover/terminology-metadata>;
+    mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
+    mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en ;
+    dcterms:references <https://www.doi.org/10.5281/zenodo.11103071> ;
+    dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
+    dcat:distribution <https://www.purl.org/ontologymetadata/shape4forms> , <https://www.purl.org/ontologymetadata/shape> ;
+    vann:example <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-at-tib-terminology-service>;
+    adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for TIB Terminology Service."@en;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md#7-relations-to-related-work>;
+.
+
+# Start of the Ontology Metadata Shape
+ontometa4ts:OntologyMetadataShape a sh:NodeShape ;
+    sh:targetClass owl:Ontology ; 
+
+# MANDATORY METADATA
+
+## Ontology title
+### status: developer and external review needed
+    sh:property [              
+        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title sdo:name sdo:headline) ] ; 
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+The ontology does not include its own title. Please provide it if known.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/title
+</p>
+<p>
+Example value: Product Supply Network Vocabulary (psn)
+</p>
+        """@en ;
+        sh:name "Ontology title"@en ;
+    ] ;
+
+    sh:property [             
+        sh:path [sh:alternativePath (rdfs:label skos:prefLabel dc:title dcterms:title sdo:name  sdo:headline) ] ; 
+        sh:severity sh:Info ;
+        sh:datatype rdf:langString ;
+        sh:uniqueLang true ;
+        sh:message """
+<p>
+The ontology title should be an rdf:langString, i.e. it should have a language tag.
+</p>
+<p>
+There may be only one title per language.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/title
+</p>
+<p>
+Example value: Product Supply Network Vocabulary (psn)
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/title&gt; &quot;Some Ontology&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology title - datatype"@en ;
+    ] ;
+
+## Preferred ontology prefix/ acronym
+### status: developer and external review needed: add check for forbidden characters like - ? 
+    sh:property [
+        sh:path [sh:alternativePath ( vann:preferredNamespacePrefix mod:acronym )];
+        sh:severity sh:Warning;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology does not declare its preferred prefix. Please provide it if known.
+</p>
+<p>
+It must not contain hyphens or other special characters and should be written in lowercase.
+</p>
+<p>
+Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
+</p>
+<p>
+Example value: bfo
+</p>
+"""@en ;
+        sh:name "Preferred ontology prefix/ acronym"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (vann:preferredNamespacePrefix mod:acronym)];
+        sh:severity sh:Info ;
+        sh:datatype xsd:string ;
+        sh:message """
+<p>
+The ontology should declare its preferred namespace prefix or acronym as an xsd:string.
+</p>
+<p>
+Recommended property: http://purl.org/vocab/vann/preferredNamespacePrefix
+</p>
+<p>
+Example value: bfo
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/vocab/vann/preferredNamespacePrefix&gt; &quot;so&quot;^^xsd:string .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Preferred ontology prefix/ acronym - datatype"@en ;
+    ] ;
+
+## Ontology license
+### status: developer and external review needed
+### <http://purl.org/dc/terms/licence> has been added, since licence is a variant of license and thus the property may easily occur as a common mistake
+
+#### ORIGINAL SHAPE TO BE DELETED IF THE NEW ONES TURN OUT FINE
+
+#     sh:property [
+#         sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
+#         sh:severity sh:Warning ;
+#         sh:minCount 1;
+#         sh:maxCount 1;
+#         # tbd/todo: add further licenses to the list of accepted licenses? 
+#         sh:xone (
+#             [sh:hasValue <http://opendatacommons.org/licenses/by/summary/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/by/summary/> ;] 
+#             [sh:hasValue <http://opendatacommons.org/licenses/by/1-0/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/by/1-0/> ;] 
+#             [sh:hasValue <http://opendatacommons.org/licenses/by/1.0/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/by/1.0/> ;] 
+
+#             [sh:hasValue <http://opendatacommons.org/licenses/pddl/1-0/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/pddl/1-0/> ;] 
+#             [sh:hasValue <http://opendatacommons.org/licenses/pddl/summary/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/pddl/summary/> ;] 
+#             [sh:hasValue <http://opendatacommons.org/licenses/pddl/1.0/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/pddl/1.0/> ;] 
+
+#             [sh:hasValue <http://opendatacommons.org/licenses/odbl/summary/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/odbl/summary/> ;] 
+#             [sh:hasValue <http://opendatacommons.org/licenses/odbl/1-0/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/odbl/1-0/> ;] 
+#             [sh:hasValue <http://opendatacommons.org/licenses/odbl/1.0/> ;] 
+#             [sh:hasValue <https://opendatacommons.org/licenses/odbl/1.0/> ;] 
+
+#             [sh:hasValue <http://spdx.org/licenses/Unlicense.html> ;]
+#             [sh:hasValue <https://spdx.org/licenses/Unlicense.html> ;]
+#             [sh:hasValue <http://unlicense.org/> ;]
+#             [sh:hasValue <https://unlicense.org/> ;]
+
+#             [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/> ;] 
+#             [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/> ;] 
+#             [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
+#             [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
+            
+#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/deed> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/deed> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/> ;]
+
+#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/deed> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/deed> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/> ;] 
+
+#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/> ;] 
+
+#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by/4.0/> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by/4.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0> ;] 
+
+#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
+#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
+#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
+
+#             # [sh:hasValue <> ;] 
+#             );
+#         sh:message """
+# <p>
+# The ontology does not declare its own license. Please provide it, if known.
+# </p>
+# <p>
+# Recommended property: http://purl.org/dc/terms/license
+# </p>
+# <p>
+# Example value: https://creativecommons.org/licenses/by/4.0/
+# </p>
+# """@en ;
+#         sh:name "Ontology license"@en ;
+#     ] ;
+
+#### test for too many (n > 2) ontology licenses
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
+        sh:severity sh:Warning ;
+        sh:maxCount 1;
+        sh:message """
+<p>
+The ontology declares too many licenses. Please indicate the correct license, if known.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/license
+</p>
+<p>
+Example value: https://creativecommons.org/licenses/by/4.0/
+</p>
+"""@en ;
+        sh:name "Ontology license - too many values"@en ;
+    ] ;
+
+#### test for too few (n < 1) ontology licenses
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:message """
+<p>
+The ontology does not declare its own license. Please provide it, if known.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/license
+</p>
+<p>
+Example value: https://creativecommons.org/licenses/by/4.0/
+</p>
+"""@en ;
+        sh:name "Ontology license - too few values"@en ;
+    ] ;
+
+#### test for accepted licenses
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ; # test whether this is well-combined with the sh:xone constraint
+        # tbd/todo: add further licenses to the list of accepted licenses? 
+        sh:xone (
+            [sh:hasValue <http://opendatacommons.org/licenses/by/summary/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/by/summary/> ;] 
+            [sh:hasValue <http://opendatacommons.org/licenses/by/1-0/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/by/1-0/> ;] 
+            [sh:hasValue <http://opendatacommons.org/licenses/by/1.0/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/by/1.0/> ;] 
+
+            [sh:hasValue <http://opendatacommons.org/licenses/pddl/1-0/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/pddl/1-0/> ;] 
+            [sh:hasValue <http://opendatacommons.org/licenses/pddl/summary/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/pddl/summary/> ;] 
+            [sh:hasValue <http://opendatacommons.org/licenses/pddl/1.0/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/pddl/1.0/> ;] 
+
+            [sh:hasValue <http://opendatacommons.org/licenses/odbl/summary/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/odbl/summary/> ;] 
+            [sh:hasValue <http://opendatacommons.org/licenses/odbl/1-0/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/odbl/1-0/> ;] 
+            [sh:hasValue <http://opendatacommons.org/licenses/odbl/1.0/> ;] 
+            [sh:hasValue <https://opendatacommons.org/licenses/odbl/1.0/> ;] 
+
+            [sh:hasValue <http://spdx.org/licenses/Unlicense.html> ;]
+            [sh:hasValue <https://spdx.org/licenses/Unlicense.html> ;]
+            [sh:hasValue <http://unlicense.org/> ;]
+            [sh:hasValue <https://unlicense.org/> ;]
+
+            [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/> ;] 
+            [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/> ;] 
+            [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
+            [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
+            
+            [sh:hasValue <http://creativecommons.org/licenses/by/3.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/3.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/3.0/deed> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by/3.0/deed> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by/3.0/> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/3.0/> ;]
+
+            [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/deed> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/deed> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/> ;] 
+
+            [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/> ;] 
+
+            [sh:hasValue <https://creativecommons.org/licenses/by/4.0/> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by/4.0/> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by/4.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/4.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by/4.0> ;] 
+
+            [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
+            [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
+
+            # [sh:hasValue <> ;] 
+            );
+        sh:message """
+<p>
+The ontology declares a license which is not accepted at TIB Terminology Service. If you are the maintainer of the ontology, please consider, if the ontology can be provided with an open license. Read more about open licenses at https://opendefinition.org/licenses/. If the ontology license is open, but this test did not recognize it as such, please get in touch with us and it will be added to our list: https://github.com/TIBHannover/terminology-metadata/issues.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/license
+</p>
+<p>
+Example value: https://creativecommons.org/licenses/by/4.0/
+</p>
+"""@en ;
+        sh:name "Ontology license - accpeted licenses and node kind"@en ;
+    ] ;
+
+#### test for unaccepted licenses
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
+        sh:severity sh:Warning ;
+        # tbd/todo: add further licenses to the list of unaccepted licenses?
+        # tbd/todo: discuss > redundant test?
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nc-nd/4.0/deed> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nc-nd/4.0/deed> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nc-nd/4.0/deed> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nc-nd/4.0/legalcode> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nc-nd/4.0/deed> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nc-nd/3.0/de/deed> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nc-nd/3.0/de/deed> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nd/4.0/legalcode> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nd/4.0/deed> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nd/4.0/deed> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nd/4.0/legalcode> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nd/3.0/de/legalcode> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nd/3.0/de/legalcode> ;] ;
+        sh:not [sh:hasValue <https://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
+        sh:not [sh:hasValue <http://creativecommons.org/licenses/by-nd/3.0/de/deed> ;] ;
+        # sh:not [sh:hasValue <> ;] ; 
+        sh:message """
+<p>
+The ontology license is not accepted at TIB Terminology Service since it is not an open license according to the Open Definition: https://opendefinition.org/licenses/
+</p>
+<p>
+The ontology must be provided with an open license in order to be added to TIB Terminology Service. If you are the maintainer of the ontology, please consider if this is possible.
+</p>
+<p>
+The license must be given as an IRI.
+</p>
+<p>
+The following licenses are not accepted at TIB Terminology Service:
+</p>
+<p>
+<ul>
+<li>
+https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+</li>
+<li>
+https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+</li>
+<li>
+https://creativecommons.org/licenses/by-nc-nd/3.0/de/legalcode
+</li>
+<li>
+https://creativecommons.org/licenses/by-nd/4.0/legalcode
+</li>
+<li>
+https://creativecommons.org/licenses/by-nd/3.0/de/legalcode
+</li>
+</ul>
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/license
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/license&gt; &lt;http:<span>//</span>creativecommons.org/licenses/by/4.0/&gt; .</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology license"@en ;
+    ] ;
+
+## Ontology creator(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path  [sh:alternativePath (dc:creator dcterms:creator sdo:creator pav:createdBy prov:wasAttributedTo sdo:accountablePerson sdo:author)];
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:message """
+<p>
+The ontology does not name its creators. Please provide them if known.
+</p>
+<p>
+This information is required for licenses that require attribution.
+</p>
+<p>
+Use ORCID, ROR or comparable identifiers for people and organisations if available:
+</p>
+<p>
+<ul>
+<li>
+https://orcid.org/
+</li>
+<li>
+https://ror.org/
+</li>
+</ul>
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/creator
+</p>
+<p>
+Example value: https://orcid.org/0000-0002-1584-4316, https://orcid.org/0000-0002-1584-4315
+</p>
+"""@en ;
+        sh:name "Ontology creator(s)"@en ;
+    ] ;
+
+### discuss: switch to string/ literal following "FirstName LastName (ORCID)" 
+    sh:property [
+        sh:path  [sh:alternativePath (dc:creator dcterms:creator sdo:creator pav:createdBy prov:wasAttributedTo sdo:accountablePerson sdo:author)];
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI; 
+        sh:message """
+<p>
+The ontology should provide its creators as IRIs, in particular persistent identifiers (PIDs) should be used wherever possible, e.g. ORCiDs for persons and RORs for organisations.
+</p>
+<p>
+If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/creator
+</p>
+<p>
+Example statement 1 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/creator&gt; &lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt;.
+
+&lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; &lt;http:<span>//</span>www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/Person&gt; .
+</code></pre>
+</p>
+<p>
+Plain name strings could be provided in addition (for readability).
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/creator&gt; &lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt;.
+
+&lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; &lt;http:<span>//</span>www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/Person&gt; ;
+    &lt;http:<span>//</span>xmlns.com/foaf/0.1/firstName&gt; &quot;Max&quot; ;
+    &lt;http:<span>//</span>xmlns.com/foaf/0.1/lastName&gt; &quot;Muster&quot; .
+</code></pre>
+
+</p>
+"""@en ;
+        sh:name "Ontology creator(s) - datatype"@en ;
+    ] ;
+
+## Version information
+
+### Ontology version IRI
+#### status: developer and external review needed
+    sh:property [
+        sh:path  owl:versionIRI ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology does not declare a versionIRI. Please provide it, if known.
+</p>
+<p>
+Recommended property: http://www.w3.org/2002/07/owl#versionIRI
+</p>
+<p>
+Example value: https://www.purl.org/SomeOntology/1.0.0
+</p>
+"""@en ; 
+        sh:name "Ontology version IRI"@en ;
+    ] ;
+
+    sh:property [
+        sh:path  owl:versionIRI ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI;
+        sh:message """
+<p>
+The ontology should state its versionIRI as an IRI. It should not be given as a string or literal.
+</p>
+<p>
+Recommended property: http://www.w3.org/2002/07/owl#versionIRI
+</p>
+<p>
+Example value: https://www.purl.org/SomeOntology/1.0.0
+</p>
+<p>
+Example statement 1 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionIRI&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology/1.0.0&gt; .
+</code></pre>
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionIRI&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology/2019-12-31&gt; .
+</code></pre>
+</p>
+<p>
+Example statement 3 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;http:<span>//</span>purl.obolibrary.org/obo/pco.owl&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionIRI&gt; &lt;http:<span>//</span>purl.obolibrary.org/obo/pco/releases/2021-05-03/pco.owl&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology version IRI - datatype"@en ;
+    ] ;
+
+### Ontology creation date
+### status: developer and external review needed
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:created sdo:dateCreated pav:createdOn prov:generatedAtTime )] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology does not declare its creation date. Please provide it, if known.
+</p>
+<p>
+Use the xsd:dateTimeStamp, xsd:dateTime, xsd:date, xsd:gYearMonth or xsd:gYear format to do so (e.g. 2024-12-12 or 2024-12-12T11:18:44).
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/created
+</p>
+<p>
+Example value: 2024-12-12T11:18:44
+</p>
+"""@en ;
+        sh:name "Ontology creation date"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:created sdo:dateCreated pav:createdOn prov:generatedAtTime )] ;
+        sh:severity sh:Info ;
+        sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] [sh:datatype xsd:gYearMonth ;] [sh:datatype xsd:gYear ;] );
+        sh:message """
+<p>
+The ontology should provide its creation date in xsd:dateTimeStamp, xsd:dateTime, xsd:date, xsd:gYearMonth, or xsd:gYear format.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/created
+</p>
+<p>
+Example value: 2024-12-12T11:18:44
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/created&gt; &quot;2020-11-19T00:00:00&quot;^^xsd:dateTime .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology creation date - datatype"@en ; 
+    ] ;
+
+## Ontology abstract
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
+        sh:severity sh:Warning ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+The ontology does not contain an abstract. Please provide it, if knwon.
+</p>
+<p>
+The ontology abstract should not be longer than 500 characters.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/abstract
+</p>
+<p>
+Example value: The ONTOLOGY NAME defines a range of classes and properties which can be applied to fulfill a SPECIFIED TASK in a particular domain.
+</p>
+"""@en ;
+        sh:name "Ontology abstract"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:Literal ;
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+The ontology should provide its abstract as an rdf:langString.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/abstract
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/abstract&gt; 
+    &quot;SomeOntology defines a range of classes and properties which can be applied to fulfill a SPECIFIED TASK in a particular domain.&quot;@en , 
+    &quot;SomeOntology definiert eine Reihe von Klassen und Properties, die in einer bestimmten Domäne verwendet werden können, um etwas damit zu tun.&quot;@de .
+</code></pre>
+
+</p>
+"""@en ;
+        sh:name "Ontology abstract - language"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
+        sh:severity sh:Info ;
+        sh:uniqueLang true ;
+        sh:message """
+<p>
+The ontology should provide only one ontology abstract per language.
+</p>
+"""@en ;
+        sh:name "Ontology abstract - unique language"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:abstract sdo:abstract)] ;
+        sh:severity sh:Info ;
+        sh:maxLength 500 ; 
+        sh:message """
+<p>
+The ontology should limit its abstract size to 500 characters maximum.
+</p>
+<p>
+The TIB Terminology Service requires short ontology descriptions for a user-friendly ontology list.
+</p>
+<p>
+To provide more information about the ontology
+</p>
+<p>
+<ul>
+<li>
+add an additional description using the property http://purl.org/dc/terms/description
+</li>
+<li>
+or add a reference to a related article using the property http://purl.org/dc/terms/isReferencedBy
+</li>
+</ul>
+</p>
+"""@en ;
+        sh:name "Ontology abstract - length"@en ;
+    ] ;
+
+## Ontology issue tracker
+### status: developer and external review needed
+    sh:property [
+        sh:path doap:bug-database ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology does not contain the link to its issue tracker. Please provide it if available and known.
+</p>
+<p>
+Recommended property: http://usefulinc.com/ns/doap#bug-database
+</p>
+<p>
+Example value: https://github.com/tibonto/DFG-Fachsystematik-Ontology/issues
+</p>
+"""@en ;
+        sh:name "Ontology issue tracker"@en ;
+    ] ;
+
+## Ontology documentation
+### status: developer and external review needed
+    sh:property [
+        sh:path  premis:documentation ;
+        sh:severity sh:Warning ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        # sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology does not contain the link to its documentation. Please provide it, if known.
+</p>
+<p>
+Recommended property: http://www.loc.gov/premis/rdf/v3/documentation
+</p>
+<p>
+Example value: https://international-data-spaces-association.github.io/InformationModel/docs/index.html#
+</p>
+"""@en ;
+        sh:name "Ontology documentation"@en ; 
+    ] ;
+
+# RECOMMENDED METADATA
+
+## Ontology contributor(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path  [sh:alternativePath (dcterms:contributor dc:contributor sdo:contributor pav:contributedBy)] ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+The ontology should list all its contributors.
+</p>
+<p>
+Contributors should be referenced via PIDs, e.g. ORCiDs for persons and RORs for organisations.
+</p>
+<p>
+If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/contributor
+</p>
+<p>
+Example statement 1 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>/www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/contributor&gt; &lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; .
+
+&lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; &lt;http:<span>//</span>www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/Person&gt; .
+</code></pre>
+</p>
+<p>
+Plain name strings can be provided in addition (for readability).
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/contributor&gt; &lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt;.
+
+&lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; &lt;http:<span>//</span>www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/Person&gt; ;
+    &lt;http:<span>//</span>xmlns.com/foaf/0.1/firstName&gt; "Max" ;
+    &lt;http:<span>//</span>xmlns.com/foaf/0.1/lastName&gt; "Muster" .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology contributor(s)"@en ;
+    ] ;
+
+    sh:property [
+        sh:path  [sh:alternativePath (dcterms:contributor dc:contributor sdo:contributor pav:contributedBy)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide its contributors as IRIs, in particular as persistent identifiers (PIDs) wherever possible, e.g. ORCiDs for persons and RORs for organisations.
+</p>
+<p>
+If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/contributor
+</p>
+<p>
+Example statement 1 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/contributor&gt; &lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt;.
+
+&lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; &lt;http:<span>//</span>www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/Person&gt; .
+</code></pre>
+</p>
+<p>
+Plain name strings could be provided in addition (for readability).
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/contributor&gt; &lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; .
+
+&lt;https:<span>//</span>orcid.org/0000-0000-0000-0000&gt; &lt;http:<span>//</span>www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/Person&gt; ; 
+    &lt;http:<span>//</span>xmlns.com/foaf/0.1/firstName&gt; &quot;Max&quot; ;
+    &lt;http:<span>//</span>xmlns.com/foaf/0.1/lastName&gt; &quot;Muster&quot; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology contributor(s) - datatype"@en ; 
+    ] ;
+
+## Ontology funder
+### status: developer and external review needed
+    sh:property [
+        sh:path sdo:funder ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+If applicable, the ontology should reference any institutions funding the work on the ontology.
+</p>
+<p>
+The funding institution(s) should be referenced by PIDs, e.g.
+</p>
+<p>
+<ul>
+<li>
+RORs: https://ror.org/
+</li>
+<li>
+or Crossref Funder Registry IDs: https://www.crossref.org/services/funder-registry/
+</li>
+</ul>
+</p>
+<p>
+Recommended property: https://schema.org/funder
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/funder&gt; &lt;https:<span>//</span>ror.org/018mejw64&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology funder"@en ;
+    ] ;
+
+    sh:property [
+        sh:path sdo:funder ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should reference any institutions funding its development via IRI.
+</p>
+<p>
+The funding institution(s) should be referenced by PIDs, e.g.
+</p>
+<p>
+<ul>
+<li>
+RORs: https://ror.org/
+</li>
+<li>
+or Crossref Funder Registry IDs: https://www.crossref.org/services/funder-registry/
+</li>
+</ul>
+</p>
+<p>
+Recommended property: https://schema.org/funder
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/funder&gt; &lt;https:<span>//</span>ror.org/018mejw64&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology funder"@en ;
+    ] ;
+
+## Ontology funding
+### status: developer and external review needed
+### Funding: the link is not useful, because CrossRef does not offer a searchable database.
+
+    sh:property [
+        sh:path sdo:funding ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+If applicable, the ontology should reference the grant which funds its development.
+</p>
+<p>
+The grant should be referenced by PID, e.g. Crossref Grant ID: https://www.crossref.org/documentation/research-nexus/grants/
+</p>
+<p>
+Recommended property: https://schema.org/funding
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/funding&gt; &lt;https:<span>//</span>doi.org/00.00000/000000000&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology funding (grant)"@en ;
+    ] ;
+
+    sh:property [
+        sh:path sdo:funding ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should reference any grants funding its development via IRI.
+</p>
+<p>
+The funding grant should be referenced by PID, e.g. Crossref Grant IDs: https://www.crossref.org/documentation/research-nexus/grants/
+</p>
+<p>
+Recommended property: https://schema.org/funding
+</p>
+<p>
+Example statement (text/turtle): 
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/funding&gt; &lt;https:<span>//</span>doi.org/00.00000/000000000&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology funding (grant)"@en ;
+    ] ;
+
+
+## Ontology audience description
+### status: developer and external review needed
+    sh:property [
+        sh:path [sh:alternativePath (doap:audience sdo:audience dcterms:audience)] ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should describe its intended audience.
+</p>
+<p>
+The audience description should be a short, language-tagged text.
+</p>
+<p>
+Recommended property: http://usefulinc.com/ns/doap#audience
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>usefulinc.com/ns/doap#audience&gt; &quot;This ontology is intended for researchers in derivational morphology, a branch of linguistics.&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        skos:editorialNote "see also open comment at G-Doc: https://docs.google.com/document/d/1FRmCQ7eD6PcqSQgPbqCGjki3t39ROoYozsehCPX9E0Q/edit?disco=AAAAwke7GNs" ;
+        sh:name "Ontology audience description"@en ; 
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (doap:audience sdo:audience dcterms:audience)] ;
+        sh:severity sh:Info ;
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+The ontology should provide its audience description as an rdf:langString.
+</p>
+<p>
+Recommended property: http://usefulinc.com/ns/doap#audience
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>usefulinc.com/ns/doap#audience&gt; &quot;This ontology is intended for researchers in derivational morphology, a branch of linguistics.&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology audience description - language"@en ; 
+    ] ;
+
+
+## Ontology subject(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path dcterms:subject ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+The ontology should provide ontology subjects with IRIs from controlled vocabularies or ontologies. Subjects should not be given as free text.
+</p>
+<p>
+You can search for fitting terms on TIB Terminology Service: https://terminology.tib.eu
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/subject
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/subject&gt; &lt;https:<span>//</span>d-nb.info/gnd/4067537-3&gt;,
+    &lt;https:<span>//</span>d-nb.info/gnd/4070177-3&gt;,
+    &lt;http:<span>//</span>uri.gbv.de/terminology/bk/42.15&gt;,
+    &lt;https:<span>//</span>github.com/tibonto/dfgfo/201-03&gt; .
+</code></pre>
+"""@en ;
+        sh:name "Ontology subject(s)"@en ;
+    ] ;
+
+    sh:property [
+        sh:path dcterms:subject ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide ontology subjects with IRIs from controlled vocabularies or ontologies. Subjects should not be given as free text.
+</p>
+<p>
+You can search for fitting terms on TIB Terminology Service: https://terminology.tib.eu
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/subject
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/subject&gt; &lt;https:<span>//</span>d-nb.info/gnd/4067537-3&gt;,
+    &lt;https:<span>//</span>d-nb.info/gnd/4070177-3&gt;,
+    &lt;http:<span>//</span>uri.gbv.de/terminology/bk/42.15&gt;,
+    &lt;https:<span>//</span>github.com/tibonto/dfgfo/201-03&gt;.
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology subject(s) - datatype"@en ;
+    ] ;
+
+
+## Ontology annotation language(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:language sdo:inLanguage) ];
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+The ontology should provide information about the ontology annotation language(s) (e.g. for term labels, term definitions, etc.).
+</p>
+<p>
+It should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotated in that language.
+</p>
+<p>
+Recommended controlled vocabulary: http://id.loc.gov/vocabulary/iso639-2
+</p>
+<p>
+Recommended property: https://schema.org/inLanguage
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/inLanguage&gt; &lt;http:<span>//</span>id.loc.gov/vocabulary/iso639-2/eng&gt;,
+    &lt;http:<span>//</span>id.loc.gov/vocabulary/iso639-2/tgl&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology annotation language(s)"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:language sdo:inLanguage) ];
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should specify the ontology annotation language(s) via IRIs.
+</p>
+<p>
+Recommended controlled vocabulary: http://id.loc.gov/vocabulary/iso639-2
+</p>
+<p>
+Recommended property: https://schema.org/inLanguage
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/inLanguage&gt; &lt;http:<span>//</span>id.loc.gov/vocabulary/iso639-2/eng&gt;, 
+    &lt;http:<span>//</span>id.loc.gov/vocabulary/iso639-2/tgl&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology annotation language(s) - datatype"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:language sdo:inLanguage) ];
+        sh:severity sh:Info ;
+        sh:pattern "(^http://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$|^https://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$)" ;
+        sh:message """
+<p>
+The ontology should provide ontology annotation language values that match the pattern for language identifiers from 'ISO 639-2: Codes for the Representation of Names of Languages - Part 2: Alpha-3 Code for the Names of Languages': https://id.loc.gov/vocabulary/iso639-2.html
+</p>
+<p>
+Example identifier: http://id.loc.gov/vocabulary/iso639-2/tgl
+</p>
+<p>
+Recommended property: https://schema.org/inLanguage
+</p>
+"""@en ;
+        sh:name "Ontology annotation language(s) - pattern"@en ; 
+    ] ;
+
+
+## Applied logical framework
+### status: developer and external review needed
+#### external comment Giacomo: Logical framework: the user needs a reference to a half-way authoritative list of frameworks (OWL? SKOS? RDF? OBO?) showing how they separate (wie sie sich voneinander abgrenzen)
+    sh:property [
+        sh:path mod:hasFormalityLevel;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should state which logical framework it applies.
+</p>
+<p>
+The information can be given as a text, referring to the Semantic Web Standard (e.g. 'OWL 2') and possibly the OWL profile (e.g. 'OWL 2 EL profile').
+</p>
+<p>
+Recommended property: https://w3id.org/mod#hasFormalityLevel
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org<span>/</span>SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#hasFormalityLevel&gt; &quot;OWL version 2, EL profile&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Applied logical framework description"@en ;
+    ] ;
+
+    sh:property [
+        sh:path mod:hasFormalityLevel;
+        sh:severity sh:Info ;
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+The ontology should provide the description its logical framework as an rdf:langString.
+</p>
+<p>
+Recommended property: https://w3id.org/mod#hasFormalityLevel
+</p>
+<p>
+Example statement (text/turtle): 
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#hasFormalityLevel&gt; &quot;OWL version 2, EL profile&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Applied logical framework description - language"@en ;
+    ] ;
+
+
+## Ontology serialization/ file format
+### status: developer and external review needed
+    sh:property [
+        sh:path [sh:alternativePath (mod:hasSyntax omv:hasOntologySyntax dcterms:format dc:format) ];
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+The ontology should state its serialization/ file format.
+</p>
+<p>
+The value should be provided as an IRI.
+</p>
+<p>
+We recommend to provide the information about the media type/ file format of your ontology as one of the values from
+<ul>
+<li>
+the Media Types list of the Internet Assigned Number Authority (IANA): https://www.iana.org/assignments/media-types/media-types.xhtml
+</li>
+<li>
+or from the W3C resource <em>Unique URIs for File Formats</em>: https://www.w3.org/ns/formats/
+</li>
+</ul>
+</p>
+<p>
+In order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:
+</p>
+<p>
+<ul>
+<li>
+https://www.iana.org/assignments/media-types/application/rdf+xml
+</li>
+<li>
+http://www.w3.org/ns/formats/RDF_XML
+</li>
+<li>
+https://www.iana.org/assignments/media-types/text/turtle
+</li>
+<li>
+http://www.w3.org/ns/formats/Turtle
+</li>
+<li>
+OBO format: http://purl.obolibrary.org/obo/oboformat/spec.html
+</li>
+</ul>
+</p>
+<p>
+Currently, there is no registered media type for obo format.
+</p>
+<p>
+Recommended property: https://w3id.org/mod#hasSyntax
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#hasSyntax&gt; &lt;http:<span>//</span>www.w3.org/ns/formats/RDF_XML&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology serialization/ file format"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (mod:hasSyntax omv:hasOntologySyntax dcterms:format dc:format) ];
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should state its serialization/ file format.
+</p>
+<p>
+The value should be provided as an IRI.
+</p>
+<p>
+We recommend to provide the information about the media type/ file format of your ontology as one of the values from
+<ul>
+<li>
+the Media Types list of the Internet Assigned Number Authority (IANA): https://www.iana.org/assignments/media-types/media-types.xhtml
+</li>
+<li>
+or from the W3C resource <em>Unique URIs for File Formats</em>: https://www.w3.org/ns/formats/
+</li>
+</ul>
+</p>
+<p>
+In order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:
+</p>
+<p>
+<ul>
+<li>
+https://www.iana.org/assignments/media-types/application/rdf+xml
+</li>
+<li>
+http://www.w3.org/ns/formats/RDF_XML
+</li>
+<li>
+https://www.iana.org/assignments/media-types/text/turtle
+</li>
+<li>
+http://www.w3.org/ns/formats/Turtle
+</li>
+<li>
+OBO format: http://purl.obolibrary.org/obo/oboformat/spec.html
+</li>
+</ul>
+</p>
+<p>
+Currently, there is no registered media type for obo format.
+</p>
+<p>
+Recommended property: https://w3id.org/mod#hasSyntax
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#hasSyntax&gt; &lt;http:<span>//</span>www.w3.org/ns/formats/RDF_XML&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology serialization/ file format - datatype"@en ; 
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (mod:hasSyntax omv:hasOntologySyntax dcterms:format dc:format) ];
+        sh:severity sh:Info ;
+        sh:maxCount 1;
+        sh:xone (
+        # tbd: not all are relevant or digestable by the TS
+        # for the TS rdf+xml, turtle and obo are confirmed
+        # no expected value for obo ontologies > Ontorowser mentions application/obo and text/obo, but these are specific to the service, not officially acknowledged: https://github.com/Novartis/ontobrowser/blob/master/doc/web_services.md
+            # [sh:hasValue <http://www.w3.org/ns/formats/JSON-LD> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/N3> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/N-Triples> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/N-Quads> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/LD_Patch> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/microdata> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/OWL_XML> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/OWL_Functional> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/OWL_Manchester> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/POWDER> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/POWDER-S> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/PROV-N> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/PROV-XML> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/RDFa> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/RDF_JSON> ;] 
+            [sh:hasValue <http://www.w3.org/ns/formats/RDF_XML> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/RIF_XML> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/SPARQL_Results_XML> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/SPARQL_Results_JSON> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/SPARQL_Results_CSV> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/SPARQL_Results_TSV> ;] 
+            [sh:hasValue <http://www.w3.org/ns/formats/Turtle> ;] 
+            # [sh:hasValue <http://www.w3.org/ns/formats/TriG> ;] 
+            [sh:hasValue <https://www.iana.org/assignments/media-types/application/rdf+xml> ;] 
+            [sh:hasValue <https://www.iana.org/assignments/media-types/text/turtle> ;]
+            # [sh:hasValue <https://www.iana.org/assignments/media-types/application/trig> ;]
+            # [sh:hasValue <https://www.iana.org/assignments/media-types/text/n3> ;]
+            # [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-triples> ;]
+            # [sh:hasValue <https://www.iana.org/assignments/media-types/application/n-quads> ;]
+            # [sh:hasValue <https://www.iana.org/assignments/media-types/application/ld+json> ;]
+            );
+        sh:message """
+<p>
+The ontology should state its serialization/ file format.
+</p>
+<p>
+The value should be provided as an IRI.
+</p>
+<p>
+We recommend to provide the information about the media type/ file format of your ontology as one of the values from
+<ul>
+<li>
+the Media Types list of the Internet Assigned Number Authority (IANA): https://www.iana.org/assignments/media-types/media-types.xhtml
+</li>
+<li>
+or from the W3C resource <em>Unique URIs for File Formats</em>: https://www.w3.org/ns/formats/
+</li>
+</ul>
+</p>
+<p>
+In order to publish your ontology on the TIB Terminology Service, you must provide the ontology in one of the following formats:
+</p>
+<p>
+<ul>
+<li>
+https://www.iana.org/assignments/media-types/application/rdf+xml
+</li>
+<li>
+http://www.w3.org/ns/formats/RDF_XML
+</li>
+<li>
+https://www.iana.org/assignments/media-types/text/turtle
+</li>
+<li>
+http://www.w3.org/ns/formats/Turtle
+</li>
+<li>
+OBO format: http://purl.obolibrary.org/obo/oboformat/spec.html
+</li>
+</ul>
+</p>
+<p>
+Currently, there is no registered media type for obo format.
+</p>
+<p>
+Recommended property: https://w3id.org/mod#hasSyntax
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#hasSyntax&gt; &lt;http:<span>//</span>www.w3.org/ns/formats/RDF_XML&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology serialization/ file format - controlled vocabulary value"@en ;
+    ] ;
+
+## Ontology status
+### status: developer and external review needed
+### for later: dedicated ontology_status property missing - suggest to OBO? if available: use instead of bibo:status
+    sh:property [
+        sh:path bibo:status ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+The ontology should declare its current maintenance status.
+</p>
+<p>
+You could use an English label to do so. We recommend using one of 'active', 'inactive', 'orphaned' or 'obsolete' as recommended by https://obofoundry.org/docs/OntologyStatus.html
+</p>
+<p>
+The value you use should be language-tagged.
+</p>
+<p>
+Recommended property: http://purl.org/ontology/bibo/status
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/ontology/bibo/status&gt; &quot;inactive&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology status"@en ; 
+    ] ;
+
+## Ontology code repository
+### status: developer and external review needed
+    sh:property [
+        sh:path doap:repository;
+        sh:severity sh:Info ;
+        sh:minCount 1;
+        sh:maxCount 1;
+        sh:message """
+<p>
+The ontology should provide the link to its code repository.
+</p>
+<p>
+The ontology should be on a code repository and the ontology should contain the repository's IRI.
+</p>
+<p>
+Recommended property: http://usefulinc.com/ns/doap#repository
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>usefulinc.com/ns/doap#repository&gt; &lt;https:<span>//</span>github.com/SomeOrganisation/SomeOntology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology code repository"@en ;
+    ] ;
+
+    sh:property [
+        sh:path doap:repository;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI;
+        sh:message """
+<p>
+The ontology should provide the link to its code repository as an IRI.
+</p>
+<p>
+Recommended property: http://usefulinc.com/ns/doap#repository
+</p>
+<p>
+Example statement (text/turtle): 
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>usefulinc.com/ns/doap#repository&gt; &lt;https:<span>//</span>github.com/SomeOrganisation/SomeOntology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology code repository - datatype"@en ;
+    ] ;
+
+## Ontology distributions/ products
+### status: developer and external review needed
+   sh:property [
+        sh:path [ sh:alternativePath (dcat:distribution sdo:distribution dcterms:hasFormat)];
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide IRIs to its available alternative serializations or distributions.
+</p>
+<p>
+Recommended property: http://www.w3.org/ns/dcat#distribution
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/ns/dcat#distribution&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology.owl&gt;,
+    &lt;https:<span>//</span>www.purl.org/SomeOntology.json&gt;, 
+    &lt;https:<span>//</span>www.purl.org/SomeOntology.ttl&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology distributions/ products"@en ;
+   ] ; 
+
+## Application example
+### status: developer and external review needed
+    sh:property [
+        sh:path vann:example ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide a link to an example demonstrating its application.
+</p>
+<p>
+Ideally, the ontology provides a PID to e.g. a publication describing applications of the ontology, or directly to an application or online service that uses the ontology.
+</p>
+<p>
+Recommended property: http://purl.org/vocab/vann/example
+</p>
+<p>
+Example statement (text/turtle): 
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;http:<span>//</span>www.w3.org/ns/dcat&gt; &lt;http:<span>//</span>purl.org/vocab/vann/example&gt; &lt;https:<span>//</span>www.w3.org/TR/vocab-dcat-2/#collection-of-examples&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Application example"@en ;
+    ] ;
+
+## Related resource(s)
+### status: developer and external review needed
+    sh:property [
+        sh:path dcterms:references ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide references to its related resources via IRI.
+</p>
+<p>
+Related recources could for example be publications introducing, discussing, evaluating or describing the ontology, recources containing alignments of your ontology to other ontologies, or any other resources that you would like to reference in your ontology.
+</p>
+<p>
+The reference should be provided via PID, for example a DOI, if available.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/references
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/references&gt; &lt;http:<span>//</span>doi.org/10.00000/some0.ontolo&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Related resource(s)"@en ;
+    ] ;
+
+
+## Citation suggestion
+### status: developer and external review needed
+    sh:property [
+        sh:path dcterms:bibliographicCitation ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:message """
+<p>
+The ontology should provide information about how it should be cited.
+</p>
+<p>
+The information should be provided as an rdf:langString.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/bibliographicCitation
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/bibliographicCitation&gt; &quot;Last name, first name; last name, first name et al. (YYYY): Title. URL: https:<span>//</span>w3id.org/SomeOntology/1.1.6&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Citation suggestion"@en ;
+    ] ;
+
+## Ontology sources (derived from)
+### status: developer and external review needed
+    sh:property [
+        sh:path [sh:alternativePath (pav:derivedFrom <http://www.w3.org/ns/prov#wasDerivedFrom>)] ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should specify whether and from which other ontologies it has been derived.
+</p>
+<p>
+The reference should be made by an owl:versionIRI of the ontology from which the current ontology has been derived.
+</p>
+<p>
+Recommended property: http://purl.org/pav/derivedFrom
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/pav/derivedFrom&gt; &lt;https:<span>//</span>www.purl.org/SomeOtherOntology/3.1.2&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology sources (derived from)"@en ;
+    ];
+
+## Ontology root classes
+### status: developer and external review needed
+    sh:property [
+        sh:path obo:IAO_0000700 ;
+        sh:severity sh:Info ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should explicitly declare its root classes.
+</p>
+<p>
+This information can be used for tree-like visualizations of the class hierarchy in technical services, e.g. TIB Terminology Service.
+</p>
+<p>
+The respective classes (if any) need to be provided via their identifier.
+</p>
+<p>
+This information should best be provided or defined by the ontology maintainers or engineers. If you are not the maintainer or engineer, you should leave this empty.
+</p>
+<p>
+Recommended property: http://purl.obolibrary.org/obo/IAO_0000700
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.obolibrary.org/obo/IAO_0000700&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology/12345654544545&gt; .
+</code></pre>
+
+</p>
+"""@en ;
+        sh:name "Ontology root classes"@en ;
+    ] ;
+
+# OPTIONAL METADATA
+### status: developer and external review needed
+
+## Ontology description
+### status: developer and external review needed
+
+    sh:property [
+        sh:path  [sh:alternativePath (dc:description dcterms:description sdo:description)];
+        sh:severity sh:Info ;
+        sh:nodeKind sh:Literal;
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+The ontology should provide its description as an rdf:langString.
+</p>
+<p>
+Recommended property: https://schema.org/description
+</p>
+<p>
+Example statetement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/description&gt; &quot;Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.&quot;@en .
+</code></pre>
+</p>
+<p>
+</p>
+"""@en ;
+        sh:name "Ontology description - language"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (dc:description dcterms:description sdo:description)] ;
+        sh:severity sh:Info ;
+        sh:uniqueLang true ;
+        sh:message """
+<p>
+The ontology should only provide one ontology description per language.
+</p>
+<p>
+Recommended property: https://schema.org/description
+</p>
+<p>
+Example statements (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>schema.org/description&gt;
+    &quot;Free text describing the ontology and how it came to be. Basically everything you might want to add and which does not fit into the abstract.&quot;@en,
+    &quot;Freitext, der die Ontologie und ihre Genese beschreibt. Hier können umfangreiche Hintergrundinformationen zur Ontologie gegeben werden, die über ein kurzes Abstract hinausgehen.&quot;@de .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology description - unique language"@en ;
+    ] ;
+
+
+## Alternative ontology title
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:alternative sdo:alternateName sdo:alternativeHeadline)];
+        sh:severity sh:Info ;
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+The ontology should provide its alternative title(s) as an rdf:langString.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/alternative
+</p>
+<p>
+Example statement (text/turtle): 
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/alternative&gt; &quot;My Ontology&quot;@en .
+</code></pre>
+</p>
+"""@en;
+        sh:name "Alternative ontology title - language"@en;
+    ] ;
+
+## Alternative ontology prefix/ acronym
+### status: developer and external review needed
+
+    sh:property [
+        sh:path idot:alternatePrefix ;
+        sh:severity sh:Info ;
+        sh:datatype xsd:string ;
+        sh:message """
+<p>
+The ontology should provide its alternative prefix as an xsd:string.
+</p>
+<p>
+Recommended property: http://identifiers.org/idot/alternatePrefix
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>identifiers.org/idot/alternatePrefix&gt; &quot;mo&quot;^^xsd:string .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Alternative ontology prefix/ acronym - datatype"@en ;
+    ] ;
+
+## Related version/ version history
+### status: see below
+
+### Prior ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (owl:priorVersion adms:prev pav:previousVersion <http://www.w3.org/ns/prov#wasRevisionOf> dcterms:replaces )] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide its prior version as an IRI.
+</p>
+<p>
+Ideally, a resolving ontology versionIRI should be used.
+</p>
+<p>
+Recommended property: http://www.w3.org/2002/07/owl#priorVersion
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#priorVersion&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.6&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Prior ontology version"@en ;
+    ] ;
+
+### Related ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (pav:hasCurrentVersion sdo:version dcterms:hasVersion)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide its related version as an IRI.
+</p>
+<p>
+Ideally, a resolving ontology versionIRI should be used.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/hasVersion
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.6&gt; &lt;http:<span>//</span>purl.org/dc/terms/hasVersion&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Related ontology version"@en ;
+    ] ;
+
+### Compatible ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path owl:backwardCompatibleWith ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide compatible versions of itself as IRIs.
+</p>
+<p>
+Ideally, a resolving ontology versionIRI should be used.
+</p>
+<p>
+Recommended property: http://www.w3.org/2002/07/owl#backwardCompatibleWith
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.7&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#backwardCompatibleWith&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.6&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Compatible ontology version"@en ;
+    ] ;
+
+### Incompatible ontology version
+### status: developer and external review needed
+
+    sh:property [
+        sh:path owl:incompatibleWith ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide incompatible versions of itself as IRIs.
+</p>
+<p>
+Ideally, a resolving ontology versionIRI should be used.
+</p>
+<p>
+Recommended property: http://www.w3.org/2002/07/owl#incompatibleWith
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.7&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#incompatibleWith&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.6&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Incompatible ontology version"@en ;
+    ] ;
+
+
+## Social media
+### status: intentionally no shape
+
+## KOS type
+### status: developer and external review needed
+
+    sh:property [
+        sh:path dcterms:type ;
+        sh:severity sh:Info ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should declare at most one KOS type for itself.
+</p>
+<p>
+Use an identifier from the NKOS type vocabulary: https://nkos.dublincore.org/nkostype/nkostype.rdf
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/type
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.7&gt; &lt;http:<span>//</span>purl.org/dc/terms/type&gt; &lt;http:<span>//</span>w3id.org/nkos/nkostype#ontology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "KOS type"@en ;
+    ] ;
+
+    sh:property [
+        sh:path dcterms:type ;
+        sh:severity sh:Info ;
+        sh:xone (
+            [sh:hasValue <http://w3id.org/nkos/nkostype#authority_file>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#categorization_schema>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#classification_schema>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#dictionary>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#gazetteer>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#glossary>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#list>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#name_authority_list>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#ontology>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#pick_list>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#semantic_network>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#subject_heading_scheme>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#synonym_ring>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#taxonomy>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#terminology>]
+            [sh:hasValue <http://w3id.org/nkos/nkostype#thesaurus>]
+            ) ;
+        sh:message """
+<p>
+The KOS type identifier should be provided as an IRI.
+</p>
+<p>
+The IRI should be one of the KOS types defined by the NKOS type vocabulary: https://nkos.dublincore.org/nkostype/nkostype.rdf
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/type
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology/1.1.7&gt; &lt;http:<span>//</span>purl.org/dc/terms/type&gt; &lt;http:<span>//</span>w3id.org/nkos/nkostype#ontology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "KOS type"@en ;
+    ] ;
+
+## Example ontology identifier
+### status: developer and external review needed
+ 
+    sh:property [
+        sh:path idot:exampleIdentifier ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should declare any example identifiers for the ontology as an IRI.
+</p>
+<p>
+Recommended property: http://identifiers.org/idot/exampleIdentifier
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>identifiers.org/idot/exampleIdentifier&gt; &lt;https:<span>//</span>www.purl.org/SomeOntology/1234-XY&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Example ontology identifier"@en ;
+    ] ;
+
+## Ontology identifier pattern
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (idot:identifierPattern <https://bioregistry.io/schema/#0000008>)] ;
+        sh:severity sh:Info ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should provide its identifier pattern as an xsd:string.
+</p>
+<p>
+Recommended property: http://identifiers.org/idot/identifierPattern
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>identifiers.org/idot/identifierPattern&gt; &quot;^\\d{4}-[A-Z]{2}$&quot;^^xsd:string .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology identifier pattern"@en ;
+    ] ;
+
+
+## Ontology homepage
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (foaf:homepage foaf:page)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should provide its homepage as an IRI.
+</p>
+<p>
+Recommended property: http://xmlns.com/foaf/0.1/homepage
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/homepage&gt; &lt;https:<span>//</span>www.example.com/SomeOntologyInfo&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology homepage"@en ;
+    ] ;
+
+## Ontology publisher
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:publisher dc:publisher sdo:publisher)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:xone (
+            # pattern sources: Wikidata entries of the identifier types
+            [sh:pattern "https://ror.org/([a-z0-9]{9})" ; ]
+            [sh:pattern "https://isni.org/isni/[0]{4}[0-9]{4}[0-9]{4}[0-9]{3}[0-9X]" ;]
+            [sh:pattern "https://d-nb.info/gnd/(|(1[012]?[0-9]{7}[0-9X]|[47][0-9]{6}-[0-9]|[1-9][0-9]{0,7}-[0-9X]|3[0-9]{7}[0-9X]))$" ;]
+        ) ;
+        sh:message """
+<p>
+The ontology should specify its publisher via ROR, ISNI or GND identifier.
+</p>
+<p>
+The value you provide should be given as an IRI and match the identifier patterns.
+</p>
+<p>
+If you use valid ROR, ISNI or GND identifiers, this should be the case.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/publisher
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt;   &lt;http:<span>//</span>purl.org/dc/terms/publisher&gt; dcterms:publisher &lt;https:<span>//</span>isni.org/isni/0000000121746694&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology publisher"@en ;
+    ] ;
+
+## Ontology comments
+### status: developer and external review needed
+
+    sh:property [
+        sh:path rdfs:comment ;
+        sh:severity sh:Info ;
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+Any comments about the ontology should be given as rdf:langStrings.
+</p>
+<p>
+Recommended property: http://www.w3.org/2000/01/rdf-schema#comment
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2000/01/rdf-schema#comment&gt; &quot;SomeOntology does not actually exist.&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology comments"@en ;
+    ] ;
+
+
+## Example ontology class
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (skos:example void:exampleResource )] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide its example classes as IRIs.
+</p>
+<p>
+Recommended property: http://rdfs.org/ns/void#exampleResource
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>rdfs.org/ns/void#exampleResource&gt; &lt;https:<span>//</span>www.purl.org/SomeClass&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Example ontology class - data type"@en ;
+    ] ;
+
+
+## Ontology mailing list
+### status: developer and external review needed
+
+    sh:property [
+        sh:path doap:mailing-list ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should provide its mailing list as an IRI.
+</p>
+<p>
+Recommended property: http://usefulinc.com/ns/doap#mailing-list
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>usefulinc.com/ns/doap#mailing-list&gt; &lt;someontology@list.de&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology mailing list"@en ;
+    ];
+
+## Ontology logo/ depiction/ related visualizations
+### status: developer and external review needed
+### needs to be split for forms and validation? > logo should be its own datum, depictions and visualizations can go together
+
+    sh:property [
+        sh:path [sh:alternativePath (foaf:logo sdo:logo foaf:depiction mod:depiction sdo:image)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide links to related depictions as IRIs.
+</p>
+<p>
+Recommended property: http://xmlns.com/foaf/0.1/logo
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>xmlns.com/foaf/0.1/logo&gt; &lt;https:<span>//</span>www.example.com/MyOntoLogo.jpg&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology logo/ depiction/ related visualizations"@en ;
+    ];
+
+## Alternative identifiers of the ontology
+### status: developer and external review needed
+### This shape is probably confusing since the properties shall provide identifiers for the ontology, not related resources.
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:identifier bibo:doi dc:identifier)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide its identifiers as IRIs.
+</p>
+<p>
+The identifier used as the base uri of the ontology should be provided with the property: http://purl.org/vocab/vann/preferredNamespaceUri
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/identifier
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/identifier&gt; &lt;https:<span>//</span>doi.org/10.5281/zenodo.0000000&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Alternative identifiers of the ontology"@en ;
+    ];
+
+## Development environment
+#### status: intentionally no shape
+
+## Alignments/ mappings
+### status: developer and external review needed
+
+### Aligned resources
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (mod:hasEquivalencesWith <http://w3id.org/nkos#alignedWith>)] ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide information about other ontologies it is aligned to as IRIs.
+</p>
+<p>
+Recommended property: https://w3id.org/mod#hasEquivalencesWith
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#hasEquivalencesWith&gt; &lt;https:<span>//</span>www.purl.org/SomeOtherOntology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Aligned resources"@en ;
+    ];
+
+### Alignment files/ Mapping files
+### status: see shape "Related resources"
+
+## Competency Questions
+### status: developer and external review needed
+
+    sh:property [
+        sh:path mod:competencyQuestion ;
+        sh:severity sh:Info ;
+        sh:xone ( [sh:nodeKind sh:IRI ;] [sh:datatype rdf:langString ;] );
+        sh:message """
+<p>
+The ontology should provide the link to its competency questions as an IRI or provide the questions directly as an rdf:langString.
+</p>
+<p>
+Recommended property: https://w3id.org/mod#competencyQuestion
+</p>
+<p>
+Example statement 1 (text/turtle): 
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#competencyQuestion&gt; &quot;Who developed an ontology?&quot;@en .
+</code></pre>
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>w3id.org/mod#competencyQuestion&gt; &lt;https:<span>//</span>www.example.com/SomeOntologyInfo/Questions#Q1&gt; .
+</code></pre>
+</p>
+"""@en ; # inconsistent with forms shape
+        sh:name "Competency questions"@en ;
+    ];
+
+## Applied methodology
+### status: intentionally no shape
+
+## Preferred ontology namespace
+### status: developer and external review needed
+
+    sh:property [
+        sh:path vann:preferredNamespaceUri ;
+        sh:severity sh:Info ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should provide at most one preferred namespace URI for itself.
+</p>
+<p>
+Recommended property: http://purl.org/vocab/vann/preferredNamespaceUri
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/vocab/vann/preferredNamespaceUri&gt; &lt;https:<span>//</span>w3id/Example/SomeOntology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Preferred ontology namespace"@en ; 
+    ] ;
+
+    sh:property [
+        sh:path vann:preferredNamespaceUri ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:IRI ;
+        sh:message """
+<p>
+The ontology should provide its preferred namespace URI as an IRI.
+</p>
+<p>
+Recommended property: http://purl.org/vocab/vann/preferredNamespaceUri
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/vocab/vann/preferredNamespaceUri&gt; &lt;https:<span>//</span>w3id/Example/SomeOntology&gt; .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Preferred ontology namespace - datatype"@en ;
+    ] ;
+
+## Ontology issue date
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [
+            sh:alternativePath (
+                dcterms:issued
+                sdo:datePublished
+                sdo:dateIssued
+                )
+            ] ;
+        sh:severity sh:Info ;
+        sh:xone ([sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should provide at most one issue date that conforms to xsd:dateTimeStamp, xsd:dateTime or xsd:date.
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/issued
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>purl.org/dc/terms/&gt; &quot;2023-11-21T00:00:00&quot;^^xsd:dateTime .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology issue date - datatype"@en ; 
+    ] ;
+
+### Ontology modification date
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (dcterms:modified sdo:dateModified pav:curatedOn pav:lastUpdateOn)];
+        sh:severity sh:Info ;
+        sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );
+        sh:maxCount 1;
+        sh:message """
+<p>
+The ontology should provide at most one ontology modification date in xsd:dateTimeStamp, xsd:dateTime or xsd:date format (ideally the latest).
+</p>
+<p>
+Recommended property: http://purl.org/dc/terms/modified
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;https:<span>//</span>purl.org/dc/terms/modified&gt; &quot;2020-11-19T00:00:00&quot;^^xsd:dateTime.
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology modification date"@en ;
+    ] ;
+
+### Ontology version information
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (owl:versionInfo pav:version)];
+        sh:severity sh:Info ;
+        sh:xone ( [sh:datatype xsd:string ;] [sh:datatype rdf:langString ;] );
+        sh:message """
+<p>
+The ontology should provide textual information about its version as an xsd:string.
+</p>
+<p>
+It is recommended to use semantic versioning (cf. https://semver.org/) or OBO style date-based versioning (http://obofoundry.org/principles/fp-004-versioning.html).
+</p>
+<p>
+If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements.
+</p>
+<p>
+Recommended property: http://www.w3.org/2002/07/owl#versionInfo
+</p>
+<p>
+Example statement 1 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionInfo&gt; &quot;2023-01-01&quot;^^xsd:string .
+</code></pre>
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionInfo&gt; &quot;1.0.0&quot;^^xsd:string.
+</code></pre>
+</p>
+<p>
+Example statement 3 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionInfo&gt; &quot;Ontology version 1.0.0 of the subject classification in tabular format from Nov 2024.&quot;@en.
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology version information"@en ;
+    ] ;
+
+    sh:property [
+        sh:path [sh:alternativePath (owl:versionInfo pav:version)];
+        sh:severity sh:Info ;
+        sh:maxCount 1 ;
+        sh:message """
+<p>
+The ontology should provide at most one textual information about the ontology version.
+</p>
+<p>
+The value should be provided as an xsd:string.
+</p>
+<p>
+It is recommended to use
+</p>
+<p>
+<ul>
+<li>
+semantic versioning: https://semver.org/
+</li>
+<li>
+or OBO style date-based versioning: http://obofoundry.org/principles/fp-004-versioning.html
+</li>
+</ul>
+</p>
+<p>
+Recommended property: http://www.w3.org/2002/07/owl#versionInfo
+</p>
+<p>
+Example statement 1 (text/turtle): 
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionInfo&gt; &quot;2023-01-01&quot;^^xsd:string .
+</code></pre>
+</p>
+<p>
+Example statement 2 (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/2002/07/owl#versionInfo&gt; &quot;1.0.0&quot;^^xsd:string.
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology version information"@en ;
+    ] ;
+
+### Ontology version notes
+### status: developer and external review needed
+
+    sh:property [
+        sh:path [sh:alternativePath (adms:versionNotes vann:changes)]  ;
+        sh:severity sh:Info ;
+        sh:nodeKind sh:Literal ; 
+        sh:datatype rdf:langString ;
+        sh:message """
+<p>
+The ontology should provide its version notes (e.g. notes on updates as compared to the previous version of the ontology) as an rdf:langString.
+</p>
+<p>
+Recommended property: http://www.w3.org/ns/adms#versionNotes
+</p>
+<p>
+Example statement (text/turtle):
+</p>
+<p>
+<pre><code class="language-Turtle">&lt;https:<span>//</span>www.purl.org/SomeOntology&gt; &lt;http:<span>//</span>www.w3.org/ns/adms#versionNotes&gt; &quot;Changes from 2000-01-12: add annotation properties: familyName [...]&quot;@en .
+</code></pre>
+</p>
+"""@en ;
+        sh:name "Ontology version notes"@en ;
+    ] ;
+
+# End of shape
+    sh:closed false ;
+    sh:ignoredProperties ( rdf:type owl:topDataProperty owl:topObjectProperty ) .
+
