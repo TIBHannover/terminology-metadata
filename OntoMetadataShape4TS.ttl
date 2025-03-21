@@ -387,7 +387,7 @@ Example value: https://creativecommons.org/licenses/by/4.0/
             );
         sh:message """
 <p>
-The ontology declares a license which is not accepted at TIB Terminology Service. If you are the maintainer of the ontology, please consider, if the ontology can be provided with an open license. Read more about open licenses at https://opendefinition.org/licenses/. If the ontology license is open, but this test did not recognize it as such, please get in touch with us and it will be added to our list: https://github.com/TIBHannover/terminology-metadata/issues.
+The ontology declares a license which is not accepted at TIB Terminology Service. If you are the maintainer of the ontology, please consider, if the ontology can be provided with an open license. Read more about open licenses at https://opendefinition.org/licenses/. If the ontology license is open, but this test did not recognize it as such, please get in touch with us and it will be added to our list: https://github.com/TIBHannover/terminology-metadata/issues .
 </p>
 <p>
 Recommended property: http://purl.org/dc/terms/license
