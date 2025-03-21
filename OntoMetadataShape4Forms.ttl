@@ -111,6 +111,7 @@ ontometa4forms:OntologyMetadataShape a sh:NodeShape ;
             <https://opendatacommons.org/licenses/odbl/1-0/>
             <https://unlicense.org/>
             <https://creativecommons.org/publicdomain/zero/1.0/legalcode>
+            <https://creativecommons.org/publicdomain/mark/1.0>
             <https://creativecommons.org/licenses/by/3.0/legalcode>
             <https://creativecommons.org/licenses/by/4.0/legalcode>
             <https://creativecommons.org/licenses/by/3.0/de/legalcode>
