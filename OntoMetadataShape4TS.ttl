@@ -379,7 +379,9 @@ Example value: https://creativecommons.org/licenses/by/4.0/
             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
-            [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
+            [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/deed> ;]
+
+            [sh:hasValue <https://creativecommons.org/publicdomain/mark/1.0/> ;]
 
             # [sh:hasValue <> ;] 
             );
