@@ -1064,7 +1064,7 @@ ontometa:OntologyMetadataShape a sh:NodeShape ;
         sh:severity sh:Info ;
         sh:nodeKind sh:IRI ;
         sh:message """You should provide the ontology's identifiers as IRIs.\nThe identifier used as the base uri of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri>.\nRecommended property: <http://purl.org/dc/terms/identifier>\nExample statement (text/turtle): <https://www.purl.org/SomeOntology> dcterms:identifier <https://doi.org/10.5281/zenodo.0000000> .\nNeed help with SHACL? Learn more: https://www.w3.org/TR/2017/REC-shacl-20170720/"""@en ;
-        sh:description "This shape checks whether the ontology's related identifiers are provided as IRIs. It produces an info message if they are not."@en ;
+        sh:description "This shape checks whether the ontology's alternative identifiers are provided as IRIs. It produces an info message if they are not."@en ;
         sh:name "Alternative identifiers of the ontology"@en ;
     ];
 

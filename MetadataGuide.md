@@ -21,76 +21,106 @@ Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
 
 ## Table of contents
 
-0. [Executive summary](#0-executive-summary)
-1. [Why Ontology Metadata?](#1-ontology-metadata)
-    * [1.1 How to provide ontology metadata](#11-how-to-provide-ontology-metadata)
-    * [1.2 Why ontology metadata?](#12-why-ontology-metadata)
-2. [How to read this document](#2-how-to-read-this-document)
-    * [2.1 Chapter structure and wording](#21-chapter-structure-and-wording)
-    * [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl)
-    * [2.3 Prefixes used in this document](#23-prefixes-used-in-this-document)
-    * [2.4 Acronyms](#24-acronyms)
-3. [Mandatory Metadata](#3-mandatory-metadata)
-    * [3.1 Ontology title](#31-ontology-title)
-    * [3.2 Preferred ontology prefix/ acronym](#32-preferred-ontology-prefix-acronym)
-    * [3.3 Ontology license](#33-ontology-license)
-    * [3.4 Ontology creator(s)](#34-ontology-creators)
-    * [3.5 Ontology version IRI](#35-ontology-version-iri)
-    * [3.6 Ontology creation date](#36-ontology-creation-date)
-    * [3.7 Ontology abstract](#37-ontology-abstract)
-    * [3.8 Ontology issue tracker](#38-ontology-issue-tracker)
-    * [3.9 Ontology documentation](#39-ontology-documentation)
-4. [Recommended Metadata](#4-recommended-metadata)
-    * [4.1 Ontology contributor(s)](#41-ontology-contributors)
-    * [4.2 Ontology funder](#42-ontology-funder)
-    * [4.3 Ontology funding](#43-ontology-funding)
-    * [4.4 Ontology audience description](#44-ontology-audience-description)
-    * [4.5 Ontology subject(s)](#45-ontology-subjects)
-    * [4.6 Ontology annotation language(s)](#46-ontology-annotation-languages)
-    * [4.7 Applied logical framework](#47-applied-logical-framework)
-    * [4.8 Ontology serialization/ file format](#48-ontology-serialization-file-format)
-    * [4.9 Ontology status](#49-ontology-status)
-    * [4.10 Ontology code repository](#410-ontology-code-repository)
-    * [4.11 Ontology distributions/ products](#411-ontology-distributions-products)
-    * [4.12 Application example](#412-application-example)
-    * [4.13 Related resource(s)](#413-related-resources)
-    * [4.14 Citation suggestion](#414-citation-suggestion)
-    * [4.15 Ontology sources (derived from)](#415-ontology-sources-derived-from)
-    * [4.16 Ontology root classes](#416-ontology-root-classes)
-5. [Optional Metadata](#5-optional-metadata)
-    * [5.1 Ontology description](#51-ontology-description)
-    * [5.2 Alternative ontology title](#52-alternative-ontology-title)
-    * [5.3 Alternative ontology prefix/ acronym](#53-alternative-ontology-prefix-acronym)
-    * [5.4 Related version/ version history](#54-related-version-version-history)
-        * [5.4.1 Prior ontology version](#541-prior-ontology-version)
-        * [5.4.2 Related ontology version](#542-related-ontology-version)
-        * [5.4.4 Compatible ontology version](#543-compatible-ontology-version)
-        * [5.4. Incompatible ontology version](#544-incompatible-ontology-version)
-    * [5.5 Social media](#55-social-media)
-    * [5.6 KOS type](#56-kos-type)
-    * [5.7 Example ontology identifier](#57-example-ontology-identifier)
-    * [5.8 Ontology identifier pattern](#58-ontology-identifier-pattern)
-    * [5.9 Ontology homepage](#59-ontology-homepage)
-    * [5.10 Ontology publisher](#510-ontology-publisher)
-    * [5.11 Ontology comments](#511-ontology-comments)
-    * [5.12 Example ontology class](#512-example-ontology-class)
-    * [5.13 Ontology mailing list](#513-ontology-mailing-list)
-    * [5.14 Ontology logo/ depictions/ related visualization](#514-ontology-logo-depiction-related-visualizations)
-    * [5.15 Alternative identifiers of the ontology](#515-alternative-identifiers-of-the-ontology)
-    * [5.16 Development environment](#516-development-environment)
-    * [5.17 Alignments/ mappings](#517-alignments-mappings)
-        * [5.17.1 Aligned resources](#5171-aligned-resources)
-        * [5.17.2 Alignment files/ mapping files](#5172-alignment-files-mapping-files)
-    * [5.18 Competency questions](#518-competency-questions)
-    * [5.19 Applied methodology](#519-applied-methodology)
-    * [5.20 Preferred ontology namespace](#520-preferred-ontology-namespace)
-    * [5.21 Ontology issue date](#521-ontology-issue-date)
-    * [5.22 Modification date](#522-modification-date)
-    * [5.23 Textual version information](#523-textual-version-information)
-    * [5.24 Version notes](#524-version-notes)
-6. [Tabular overview - recommendations](#6-tabular-overview)
-7. [Relations to related work](#7-relations-to-related-work)
-8. [Sources](#8-sources)
+[0 Executive summary](#0-executive-summary)
+
+[1 Why Ontology Metadata?](#1-introduction)
+
+* [1.1 How to provide ontology metadata](#11-how-to-provide-ontology-metadata)
+* [1.2 Why ontology metadata?](#12-why-ontology-metadata)
+
+[2 How to read this document](#2-how-to-read-this-document)
+
+* [2.1 Chapter structure and wording](#21-chapter-structure-and-wording)
+* [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl)
+* [2.3 Prefixes used in this document](#23-prefixes-used-in-this-document)
+* [2.4 Acronyms](#24-acronyms)
+
+[3 Ontology-level metadata](#3-ontology-level-metadata)
+
+* [3.1 Mandatory Metadata](#31-mandatory-metadata)
+  * [3.1.1 Ontology title](#311-ontology-title)
+  * [3.1.2 Preferred ontology prefix/ acronym](#312-preferred-ontology-prefix-acronym)
+  * [3.1.3 Ontology license](#313-ontology-license)
+  * [3.1.4 Ontology creator(s)](#314-ontology-creators)
+  * [3.1.5 Ontology version IRI](#315-ontology-version-iri)
+  * [3.1.6 Ontology creation date](#316-ontology-creation-date)
+  * [3.1.7 Ontology abstract](#317-ontology-abstract)
+  * [3.1.8 Ontology issue tracker](#318-ontology-issue-tracker)
+  * [3.1.9 Ontology documentation](#319-ontology-documentation)
+* [3.2 Recommended Metadata](#32-recommended-metadata)
+  * [3.2.1 Ontology contributor(s)](#321-ontology-contributors)
+  * [3.2.2 Ontology funder](#322-ontology-funder)
+  * [3.2.3 Ontology funding](#323-ontology-funding)
+  * [3.2.4 Ontology audience description](#324-ontology-audience-description)
+  * [3.2.5 Ontology subject(s)](#325-ontology-subjects)
+  * [3.2.6 Ontology annotation language(s)](#326-ontology-annotation-languages)
+  * [3.2.7 Applied logical framework](#327-applied-logical-framework)
+  * [3.2.8 Ontology serialization/ file format](#328-ontology-serialization-file-format)
+  * [3.2.9 Ontology status](#329-ontology-status)
+  * [3.2.10 Ontology code repository](#3210-ontology-code-repository)
+  * [3.2.11 Ontology distributions/ products](#3211-ontology-distributions-products)
+  * [3.2.12 Application example](#3212-application-example)
+  * [3.2.13 Related resource(s)](#3213-related-resources)
+  * [3.2.14 Citation suggestion](#3214-citation-suggestion)
+  * [3.2.15 Ontology sources (derived from)](#3215-ontology-sources-derived-from)
+  * [3.2.16 Ontology root classes](#3216-ontology-root-classes)
+* [3.3 Optional Metadata](#33-optional-metadata)
+  * [3.3.1 Ontology description](#331-ontology-description)
+  * [3.3.2 Alternative ontology title](#332-alternative-ontology-title)
+  * [3.3.3 Alternative ontology prefix/ acronym](#333-alternative-ontology-prefix-acronym)
+  * [3.3.4 Related version/ version history](#334-related-version-version-history)
+    * [3.3.4.1 Prior ontology version](#3341-prior-ontology-version)
+    * [3.3.4.2 Related ontology version](#3342-related-ontology-version)
+    * [3.3.4.3 Compatible ontology version](#3343-compatible-ontology-version)
+    * [3.3.4.4 Incompatible ontology version](#3344-incompatible-ontology-version)
+  * [3.3.5 Social media](#335-social-media)
+  * [3.3.6 KOS type](#336-kos-type)
+  * [3.3.7 Example ontology identifier](#337-example-ontology-identifier)
+  * [3.3.8 Ontology identifier pattern](#338-ontology-identifier-pattern)
+  * [3.3.9 Ontology homepage](#339-ontology-homepage)
+  * [3.3.10 Ontology publisher](#3310-ontology-publisher)
+  * [3.3.11 Ontology comments](#3311-ontology-comments)
+  * [3.3.12 Example ontology class](#3312-example-ontology-class)
+  * [3.3.13 Ontology mailing list](#3313-ontology-mailing-list)
+  * [3.3.14 Ontology logo/ depictions/ related visualization](#3314-ontology-logo-depiction-related-visualizations)
+  * [3.3.15 Alternative identifiers of the ontology](#3315-alternative-identifiers-of-the-ontology)
+  * [3.3.16 Development environment](#3316-development-environment)
+  * [3.3.17 Alignments/ mappings](#3317-alignments-mappings)
+    * [3.3.17.1 Aligned resources](#33171-aligned-resources)
+    * [3.3.17.2 Alignment files/ mapping files](#33172-alignment-files-mapping-files)
+  * [3.3.18 Competency questions](#3318-competency-questions)
+  * [3.3.19 Applied methodology](#3319-applied-methodology)
+  * [3.3.20 Preferred ontology namespace](#3320-preferred-ontology-namespace)
+  * [3.3.21 Ontology issue date](#3321-ontology-issue-date)
+  * [3.3.22 Modification date](#3322-modification-date)
+  * [3.3.23 Textual version information](#3323-textual-version-information)
+  * [3.3.24 Version notes](#3324-version-notes)
+* [3.4 Tabular overview - recommendations](#34-tabular-overview)
+* [3.5 Relations to related work](#35-relations-to-related-work)
+
+[4 Term-level Metadata](#4-term-level-metadata)
+
+* [4.1 Mandatory metadata](#41-mandatory-metadata)
+  * [Preferred label](#411-preferred-label)
+  * [Definition](#412-definition)
+  * [Term deprecation/ obsoletion](#413-term-deprecation-obsoletion)
+    * [Deprecation marker](#4131-deprecation-marker)
+    * [Obsoletion reason](#4132-obsoletion-reason)
+    * [Term replacement](#4133-term-replacement)
+* [4.2 Recommended metadata](#42-recommended-metadata)
+  * [Synonyms/ alternative labels](#421-synonyms-alternative-labels)
+* [4.3 Optional metadata](#43-optional-metadata)
+  * [Term editor](#431-term-editor)
+  * [Date modified](#432-date-modified)
+  * [Editor note](#433-editor-note)
+  * [Example of usage](#434-example-of-usage)
+  * [Defined by](#435-defined-by)
+  * [Issue link](#436-issue-link)
+  * [Comments](#437-comments)
+* [4.4 Tabular overview - recommendations](#44-tabular-overview---recommendations)
+* [4.5 Relations to related work](#45-relations-to-related-work)
+
+[5 Sources](#5-sources)
 
 <div style="page-break-after: always;"></div>
 
@@ -111,7 +141,7 @@ With this document, *TIB - Leibniz Information Centre for Science and Technology
 
 In addition, we provide shapes for SHACL validators based on these recommendations (cf. [2.2 Metadata recommendations and SHACL](#22-metadata-recommendations-and-shacl)).
 
-## 1 Ontology metadata
+## 1 Introduction
 
 ### 1.1 How to provide ontology metadata?
 
@@ -204,11 +234,13 @@ Code examples will usually provide full IRIs of statement subjects and objects. 
 
 <div style="page-break-after: always;"></div>
 
-## 3 Mandatory metadata
+## 3 Ontology-level Metadata
+
+### 3.1 Mandatory metadata
 
 Metadata in this section are mandatory for publishing an ontology at [TIB Terminology Service][TIB TS]. Ontologies missing these metadata will not be accepted.
 
-### 3.1 Ontology title
+#### 3.1.1 Ontology title
 
 Ontologies must state their own title. The title will be displayed on [TIB Terminology Service](https://terminology.tib.eu/ts), e.g. on each [ontology's landing page](https://terminology.tib.eu/ts/ontologies/bfo), in [search results](https://terminology.tib.eu/ts/search?q=ontology&page=1&type=ontology) or in [ontology lists][TIB TS ontology list]. The ontology must have at most one title per language. Ontology titles should be tagged for language.
 
@@ -233,7 +265,9 @@ SHACL validation rules:
 * `sh:minCount 1`
 * `sh:uniqueLang true`
 
-### 3.2 Preferred ontology prefix/ acronym
+You can discuss this recommendation with us at <>.
+
+#### 3.1.2 Preferred ontology prefix/ acronym
 
 The ontology must declare its preferred, unique prefix or a short acronym. The prefix/ acronym will be used on TIB Terminology Service's [ontology list][TIB TS ontology list] as a short name for the ontology. It must not contain hyphens or other special characters and should be written in lowercase.
 
@@ -257,7 +291,9 @@ SHACL validation rules:
 
 * `sh:datatype xsd:string`
 
-### 3.3 Ontology license
+You can discuss this recommendation with us at <>.
+
+#### 3.1.3 Ontology license
 
 Ontologies must declare their license, referring to their license document via PID. The license text helps others to evaluate how they may reuse the ontology. Only ontologies with an open license will be published on [TIB Terminology Service][TIB TS]. Consider, for example, the [list of licenses][Open Definition license list] that are conformant with the [Open Definition][Open Definition 2.1].
 
@@ -284,7 +320,9 @@ SHACL validation rules:
 * `sh:maxCount 1`
 * `sh:minCount 1`
 
-### 3.4 Ontology creator(s)
+You can discuss this recommendation with us at <https://github.com/TIBHannover/terminology-metadata/issues/11>.
+
+#### 3.1.4 Ontology creator(s)
 
 The ontology must list its creators, i.e. the people or institutions who were responsible for its development. It is recommended to refer to a creator with a PID (e.g. [ORCiD][orcid], [Wikidata][wikidata]-ID, or [ROR][ror]-ID). Plain name strings can be provided in addition for readability. If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors. If no project or organisation PID is available, the respective name (rdf:langString) will also be accepted.
 
@@ -321,7 +359,9 @@ SHACL validation rules:
 * `sh:minCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 3.5 Ontology version IRI
+You can discuss this recommendation with us at <>.
+
+#### 3.1.5 Ontology version IRI
 
 Since the PURL of an ontology usually only points to the latest version of an ontology, each ontology must state its version IRI. A version IRI is a persistent identifier for a version of an ontology and is used to reliably retrieve this earlier version of the ontology. We recommended to use [semantic versioning][semver] or OBO style date-based versioning [[3]](#source3).
 
@@ -356,7 +396,9 @@ SHACL validation rules:
 * `sh:minCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 3.6 Ontology creation date
+You can discuss this recommendation with us at <>.
+
+#### 3.1.6 Ontology creation date
 
 The ontology must state the date of its first creation.
 
@@ -381,9 +423,11 @@ SHACL validation rules:
 * `sh:maxCount 1`
 * `sh:minCount 1`
 
-### 3.7 Ontology abstract
+You can discuss this recommendation with us at <>.
 
-The ontology must describe its own contents and scope with a few words or sentences in order to inform human users what the ontology tries to accomplish. The abstract is displayed in the [TIB Terminology Service ontology list][TIB TS ontology list] and on the landing page of each ontology - we therefore recommend to keep it short. You can also provide abstracts in several languages (as an rdf:langString). You may provide only one abstract per language. Each abstract may be up to 500 characters long including spaces. We do not recommend to use markups (html, markdown) in the abstract since these are not supported by [TIB Terminology Service][TIB TS]. If you want to include a longer text about the ontology, you should include a description [5.1 Ontology description](#51-ontology-description). For an extensive discussion about further aspects of the ontology (e.g. ontology creation, ontology use, ontology structure, etc.) we recommend the publication of a detailed documentation (cf. [3.9 Ontology documentation](#39-ontology-documentation)) or traditional academic article (cf. [4.13 Related resources](#413-related-resources)).
+#### 3.1.7 Ontology abstract
+
+The ontology must describe its own contents and scope with a few words or sentences in order to inform human users what the ontology tries to accomplish. The abstract is displayed in the [TIB Terminology Service ontology list][TIB TS ontology list] and on the landing page of each ontology - we therefore recommend to keep it short. You can also provide abstracts in several languages (as an rdf:langString). You may provide only one abstract per language. Each abstract may be up to 500 characters long including spaces. We do not recommend to use markups (html, markdown) in the abstract since these are not supported by [TIB Terminology Service][TIB TS]. If you want to include a longer text about the ontology, you should include a description [3.3.1 Ontology description](#331-ontology-description). For an extensive discussion about further aspects of the ontology (e.g. ontology creation, ontology use, ontology structure, etc.) we recommend the publication of a detailed documentation (cf. [3.1.9 Ontology documentation](#319-ontology-documentation)) or traditional academic article (cf. [3.2.13 Related resources](#3213-related-resources)).
 
 Recommended property: <http://purl.org/dc/terms/abstract>
 
@@ -405,7 +449,9 @@ SHACL validation rules:
 * `sh:minCount 1`
 * `sh:uniqueLang true`
 
-### 3.8 Ontology issue tracker
+You can discuss this recommendation with us at <>.
+
+#### 3.1.8 Ontology issue tracker
 
 The ontology must point to the issue tracker of its own development environment so that others may report bugs or suggestions to the developers. Ideally, the development process of an ontology is open and takes place on platforms like GitLab.com that allow for version management with version control software like git.
 
@@ -426,7 +472,9 @@ SHACL validation rules:
 * `sh:minCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 3.9 Ontology documentation
+You can discuss this recommendation with us at <>.
+
+#### 3.1.9 Ontology documentation
 
 To familiarize interested others with the concepts and scope of your ontology, some kind of documentation must be provided. This is usually an external online document that should be referenced by the ontology via an IRI or more persistently with a PID. A relatively easy way to do this is to use the tool Widoco [[4]](#source4), [[5]](#source5). It generates the documentation from the ontology and a resulting html-document can be published, for example with [GitLab Pages][gitlab pages]. This auto-generated document can contain customized passages that provide users with a deeper understanding of the ontology. There are, however, other forms of ontology documentations: scientific articles, well-curtated README files in repositories, Wikis etc. Here, we recommend to choose the form which is most easily attainable by your working group or project. Here are some examples for ontology documentation:
 
@@ -455,13 +503,15 @@ SHACL validation rules:
 * `sh:minCount 1`
 * `sh:nodeKind sh:IRI`
 
+You can discuss this recommendation with us at <https://github.com/TIBHannover/terminology-metadata/issues/13>.
+
 <div style="page-break-after: always;"></div>
 
-## 4 Recommended Metadata
+### 3.2 Recommended Metadata
 
 In addition to mandatory metadata, we recommend providing a number of further helpful metadata.
 
-### 4.1 Ontology contributor(s)
+#### 3.2.1 Ontology contributor(s)
 
 If you had help in developing the ontology, you should indicate this by listing contributors so that all participants receive proper credit for their efforts. If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors. Persons and organisations shpuld be listed via PID, e.g. ORCiD or ROR.
 
@@ -495,7 +545,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.2 Ontology funder
+You can discuss this recommendation with us at <>.
+
+#### 3.2.2 Ontology funder
 
 The development of an ontology may rely on external funding and take place in a third-party funding project. Since funding institutions usually want to be credited, we highly recommend mentioning them in your ontology. The best way to do so is by referring to their [ROR ID][ror].
 
@@ -517,7 +569,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.3 Ontology funding
+You can discuss this recommendation with us at <>.
+
+#### 3.2.3 Ontology funding
 
 In addition to referencing the funding institution, you may be required to point to the specifc grant that enables the work on the ontology. We recommend to provide this information as an IRI, ideally a PID. We are aware, though, that PIDs for grants are not common, yet.  We therefore also accept this information in the form of acknowledgement statements (rdf:langString) containing the grant number provided by the funding institution.
 
@@ -545,7 +599,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.4 Ontology audience description
+You can discuss this recommendation with us at <>.
+
+#### 3.2.4 Ontology audience description
 
 Defining the target group of your ontology might be useful information for others when evaluating if and how they could reuse your ontology. You should describe the intended audience of the ontology. The audience description should be a short, language-tagged text.
 
@@ -570,7 +626,9 @@ SHACL validation rules:
 * `sh:datatype rdf:langString`
 * `sh:maxCount 1`
 
-### 4.5 Ontology subject(s)
+You can discuss this recommendation with us at <https://github.com/TIBHannover/terminology-metadata/issues/9>.
+
+#### 3.2.5 Ontology subject(s)
 
 We recommend tagging the ontology with a subject from a controlled vocabulary to indicate which domain it belongs to or which subject it deals with. This information is helpful for terminology service and ontology registry providers: Subject tags from controlled vocabularies can be mapped to other controlled vocabularies that are the basis of filters and browsing functionalities of such services. Subject tags can help to make your ontology better findable and available for a wider audience.
 
@@ -608,7 +666,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.6 Ontology annotation language(s)
+You can discuss this recommendation with us at <>.
+
+#### 3.2.6 Ontology annotation language(s)
 
 If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotated in that language.
 
@@ -632,7 +692,9 @@ SHACL validation rules:
 * `sh:nodeKind sh:IRI`
 * `sh:pattern "(^http://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$|^https://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$)"`
 
-### 4.7 Applied logical framework
+You can discuss this recommendation with us at <>.
+
+#### 3.2.7 Applied logical framework
 
 You should state which logical framework the ontology applies. The information can be given as a text, referring to the Semantic Web Standard (e.g. 'OWL 2') and possibly the OWL profile (e.g. 'OWL 2 EL profile').
 
@@ -652,7 +714,9 @@ SHACL validation rules:
 * `sh:datatype rdf:langString`
 * `sh:maxCount 1`
 
-### 4.8 Ontology serialization/ file format
+You can discuss this recommendation with us at <>.
+
+#### 3.2.8 Ontology serialization/ file format
 
 You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) [[6]](#source6) or from the W3C resource Unique URIs for File Formats [[7]](#source7).
 
@@ -691,7 +755,9 @@ SHACL validation rules:
 * `sh:maxCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 4.9 Ontology status
+You can discuss this recommendation with us at <>.
+
+#### 3.2.9 Ontology status
 
 You should declare the current maintenance status of the ontology. You could use an English label to do so. We recommend using one of the values suggested by the OBO Foundry [[8]](#source8). Ontologies are prone to link rot and sometimes left abandoned. If you cannot keep up the work on an ontology, this needs to be documented: Is your ontology retired? Is it still a draft? Or is it maintained by an active community?
 
@@ -716,7 +782,9 @@ SHACL validation rules:
 * `sh:datatype rdf:langString`
 * `sh:maxCount 1`
 
-### 4.10 Ontology code repository
+You can discuss this recommendation with us at <>.
+
+#### 3.2.10 Ontology code repository
 
 A code repository (e.g. on [GitLab.com][gitlab] or [GitHub.com][github]) should be the development environment of your ontology. It should contain the source code of your ontology but may also be used to host your documentation, your issue tracker and may contain related resources like different distributions of your ontology, versions of your ontology, application examples, competency questions, discussions and decisions - in short: the entire history of your ontology should be located in a code repository.
 
@@ -736,7 +804,9 @@ SHACL validation rules:
 * `sh:maxCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 4.11 Ontology distributions/ products
+You can discuss this recommendation with us at <>.
+
+#### 3.2.11 Ontology distributions/ products
 
 There are different serializations available for ontologies but not all are parsable by any system: For example an ontology tool may be well prepared for rdf/xml but not so much for json-ld. It may help users of your ontology, if you provided IRIs to available alternative serializations or distributions of your ontology.
 
@@ -761,7 +831,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.12 Application example
+You can discuss this recommendation with us at <>.
+
+#### 3.2.12 Application example
 
 How to use an ontology is often helpfully demonstrated by application examples and visualizations that give a glimpse about how the ontology can be used to structure actual data. If you have such application examples, these might be better found, if you link to them from the ontology. These application examples could be part of the ontology documentation, formal serializations applying the ontology or even technical applications that make use of the ontology.
 
@@ -780,9 +852,11 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.13 Related resource(s)
+You can discuss this recommendation with us at <>.
 
-Resources related to the ontology could be publications discussing the ontology, applications of the ontology or mapping files (see also section [5.17 Alignments/ mappings](#517-alignments-mappings)). If any such resources exist, you should mention them in the ontology. You may also point to other related resources, for example resources that are cited or were otherwise used to inform the ontology. We recommend using a permanent identifier, such as a DOI, of the referenced resource.
+#### 3.2.13 Related resource(s)
+
+Resources related to the ontology could be publications discussing the ontology, applications of the ontology or mapping files (see also section [3.3.17 Alignments/ mappings](#3317-alignments-mappings)). If any such resources exist, you should mention them in the ontology. You may also point to other related resources, for example resources that are cited or were otherwise used to inform the ontology. We recommend using a permanent identifier, such as a DOI, of the referenced resource.
 
 Recommended property: <http://purl.org/dc/terms/references>
 
@@ -801,9 +875,11 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.14 Citation suggestion
+You can discuss this recommendation with us at <>.
 
-You could give information on how you would like others to cite your ontologies. You may even provide structured metadata ready for import into citation management tools like Bibtex etc. Currently, there is no citation standard considering the citation of ontologies. We therefore recommend to provide at least the creators, the year of publication, the ontology title and to give the versionIRI as the access URL. In addition, you could also provide references to citable publications (cf. section [4.13 Related resources](#413-related-resources)).
+#### 3.2.14 Citation suggestion
+
+You could give information on how you would like others to cite your ontologies. You may even provide structured metadata ready for import into citation management tools like Bibtex etc. Currently, there is no citation standard considering the citation of ontologies. We therefore recommend to provide at least the creators, the year of publication, the ontology title and to give the versionIRI as the access URL. In addition, you could also provide references to citable publications (cf. section [3.2.13 Related resources](#3213-related-resources)).
 
 Recommended property: <http://purl.org/dc/terms/bibliographicCitation>
 
@@ -825,7 +901,9 @@ Alternative properties: n/a
 
 SHACL validation rules: n/a
 
-### 4.15 Ontology sources (derived from)
+You can discuss this recommendation with us at <>.
+
+#### 3.2.15 Ontology sources (derived from)
 
 You should specify whether and from which other ontologies your ontology has been derived. The reference should be made by an owl:versionIRI of the ontology from which the current ontology has been derived.
 
@@ -847,7 +925,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 4.16 Ontology root classes
+You can discuss this recommendation with us at <>.
+
+#### 3.2.16 Ontology root classes
 
 You should explicitly declare the ontology's preferred root classes. Display tools like the [TIB Terminology Service][TIB TS] and other OLS-based services [[9]](#source9), [[10]](#source10) can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The respective classes need to be provided via their identifier. This information should best be provided or defined by the ontology maintainers or engineers.
 
@@ -868,17 +948,19 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
+You can discuss this recommendation with us at <>.
+
 <div style="page-break-after: always;"></div>
 
-## 5 Optional metadata
+### 3.3 Optional metadata
 
-The metadata of an ontology can contain much more information than what has been suggested in sections [3 Mandatory metadata](#3-mandatory-metadata) and [4 Recommended metadata](#4-recommended-metadata) so far. Perhaps, you will also find the following categories useful or informative enough to include them into your metadata.
+The metadata of an ontology can contain much more information than what has been suggested in sections [3.1 Mandatory metadata](#31-mandatory-metadata) and [3.2 Recommended metadata](#32-recommended-metadata) so far. Perhaps, you will also find the following categories useful or informative enough to include them into your metadata.
 
 At [TIB Terminology Service][TIB TS] all additional metadata will be displayed on the ontology landing page if available.
 
-### 5.1 Ontology description
+#### 3.3.1 Ontology description
 
-If you want to provide more information about the ontology than the few characters that fit into the [ontology abstract](#37-ontology-abstract), you may also provide a longer descriptive text. In a longer description you may, for example, provide more information about how and why the ontology was created, where it is used, how it will be updated and the like. For extensive discussions about further aspects of the ontology (e.g. ontology creation, ontology use, ontology structure, etc.) we recommend the publication of a detailed documentation (cf. [3.9 Ontology documentation](#39-ontology-documentation)) or traditional academic article (cf. [4.13 Related resources](#413-related-resources)), instead of an ontology description.
+If you want to provide more information about the ontology than the few characters that fit into the [ontology abstract](#317-ontology-abstract), you may also provide a longer descriptive text. In a longer description you may, for example, provide more information about how and why the ontology was created, where it is used, how it will be updated and the like. For extensive discussions about further aspects of the ontology (e.g. ontology creation, ontology use, ontology structure, etc.) we recommend the publication of a detailed documentation (cf. [3.1.9 Ontology documentation](#319-ontology-documentation)) or traditional academic article (cf. [3.2.13 Related resources](#3213-related-resources)), instead of an ontology description.
 
 Recommended property: <https://schema.org/description>
 
@@ -900,7 +982,9 @@ SHACL validation rules:
 * `sh:nodeKind sh:Literal`
 * `sh:uniqueLang true`
 
-### 5.2 Alternative ontology title
+You can discuss this recommendation with us at <>.
+
+#### 3.3.2 Alternative ontology title
 
 An alternative title for the ontology may provided, for example a former working title the ontology has been known by.
 
@@ -922,7 +1006,9 @@ SHACL validation rules:
 
 * `sh:datatype rdf:langString`
 
-### 5.3 Alternative ontology prefix/ acronym
+You can discuss this recommendation with us at <>.
+
+#### 3.3.3 Alternative ontology prefix/ acronym
 
 An alternative prefix for the ontology.
 
@@ -941,11 +1027,13 @@ SHACL validation rules:
 
 * `sh:datatype xsd:string`
 
-### 5.4 Related version/ version history
+You can discuss this recommendation with us at <>.
+
+#### 3.3.4 Related version/ version history
 
 When ontologies are developed on collaborative development platforms with version management software like [GitLab.com][gitlab] or [GitHub.com][github], it is relatively easy to maintain and keep all development and release versions of an ontology. Ontologies may therefore have multiple resolvable version IRIs. The different versions can relate to each other in different ways as discussed in the following sections.
 
-#### 5.4.1 Prior ontology version
+##### 3.3.4.1 Prior ontology version
 
 An ontology may point back to one or more versions that were valid before the current version.
 
@@ -969,7 +1057,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-#### 5.4.2 Related ontology version
+You can discuss this recommendation with us at <>.
+
+##### 3.3.4.2 Related ontology version
 
 A related resource of which the described resource is a version, edition, or adaptation. The contents of related versions of an ontology are not identical.
 
@@ -991,7 +1081,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-#### 5.4.3 Compatible ontology version
+You can discuss this recommendation with us at <>.
+
+##### 3.3.4.3 Compatible ontology version
 
 For application developers and other users, it may be useful to know whether a new version of your ontology is backward compatible with an older version of your ontology.
 
@@ -1011,7 +1103,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-#### 5.4.4 Incompatible ontology version
+You can discuss this recommendation with us at <>.
+
+##### 3.3.4.4 Incompatible ontology version
 
 For application developers and other users, it may be useful to know whether a new version of your ontology is incompatible with an older version of your ontology.
 
@@ -1031,7 +1125,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 5.5 Social media
+You can discuss this recommendation with us at <>.
+
+#### 3.3.5 Social media
 
 If you toot about or otherwise promote your ontology on social media, it might be interesting for users to see on which platforms you are having accounts to follow your updates.
 
@@ -1048,7 +1144,9 @@ Alternative properties: n/a
 
 SHACL validation rules: n/a
 
-### 5.6 KOS type
+You can discuss this recommendation with us at <>.
+
+#### 3.3.6 KOS type
 
 You may want to additionally classify your ontology with a controlled value from the NKOS type vocabulary [[11]](#source11).
 
@@ -1071,7 +1169,9 @@ SHACL validation rules:
 * `sh:maxCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 5.7 Example ontology identifier
+You can discuss this recommendation with us at <>.
+
+#### 3.3.7 Example ontology identifier
 
 Give an example for identifiers used in your ontology.
 
@@ -1090,7 +1190,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 5.8 Ontology identifier pattern
+You can discuss this recommendation with us at <>.
+
+#### 3.3.8 Ontology identifier pattern
 
 Identifiers for ontology classes, properties and individuals usually follow one specific pattern that can be summarized with a regular expression. In registries like [Bioregistry][Bioregistries] this is usually provided as part of the ontology metadata.
 
@@ -1112,7 +1214,9 @@ SHACL validation rules:
 * `sh:datatype xsd:string`
 * `sh:maxCount 1`
 
-### 5.9 Ontology homepage
+You can discuss this recommendation with us at <>.
+
+#### 3.3.9 Ontology homepage
 
 The official homepage of your ontology. This is not necessarily the documentation website, but could be a general info page, which may also include documentation about the ontology.
 
@@ -1134,7 +1238,9 @@ SHACL validation rules:
 * `sh:maxCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 5.10 Ontology publisher
+You can discuss this recommendation with us at <>.
+
+#### 3.3.10 Ontology publisher
 
 The official publisher of the ontology. This might be the institution you are affiliated to. We recommend to refer to the institution via PIDs (e.g. [ROR][ror], [ISNI][isni], [GND][gnd] ID).
 
@@ -1159,7 +1265,9 @@ SHACL validation rules:
 * `sh:pattern "https://isni.org/isni/[0]{4}[0-9]{4}[0-9]{4}[0-9]{3}[0-9X]"`
 * `sh:pattern "https://ror.org/([a-z0-9]{9})"`
 
-### 5.11 Ontology comments
+You can discuss this recommendation with us at <>.
+
+#### 3.3.11 Ontology comments
 
 Any comments you would like to make about your ontology.
 
@@ -1180,7 +1288,7 @@ SHACL validation rules:
 
 * `sh:datatype rdf:langString`
 
-### 5.12 Example ontology class
+#### 3.3.12 Example ontology class
 
 You could provide an example class that is representative for the entities described in the ontology, for example demonstrating typical term annotations, editorial notes or axiomatic statements, deprecation notes etc.
 
@@ -1201,7 +1309,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 5.13 Ontology mailing list
+You can discuss this recommendation with us at <>.
+
+#### 3.3.13 Ontology mailing list
 
 Communication about the ontology may take place over a mailing list, e.g. regarding updates. If this is your way to communicate, the info should be part of your ontology.
 
@@ -1220,7 +1330,9 @@ SHACL validation rules:
 
 * `sh:maxCount 1`
 
-### 5.14 Ontology logo/ depiction/ related visualizations
+You can discuss this recommendation with us at <>.
+
+#### 3.3.14 Ontology logo/ depiction/ related visualizations
 
 Links to official ontology logo or other visualizations/ diagrams of ontology elements online, e.g. WebVOWL visualizations and other graph views.
 
@@ -1244,9 +1356,11 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 5.15 Alternative identifiers of the ontology
+You can discuss this recommendation with us at <>.
 
-If your ontology has been published at an archive, you may want to declare these related identifiers in the ontology metadata. You should list here alternative URIs that may be used to identify your ontology. The identifier used as the base URI of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri> instead (cf. [5.20 Preferred ontology namespace](#520-preferred-ontology-namespace)).
+#### 3.3.15 Alternative identifiers of the ontology
+
+If your ontology has been published at an archive, you may want to declare these alternative identifiers in the ontology metadata. You should list here alternative URIs that may be used to identify your ontology. The identifier used as the base URI of the ontology should be provided with <http://purl.org/vocab/vann/preferredNamespaceUri> instead (cf. [3.3.20 Preferred ontology namespace](#3320-preferred-ontology-namespace)).
 
 Recommended property: <http://purl.org/dc/terms/identifier>
 
@@ -1267,7 +1381,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-### 5.16 Development environment
+You can discuss this recommendation with us at <>.
+
+#### 3.3.16 Development environment
 
 The software that was used to create the ontology.
 
@@ -1286,9 +1402,11 @@ Alternative properties:
 
 SHACL validation rules: n/a
 
-### 5.17 Alignments/ mappings
+You can discuss this recommendation with us at <>.
 
-#### 5.17.1 Aligned resources
+#### 3.3.17 Alignments/ mappings
+
+##### 3.3.17.1 Aligned resources
 
 The ontology may indicate to which other resource(s) it has been aligned or contains equivalences to.
 
@@ -1309,7 +1427,9 @@ SHACL validation rules:
 
 * `sh:nodeKind sh:IRI`
 
-#### 5.17.2 Alignment files/ Mapping files
+You can discuss this recommendation with us at <>.
+
+##### 3.3.17.2 Alignment files/ mapping files
 
 Alignments and mappings may not be included in the ontology document itself, but in a related resource (e.g. when following the SSSOM paradigm [[12]](#source12)). Accordingly, we recommend to treat mapping sets like related resources. The mapping set should be referenced via a PID or a version IRI.
 
@@ -1326,9 +1446,11 @@ Alternative properties: n/a
 
 SHACL validation rules:
 
-* `sh:nodeKInd sh:IRI`
+* `sh:nodeKind sh:IRI`
 
-### 5.18 Competency Questions
+You can discuss this recommendation with us at <>.
+
+#### 3.3.18 Competency questions
 
 Which competency questions does the ontology address? For which use case was it developed?
 
@@ -1354,7 +1476,9 @@ SHACL validation rules:
 
 * `sh:xone ([sh:nodeKind sh:IRI ;] [sh:datatype rdf:langString ;])`
 
-### 5.19 Applied methodology
+You can discuss this recommendation with us at <>.
+
+#### 3.3.19 Applied methodology
 
 A name or description of the steps taken to develop the ontology. This should describe the overall organisation of the ontology development process.
 
@@ -1371,7 +1495,9 @@ Alternative properties: n/a
 
 SHACL validation rules: n/a
 
-### 5.20 Preferred ontology namespace
+You can discuss this recommendation with us at <>.
+
+#### 3.3.20 Preferred ontology namespace
 
 The preferred namespace URI of an ontology is the URI which is to be used when referencing its terms.
 
@@ -1391,7 +1517,9 @@ SHACL validation rules:
 * `sh:maxCount 1`
 * `sh:nodeKind sh:IRI`
 
-### 5.21 Ontology issue date
+You can discuss this recommendation with us at <>.
+
+#### 3.3.21 Ontology issue date
 
 The date the ontology was officially published.
 
@@ -1414,7 +1542,9 @@ SHACL validation rules:
 * `sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );`
 * `sh:maxCount 1`
 
-### 5.22 Modification date
+You can discuss this recommendation with us at <>.
+
+#### 3.3.22 Modification date
 
 Since ontologies are updated over time, it would be helpful to provide the date when the ontology has been last modified.
 
@@ -1438,11 +1568,13 @@ SHACL validation rules:
 * `sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );`
 * `sh:maxCount 1`
 
-### 5.23 Textual version information
+You can discuss this recommendation with us at <>.
+
+#### 3.3.23 Textual version information
 
 Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21. If you use such textual version information but do not use/have a Version URI, then we strongly recommend to also mint a version URI in which you use the textual version information as variable.
 
-If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. Alternatively, you could add the info to the version notes (cf. [5.24 Version notes](#524-version-notes)).
+If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. Alternatively, you could add the info to the version notes (cf. [3.3.24 Version notes](#3324-version-notes)).
 
 Recommended property: <http://www.w3.org/2002/07/owl#versionInfo>
 
@@ -1477,7 +1609,9 @@ SHACL validation rules:
 * `sh:xone ([sh:datatype xsd:string ;] [sh:datatype rdf:langString ;])`
 * `sh:maxCount 1`
 
-### 5.24 Version notes
+You can discuss this recommendation with us at <>.
+
+#### 3.3.24 Version notes
 
 Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.
 
@@ -1501,129 +1635,554 @@ SHACL validation rules:
 * `sh:datatype rdf:langString`
 * `sh:nodeKind sh:Literal`
 
-<div style="page-break-after: always;"></div>
-
-## 6 Tabular overview
-
-| section | metadatum                                        | Preferred property                                                            | Mandatory | Recommended | Optional | Cardinality |
-|---------|--------------------------------------------------|-------------------------------------------------------------------------------|-----------|-------------|----------|-------------|
-| 3.1     | Title                                            | <http://purl.org/dc/terms/title>                                              | x         |             |          | 1…*         |
-| 3.2     | Preferred ontology prefix/ acronym               | <http://purl.org/vocab/vann/preferredNamespacePrefix>                         | x         |             |          | 1           |
-| 3.3     | License                                          | <http://purl.org/dc/terms/license>                                            | x         |             |          | 1           |
-| 3.4     | Creator                                          | <http://purl.org/dc/terms/creator>                                            | x         |             |          | 1…*         |
-| 3.5     | Version IRI                                      | <http://www.w3.org/2002/07/owl#versionIRI>                                    | x         |             |          | 1           |
-| 3.6     | Creation date                                    | <http://purl.org/dc/terms/created>                                            | x         |             |          | 1           |
-| 3.7     | Abstract                                         | <http://purl.org/dc/terms/abstract>                                           | x         |             |          | 1…*         |
-| 3.8     | Issue tracker                                    | <http://usefulinc.com/ns/doap#bug-database>                                   | x         |             |          | 1           |
-| 3.9     | Documentation                                    | <http://www.loc.gov/premis/rdf/v3/documentation>                              | x         |             |          | 1           |
-| 4.1     | Contributor(s)                                   | <http://purl.org/dc/terms/contributor>                                        |           | x           |          | 0…*         |
-| 4.2     | Funder                                           | <https://schema.org/funder>                                                   |           | x           |          | 0…*         |
-| 4.3     | Funding (grant)                                  | <https://schema.org/funding>                                                  |           | x           |          | 0…*         |
-| 4.4     | Audience description                             | <http://usefulinc.com/ns/doap#audience>                                       |           | x           |          | 0...1       |
-| 4.5     | Subject(s)                                       | <http://purl.org/dc/terms/subject>                                            |           | x           |          | 0…*         |
-| 4.6     | Annotation language(s)                           | <http://purl.org/dc/terms/language>                                           |           | x           |          | 0…*         |
-| 4.7     | Applied logical framework                        | <https://w3id.org/mod#hasFormalityLevel>                                      |           | x           |          | 0...1       |
-| 4.8     | Serialization/ file format                       | <https://w3id.org/mod#hasSyntax>                  |           | x           |          | 0...1       |
-| 4.9     | Status                                           | <http://purl.org/ontology/bibo/status>                                        |           | x           |          | 0...1       |
-| 4.10    | Code repository                                  | <http://usefulinc.com/ns/doap#repository>                                     |           | x           |          | 0...1       |
-| 4.11    | Distributions/ products                          | <http://www.w3.org/ns/dcat#distribution>                                      |           | x           |          | 0…*         |
-| 4.12    | Application example                              | <http://purl.org/vocab/vann/example>                                              |           | x           |          | 0…*         |
-| 4.13    | Related resource(s)                              | <http://purl.org/dc/terms/references>                                         |           | x           |          | 0…*         |
-| 4.14    | Citation suggestion                              | <http://purl.org/dc/terms/bibliographicCitation>                              |           | x           |          | 0…*         |
-| 4.15    | Ontology sources (derived from)                  | <http://purl.org/pav/derivedFrom>                                             |           | x           |          | 0…*         |
-| 4.16    | Root classes                                     | <http://purl.obolibrary.org/obo/IAO_0000700>                                  |           | x           |          | 0…*         |
-| 5.1     | Description                                      | <https://schema.org/description>                                              |           |             | x        | 0…*         |
-| 5.2     | Alternative ontology title                       | <http://purl.org/dc/terms/alternative>                                        |           |             | x        | 0…*         |
-| 5.3     | Alternative ontology prefix/ acronym             | <http://identifiers.org/idot/alternatePrefix>                                 |           |             | x        | 0…*         |
-| 5.4.1   | Prior ontology version                           | <http://www.w3.org/2002/07/owl#priorVersion>                                  |           |             | x        | 0…*         |
-| 5.4.2   | Related ontology version                         | <http://purl.org/dc/terms/hasVersion>                                         |           |             | x        | 0…*         |
-| 5.4.3   | Compatible ontology version                      | <http://www.w3.org/2002/07/owl#backwardCompatibleWith>                        |           |             | x        | 0…*         |
-| 5.4.4   | Incompatible ontology version                    | <http://www.w3.org/2002/07/owl#incompatibleWith>                              |           |             | x        | 0…*         |
-| 5.5     | Social media                                     | <http://xmlns.com/foaf/0.1/holdsAccount>                                      |           |             | x        | 0…*         |
-| 5.6     | KOS type                                         | <http://purl.org/dc/terms/type>                                               |           |             | x        | 0…1         |
-| 5.7     | Example ontology identifier                      | <http://identifiers.org/idot/exampleIdentifier>                                    |           |             | x        | 0…*         |
-| 5.8     | Ontology identifier pattern                      | <http://identifiers.org/idot/identifierPattern>                                    |           |             | x        | 0…1         |
-| 5.9     | Ontology homepage                                | <http://xmlns.com/foaf/0.1/homepage>                                          |           |             | x        | 0…1         |
-| 5.10    | Publisher                                        | <http://purl.org/dc/terms/publisher>                                          |           |             | x        | 0…*         |
-| 5.11    | Ontology comments                                | <http://www.w3.org/2000/01/rdf-schema#comment>                                |           |             | x        | 0…*         |
-| 5.12    | Example ontology class                           | <http://rdfs.org/ns/void#exampleResource>                                     |           |             | x        | 0…*         |
-| 5.13    | Ontology mailing list                            | <http://usefulinc.com/ns/doap#mailing-list>                                   |           |             | x        | 0…1         |
-| 5.14    | Ontology logo/ depiction/ related visualizations | <http://xmlns.com/foaf/0.1/logo>                                              |           |             | x        | 0…*         |
-| 5.15    | Related identifiers                              | <http://purl.org/dc/terms/identifier>                                         |           |             | x        | 0…*         |
-| 5.16    | Development environment                          | <http://purl.org/pav/createdWith>                                             |           |             | x        | 0…*         |
-| 5.17.1  | Aligned resources                                | <https://w3id.org/mod#hasEquivalencesWith>                                    |           |             | x        | 0…*         |
-| 5.17.2  | Alignment files/ mapping files                   | <http://purl.org/dc/terms/references>                                         |           |             | x        | 0…*         |
-| 5.18    | Competency questions                             | <https://w3id.org/mod#competencyQuestion>                                     |           |             | x        | 0…*         |
-| 5.19    | Applied methodology                              | [<http://omv.ontoware.org/2005/05/ontology#<br>usedOntologyEngineeringMethodology>](http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringMethodology) |           |             | x        | 0…*         |
-| 5.20    | Preferred ontology namespace                     | <http://purl.org/vocab/vann/preferredNamespaceUri>                            |           |             | x        | 0…1         |
-| 5.21    | Ontology issue date                              | <http://purl.org/dc/terms/issued>                                             |           |             | x        | 0…1         |
-| 5.22    | Modification date                                | <http://purl.org/dc/terms/modified>                                           |           |             | x        | 0…1         |
-| 5.23    | Textual version information                      | <http://www.w3.org/2002/07/owl#versionInfo>                                   |           |             | x        | 0…1         |
-| 5.24    | Version notes                                    | <http://www.w3.org/ns/adms#versionNotes>                                      |           |             | x        | 0…*         |
+You can discuss this recommendation with us at <>.
 
 <div style="page-break-after: always;"></div>
 
-## 7 Relations to related work
+### 3.4 Tabular overview
+
+|section                                                                                                            |Recommended property                                                            |Mandatory |Recommended  |Optional |Cardinality |
+|-------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|----------|-------------|---------|------------|
+|[3.1.1 Ontology title](#311-ontology-title)                                                                        |<http://purl.org/dc/terms/title>                                              |x         |             |         |1..*        |
+|[3.1.2 Preferred ontology prefix/ acronym](#312-preferred-ontology-prefix-acronym)                                 |<http://purl.org/vocab/vann/preferredNamespacePrefix>                         |x         |             |         |1           |
+|[3.1.3 Ontology license](#313-ontology-license)                                                                    |<http://purl.org/dc/terms/license>                                            |x         |             |         |1           |
+|[3.1.4 Ontology creator(s)](#314-ontology-creators)                                                                |<http://purl.org/dc/terms/creator>                                            |x         |             |         |1..*         |
+|[3.1.5 Ontology version IRI](#315-ontology-version-iri)                                                            |<http://www.w3.org/2002/07/owl#versionIRI>                                    |x         |             |         |1           |
+|[3.1.6 Ontology creation date](#316-ontology-creation-date)                                                        |<http://purl.org/dc/terms/created>                                            |x         |             |         |1           |
+|[3.1.7 Ontology abstract](#317-ontology-abstract)                                                                  |<http://purl.org/dc/terms/abstract>                                           |x         |             |         |1..*         |
+|[3.1.8 Ontology issue tracker](#318-ontology-issue-tracker)                                                        |<http://usefulinc.com/ns/doap#bug-database>                                   |x         |             |         |1           |
+|[3.1.9 Ontology documentation](#319-ontology-documentation)                                                        |<http://www.loc.gov/premis/rdf/v3/documentation>                              |x         |             |         |1           |
+|[3.2.1 Ontology contributor(s)](#321-ontology-contributors)                                                        |<http://purl.org/dc/terms/contributor>                                        |          |x            |         |0..*         |
+|[3.2.2 Ontology Funder](#322-ontology-funder)                                                                      |<https://schema.org/funder>                                                   |          |x            |         |0..*         |
+|[3.2.3 Ontology funding](#323-ontology-funding)                                                                    |<https://schema.org/funding>                                                  |          |x            |         |0..*         |
+|[3.2.4 Ontology audience description](#324-ontology-audience-description)                                          |<http://usefulinc.com/ns/doap#audience>                                       |          |x            |         |0..1       |
+|[3.2.5 Ontology subjects](#325-ontology-subjects)                                                                  |<http://purl.org/dc/terms/subject>                                            |          |x            |         |0..*         |
+|[3.2.6 Ontology annotation languages](#326-ontology-annotation-languages)                                          |<http://purl.org/dc/terms/language>                                           |          |x            |         |0..*         |
+|[3.2.7 Applied logical framework](#327-applied-logical-framework)                                                  |<https://w3id.org/mod#hasFormalityLevel>                                      |          |x            |         |0..1       |
+|[3.2.8 Ontology serialization/ file format](#328-ontology-serialization-file-format)                               |<https://w3id.org/mod#hasSyntax>                                              |          |x            |         |0..1       |
+|[3.2.9 Ontology status](#329-ontology-status)                                                                      |<http://purl.org/ontology/bibo/status>                                        |          |x            |         |0..1       |
+|[3.2.10 Ontology Code Repository](#3210-ontology-code-repository)                                                  |<http://usefulinc.com/ns/doap#repository>                                     |          |x            |         |0..1       |
+|[3.2.11 Ontology distribution/ products](#3211-ontology-distributions-products)                                    |<http://www.w3.org/ns/dcat#distribution>                                      |          |x            |         |0..*         |
+|[3.2.12 Application example](#3212-application-example)                                                            |<http://purl.org/vocab/vann/example>                                          |          |x            |         |0..*         |
+|[3.2.13 Related resources](#3213-related-resources)                                                                |<http://purl.org/dc/terms/references>                                         |          |x            |         |0..*         |
+|[3.2.14 Citation suggestion](#3214-citation-suggestion)                                                            |<http://purl.org/dc/terms/bibliographicCitation>                              |          |x            |         |0..*         |
+|[3.2.15 Ontology sources/ derived from](#3215-ontology-sources-derived-from)                                       |<http://purl.org/pav/derivedFrom>                                             |          |x            |         |0..*         |
+|[3.2.16 Ontology root classes](#3216-ontology-root-classes)                                                        |<http://purl.obolibrary.org/obo/IAO_0000700>                                  |          |x            |         |0..*         |
+|[3.3.1 Ontology deswcription](#331-ontology-description)                                                           |<https://schema.org/description>                                              |          |             |x        |0..*         |
+|[3.3.2 Alternative ontology title](#332-alternative-ontology-title)                                                |<http://purl.org/dc/terms/alternative>                                        |          |             |x        |0..*         |
+|[3.3.3 Alternative ontology/ prefix acronym](#333-alternative-ontology-prefix-acronym)                             |<http://identifiers.org/idot/alternatePrefix>                                 |          |             |x        |0..*         |
+|[3.3.4.1 Prior ontology version](#3341-prior-ontology-version)                                                     |<http://www.w3.org/2002/07/owl#priorVersion>                                  |          |             |x        |0..*         |
+|[3.3.4.2 Related ontology version](#3342-related-ontology-version)                                                 |<http://purl.org/dc/terms/hasVersion>                                         |          |             |x        |0..*         |
+|[3.3.4.3 Compatible ontology version](#3343-compatible-ontology-version)                                           |<http://www.w3.org/2002/07/owl#backwardCompatibleWith>                        |          |             |x        |0..*         |
+|[3.3.4.4 Incompatible ontology version](#3344-incompatible-ontology-version)                                       |<http://www.w3.org/2002/07/owl#incompatibleWith>                              |          |             |x        |0..*         |
+|[3.3.5 Social media](#335-social-media)                                                                            |<http://xmlns.com/foaf/0.1/holdsAccount>                                      |          |             |x        |0..*         |
+|[3.3.6 KOS type](#336-kos-type)                                                                                    |<http://purl.org/dc/terms/type>                                               |          |             |x        |0..1         |
+|[3.3.7 Example ontology identifier](#337-example-ontology-identifier)                                              |<http://identifiers.org/idot/exampleIdentifier>                               |          |             |x        |0..*         |
+|[3.3.8 Ontology identifier pattern](#338-ontology-identifier-pattern)                                              |<http://identifiers.org/idot/identifierPattern>                               |          |             |x        |0..1         |
+|[3.3.9 Ontology homepage](#339-ontology-homepage)                                                                  |<http://xmlns.com/foaf/0.1/homepage>                                          |          |             |x        |0..1         |
+|[3.3.10 Ontology publisher](#3310-ontology-publisher)                                                              |<http://purl.org/dc/terms/publisher>                                          |          |             |x        |0..*         |
+|[3.3.11 Ontology comments](#3311-ontology-comments)                                                                |<http://www.w3.org/2000/01/rdf-schema#comment>                                |          |             |x        |0..*         |
+|[3.3.12 Example ontology class](#3312-example-ontology-class)                                                      |<http://rdfs.org/ns/void#exampleResource>                                     |          |             |x        |0..*         |
+|[3.3.13 Ontology Mailing List](#3313-ontology-mailing-list)                                                        |<http://usefulinc.com/ns/doap#mailing-list>                                   |          |             |x        |0..1         |
+|[3.3.14 Ontology logo/ depiction/ related visualizations](#3314-ontology-logo-depiction-related-visualizations)    |<http://xmlns.com/foaf/0.1/logo>                                              |          |             |x        |0..*         |
+|[3.3.15 Alternaitve identifiers of the ontology](#3315-alternative-identifiers-of-the-ontology)                    |<http://purl.org/dc/terms/identifier>                                         |          |             |x        |0..*         |
+|[3.3.16 Development environment](#3316-development-environment)                                                    |<http://purl.org/pav/createdWith>                                             |          |             |x        |0..*         |
+|[3.3.17.1 Aligned resources](#33171-aligned-resources)                                                             |<https://w3id.org/mod#hasEquivalencesWith>                                    |          |             |x        |0..*         |
+|[3.3.17.2 Alignment files/ mapping files](#33172-alignment-files-mapping-files)                                    |<http://purl.org/dc/terms/references>                                         |          |             |x        |0..*         |
+|[3.3.18 Competency questions](#3318-competency-questions)                                                          |<https://w3id.org/mod#competencyQuestion>                                     |          |             |x        |0..*         |
+|[3.3.19 Applied methodology](#3319-applied-methodology)                                                            |[<http://omv.ontoware.org/2005/05/ontology#<br>usedOntologyEngineeringMethodology>](http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringMethodology) |          |            |x        |0..*         |
+|[3.3.20 Preferred ontology namespace](#3320-preferred-ontology-namespace)                                          |<http://purl.org/vocab/vann/preferredNamespaceUri>                            |          |             |x        |0..1         |
+|[3.3.21 Ontology issue date](#3321-ontology-issue-date)                                                            |<http://purl.org/dc/terms/issued>                                             |          |             |x        |0..1         |
+|[3.3.22 Modification date](#3322-modification-date)                                                                |<http://purl.org/dc/terms/modified>                                           |          |             |x        |0..1         |
+|[3.3.23 Textual version information](#3323-textual-version-information)                                            |<http://www.w3.org/2002/07/owl#versionInfo>                                   |          |             |x        |0..1         |
+|[3.3.24 Textual version information](#3324-version-notes)                                                          |<http://www.w3.org/ns/adms#versionNotes>                                      |          |             |x        |0..*         |
+
+<div style="page-break-after: always;"></div>
+
+### 3.5 Relations to related work
 
 The following table shows the relation of the recommendations in this guide to related works. If these works recommend the same metadatum for an ontology, the corresponding cell will be marked as *true*, if the metadatum could not be identified in the source, the corresponding cell will be marked as *false*.
 
-| section | metadatum                                        | [[13]](#source13) | [[14]](#source14) | [[15]](#source15) | [[16]](#source16) | [[17]](#source17) | [[18]](#source18) | [[19]](#source19) | [[20]](#source20) | [[21]](#source21) | [[22]](#source22) | [[23]](#source23) |
-|---------|--------------------------------------------------|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|-------------------|
-| 3.1     | Title                                            | true              | true              | true              | true              | true              | true              | true              | false             | false             | true              | true              |
-| 3.2     | Preferred ontology prefix/ acronym               | true              | true              | true              | false             | true              | true              | true              | false             | false             | true              | false             |
-| 3.3     | License                                          | true              | true              | true              | true              | true              | true              | true              | true              | true              | true              | true              |
-| 3.4     | Creator                                          | true              | true              | true              | true              | true              | true              | true              | true              | true              | false             | true              |
-| 3.5     | Version IRI                                      | false             | false             | false             | false             | true              | true              | true              | true              | true              | false             | true              |
-| 3.6     | Creation date                                    | true              | true              | false             | false             | true              | true              | true              | true              | true              | false             | true              |
-| 3.7     | Abstract                                         | false             | true              | false             | true              | true              | true              | true              | false             | false             | true              | true              |
-| 3.8     | Issue tracker                                    | true              | true              | false             | true              | false             | false             | true              | false             | false             | false             | true              |
-| 3.9     | Documentation                                    | false             | false             | false             | false             | false             | false             | false             | false             | true              | false             | false             |
-| 4.1     | Contributor(s)                                   | false             | true              | true              | true              | true              | true              | true              | true              | false             | false             | true              |
-| 4.2     | Funder                                           | true              | true              | false             | false             | true              | false             | true              | false             | false             | false             | true              |
-| 4.3     | Funding (grant)                                  | false             | false             | false             | false             | true              | false             | false             | false             | false             | false             | true              |
-| 4.4     | Audience description                             | true              | true              | false             | true              | false             | false             | true              | false             | false             | false             | true              |
-| 4.5     | Subject(s)                                       | true              | true              | false             | true              | false             | false             | true              | false             | true              | true              | true              |
-| 4.6     | Annotation language(s)                           | true              | true              | false             | false             | false             | false             | true              | false             | false             | false             | true              |
-| 4.7     | Applied logical framework                        | false             | true              | false             | true              | false             | false             | true              | false             | false             | false             | false             |
-| 4.8     | Serialization/ file format                       | true              | true              | false             | false             | false             | false             | true              | false             | false             | false             | true              |
-| 4.9     | Status                                           | true              | false             | false             | true              | true              | true              | true              | true              | true              | true              | true              |
-| 4.10    | Code repository                                  | false             | true              | false             | true              | false             | false             | true              | false             | false             | true              | false             |
-| 4.11    | Distributions/ products                          | true              | true              | false             | false             | false             | false             | true              | false             | true              | false             | true              |
-| 4.12    | Application example                              | false             | true              | false             | true              | false             | false             | true              | false             | false             | false             | false             |
-| 4.13    | Related resource(s)                              | true              | true              | false             | false             | true              | true              | true              | false             | true              | true              | true              |
-| 4.14    | Citation suggestion                              | false             | true              | false             | false             | true              | true              | true              | true              | false             | false             | true              |
-| 4.15    | Ontology sources (derived from)                  | true              | true              | false             | true              | true              | true              | true              | true              | true              | false             | true              |
-| 4.16    | Root classes                                     | false             | true              | false             | false             | false             | false             | true              | false             | false             | false             | false             |
-| 5.1     | Description                                      | true              | true              | true              | true              | true              | true              | true              | false             | true              | true              | true              |
-| 5.2     | Alternative ontology title                       | false             | true              | false             | false             | false             | false             | true              | false             | false             | false             | true              |
-| 5.3     | Alternative ontology prefix/ acronym             | true              | true              | false             | false             | false             | false             | false             | false             | false             | true              | false             |
-| 5.4.1   | Prior ontology version                           | false             | true              | false             | false             | true              | true              | true              | true              | true              | false             | false             |
-| 5.4.2   | Related ontology version                         | false             | true              | false             | false             | false             | false             | true              | false             | false             | false             | false             |
-| 5.4.3   | Compatible ontology version                      | false             | false             | false             | false             | true              | true              | true              | true              | false             | false             | false             |
-| 5.4.4   | Incompatible ontology version                    | false             | false             | false             | false             | true              | true              | true              | true              | false             | false             | false             |
-| 5.5     | Social media                                     | true              | false             | false             | false             | false             | false             | false             | false             | false             | true              | false             |
-| 5.6     | KOS type                                         | false             | false             | false             | false             | false             | false             | false             | false             | false             | false             | true              |
-| 5.7     | Example ontology identifier                      | true              | true              | false             | false             | false             | false             | true              | false             | false             | true              | false             |
-| 5.8     | Ontology identifier pattern                      | true              | true              | false             | true              | false             | false             | true              | false             | false             | true              | false             |
-| 5.9     | Ontology homepage                                | true              | true              | false             | false             | false             | false             | true              | false             | false             | true              | false             |
-| 5.10    | Publisher                                        | true              | true              | true              | false             | true              | true              | true              | false             | false             | false             | true              |
-| 5.11    | Ontology comments                                | true              | true              | true              | false             | false             | false             | true              | false             | false             | true              | false             |
-| 5.12    | Example ontology class                           | true              | true              | false             | false             | true              | false             | true              | false             | false             | false             | true              |
-| 5.13    | Ontology mailing list                            | true              | true              | false             | true              | false             | false             | true              | false             | false             | false             | false             |
-| 5.14    | Ontology logo/ depiction/ related visualizations | true              | true              | false             | true              | true              | true              | true              | false             | false             | true              | false             |
-| 5.15    | Related identifiers                              | true              | true              | false             | false             | true              | true              | true              | false             | false             | true              | true              |
-| 5.16    | Development environment                          | true              | true              | false             | true              | false             | true              | true              | false             | false             | false             | false             |
-| 5.17.1  | Aligned resources                                | false             | true              | false             | false             | false             | false             | true              | false             | true              | false             | false             |
-| 5.17.2  | Alignment files/ mapping files                   | false             | false             | false             | false             | false             | false             | false             | false             | true              | false             | false             |
-| 5.18    | Competency questions                             | false             | true              | false             | true              | false             | false             | true              | false             | false             | false             | false             |
-| 5.19    | Applied methodology                              | true              | true              | false             | true              | false             | false             | true              | false             | false             | false             | false             |
-| 5.20    | Preferred ontology namespace                     | true              | true              | true              | false             | true              | true              | true              | false             | false             | false             | true              |
-| 5.21    | Ontology issue date                              | false             | true              | true              | false             | true              | true              | false             | false             | false             | false             | false             |
-| 5.22    | Modification date                                | false             | true              | true              | false             | true              | true              | true              | true              | false             | false             | true              |
-| 5.23    | Textual version information                      | false             | true              | true              | false             | true              | true              | true              | true              | false             | true              | true              |
-| 5.24    | Version notes                                    | false             | true              | true              | false             | false             | true              | false             | true              | false             | false             | false             |
+|section                                                                                                            |[[13]](#source13) |[[14]](#source14) |[[15]](#source15) |[[16]](#source16) |[[17]](#source17) |[[18]](#source18) |[[19]](#source19) |[[20]](#source20) |[[21]](#source21) |[[22]](#source22) |[[23]](#source23) |
+|-------------------------------------------------------------------------------------------------------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
+|[3.1.1 Ontology title](#311-ontology-title)                                                                        |true              |true              |true              |true              |true              |true              |true              |false             |false             |true              |true              |
+|[3.1.2 Preferred ontology prefix/ acronym](#312-preferred-ontology-prefix-acronym)                                 |true              |true              |true              |false             |true              |true              |true              |false             |false             |true              |false             |
+|[3.1.3 Ontology license](#313-ontology-license)                                                                    |true              |true              |true              |true              |true              |true              |true              |true              |true              |true              |true              |
+|[3.1.4 Ontology creator(s)](#314-ontology-creators)                                                                |true              |true              |true              |true              |true              |true              |true              |true              |true              |false             |true              |
+|[3.1.5 Ontology version IRI](#315-ontology-version-iri)                                                            |false             |false             |false             |false             |true              |true              |true              |true              |true              |false             |true              |
+|[3.1.6 Ontology creation date](#316-ontology-creation-date)                                                        |true              |true              |false             |false             |true              |true              |true              |true              |true              |false             |true              |
+|[3.1.7 Ontology abstract](#317-ontology-abstract)                                                                  |false             |true              |false             |true              |true              |true              |true              |false             |false             |true              |true              |
+|[3.1.8 Ontology issue tracker](#318-ontology-issue-tracker)                                                        |true              |true              |false             |true              |false             |false             |true              |false             |false             |false             |true              |
+|[3.1.9 Ontology documentation](#319-ontology-documentation)                                                        |false             |false             |false             |false             |false             |false             |false             |false             |true              |false             |false             |
+|[3.2.1 Ontology contributor(s)](#321-ontology-contributors)                                                        |false             |true              |true              |true              |true              |true              |true              |true              |false             |false             |true              |
+|[3.2.2 Ontology Funder](#322-ontology-funder)                                                                      |true              |true              |false             |false             |true              |false             |true              |false             |false             |false             |true              |
+|[3.2.3 Ontology funding](#323-ontology-funding)                                                                    |false             |false             |false             |false             |true              |false             |false             |false             |false             |false             |true              |
+|[3.2.4 Ontology audience description](#324-ontology-audience-description)                                          |true              |true              |false             |true              |false             |false             |true              |false             |false             |false             |true              |
+|[3.2.5 Ontology subjects](#325-ontology-subjects)                                                                  |true              |true              |false             |true              |false             |false             |true              |false             |true              |true              |true              |
+|[3.2.6 Ontology annotation languages](#326-ontology-annotation-languages)                                          |true              |true              |false             |false             |false             |false             |true              |false             |false             |false             |true              |
+|[3.2.7 Applied logical framework](#327-applied-logical-framework)                                                  |false             |true              |false             |true              |false             |false             |true              |false             |false             |false             |false             |
+|[3.2.8 Ontology serialization/ file format](#328-ontology-serialization-file-format)                               |true              |true              |false             |false             |false             |false             |true              |false             |false             |false             |true              |
+|[3.2.9 Ontology status](#329-ontology-status)                                                                      |true              |false             |false             |true              |true              |true              |true              |true              |true              |true              |true              |
+|[3.2.10 Ontology Code Repository](#3210-ontology-code-repository)                                                  |false             |true              |false             |true              |false             |false             |true              |false             |false             |true              |false             |
+|[3.2.11 Ontology distribution/ products](#3211-ontology-distributions-products)                                    |true              |true              |false             |false             |false             |false             |true              |false             |true              |false             |true              |
+|[3.2.12 Application example](#3212-application-example)                                                            |false             |true              |false             |true              |false             |false             |true              |false             |false             |false             |false             |
+|[3.2.13 Related resources](#3213-related-resources)                                                                |true              |true              |false             |false             |true              |true              |true              |false             |true              |true              |true              |
+|[3.2.14 Citation suggestion](#3214-citation-suggestion)                                                            |false             |true              |false             |false             |true              |true              |true              |true              |false             |false             |true              |
+|[3.2.15 Ontology sources/ derived from](#3215-ontology-sources-derived-from)                                       |true              |true              |false             |true              |true              |true              |true              |true              |true              |false             |true              |
+|[3.2.16 Ontology root classes](#3216-ontology-root-classes)                                                        |false             |true              |false             |false             |false             |false             |true              |false             |false             |false             |false             |
+|[3.3.1 Ontology deswcription](#331-ontology-description)                                                           |true              |true              |true              |true              |true              |true              |true              |false             |true              |true              |true              |
+|[3.3.2 Alternative ontology title](#332-alternative-ontology-title)                                                |false             |true              |false             |false             |false             |false             |true              |false             |false             |false             |true              |
+|[3.3.3 Alternative ontology/ prefix acronym](#333-alternative-ontology-prefix-acronym)                             |true              |true              |false             |false             |false             |false             |false             |false             |false             |true              |false             |
+|[3.3.4.1 Prior ontology version](#3341-prior-ontology-version)                                                     |false             |true              |false             |false             |true              |true              |true              |true              |true              |false             |false             |
+|[3.3.4.2 Related ontology version](#3342-related-ontology-version)                                                 |false             |true              |false             |false             |false             |false             |true              |false             |false             |false             |false             |
+|[3.3.4.3 Compatible ontology version](#3343-compatible-ontology-version)                                           |false             |false             |false             |false             |true              |true              |true              |true              |false             |false             |false             |
+|[3.3.4.4 Incompatible ontology version](#3344-incompatible-ontology-version)                                       |false             |false             |false             |false             |true              |true              |true              |true              |false             |false             |false             |
+|[3.3.5 Social media](#335-social-media)                                                                            |true              |false             |false             |false             |false             |false             |false             |false             |false             |true              |false             |
+|[3.3.6 KOS type](#336-kos-type)                                                                                    |false             |false             |false             |false             |false             |false             |false             |false             |false             |false             |true              |
+|[3.3.7 Example ontology identifier](#337-example-ontology-identifier)                                              |true              |true              |false             |false             |false             |false             |true              |false             |false             |true              |false             |
+|[3.3.8 Ontology identifier pattern](#338-ontology-identifier-pattern)                                              |true              |true              |false             |true              |false             |false             |true              |false             |false             |true              |false             |
+|[3.3.9 Ontology homepage](#339-ontology-homepage)                                                                  |true              |true              |false             |false             |false             |false             |true              |false             |false             |true              |false             |
+|[3.3.10 Ontology publisher](#3310-ontology-publisher)                                                              |true              |true              |true              |false             |true              |true              |true              |false             |false             |false             |true              |
+|[3.3.11 Ontology comments](#3311-ontology-comments)                                                                |true              |true              |true              |false             |false             |false             |true              |false             |false             |true              |false             |
+|[3.3.12 Example ontology class](#3312-example-ontology-class)                                                      |true              |true              |false             |false             |true              |false             |true              |false             |false             |false             |true              |
+|[3.3.13 Ontology Mailing List](#3313-ontology-mailing-list)                                                        |true              |true              |false             |true              |false             |false             |true              |false             |false             |false             |false             |
+|[3.3.14 Ontology logo/ depiction/ related visualizations](#3314-ontology-logo-depiction-related-visualizations)    |true              |true              |false             |true              |true              |true              |true              |false             |false             |true              |false             |
+|[3.3.15 Alternaitve identifiers of the ontology](#3315-alternative-identifiers-of-the-ontology)                    |true              |true              |false             |false             |true              |true              |true              |false             |false             |true              |true              |
+|[3.3.16 Development environment](#3316-development-environment)                                                    |true              |true              |false             |true              |false             |true              |true              |false             |false             |false             |false             |
+|[3.3.17.1 Aligned resources](#33171-aligned-resources)                                                             |false             |true              |false             |false             |false             |false             |true              |false             |true              |false             |false             |
+|[3.3.17.2 Alignment files/ mapping files](#33172-alignment-files-mapping-files)                                    |false             |false             |false             |false             |false             |false             |false             |false             |true              |false             |false             |
+|[3.3.18 Competency questions](#3318-competency-questions)                                                          |false             |true              |false             |true              |false             |false             |true              |false             |false             |false             |false             |
+|[3.3.19 Applied methodology](#3319-applied-methodology)                                                            |true              |true              |false             |true              |false             |false             |true              |false             |false             |false             |false             |
+|[3.3.20 Preferred ontology namespace](#3320-preferred-ontology-namespace)                                          |true              |true              |true              |false             |true              |true              |true              |false             |false             |false             |true              |
+|[3.3.21 Ontology issue date](#3321-ontology-issue-date)                                                            |false             |true              |true              |false             |true              |true              |false             |false             |false             |false             |false             |
+|[3.3.22 Modification date](#3322-modification-date)                                                                |false             |true              |true              |false             |true              |true              |true              |true              |false             |false             |true              |
+|[3.3.23 Textual version information](#3323-textual-version-information)                                            |false             |true              |true              |false             |true              |true              |true              |true              |false             |true              |true              |
+|[3.3.24 Textual version information](#3324-version-notes)                                                          |false             |true              |true              |false             |false             |true              |false             |true              |false             |false             |false             |
 
-## 8 Sources
+## 4 Term-level Metadata
+
+Not only the ontology itself should have rich metadata:
+In order to better understand the scope and purpose of an ontology term, it should be annotated as well.
+This, in turn, helps to assess whether the element is fit for re-use in a different context.
+<!-- should we refer to owl: ? -->
+With *term* we refer to classes, properties and individuals.
+A term's annotations could include all information that tells the ontology audience what the term is about or how it may be used.
+In the following sections we discuss some annotations we deem mandatory, some that we would recommend and a limited number of optional ones.
+
+### 4.1 Mandatory metadata
+
+#### 4.1.1 (Preferred) label
+
+<!-- (DISCUSSION NEEDED) -->
+<!-- especially about cardinality. suggestion: if one language is used: max 1 rdfs:label, if multiple languages shall be used: use skos:prefLabel instead to provide max 1 label for each language; since some fair checkers require rdfs:label provide max 1 rdfs:label in any language - the preferred language of choice, if need be English-->
+
+Each ontoloy entity should have a label in at least one natural language.
+A label can be either a single word, compound or other kinds of multi-word expressions.
+The de facto *lingua franca* in ontology development is English but there are also multi-lingual ontologies.
+Regardless of how many languages an ontolgy supports, the labels should always be explicitly language-tagged - even if the ontology only provides data in only one language!
+The label should be the preferred label of an entity.
+<!-- check with labeling conventions in OBO https://obofoundry.org/principles/fp-012-naming-conventions.html -->
+There should only be one preferred label per entity and language.
+
+Recommended property: <http://www.w3.org/2000/01/rdf-schema#label>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+    rdfs:label "smart grid"@en .
+```
+
+Alternative properties:
+
+* <http://www.w3.org/2004/02/skos/core#prefLabel>
+* <http://purl.org/dc/terms/title>
+* <http://purl.org/dc/elements/1.1/title>
+* <http://schema.org/name>
+* <https://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading>
+* <https://physh.org/rdf/2018/01/01/core#prefLabel>
+
+SHACL validation rules:
+
+* `sh:minCount 1`
+* `sh:datatype rdf:langString`
+* `sh:uniqueLang true`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.1.2 Definition
+
+<!-- todo see also: https://obofoundry.org/principles/fp-006-textual-definitions.html -->
+
+Each ontology term should have a short description defining it.
+A typical definition usually consists of two parts:
+a reference to a super-ordinate term and a statement naming its defining characteristics.
+The characteristics usually serve to distinguish the term from related terms.
+The definiton should explicitly be language-tagged even if the ontology only serves data in one language!
+There may only be one definition per term and language.
+
+Recommended property: <http://www.w3.org/2004/02/skos/core#definition>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+    skos:definiton "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en .
+```
+
+Alternative properties:
+
+* <http://purl.obolibrary.org/obo/IAO_0000115>
+* <http://purl.org/dc/terms/description>
+* <https://d-nb.info/standards/elementset/gnd#definition>
+* <http://www.w3.org/ns/prov#definition>
+* <http://purl.org/dc/elements/1.1/description>
+* <http://www.geneontology.org/formats/oboInOwl#hasDefinition>
+* <http://emmo.info/emmo#EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84>
+
+Unaccepted properties:
+
+* <http://www.w3.org/2000/01/rdf-schema#comment>
+
+SHACL validation rules:
+
+* `sh:minCount 1`
+* `sh:datatype rdf:langString`
+* `sh:uniqueLang true`
+
+<!-- add recommendation to combine this with [definition source (IAO:0000119)](http://purl.obolibrary.org/obo/IAO_0000119) -->
+
+You can discuss this recommendation with us at <>.
+
+#### 4.1.3 Term deprecation/ obsoletion
+
+<!-- (DISCUSSION NEEDED) -->
+<!-- todo see also https://obofoundry.org/principles/fp-019-term-stability.html -->
+<!-- todo see also https://obofoundry.org/principles/fp-013-notification.html -->
+
+Terms that shall no longer be used, must be marked with respective deprecation information.
+The deprecation annotations are only considered mandatory if the term is deprecated.
+The following sections describe which elements are needed in order to deprecate a term.
+<!-- SA: do we recommend to move deprecated entities to deprecated class or property? should subentity-relations be removed or kept (either as is, or as a comment?) -->
+
+##### 4.1.3.1 Deprecation marker
+
+The deprecation marker is a boolean value intended to indicate the fact that a term is deprecated and should not be used any longer.
+
+Recommended property: <http://www.w3.org/2002/07/owl#deprecated>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+    owl:deprecated true .
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+* `sh:datatype xsd:boolean`
+
+You can discuss this recommendation with us at <>.
+
+##### 4.1.3.2 Obsoletion reason
+
+<!-- (DISCUSSION NEEDED) -->
+
+<!-- should we recommend [IAO:0000231](http://purl.obolibrary.org/obo/IAO_0000231)? by definition, it wants instances of http://purl.obolibrary.org/obo/IAO_0000225 - is it open for free text? -->
+For users of the ontology it may be helpful to understand why a term has been deprecated.
+The reason should be explained with a few words.
+The IAO property we recommend to use for this cause expects items from a controlled list, i.e. instances of the class [*obsolescence reason specification* (IAO:0000225)](http://purl.obolibrary.org/obo/IAO_0000225).
+If any of these suit your ontology, we recommend to use these items.
+However, we would also like to leave the possibility open to provide some free text explaining the reason for obsoleting a term.
+
+Recommended property: [has obsolescence reason (IAO:0000231)](http://purl.obolibrary.org/obo/IAO_0000231)
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+    obo:IAO_0000231 <http://purl.obolibrary.org/obo/IAO_0000103>.
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+<!-- what should we recommend? I'd suggest combine both - or use different property for free text... e.g. combine obsoletion reason with http://purl.obolibrary.org/obo/IAO_0000116 -->
+* `sh:xone ( [sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI ;])`
+* `sh:in ( <http://purl.obolibrary.org/obo/IAO_0000103> <http://purl.obolibrary.org/obo/IAO_0000226> <http://purl.obolibrary.org/obo/IAO_0000228> <http://purl.obolibrary.org/obo/IAO_0000229> <http://purl.obolibrary.org/obo/IAO_0000227> <http://purl.obolibrary.org/obo/OMO_0001000>)`
+
+You can discuss this recommendation with us at <>.
+
+##### 4.1.3.3 Term replacement
+
+In some cases there may be a replacement term that can be used instead of an obsoleted term.
+The deprecated term should point to this replacement.
+
+Recommended property: [term replaced by (IAO:0100001)](http://purl.obolibrary.org/obo/IAO_0100001)
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+    obo:IAO_0100001 <https://www.purl.org/SomeOtherOntologyClass>.
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+* `sh:nodeKind sh:IRI`
+
+You can discuss this recommendation with us at <>.
+
+### 4.2 Recommended metadata
+
+#### 4.2.1 Synonyms/ alternative labels
+
+An ontology term may have more than just one label which it can be referred by.
+Since synonyms are an obstacle not only to understanding but also to the search for information, an ontology is a good place to collect frequent synonyms of a term.
+These can be leveraged in search applications over text in order to intercept with linguistic variation that is inevitable when different communicators interact.
+We recommend to list only very close synonyms with the properties suggested here.
+Short forms, acronyms, near synonyms, related synonyms, broad synonyms, narrow synonyms etc. should be provided using a dedicated property.
+
+Recommended property: <http://www.w3.org/2004/02/skos/core#altLabel>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+    skos:altLabel "intelligent grid"@en .
+```
+
+Alternative properties:
+
+<!-- see also: https://git.tib.eu/terminology/terminology-system-config/-/blob/master/docs/ontology_metadata_overview.md?ref_type=heads#synonym_property -->
+* <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym>
+* <http://purl.obolibrary.org/obo/IAO_0000118>
+<!-- * <http://purl.org/ppeo/PPEO.owl#hasExactSynonym> -->
+<!-- does not resolve! -->
+<!-- * <http://purl.bioontology.org/ontology/npo#FULL_SYN>  -->
+<!-- unparsable -->
+<!-- * <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> -->
+<!-- 404 -->
+<!-- * <https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym> -->
+<!-- * <http://www.ontology-of-units-of-measure.org/resource/om-2/alternativeLabel> -->
+<!-- * <> -->
+<!-- * <> -->
+<!-- * <> -->
+<!-- * <> -->
+
+SHACL validation rules:
+
+* `sh:datatype rdf:langString`
+
+You can discuss this recommendation with us at <>.
+
+### 4.3 Optional metadata
+
+#### 4.3.1 Term editor
+
+When an ontology is collaboratively edited, it may help to note down the editor(s) of a term.
+Questions about the term may be directed forwarded to them.
+It is also useful to credit the contributors of ontology development.
+We recommend to provide the contributors via their [ORCIDs](https://orcid.org/).
+
+Recommended property: <http://purl.org/dc/terms/contributor>
+<!-- dcterms/e:contributor -->
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+  dcterms:contributor <https://orcid.org/0000-0002-1584-4316> .
+```
+
+Alternative properties:
+
+* <http://purl.org/dc/elements/1.1/contributor>
+* <https://schema.org/contributor>
+
+SHACL validation rules:
+
+* `sh:nodeKind sh:IRI`
+
+You can discuss this recommendation with us at <https://github.com/TIBHannover/terminology-metadata/issues/1>.
+
+#### 4.3.2 Date modified
+
+A useful information for editors and users of a term is also when the term was last modified.
+This may be informative for editorial processes and update cycles but also to assess whether a term is still up to date.
+
+Recommended property: <http://purl.org/dc/terms/modified>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+  dcterms:modified "2025-04-15T10:13:00"^^xsd:dateTime .
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+* `sh:xone ([sh:datatype xsd:date;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:dateTimeStamp;])`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.3.3 Editor note
+
+<!-- (DISCUSSION NEEDED) -->
+
+For the editing process, it may be helpful to add notes about the current editorial status of a term or tasks that still need to be performed.
+The editorial comment should be tagged for a language.
+There may be several editorial comments for a term.
+They do not necessarily need to be published with the ontology, but could be managed as an owl:import.
+We recommend to maintain them, so that editorial decisions reamin accessible and traceable.
+The editorial notes could also carry a date and the editor name.
+
+Recommended property: [editor note (IAO:0000116)](http://purl.obolibrary.org/obo/IAO_0000116)
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+  obo:IAO_0000116 "[2024-04-14][SA] The class should be deprecated."@en .
+```
+
+Alternative properties:
+
+* <http://www.w3.org/2004/02/skos/core#editorialNote>
+
+SHACL validation rules:
+
+* `sh:datatype rdf:langString`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.3.4 Example of usage
+
+In order to better understand how a term can be applied, an example of usage can be helpful.
+This can for example be provided in the form of a phrase describing how a term should be used, by an example instance or sub-entity of a term or by some example code.
+
+Recommended property: [example of usage (IAO:0000112)](http://purl.obolibrary.org/obo/IAO_0000112)
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+  obo:IAO_0000112 ""@en .
+```
+
+Alternative properties:
+
+* <http://www.w3.org/2004/02/skos/core#example>
+* <http://purl.org/vocab/vann/example>
+
+SHACL validation rules:
+
+* `sh:xone ([sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI])`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.3.5 Defined by
+
+In some contexts it may be relevant to provide the original source of a term, e.g. if it is re-used in an ontology.
+In this case, the IRI of the original ontology should be provided.
+For maximum traceability, we recommend to not only use the ontology IRI to the latest version of an ontology, but a version IRI.
+This allows to understand which version of a term has been used.
+
+Recommended property: <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+  rdfs:isDefinedBy <https://www.purl.org/SomeOntology> .
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+* `sh:nodeKind sh:IRI`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.3.6 Issue link
+
+Sometimes it makes sense to add the link to an issue to the annotations of a term.
+Especially if there is no consent about the term, the discussion may involve more viewpoints than a single editorial note is capable to encompass.
+
+Recommended property: [term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)](http://purl.obolibrary.org/obo/IAO_0000233)
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+obo:IAO_0000233 <https://github.com/SomeOrganisation/SomeOntology/issues#12>
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+* `sh:nodeKind sh:IRI`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.3.7 Comments
+
+If there is anything else to say about a term, this may fit into a general purpose comment.
+
+Recommended property: <http://www.w3.org/2000/01/rdf-schema#comment>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+  rdfs:comment "Do not forget to colour some easter eggs! <https://www.publicdomainpictures.net/pictures/160000/velka/oeufs-de-paques-1457782172BLx.jpg>"@en.
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+* `sh:datatype rdf:langString`
+
+You can discuss this recommendation with us at <>.
+
+### 4.4 Tabular overview - recommendations
+
+|section                                                                                            |Recommended property                                                                                           |Mandatory          |Recommended    |Optional   |Cardinality                    |
+|---------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------|---------------|-----------|-------------------------------|
+|[Preferred label](#411-preferred-label)                                                            |<http://www.w3.org/2000/01/rdf-schema#label>                                                                   |x                  |               |           |1..* (only one per language)   |
+|[Definition](#412-definition)                                                                      |<http://www.w3.org/2004/02/skos/core#definition>                                                               |x                  |               |           |1..* (only one per language)   |
+|[Deprecation marker](#4131-deprecation-marker)                                                     |<http://www.w3.org/2002/07/owl#deprecated>                                                                     |x (if applicable)  |               |           |0..1                           |
+|[Obsoletion reason](#4132-obsoletion-reason)                                                       |[has obsolescence reason (IAO:0000231)](http://purl.obolibrary.org/obo/IAO_0000231)                            |x (if applicable)  |               |           |0..1                           |
+|[Term replacement](#4133-term-replacement)                                                         |[term replaced by (IAO:0100001)](http://purl.obolibrary.org/obo/IAO_0100001)                                   |x (if applicable)  |               |           |0..*                           |
+|[Synonyms/ alternative labels](#421-synonyms-alternative-labels)                                   |<http://www.w3.org/2004/02/skos/core#altLabel>                                                                 |                   |x              |           |0..*                           |
+|[Term editors](#431-term-editor)                                                                   |<http://purl.org/dc/terms/contributor>                                                                         |                   |               |x          |0..*                           |
+|[Date modified](#432-date-modified)                                                                |<http://purl.org/dc/terms/modified>                                                                            |                   |               |x          |0..1                           |
+|[Editor Note](#433-editor-note)                                                                    |[editor note (IAO:0000116)](http://purl.obolibrary.org/obo/IAO_0000116)                                        |                   |               |x          |0..*                           |
+|[Example of usage](#434-example-of-usage)                                                          |[example of usage (IAO:0000112)](http://purl.obolibrary.org/obo/IAO_0000112)                                   |                   |               |x          |0..*                           |
+|[Defined by](#435-defined-by)                                                                      |<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>                                                             |                   |               |x          |1                              |
+|[Issue link](#436-issue-link)                                                                      |[term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)](http://purl.obolibrary.org/obo/IAO_0000233)   |                   |               |x          |0..*                           |
+|[Comments](#437-comments)                                                                          |<http://www.w3.org/2000/01/rdf-schema#comment>                                                                 |                   |               |x          |0..*                           |
+
+### 4.5 Relations to related work
+
+<!-- todo which related work? -->
+
+* <https://dgarijo.github.io/Widoco/doc/metadataGuide/guide.html>
+* <https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term>
+* <https://obofoundry.org/principles/fp-012-naming-conventions.html>
+* <https://obofoundry.org/principles/fp-019-term-stability.html>
+
+## 5 Sources
 
 1. <a name="source1"></a> GO FAIR (n/a): FAIR Principles. URL: <https://www.go-fair.org/fair-principles/> (last access: 28 April 2023).
 
