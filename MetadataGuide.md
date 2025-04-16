@@ -1814,12 +1814,12 @@ You can discuss this recommendation with us at <>.
 
 <!-- todo see also: https://obofoundry.org/principles/fp-006-textual-definitions.html -->
 
-Each ontology term should have a short description defining it.
+Each ontology term must have a short description defining it.
 A typical definition usually consists of two parts:
 a reference to a super-ordinate term and a statement naming its defining characteristics.
 The characteristics usually serve to distinguish the term from related terms.
 The definiton should explicitly be language-tagged even if the ontology only serves data in one language!
-There may only be one definition per term and language.
+There must only be one definition per term and language.
 
 Recommended property: <http://www.w3.org/2004/02/skos/core#definition>
 
@@ -1943,7 +1943,7 @@ You can discuss this recommendation with us at <>.
 #### 4.2.1 Synonyms/ alternative labels
 
 An ontology term may have more than just one label which it can be referred by.
-Since synonyms are an obstacle not only to understanding but also to the search for information, an ontology is a good place to collect frequent synonyms of a term.
+Since synonyms are an obstacle not only to understanding but also to finding information, an ontology is a good place to collect frequent synonyms of a term.
 These can be leveraged in search applications over text in order to intercept with linguistic variation that is inevitable when different communicators interact.
 We recommend to list only very close synonyms with the properties suggested here.
 Short forms, acronyms, near synonyms, related synonyms, broad synonyms, narrow synonyms etc. should be provided using a dedicated property.
@@ -1983,7 +1983,7 @@ You can discuss this recommendation with us at <>.
 
 ### 4.3 Optional metadata
 
-#### 4.3.1 Term editor
+#### 4.3.1 Term editor/ term contributor(s)
 
 When an ontology is collaboratively edited, it may help to note down the editor(s) of a term.
 Questions about the term may be directed forwarded to them.
