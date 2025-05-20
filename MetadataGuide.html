@@ -477,12 +477,16 @@ code {
 <li><a href="#41-mandatory-metadata">4.1 Mandatory metadata</a>
 <ul>
 <li><a href="#411-preferred-label">Preferred label</a></li>
-<li><a href="#412-definition">Definition</a></li>
-<li><a href="#413-term-deprecation-obsoletion">Term deprecation/ obsoletion</a>
+<li><a href="#412-definition">Definition</a>
 <ul>
-<li><a href="#4131-deprecation-marker">Deprecation marker</a></li>
-<li><a href="#4132-obsoletion-reason">Obsoletion reason</a></li>
-<li><a href="#4133-term-replacement">Term replacement</a></li>
+<li><a href="#4121-definition-source">Definition source</a></li>
+</ul>
+</li>
+<li><a href="#413-term-deprecation-obsoletion-mandatory-only-if-applicable">Term deprecation/ obsoletion</a>
+<ul>
+<li><a href="#4131-deprecation-marker-mandatory-only-if-applicable">Deprecation marker</a></li>
+<li><a href="#4132-obsoletion-reason-mandatory-only-if-applicable">Obsoletion reason</a></li>
+<li><a href="#4133-term-replacement-mandatory-only-if-applicable">Term replacement</a></li>
 </ul>
 </li>
 </ul>
@@ -490,17 +494,17 @@ code {
 <li><a href="#42-recommended-metadata">4.2 Recommended metadata</a>
 <ul>
 <li><a href="#421-synonyms-alternative-labels">Synonyms/ alternative labels</a></li>
+<li><a href="#422-date-modified">Date modified</a></li>
+<li><a href="#423-editor-note">Editor note</a></li>
+<li><a href="#424-term-tracker-item">Term tracker item</a></li>
 </ul>
 </li>
 <li><a href="#43-optional-metadata">4.3 Optional metadata</a>
 <ul>
-<li><a href="#431-term-editor">Term editor</a></li>
-<li><a href="#432-date-modified">Date modified</a></li>
-<li><a href="#433-editor-note">Editor note</a></li>
-<li><a href="#434-example-of-usage">Example of usage</a></li>
-<li><a href="#435-defined-by">Defined by</a></li>
-<li><a href="#436-issue-link">Issue link</a></li>
-<li><a href="#437-comments">Comments</a></li>
+<li><a href="#431-term-editor-term-contributors">Term editor</a></li>
+<li><a href="#432-example-of-usage">Example of usage</a></li>
+<li><a href="#433-defined-by">Defined by</a></li>
+<li><a href="#434-comments">4.3.4 Comments</a></li>
 </ul>
 </li>
 <li><a href="#44-tabular-overview---recommendations">4.4 Tabular overview - recommendations</a></li>
@@ -618,6 +622,10 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <td><a href="http://purl.obolibrary.org/obo/">http://purl.obolibrary.org/obo/</a></td>
 </tr>
 <tr>
+<td>oio</td>
+<td><a href="http://www.geneontology.org/formats/oboInOwl#">http://www.geneontology.org/formats/oboInOwl#</a></td>
+</tr>
+<tr>
 <td>omv</td>
 <td><a href="http://omv.ontoware.org/2005/05/ontology#">http://omv.ontoware.org/2005/05/ontology#</a></td>
 </tr>
@@ -632,6 +640,10 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <tr>
 <td>premis</td>
 <td><a href="http://www.loc.gov/premis/rdf/v3/">http://www.loc.gov/premis/rdf/v3/</a></td>
+</tr>
+<tr>
+<td>prov</td>
+<td><a href="http://www.w3.org/ns/prov#">http://www.w3.org/ns/prov#</a></td>
 </tr>
 <tr>
 <td>rdf</td>
@@ -713,6 +725,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:minCount 1</code></li>
 <li><code>sh:uniqueLang true</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="312-preferred-ontology-prefix-acronym">3.1.2 Preferred ontology prefix/ acronym</h4>
 <p>The ontology must declare its preferred, unique prefix or a short acronym. The prefix/ acronym will be used on TIB Terminology Service's <a href="https://terminology.tib.eu/ts/ontologies" title="TIB Terminology Service - Ontologies list. URL: https://terminology.tib.eu/ts/ontologies. Last accessed: 22 April 2024.">ontology list</a> as a short name for the ontology. It must not contain hyphens or other special characters and should be written in lowercase.</p>
 <p>You can check whether an ontology prefix is already in use on services like <a href="https://prefix.cc" title="Prefix.cc. Namespace Lookup for RDF Developers.URL: https://prefix.cc/. Last accessed: 22 April 2024.">prefix.cc</a> or <a href="https://bioregistry.io/registry/" title="Hoyt, C. T., et al. (2022) The Unifying the identification of biomedical entities with the Bioregistry. Nature Scientific Data, &lt;https://doi.org/10.1038/s41597-022-01807-3&gt;. Last accessed: 22 April 2024.">Bioregistries</a>.</p>
@@ -730,6 +743,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:datatype xsd:string</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="313-ontology-license">3.1.3 Ontology license</h4>
 <p>Ontologies must declare their license, referring to their license document via PID. The license text helps others to evaluate how they may reuse the ontology. Only ontologies with an open license will be published on <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>. Consider, for example, the <a href="https://opendefinition.org/licenses/" title="Open Knowledge (n/a): Open Definition. Defining Open in Open Data, Open Content and Open Knowledge. List of Conformant Licensess. URL: https://opendefinition.org/licenses/. Last accessed: 22 April 2024.">list of licenses</a> that are conformant with the <a href="https://opendefinition.org/od/2.1/en/" title="Open Knowledge (n/a): Open Definition. Defining Open in Open Data, Open Content and Open Knowledge. URL: https://opendefinition.org/od/2.1/en/. Last accessed: 22 April 2024.">Open Definition</a>.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/license">http://purl.org/dc/terms/license</a></p>
@@ -751,6 +765,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:minCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at <a href="https://github.com/TIBHannover/terminology-metadata/issues/11">https://github.com/TIBHannover/terminology-metadata/issues/11</a>.</p>
 <h4 id="314-ontology-creators">3.1.4 Ontology creator(s)</h4>
 <p>The ontology must list its creators, i.e. the people or institutions who were responsible for its development. It is recommended to refer to a creator with a PID (e.g. <a href="https://orcid.org/" title="Open Researcher and Contributor ID (ORCiD) Homepage. URL: https://orcid.org/. Last accessed: 22 April 2024.">ORCiD</a>, <a href="https://www.wikidata.org/wiki/Wikidata:Main_Page" title="Wikidata. URL: https://www.wikidata.org/wiki/Wikidata:Main_Page. Last accessed: 22 April 2024.">Wikidata</a>-ID, or <a href="https://ror.org/" title="Research Organization Registry Homepage. URL: https://ror.org/. Last accessed: 22 April 2024.">ROR</a>-ID). Plain name strings can be provided in addition for readability. If an ontology is developed by a larger group, it is recommended to give the organization or project identifier as the creator and list individual persons as contributors. If no project or organisation PID is available, the respective name (rdf:langString) will also be accepted.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/creator">http://purl.org/dc/terms/creator</a></p>
@@ -779,6 +794,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:minCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="315-ontology-version-iri">3.1.5 Ontology version IRI</h4>
 <p>Since the PURL of an ontology usually only points to the latest version of an ontology, each ontology must state its version IRI. A version IRI is a persistent identifier for a version of an ontology and is used to reliably retrieve this earlier version of the ontology. We recommended to use <a href="https://semver.org/" title="Tom Preston Werner (n/a): Semantic Versioning 2.0.0. URL: https://semver.org/. Last accessed: 22 April 2024.">semantic versioning</a> or OBO style date-based versioning <a href="#source3">[3]</a>.</p>
 <p>Recommended property: <a href="http://www.w3.org/2002/07/owl#versionIRI">http://www.w3.org/2002/07/owl#versionIRI</a></p>
@@ -801,6 +817,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:minCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="316-ontology-creation-date">3.1.6 Ontology creation date</h4>
 <p>The ontology must state the date of its first creation.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/created">http://purl.org/dc/terms/created</a></p>
@@ -820,6 +837,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:minCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="317-ontology-abstract">3.1.7 Ontology abstract</h4>
 <p>The ontology must describe its own contents and scope with a few words or sentences in order to inform human users what the ontology tries to accomplish. The abstract is displayed in the <a href="https://terminology.tib.eu/ts/ontologies" title="TIB Terminology Service - Ontologies list. URL: https://terminology.tib.eu/ts/ontologies. Last accessed: 22 April 2024.">TIB Terminology Service ontology list</a> and on the landing page of each ontology - we therefore recommend to keep it short. You can also provide abstracts in several languages (as an rdf:langString). You may provide only one abstract per language. Each abstract may be up to 500 characters long including spaces. We do not recommend to use markups (html, markdown) in the abstract since these are not supported by <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>. If you want to include a longer text about the ontology, you should include a description <a href="#331-ontology-description">3.3.1 Ontology description</a>. For an extensive discussion about further aspects of the ontology (e.g. ontology creation, ontology use, ontology structure, etc.) we recommend the publication of a detailed documentation (cf. <a href="#319-ontology-documentation">3.1.9 Ontology documentation</a>) or traditional academic article (cf. <a href="#3213-related-resources">3.2.13 Related resources</a>).</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/abstract">http://purl.org/dc/terms/abstract</a></p>
@@ -838,6 +856,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:minCount 1</code></li>
 <li><code>sh:uniqueLang true</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="318-ontology-issue-tracker">3.1.8 Ontology issue tracker</h4>
 <p>The ontology must point to the issue tracker of its own development environment so that others may report bugs or suggestions to the developers. Ideally, the development process of an ontology is open and takes place on platforms like GitLab.com that allow for version management with version control software like git.</p>
 <p>Recommended property: <a href="http://usefulinc.com/ns/doap#bug-database">http://usefulinc.com/ns/doap#bug-database</a></p>
@@ -852,6 +871,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:minCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="319-ontology-documentation">3.1.9 Ontology documentation</h4>
 <p>To familiarize interested others with the concepts and scope of your ontology, some kind of documentation must be provided. This is usually an external online document that should be referenced by the ontology via an IRI or more persistently with a PID. A relatively easy way to do this is to use the tool Widoco <a href="#source4">[4]</a>, <a href="#source5">[5]</a>. It generates the documentation from the ontology and a resulting html-document can be published, for example with <a href="https://docs.gitlab.com/ee/user/project/pages/" title="GitLab Documentation: GitLab Pages. URL: https://docs.gitlab.com/ee/user/project/pages/. Last accessed: 22 April 2024.">GitLab Pages</a>. This auto-generated document can contain customized passages that provide users with a deeper understanding of the ontology. There are, however, other forms of ontology documentations: scientific articles, well-curtated README files in repositories, Wikis etc. Here, we recommend to choose the form which is most easily attainable by your working group or project. Here are some examples for ontology documentation:</p>
 <ul>
@@ -874,6 +894,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:minCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at <a href="https://github.com/TIBHannover/terminology-metadata/issues/13">https://github.com/TIBHannover/terminology-metadata/issues/13</a>.</p>
 <div style="page-break-after: always;"></div>
 <h3 id="32-recommended-metadata">3.2 Recommended Metadata</h3>
 <p>In addition to mandatory metadata, we recommend providing a number of further helpful metadata.</p>
@@ -902,6 +923,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="322-ontology-funder">3.2.2 Ontology funder</h4>
 <p>The development of an ontology may rely on external funding and take place in a third-party funding project. Since funding institutions usually want to be credited, we highly recommend mentioning them in your ontology. The best way to do so is by referring to their <a href="https://ror.org/" title="Research Organization Registry Homepage. URL: https://ror.org/. Last accessed: 22 April 2024.">ROR ID</a>.</p>
 <p>Recommended property: <a href="https://schema.org/funder">https://schema.org/funder</a></p>
@@ -918,6 +940,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="323-ontology-funding">3.2.3 Ontology funding</h4>
 <p>In addition to referencing the funding institution, you may be required to point to the specifc grant that enables the work on the ontology. We recommend to provide this information as an IRI, ideally a PID. We are aware, though, that PIDs for grants are not common, yet.  We therefore also accept this information in the form of acknowledgement statements (rdf:langString) containing the grant number provided by the funding institution.</p>
 <!-- später auf funding IDs eingehen, siehe Wiki: PIDs für Projekte, Grants, Awards (https://wiki.tib.eu/confluence/pages/viewpage.action?pageId=303800663) -->
@@ -935,6 +958,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="324-ontology-audience-description">3.2.4 Ontology audience description</h4>
 <p>Defining the target group of your ontology might be useful information for others when evaluating if and how they could reuse your ontology. You should describe the intended audience of the ontology. The audience description should be a short, language-tagged text.</p>
 <p>Recommended property: <a href="http://usefulinc.com/ns/doap#audience">http://usefulinc.com/ns/doap#audience</a></p>
@@ -953,6 +977,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:datatype rdf:langString</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at <a href="https://github.com/TIBHannover/terminology-metadata/issues/9">https://github.com/TIBHannover/terminology-metadata/issues/9</a>.</p>
 <h4 id="325-ontology-subjects">3.2.5 Ontology subject(s)</h4>
 <p>We recommend tagging the ontology with a subject from a controlled vocabulary to indicate which domain it belongs to or which subject it deals with. This information is helpful for terminology service and ontology registry providers: Subject tags from controlled vocabularies can be mapped to other controlled vocabularies that are the basis of filters and browsing functionalities of such services. Subject tags can help to make your ontology better findable and available for a wider audience.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/subject">http://purl.org/dc/terms/subject</a></p>
@@ -982,6 +1007,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="326-ontology-annotation-languages">3.2.6 Ontology annotation language(s)</h4>
 <p>If your ontology does not only provide formal semantics but also multi-lingual annotations for entities, you should provide information about the ontology annotation languages (e.g. for term labels, term definitions, etc.) in its metadata. At least one language should be provided, since at least one set of annotations is expected in a well-documented ontology. You should only claim that the ontology uses an annotation language, if all ontology elements or an extensive part of the ontology is annotated in that language.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/language">http://purl.org/dc/terms/language</a></p>
@@ -999,6 +1025,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:nodeKind sh:IRI</code></li>
 <li><code>sh:pattern &quot;(^http://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$|^https://id.loc.gov/vocabulary/iso639-2/[a-z]{3}$)&quot;</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="327-applied-logical-framework">3.2.7 Applied logical framework</h4>
 <p>You should state which logical framework the ontology applies. The information can be given as a text, referring to the Semantic Web Standard (e.g. 'OWL 2') and possibly the OWL profile (e.g. 'OWL 2 EL profile').</p>
 <p>Recommended property: <a href="https://w3id.org/mod#hasFormalityLevel">https://w3id.org/mod#hasFormalityLevel</a></p>
@@ -1012,6 +1039,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:datatype rdf:langString</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="328-ontology-serialization-file-format">3.2.8 Ontology serialization/ file format</h4>
 <p>You should state the ontology's serialization/ file format. The value should be provided as an IRI from the Media Types list of the Internet Assigned Number Authority (IANA) <a href="#source6">[6]</a> or from the W3C resource Unique URIs for File Formats <a href="#source7">[7]</a>.</p>
 <p>Recommended property: <a href="https://w3id.org/mod#hasSyntax">https://w3id.org/mod#hasSyntax</a></p>
@@ -1044,6 +1072,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="329-ontology-status">3.2.9 Ontology status</h4>
 <p>You should declare the current maintenance status of the ontology. You could use an English label to do so. We recommend using one of the values suggested by the OBO Foundry <a href="#source8">[8]</a>. Ontologies are prone to link rot and sometimes left abandoned. If you cannot keep up the work on an ontology, this needs to be documented: Is your ontology retired? Is it still a draft? Or is it maintained by an active community?</p>
 <p>Recommended property: <a href="http://purl.org/ontology/bibo/status">http://purl.org/ontology/bibo/status</a></p>
@@ -1062,6 +1091,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:datatype rdf:langString</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3210-ontology-code-repository">3.2.10 Ontology code repository</h4>
 <p>A code repository (e.g. on <a href="http://GitLab.com" title="GitLab.com. Last accessed: 22 April 2024.">GitLab.com</a> or <a href="http://GitHub.com" title="GitHub.com. Last accessed: 22 April 2024.">GitHub.com</a>) should be the development environment of your ontology. It should contain the source code of your ontology but may also be used to host your documentation, your issue tracker and may contain related resources like different distributions of your ontology, versions of your ontology, application examples, competency questions, discussions and decisions - in short: the entire history of your ontology should be located in a code repository.</p>
 <p>Recommended property: <a href="http://usefulinc.com/ns/doap#repository">http://usefulinc.com/ns/doap#repository</a></p>
@@ -1075,6 +1105,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3211-ontology-distributions-products">3.2.11 Ontology distributions/ products</h4>
 <p>There are different serializations available for ontologies but not all are parsable by any system: For example an ontology tool may be well prepared for rdf/xml but not so much for json-ld. It may help users of your ontology, if you provided IRIs to available alternative serializations or distributions of your ontology.</p>
 <p>Recommended property: <a href="http://www.w3.org/ns/dcat#distribution">http://www.w3.org/ns/dcat#distribution</a></p>
@@ -1094,6 +1125,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3212-application-example">3.2.12 Application example</h4>
 <p>How to use an ontology is often helpfully demonstrated by application examples and visualizations that give a glimpse about how the ontology can be used to structure actual data. If you have such application examples, these might be better found, if you link to them from the ontology. These application examples could be part of the ontology documentation, formal serializations applying the ontology or even technical applications that make use of the ontology.</p>
 <p>Recommended property: <a href="http://purl.org/vocab/vann/example">http://purl.org/vocab/vann/example</a></p>
@@ -1106,6 +1138,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3213-related-resources">3.2.13 Related resource(s)</h4>
 <p>Resources related to the ontology could be publications discussing the ontology, applications of the ontology or mapping files (see also section <a href="#3317-alignments-mappings">3.3.17 Alignments/ mappings</a>). If any such resources exist, you should mention them in the ontology. You may also point to other related resources, for example resources that are cited or were otherwise used to inform the ontology. We recommend using a permanent identifier, such as a DOI, of the referenced resource.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/references">http://purl.org/dc/terms/references</a></p>
@@ -1121,6 +1154,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3214-citation-suggestion">3.2.14 Citation suggestion</h4>
 <p>You could give information on how you would like others to cite your ontologies. You may even provide structured metadata ready for import into citation management tools like Bibtex etc. Currently, there is no citation standard considering the citation of ontologies. We therefore recommend to provide at least the creators, the year of publication, the ontology title and to give the versionIRI as the access URL. In addition, you could also provide references to citable publications (cf. section <a href="#3213-related-resources">3.2.13 Related resources</a>).</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/bibliographicCitation">http://purl.org/dc/terms/bibliographicCitation</a></p>
@@ -1134,6 +1168,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </div></code></pre>
 <p>Alternative properties: n/a</p>
 <p>SHACL validation rules: n/a</p>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3215-ontology-sources-derived-from">3.2.15 Ontology sources (derived from)</h4>
 <p>You should specify whether and from which other ontologies your ontology has been derived. The reference should be made by an owl:versionIRI of the ontology from which the current ontology has been derived.</p>
 <p>Recommended property: <a href="http://purl.org/pav/derivedFrom">http://purl.org/pav/derivedFrom</a></p>
@@ -1150,6 +1185,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3216-ontology-root-classes">3.2.16 Ontology root classes</h4>
 <p>You should explicitly declare the ontology's preferred root classes. Display tools like the <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a> and other OLS-based services <a href="#source9">[9]</a>, <a href="#source10">[10]</a> can pick specific, user-defined classes for rendering the ontology class hierarchy. This is especially helpful, when an ontology imports a lot of classes from other ontologies. The respective classes need to be provided via their identifier. This information should best be provided or defined by the ontology maintainers or engineers.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000700">http://purl.obolibrary.org/obo/IAO_0000700</a></p>
@@ -1165,6 +1201,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <div style="page-break-after: always;"></div>
 <h3 id="33-optional-metadata">3.3 Optional metadata</h3>
 <p>The metadata of an ontology can contain much more information than what has been suggested in sections <a href="#31-mandatory-metadata">3.1 Mandatory metadata</a> and <a href="#32-recommended-metadata">3.2 Recommended metadata</a> so far. Perhaps, you will also find the following categories useful or informative enough to include them into your metadata.</p>
@@ -1187,6 +1224,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:nodeKind sh:Literal</code></li>
 <li><code>sh:uniqueLang true</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="332-alternative-ontology-title">3.3.2 Alternative ontology title</h4>
 <p>An alternative title for the ontology may provided, for example a former working title the ontology has been known by.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/alternative">http://purl.org/dc/terms/alternative</a></p>
@@ -1203,6 +1241,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:datatype rdf:langString</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="333-alternative-ontology-prefix-acronym">3.3.3 Alternative ontology prefix/ acronym</h4>
 <p>An alternative prefix for the ontology.</p>
 <p>Recommended property: <a href="http://identifiers.org/idot/alternatePrefix">http://identifiers.org/idot/alternatePrefix</a></p>
@@ -1215,6 +1254,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:datatype xsd:string</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="334-related-version-version-history">3.3.4 Related version/ version history</h4>
 <p>When ontologies are developed on collaborative development platforms with version management software like <a href="http://GitLab.com" title="GitLab.com. Last accessed: 22 April 2024.">GitLab.com</a> or <a href="http://GitHub.com" title="GitHub.com. Last accessed: 22 April 2024.">GitHub.com</a>, it is relatively easy to maintain and keep all development and release versions of an ontology. Ontologies may therefore have multiple resolvable version IRIs. The different versions can relate to each other in different ways as discussed in the following sections.</p>
 <h5 id="3341-prior-ontology-version">3.3.4.1 Prior ontology version</h5>
@@ -1235,6 +1275,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h5 id="3342-related-ontology-version">3.3.4.2 Related ontology version</h5>
 <p>A related resource of which the described resource is a version, edition, or adaptation. The contents of related versions of an ontology are not identical.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/hasVersion">http://purl.org/dc/terms/hasVersion</a></p>
@@ -1251,6 +1292,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h5 id="3343-compatible-ontology-version">3.3.4.3 Compatible ontology version</h5>
 <p>For application developers and other users, it may be useful to know whether a new version of your ontology is backward compatible with an older version of your ontology.</p>
 <p>Recommended property: <a href="http://www.w3.org/2002/07/owl#backwardCompatibleWith">http://www.w3.org/2002/07/owl#backwardCompatibleWith</a></p>
@@ -1264,6 +1306,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h5 id="3344-incompatible-ontology-version">3.3.4.4 Incompatible ontology version</h5>
 <p>For application developers and other users, it may be useful to know whether a new version of your ontology is incompatible with an older version of your ontology.</p>
 <p>Recommended property: <a href="http://www.w3.org/2002/07/owl#incompatibleWith">http://www.w3.org/2002/07/owl#incompatibleWith</a></p>
@@ -1277,6 +1320,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="335-social-media">3.3.5 Social media</h4>
 <p>If you toot about or otherwise promote your ontology on social media, it might be interesting for users to see on which platforms you are having accounts to follow your updates.</p>
 <p>Recommended property: <a href="http://xmlns.com/foaf/0.1/holdsAccount">http://xmlns.com/foaf/0.1/holdsAccount</a></p>
@@ -1286,6 +1330,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </div></code></pre>
 <p>Alternative properties: n/a</p>
 <p>SHACL validation rules: n/a</p>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="336-kos-type">3.3.6 KOS type</h4>
 <p>You may want to additionally classify your ontology with a controlled value from the NKOS type vocabulary <a href="#source11">[11]</a>.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/type">http://purl.org/dc/terms/type</a></p>
@@ -1301,6 +1346,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="337-example-ontology-identifier">3.3.7 Example ontology identifier</h4>
 <p>Give an example for identifiers used in your ontology.</p>
 <p>Recommended property: <a href="http://identifiers.org/idot/exampleIdentifier">http://identifiers.org/idot/exampleIdentifier</a></p>
@@ -1313,6 +1359,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="338-ontology-identifier-pattern">3.3.8 Ontology identifier pattern</h4>
 <p>Identifiers for ontology classes, properties and individuals usually follow one specific pattern that can be summarized with a regular expression. In registries like <a href="https://bioregistry.io/registry/" title="Hoyt, C. T., et al. (2022) The Unifying the identification of biomedical entities with the Bioregistry. Nature Scientific Data, &lt;https://doi.org/10.1038/s41597-022-01807-3&gt;. Last accessed: 22 April 2024.">Bioregistry</a> this is usually provided as part of the ontology metadata.</p>
 <p>Recommended property: <a href="http://identifiers.org/idot/identifierPattern">http://identifiers.org/idot/identifierPattern</a></p>
@@ -1329,6 +1376,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:datatype xsd:string</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="339-ontology-homepage">3.3.9 Ontology homepage</h4>
 <p>The official homepage of your ontology. This is not necessarily the documentation website, but could be a general info page, which may also include documentation about the ontology.</p>
 <p>Recommended property: <a href="http://xmlns.com/foaf/0.1/homepage">http://xmlns.com/foaf/0.1/homepage</a></p>
@@ -1345,6 +1393,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3310-ontology-publisher">3.3.10 Ontology publisher</h4>
 <p>The official publisher of the ontology. This might be the institution you are affiliated to. We recommend to refer to the institution via PIDs (e.g. <a href="https://ror.org/" title="Research Organization Registry Homepage. URL: https://ror.org/. Last accessed: 22 April 2024.">ROR</a>, <a href="https://isni.org/" title="International Standard Name Identifier Homepage. URL: https://isni.org/. Last accessed: 22 April 2024.">ISNI</a>, <a href="https://explore.gnd.network/" title="Gemeinsame Normdatei (GND) - GND Explorer. URL: https://explore.gnd.network/. Last accessed: 22 April 2024.">GND</a> ID).</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/publisher">http://purl.org/dc/terms/publisher</a></p>
@@ -1364,6 +1413,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:pattern &quot;https://isni.org/isni/[0]{4}[0-9]{4}[0-9]{4}[0-9]{3}[0-9X]&quot;</code></li>
 <li><code>sh:pattern &quot;https://ror.org/([a-z0-9]{9})&quot;</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3311-ontology-comments">3.3.11 Ontology comments</h4>
 <p>Any comments you would like to make about your ontology.</p>
 <p>Recommended property: <a href="http://www.w3.org/2000/01/rdf-schema#comment">http://www.w3.org/2000/01/rdf-schema#comment</a></p>
@@ -1394,6 +1444,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3313-ontology-mailing-list">3.3.13 Ontology mailing list</h4>
 <p>Communication about the ontology may take place over a mailing list, e.g. regarding updates. If this is your way to communicate, the info should be part of your ontology.</p>
 <p>Recommended property: <a href="http://usefulinc.com/ns/doap#mailing-list">http://usefulinc.com/ns/doap#mailing-list</a></p>
@@ -1406,6 +1457,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3314-ontology-logo-depiction-related-visualizations">3.3.14 Ontology logo/ depiction/ related visualizations</h4>
 <p>Links to official ontology logo or other visualizations/ diagrams of ontology elements online, e.g. WebVOWL visualizations and other graph views.</p>
 <p>Recommended property: <a href="http://xmlns.com/foaf/0.1/logo">http://xmlns.com/foaf/0.1/logo</a></p>
@@ -1424,6 +1476,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3315-alternative-identifiers-of-the-ontology">3.3.15 Alternative identifiers of the ontology</h4>
 <p>If your ontology has been published at an archive, you may want to declare these alternative identifiers in the ontology metadata. You should list here alternative URIs that may be used to identify your ontology. The identifier used as the base URI of the ontology should be provided with <a href="http://purl.org/vocab/vann/preferredNamespaceUri">http://purl.org/vocab/vann/preferredNamespaceUri</a> instead (cf. <a href="#3320-preferred-ontology-namespace">3.3.20 Preferred ontology namespace</a>).</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/identifier">http://purl.org/dc/terms/identifier</a></p>
@@ -1441,6 +1494,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3316-development-environment">3.3.16 Development environment</h4>
 <p>The software that was used to create the ontology.</p>
 <p>Recommended property: <a href="http://purl.org/pav/createdWith">http://purl.org/pav/createdWith</a></p>
@@ -1453,6 +1507,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><a href="https://w3id.org/mod#createdWith">https://w3id.org/mod#createdWith</a></li>
 </ul>
 <p>SHACL validation rules: n/a</p>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3317-alignments-mappings">3.3.17 Alignments/ mappings</h4>
 <h5 id="33171-aligned-resources">3.3.17.1 Aligned resources</h5>
 <p>The ontology may indicate to which other resource(s) it has been aligned or contains equivalences to.</p>
@@ -1469,6 +1524,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h5 id="33172-alignment-files-mapping-files">3.3.17.2 Alignment files/ mapping files</h5>
 <p>Alignments and mappings may not be included in the ontology document itself, but in a related resource (e.g. when following the SSSOM paradigm <a href="#source12">[12]</a>). Accordingly, we recommend to treat mapping sets like related resources. The mapping set should be referenced via a PID or a version IRI.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/references">http://purl.org/dc/terms/references</a></p>
@@ -1481,6 +1537,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3318-competency-questions">3.3.18 Competency questions</h4>
 <p>Which competency questions does the ontology address? For which use case was it developed?</p>
 <p>Recommended property: <a href="https://w3id.org/mod#competencyQuestion">https://w3id.org/mod#competencyQuestion</a></p>
@@ -1497,6 +1554,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <ul>
 <li><code>sh:xone ([sh:nodeKind sh:IRI ;] [sh:datatype rdf:langString ;])</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3319-applied-methodology">3.3.19 Applied methodology</h4>
 <p>A name or description of the steps taken to develop the ontology. This should describe the overall organisation of the ontology development process.</p>
 <p>Recommended property: <a href="http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringMethodology">http://omv.ontoware.org/2005/05/ontology#usedOntologyEngineeringMethodology</a></p>
@@ -1506,6 +1564,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </div></code></pre>
 <p>Alternative properties: n/a</p>
 <p>SHACL validation rules: n/a</p>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3320-preferred-ontology-namespace">3.3.20 Preferred ontology namespace</h4>
 <p>The preferred namespace URI of an ontology is the URI which is to be used when referencing its terms.</p>
 <p>Recommended property: <a href="http://purl.org/vocab/vann/preferredNamespaceUri">http://purl.org/vocab/vann/preferredNamespaceUri</a></p>
@@ -1519,6 +1578,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:maxCount 1</code></li>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3321-ontology-issue-date">3.3.21 Ontology issue date</h4>
 <p>The date the ontology was officially published.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/issued">http://purl.org/dc/terms/issued</a></p>
@@ -1536,6 +1596,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3322-modification-date">3.3.22 Modification date</h4>
 <p>Since ontologies are updated over time, it would be helpful to provide the date when the ontology has been last modified.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></p>
@@ -1554,6 +1615,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:xone ( [sh:datatype xsd:dateTimeStamp ;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:date ;] );</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3323-textual-version-information">3.3.23 Textual version information</h4>
 <p>Some ontologies make use of semantic versioning and employ strings like 1.0.0 as a tag to distinguish one version of their ontology from a successor. Others employ the modification date, e.g. 2022-12-21. If you use such textual version information but do not use/have a Version URI, then we strongly recommend to also mint a version URI in which you use the textual version information as variable.</p>
 <p>If you need to add a larger comment in natural language, you should provide the info as an rdf:langString, i.e. with a language tag. We do not encourage this, since such statements can most likely be expressed in more granular fashion with formal statements. Alternatively, you could add the info to the version notes (cf. <a href="#3324-version-notes">3.3.24 Version notes</a>).</p>
@@ -1580,6 +1642,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:xone ([sh:datatype xsd:string ;] [sh:datatype rdf:langString ;])</code></li>
 <li><code>sh:maxCount 1</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="3324-version-notes">3.3.24 Version notes</h4>
 <p>Version information may also be accompanied by a description about changes between one version of the ontology and its predecessor.</p>
 <p>There are several ways for an automatic generation of change notes. When using GitHub and properly atomic PRs for the implementation of each change, you could copy the notes that are created when preparing a release based on tags, which will list all the PRs that have been merged since the last tag. Another approach could be to use the output of the ROBOT diff command.</p>
@@ -1597,6 +1660,7 @@ A shape for form generators and code generation can be retrieved from <a href="h
 <li><code>sh:datatype rdf:langString</code></li>
 <li><code>sh:nodeKind sh:Literal</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <div style="page-break-after: always;"></div>
 <h3 id="34-tabular-overview">3.4 Tabular overview</h3>
 <table>
@@ -2803,25 +2867,32 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </tbody>
 </table>
 <h2 id="4-term-level-metadata">4 Term-level Metadata</h2>
-<p>Not only the ontology itself should have rich metadata:
-In order to better understand the scope and purpose of an ontology term, it should be annotated as well.
-This, in turn, helps to assess whether the element is fit for re-use in a different context.</p>
-<!-- should we refer to owl: ? -->
-<p>With <em>term</em> we refer to classes, properties and individuals.
+<p>Not only the ontology itself must have rich metadata:
+In order to better understand the scope and purpose of an ontology term, it must be annotated as well.
+This, in turn, helps to assess whether the element is fit for re-use in a different context.
+With <em>term</em> we refer to classes, properties and individuals.
 A term's annotations could include all information that tells the ontology audience what the term is about or how it may be used.
 In the following sections we discuss some annotations we deem mandatory, some that we would recommend and a limited number of optional ones.</p>
 <h3 id="41-mandatory-metadata">4.1 Mandatory metadata</h3>
-<h4 id="411-preferred-label">4.1.1 (Preferred) label</h4>
-<!-- (DISCUSSION NEEDED) -->
-<!-- especially about cardinality -->
-<p>Each ontoloy entity should have a label in at least one natural language.
+<h4 id="411-preferred-label">4.1.1 Preferred label</h4>
+<p>Each ontoloy entity must have a label in at least one natural language.
 A label can be either a single word, compound or other kinds of multi-word expressions.
 The de facto <em>lingua franca</em> in ontology development is English but there are also multi-lingual ontologies.
-Regardless of how many languages an ontolgy supports, the labels should always be explicitly language-tagged - even if the ontology only provides data in only one language!
-The label should be the preferred label of an entity.</p>
-<!-- check with labeling conventions in OBO https://obofoundry.org/principles/fp-012-naming-conventions.html -->
-<p>There should only be one preferred label per entity and language.</p>
-<p>Recommended property: <a href="http://www.w3.org/2000/01/rdf-schema#label">http://www.w3.org/2000/01/rdf-schema#label</a></p>
+Regardless of how many languages an ontolgy supports, the labels must always be explicitly language-tagged - even if the ontology only provides data in only one language!
+The label must be the preferred label of an entity.
+There must only be one preferred label per entity and language.</p>
+<blockquote>
+<p>Excursion on labels<br></p>
+<ol>
+<li>Labels should be written as if they would be used in a normal text and should follow orthographic conventions of the language.</li>
+<li>CamelCase or underscores should be avoided.</li>
+<li>Use a full form as the preferred label.
+The use of an acronym or short form is only acceptable, if they are more commonly used than the full form.</li>
+<li>If avoidable, do not repeat labels that were already used for other entities.
+If it cannot be avoided, use an addition to the labels of both entities, which make them distinguishable, e.g. <em>morphology (biology)</em> vs. <em>morphology (linguistics)</em>.</li>
+</ol>
+</blockquote>
+<p>Recommended property: <a href="http://www.w3.org/2000/01/rdf-schema#label">rdfs:label</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
     rdfs:label &quot;smart grid&quot;@en .
@@ -2841,17 +2912,23 @@ The label should be the preferred label of an entity.</p>
 <li><code>sh:datatype rdf:langString</code></li>
 <li><code>sh:uniqueLang true</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h4 id="412-definition">4.1.2 Definition</h4>
-<!-- todo see also: https://obofoundry.org/principles/fp-006-textual-definitions.html -->
-<p>Each ontology term should have a short description defining it.
+<p>Each ontology term must have a short description defining it.
 A typical definition usually consists of two parts:
 a reference to a super-ordinate term and a statement naming its defining characteristics.
 The characteristics usually serve to distinguish the term from related terms.
-The definiton should explicitly be language-tagged even if the ontology only serves data in one language!
-There may only be one definition per term and language.</p>
-<p>Recommended property: <a href="http://www.w3.org/2004/02/skos/core#definition">http://www.w3.org/2004/02/skos/core#definition</a></p>
+This makes it easier for users of the ontology to decide whether any individual object belongs to the term.
+The definition should be consistent with logical axioms that are also used to define a term.
+The definiton must explicitly be language-tagged even if the ontology only serves data in one language!
+There must only be one definition per term and language.
+Definitions must not be repeated within one ontology since terms represent unique mental units.</p>
+<blockquote>
+<p>Find out more about how to write a good definition in Seppälä, Ruttenberg, &amp; Smith 2017 <a href="#source24">[24]</a>.</p>
+</blockquote>
+<p>Recommended property: <a href="http://www.w3.org/2004/02/skos/core#definition">skos:definition</a></p>
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
     skos:definiton &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en .
 </div></code></pre>
 <p>Alternative properties:</p>
@@ -2866,61 +2943,187 @@ There may only be one definition per term and language.</p>
 </ul>
 <p>Unaccepted properties:</p>
 <ul>
-<li><a href="http://www.w3.org/2000/01/rdf-schema#comment">http://www.w3.org/2000/01/rdf-schema#comment</a></li>
+<li><a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a></li>
 </ul>
+<p>We are aware that it is a common practice to provide definitions with <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a>.
+However, we would like to discourage this practice, since the property may be and is being used for other types of comments on entities, that are not necessarily definitions or descriptions about the entity.
+We strongly recommend to use a more specific property dedicated to providing definitions like <a href="http://www.w3.org/2004/02/skos/core#definition">skos:definition</a>!</p>
 <p>SHACL validation rules:</p>
 <ul>
 <li><code>sh:minCount 1</code></li>
 <li><code>sh:datatype rdf:langString</code></li>
 <li><code>sh:uniqueLang true</code></li>
 </ul>
-<!-- add recommendation to combine this with [definition source (IAO:0000119)](http://purl.obolibrary.org/obo/IAO_0000119) -->
-<h4 id="413-term-deprecation-obsoletion">4.1.3 Term deprecation/ obsoletion</h4>
-<!-- (DISCUSSION NEEDED) -->
-<!-- todo see also https://obofoundry.org/principles/fp-019-term-stability.html -->
-<!-- todo see also https://obofoundry.org/principles/fp-013-notification.html -->
-<p>Terms that shall no longer be used, must be marked with respective deprecation information.
-The deprecation annotations are only considered mandatory if the term is deprecated.
-The following sections describe which elements are needed in order to deprecate a term.</p>
-<!-- SA: do we recommend to move deprecated entities to deprecated class or property? should subentity-relations be removed or kept (either as is, or as a comment?) -->
-<h5 id="4131-deprecation-marker">4.1.3.1 Deprecation marker</h5>
-<p>The deprecation marker is a boolean value intended to indicate the fact that a term is deprecated and should not be used any longer.</p>
-<p>Recommended property: <a href="http://www.w3.org/2002/07/owl#deprecated">http://www.w3.org/2002/07/owl#deprecated</a></p>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h5 id="4121-definition-source">4.1.2.1 Definition source</h5>
+<p>We recommend to provide sources for definitions, especially if a definition is quoted from some reference work.
+This is mandatory to meet the code of conduct for good scientific practice and also to properly credit the copyright holder.
+The sources should also be provided if the text of a definition is freely phrased by the ontology maintainers but based on the information of reference works.
+This also has the added value that the definition is backed up by authoritative sources from the respective domain.</p>
+<p>Providing the source(s) of a definition could be done with annotations on the definition annotation of a term.
+Example 1 demonstrates this with reification and properties from the OWL namespace that identifiy the subject, predicate and object of the annotated axiom for the definition and the property <a href="http://purl.obolibrary.org/obo/IAO_0000119">definition source (IAO:0000119)</a>.
+In Protégé, the properties from OWL will automatically be used when the axiom annotations editor is used to annotate a statement.</p>
+<p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000119">definition source (IAO:0000119)</a></p>
+<!-- einleitenden satz ergänzen - verschiedene styles mit verschiedenen shacl regeln, muss man sich aussuchen -->
+<p>Example 1 (text/turtle):</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; 
+  rdf:type owl:Class ;
+  skos:definition &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+  skos:prefLabel &quot;smart grid&quot;@de .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource &lt;https://www.purl.org/SomeOntologyClass&gt; ;
+   owl:annotatedProperty &lt;http://www.w3.org/2004/02/skos/core#definition&gt; ;
+   owl:annotatedTarget &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+   &lt;http://purl.obolibrary.org/obo/IAO_0000119&gt; &lt;https://en.wikipedia.org/wiki/Smart_grid&gt;
+ ] .
+</div></code></pre>
+<p>SHACL validation rules:</p>
+<!-- add here! -->
+<p>Alternative approaches:</p>
+<p>Strömert et al. 2024 <a href="#source25">[25]</a> also demonstrate this using a set of properties from the <a href="http://purl.org/dc/terms/">DCMI Metadata Terms</a> <a href="#source27">[27]</a> vocabulary and <a href="http://www.w3.org/ns/prov#hadPrimarySource">prov:hadPrimarySource</a>.
+They distinguish two use cases:
+(a) verbatim quotes of a definition from an authorized source (see Example 2),
+(b) indirect re-use of definitions from authoritative sources that result in a new definition (see Example 3).</p>
+<p>Example 2 demonstrates a very rich description of the source, including its license, its DOI, its rights holder and its bibliographic citations.
+It allows for maximum transparency in the context of a scientific ontology.</p>
+<p>Example 2 (text/ turtle):</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
+                     &lt;http://www.w3.org/2004/02/skos/core#definition&gt; &quot;&quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+                     &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; &quot;smart grid&quot;@de .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource &lt;https://www.purl.org/SomeOntologyClass&gt; ;
+   owl:annotatedProperty &lt;http://www.w3.org/2004/02/skos/core#definition&gt; ;
+   owl:annotatedTarget &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+   &lt;http://purl.org/dc/terms/bibliographicCitation&gt; &quot;Jane Doe et al. (2025): The Smart Grid - theory vs. reality. In: John Doe et al. (eds.): Smart Grid and the energy of tomorrow, pp. 1-28. DOI: https://doi.org/10.3794/reposi.1234567 (last accessed: 00.00.0000)&quot; ;
+   &lt;http://purl.org/dc/terms/license&gt; &lt;https://creativecommons.org/licenses/by/3.0/&gt; ;
+   &lt;http://purl.org/dc/terms/rightsHolder&gt; &lt;https://ror.org/20ßgle32&gt; ;
+   &lt;http://purl.org/dc/terms/source&gt; &lt;https://doi.org/10.3794/reposi.1234567&gt;
+ ] .
+
+</div></code></pre>
+<p>SHACL validation rules:</p>
+<!-- add here! -->
+<p>Example 3 demonstrates a shorter reference to the source by providing only the DOI of the source with the property <a href="http://www.w3.org/ns/prov#hadPrimarySource">prov:hadPrimarySource</a></p>
+<p>Example 3 (text/turtle):</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
+                     &lt;http://www.w3.org/2004/02/skos/core#definition&gt; &quot;&quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+                     &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; &quot;smart grid&quot;@de .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource &lt;https://www.purl.org/SomeOntologyClass&gt; ;
+   owl:annotatedProperty &lt;http://www.w3.org/2004/02/skos/core#definition&gt; ;
+   owl:annotatedTarget &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+   prov:hadPrimarySource &lt;https://doi.org/10.3794/reposi.1234567&gt; ;
+   prov:hadPrimarySource &lt;https://doi.org/10.3794/reposi.0987654&gt; ;
+ ] .
+
+</div></code></pre>
+<p>If the primary source of a defintion is one or several domain experts, the same mechanism can be used here.
+Instead of a DOI, an ORCID should then be presented instead.</p>
+<p>SHACL validation rules:</p>
+<!-- add here! -->
+<p>Please be aware, that not all systems processing and displaying ontology information are able to display such axiom annotations correctly since they are blank nodes.
+The system may display a generic placeholder instead of all the statements about this anonymous element.</p>
+<!-- add picture from tool, wo es nicht angezeigt wird? -->
+<p>We strongly encourage all developers of such tools to add such features to their systems.</p>
+<h4 id="413-term-deprecation-obsoletion-mandatory-only-if-applicable">4.1.3 Term deprecation/ obsoletion (mandatory only if applicable!)</h4>
+<p>Usually, terms are part of an ontology to be used, so they are understood as active.
+The recommendations in this section are therefore not mandatory for all terms, but only those that shall no longer be used.
+If this is the case for any term, they <em>must</em> be marked with respective deprecation information.
+All logical axioms should be removed from a deprecated term - it should no longer have any usages.
+The textual definiton of the term, on the other hand, should remain.
+Optionally, the deprecated term could be made a subclass of <a href="http://www.geneontology.org/formats/oboInOwl#ObsoleteClass">oio:ObsoleteClass</a>.
+You should also consider how you will notify users of your ontologies about terms scheduled for deprecation well in advance.
+We are not discussing this in detail here, but need to refer to <a href="https://obofoundry.org/principles/fp-013-notification.html">OBO Principle 13: Notification of Changes</a> <a href="#source26">[26]</a> that discusses several options to implement such a process.
+We encourage you to use the process that best suits your user base and your own resources.</p>
+<p>The following sub-sections describe which elements must be added to such a term in order properly mark it as deprecated, explain the reasons for deprecation and to point users to replacement terms.</p>
+<p>There are also two very severe malpractices we would strongly like to <strong>discourage</strong>.</p>
+<p>The first concerns the repurposing of identifiers.</p>
+<blockquote>
+<p><img class="emoji" alt="warning" src="data:image/png;base64,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" /> DO NOT REUSE IDENTIFIERS!<br>
+Identifiers that are already in use for a specific domain concept with a clear range of referents MUST NOT be repurposed once this concept is no longer relevant to the ontology or the domain.
+Also its description MUST NOT be changed in a way that changes the range of referents it is supposed to represent.
+If an ontology term is no longer fit to adequately represent domain knowledge, it should be deprecated and replaced by one or more adequate terms.
+Such new terms need to be referenced via their own unique identifiers.
+For more practical examples on this, see also <a href="https://obofoundry.org/principles/fp-019-term-stability.html">OBO Principle 19</a> <a href="#source28">[28]</a> and the section about <a href="https://oboacademy.github.io/obook/howto/obsolete-term/">Obsoleting an Existing Ontology Term</a> <a href="#source29">[29]</a> at <a href="https://oboacademy.github.io/obook/">OBO Semantic Engineering Training</a> <a href="#source30">[30]</a>.</p>
+</blockquote>
+<p>The second concerns the deprecation of terms from a different ontology, i.e. a namespace that is not under your control.</p>
+<blockquote>
+<p><img class="emoji" alt="warning" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAMMElEQVR42uWbCVBUVxZAP93N1s0qDdrsqGAQFzajokZHhWBc44I4I1HRaBYn0RnNUhMLUzMTs2islOOQscy+mImJJrGjwRExAq5REZXFaECRbvZFUNnv3BsefuzXX7qBWECoOvXev9u79/5fdr/3WwEAftc88AXxzwJRILaIHcOWySz6dAPwT4bYIGpkIBJEsLma6WR9sgF0d1mBmohAm0fS3h/yRdGPE38maE4y0jEbi77YAEvEdZC7Ytz1A6HnoTAeoHwtQBmC87z9oed93BURZEO2faoB7NF3QIYe2j54d0vBEmipWI+sE0EZ6ciG2cr6UgOsEc+4aPul9Zem17eU/wVaWdsKuyYd2ZAt+fSJBrC774SEnPw4ML1F/2Rr0WXP3QPJSHfy46B0smU+sr7QAGvEe/lM+3UN2TMam8v+DM1lqxnPitB1+WogG7IlnwfxFDyIu++MRJz7IiijWRcPzaXYgJJn2vG0OC9dDWRDtuTDfGW9qwH8x57f2oVOrzblzmhuLfYpaC5eZZwSBPVNuTObyYd8WQyL3tgAOdIPmZi1Z0RuU+ESaMIim4qeRFbSyM0JsiFb8iFfFkPeqxrA7r4t4r8hvt+WpsuzsLgV0KRvz3KCl9FIjbg8E8iXYrBYFr2pAXJEbW0tRF7VhuQ33lgMjfp4aNQtk8BAR7YFi+GqNjifYlCs3+op+K3uvhIZsnm1+j+Nl2ewwpZAY+ETJkP25EsxKBaLadEbGqBAXNXOwoyCpBB94/VFWFAc4FMgTSEvIx/ypRgUi2JS7B7dAHb3VUjQjhfcPm3IfQwabvwJGgoWMf5IiHMm564Z5EsxEte7fcq+IqtojZ7cAEuk/xBv+QJ9ckh5/bUFUF8QC/XXFxoD7zTRdm1gh9fkSzH0ycHlgz3k8yl2d2+Uuvvu2yEjP0vQ7K3PicYiYqiAdswHGlt0MQC34wDqiMWtcx0Wnc9sCOZDMSjWJxiTYrM1LHpiAywRzehAy7jSH0Nr6vIeh7r8echckby5AEXzAaoWwc7NYTBulAuMCXeBxE2hAJWxqIshG2YvQrEoJsWmNbrzKeju7W7o3k2apLqcSEwcG5A3B5nNmAONKIOahbA0xoec7mHRHC+AmwvxHz7m1x5qQk4UUGy0DRO3yz2nAVaIR2S49aqKtNA7d67OhDu/8EDx45B3MpIcjJKbOhWgdC4Y9b86C6rSwu5EhluuorVozR7RAHb3HZGHD27VpN7JnowJT8eEH+OAktmQe3SyZAMyD00EKJttzBdjzoA72VOA1kDbUWxNWU9ogDXiFTPRem11enDD7Z8fhVai7oFkUDANKi9GgqXCwmgDis9OBSicDu1iiCOb0xpzJ1ivoTW7Y7vcXYcdEan/dv/p9qVHMMlIuH15qlEaf4kC0EWDxs2aK17tbAUt16OgKT9K0p9i0xqpie6n0WdsdxyadMd212flNJsNNceDm27l/gFu5U5GaOSpuzwZoDoaQoc7cA0Y6m8HUBkNdVeM+7bFJmqOj2xagWvS2l3dLnd1w+OMTDj9vufF2gsRUJszCWqzJzIeYeCcjbcQqIqC2FluXAPmPKrGBkRigaK9GEOMRWvQWqd2ul+ktSmHrmyUunr3B62bb/t67cnhLbVZE6CV8cZhOqicAhvX+HINeOlpb9RN5eylYtGa62KUr1EOXXkKunL3XXDXMznzI48rNZkPQ82lCGRs28jDdFA6CT7bGsA14P23/AHKJokxRPi4WTjPHA2ZH3v8jL6TKJfOPgVdOewI2LhEua3mRBDUXBwDNRdG49gxUDAO0r8exjUgZVcQQOE4sjGRMUBrJ8Sp3qFcOnto0untrspaeDRnl8eNmxlhcDNzFBJOIz9n122yliujQX8ylGtA/tEQgKuj29tKxGBcQNm5MMj53KOAcunsoUlnDzse2vyU6r2bJwIxGWzA+VCTqcsOx0PPMHB2UtwtXmUrg7qscKhHHe8TJn1Nax8PhM0rVe9RTp05NOnM3XfzchHmXNntXlJ9dgRUZwQjIxnBhCgzwq3MYIBrYRA+QnW3AcOG2ALkhcKtiyESfsFtI8+5EXDlK02xu5Mwm3Iz99CkM9vd4e8+b/dl1bEAqMLFq84OR9hoIlAUBgunO99twOypjgB6vKOkNxPKgXJJfE61C2MNM3e7bO52d8AIX/mia3s1lVU/DcUEgqDqjCFDRSTkUDgSNjwrfhdYt8IVGxAs+pyVisXHJSiX/D2aykAveSzlaM522ZyvvPZIyCcvqrSVaYOg8kwgVP70kBmI9pA3DD7d4il+BL7mAZA/jHSdikm5UE4frVfuw3jBLFeL7myAFeIeMUS+rPC7/rUVp/yh4lSACF6LBEiPDMh9CE7vFr8Mpe/yIZl0HBFp+Ul/uPFN/9pR/nJ6u6wxdbtszmFH+J6NqsMVaT5QcXowLjrIBIzbNVz0h2spfncbcPWQH8lI1zVSfeDrBFWyOYcmpt59z2nhstU6rVtd+XE/KD8xEPETQRmT0yiBqKs+PRCaLgwCL40lDFDLoe78IKg5zfQdIK5HOfBy3T63uqhg2TOUsylPgamHHaP3/8PuePlRT1zExwR8O7S5fc4X9Ee9QXfEG25n+HH6Tq1xAmWYo/bvynTK2ZRDE5Pe7cdMkL1QpFU3lh3zgrJ0xq9zT4LNOZhctGNyTNYLWi55A+T7Ib40RxnpjXBM9BVlbXN+JIq0Lo0LxsnWm3JoYsq7/fEpbykzyo5oMLgHlKV1FnegseKYB0CuNyTtcIXYaCVBc5KRjuwYvK90XHFOOVKuKW8qz2Hu4zo6NOnw3f7KaMXGYq1zc2mqBkpTB4jQNZOZptNgghqAbHfY9rIjtxcgGWRREe1jcXOJ+LyOco6fKkvA2L732y53+G7/2Du22aUprlB6tD/ixo+pBM15SC/SH/fw/UF/2I0VzVOEOrTh1iCkY/O2lBPlnL5VmdXRbwzu+25//VzF5pLvnaDkR1eG2mBEjqgRUcb0BNMjTN541hWOfOAs2YDUD52h4awb+XJwOXDrE+KcKNY6wV9nK97E2IOltsvS7/YVQuSZf9nklyT3w6AuUJJCIwPnKEMMZTQSvB3Nb51ygay9kg0gHdr04+IymMzFYOTyEm0x9zPbbfIUCmGK1KGJ5Lv9hFh5YvH3DlCc4gzFhw1xYqNxHYOzLT3iDHC+H8yaZMkVTzLSlaYY+ImxpNcXc+TlWgdIiJFtl/qNgdHDDmel8NiFd631xYewAcmOPIfZaKaOqDnmCNVpjrB0phXQ+wGC5jfTSHc/386tSTVkJNoUOlgL04z9xsDYu/2hW5bJPynap4KiZHsoOiSFQwdyB0mb6lR7gAxHKD3sgPw6R5lDR/HN0DuIJCNYy1tPyD809hsD7t3+QDdhXvZOy7KiJGzAQcb/aORAuR3SXm/H2XMwfckhFVSm2CE0b/OheBRDjCexLr+eqOPWolqyd1qVeboIcw1/Y8AddiSuku/R77MB/UElTxIbOWyN2NqKOmlf3oaga1FHcHmIkE4cpeJTTdtXyXcbHprcc9QV4ivEXv5AUa1PogYgGJTmIsZktve3O8j5PQCoGQayH2wg9z1F1QisUTw6ExtggwzZtkL2uf5bK3RAfrBmWN1LEpOLen4UYbEYnK30nF3zSK9Na3Fz8Rr51hK2LRc+o1qp5vYNUCFjjrwuy9FpLUF3QAG6/ZYdc4DoyE4hjrzcTBRsXTPXYj5UW8o/Zdlsp6gybMCkE5struu05Nw3odqOY41Uq2ED7JEJiU8KB3Vfy9EYOaBgcHMaObkkvA+nQ8z0U0gg7UtQbdtXCAepVqrZ8AkIV6uENd//Tbhe+KUFFH4jg8JvjSE3S87ofp/v5KbHoFq+lIH2FeGaq0p4nmo1fAKskABknpuj8EbCAuHM7heE0r0vC1V7XhRufvWSUNMbodypBqrllXnCGSx+E9XIarUy/B7ggYxH4pFXkR3If5HvkP3IAcYPPRoxz/2UO6thB6tpGavR3dg3QXvWmSlIHLIW2Yi8gWxB3ka29hLeZjm/jiQga5DFrLYAqlVqM+TCPiMjkGnIfNaMpezJWN5LiGc5x1ENrJaxrDaXjs4DHBAP1qmRyChkDAsQ0UsYy3IexWoIYDU5mHMkpkScEDXbQAzoZVDOalaDUupI7Hf/3+f/D/WnwPHv0AmHAAAAAElFTkSuQmCC" /> DO NOT DEPRECATE TERMS OUTSIDE OF YOUR OWN NAMESPACE <img class="emoji" alt="warning" src="data:image/png;base64,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" /><br>
+If your ontology imports terms from other ontologies and you no longer want to use these terms, you MUST NOT deprecate them!
+This is the job of the maintainers of the source ontology, not yours!
+You MUST only deprecate entities in your own namespace!
+If you would like to no longer use terms from an external ontology, you should not import them.
+If you would like to make users of your ontology aware of terms to be used instead of formerly imported terms, you should comment these new terms, referring back to the formerly used term via its IRI string.
+You can also make users of your ontology aware of such changes in the ontology metadata, e.g. in the <a href="#3323-textual-version-information">3.3.23 Textual version information</a></p>
+</blockquote>
+<h5 id="4131-deprecation-marker-mandatory-only-if-applicable">4.1.3.1 Deprecation marker (mandatory only if applicable!)</h5>
+<p>The deprecation marker is a boolean value intended to indicate the fact that a term is deprecated and must not be used any longer.
+We do not recommend to prepend strings like &quot;obsolete &quot; to labels or &quot;OBSOLETE. &quot; to the definition.
+A statement with <a href="http://www.w3.org/2002/07/owl#deprecated">owl:depracted</a> is sufficient to render the term with a clear graphicaal obsoletion marker at TIB Terminology Service, as is shown below.
+<img src="images/Obsoleted-Term-On-TIB-TS.png" alt="alt text"></p>
+<p>Recommended property: <a href="http://www.w3.org/2002/07/owl#deprecated">owl:depracted</a></p>
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
     owl:deprecated true .
 </div></code></pre>
 <p>Alternative properties: n/a</p>
 <p>SHACL validation rules:</p>
 <ul>
 <li><code>sh:datatype xsd:boolean</code></li>
+<li><code>sh:maxCount 1</code></li>
 </ul>
-<h5 id="4132-obsoletion-reason">4.1.3.2 Obsoletion reason</h5>
-<!-- (DISCUSSION NEEDED) -->
-<!-- should we recommend [IAO:0000231](http://purl.obolibrary.org/obo/IAO_0000231)? by definition, it wants instances of http://purl.obolibrary.org/obo/IAO_0000225 - is it open for free text? -->
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h5 id="4132-obsoletion-reason-mandatory-only-if-applicable">4.1.3.2 Obsoletion reason (mandatory only if applicable!)</h5>
 <p>For users of the ontology it may be helpful to understand why a term has been deprecated.
-The reason should be explained with a few words.
-The IAO property we recommend to use for this cause expects items from a controlled list, i.e. instances of the class <a href="http://purl.obolibrary.org/obo/IAO_0000225"><em>obsolescence reason specification</em> (IAO:0000225)</a>.
-If any of these suit your ontology, we recommend to use these items.
-However, we would also like to leave the possibility open to provide some free text explaining the reason for obsoleting a term.</p>
+We recommend to use an IAO property to provide values from a controlled list of obsolescence reasons.
+The items of this list are instances of the class <a href="http://purl.obolibrary.org/obo/IAO_0000225">obsolescence reason specification (IAO:0000225)</a>.
+If any of these suit your ontology, we recommend to use these items.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000231">has obsolescence reason (IAO:0000231)</a></p>
+<p>Recommended controlled values:</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/IAO_0000103">failed exploratory term</a></li>
+<li><a href="http://purl.obolibrary.org/obo/IAO_0000226">placeholder removed</a></li>
+<li><a href="http://purl.obolibrary.org/obo/IAO_0000228">term imported</a></li>
+<li><a href="http://purl.obolibrary.org/obo/IAO_0000229">term split</a></li>
+<li><a href="http://purl.obolibrary.org/obo/IAO_0000227">terms merged</a></li>
+<li><a href="http://purl.obolibrary.org/obo/OMO_0001000">out of scope</a></li>
+</ul>
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
     obo:IAO_0000231 &lt;http://purl.obolibrary.org/obo/IAO_0000103&gt;.
 </div></code></pre>
-<p>Alternative properties: n/a</p>
+<p>However, we would also like to leave the possibility open to provide free-text explanations for obsoleting a term.
+We therefore allow the alternative property <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a>.
+For both properties we provide seperate property shapes in our SHACL validation.</p>
+<p>Alternative properties: <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a></p>
 <p>SHACL validation rules:</p>
-<!-- what should we recommend? I'd suggest combine both - or use different property for free text... e.g. combine obsoletion reason with http://purl.obolibrary.org/obo/IAO_0000116 -->
 <ul>
-<li><code>sh:xone ( [sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI ;])</code></li>
-<li><code>sh:in ( &lt;http://purl.obolibrary.org/obo/IAO_0000103&gt; &lt;http://purl.obolibrary.org/obo/IAO_0000226&gt; &lt;http://purl.obolibrary.org/obo/IAO_0000228&gt; &lt;http://purl.obolibrary.org/obo/IAO_0000229&gt; &lt;http://purl.obolibrary.org/obo/IAO_0000227&gt; &lt;http://purl.obolibrary.org/obo/OMO_0001000&gt;)</code></li>
+<li>
+<p>for use with <a href="http://purl.obolibrary.org/obo/IAO_0000231">has obsolescence reason (IAO:0000231)</a>:</p>
+<pre class="hljs"><code><div>sh:in (
+  &lt;http://purl.obolibrary.org/obo/IAO_0000103&gt;
+  &lt;http://purl.obolibrary.org/obo/IAO_0000226&gt;
+  &lt;http://purl.obolibrary.org/obo/IAO_0000228&gt;
+  &lt;http://purl.obolibrary.org/obo/IAO_0000229&gt;
+  &lt;http://purl.obolibrary.org/obo/IAO_0000227&gt;
+  &lt;http://purl.obolibrary.org/obo/OMO_0001000&gt;)
+</div></code></pre>
+</li>
+<li>
+<p>for use with <a href="http://www.w3.org/2000/01/rdf-schema#comment">rdfs:comment</a>:
+<code>sh:datatype rdf:langString</code></p>
+</li>
 </ul>
-<h5 id="4133-term-replacement">4.1.3.3 Term replacement</h5>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h5 id="4133-term-replacement-mandatory-only-if-applicable">4.1.3.3 Term replacement (mandatory only if applicable!)</h5>
 <p>In some cases there may be a replacement term that can be used instead of an obsoleted term.
-The deprecated term should point to this replacement.</p>
+The deprecated term must point to this replacement.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0100001">term replaced by (IAO:0100001)</a></p>
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
     obo:IAO_0100001 &lt;https://www.purl.org/SomeOtherOntologyClass&gt;.
 </div></code></pre>
 <p>Alternative properties: n/a</p>
@@ -2928,50 +3131,118 @@ The deprecated term should point to this replacement.</p>
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h3 id="42-recommended-metadata">4.2 Recommended metadata</h3>
 <h4 id="421-synonyms-alternative-labels">4.2.1 Synonyms/ alternative labels</h4>
 <p>An ontology term may have more than just one label which it can be referred by.
-Since synonyms are an obstacle not only to understanding but also to the search for information, an ontology is a good place to collect frequent synonyms of a term.
+Since synonyms are an obstacle not only to understanding but also to finding information, an ontology is a good place to collect frequent synonyms of a term.
 These can be leveraged in search applications over text in order to intercept with linguistic variation that is inevitable when different communicators interact.
-We recommend to list only very close synonyms with the properties suggested here.
-Short forms, acronyms, near synonyms, related synonyms, broad synonyms, narrow synonyms etc. should be provided using a dedicated property.</p>
+We recommend to list only very close synonyms with the properties suggested here.</p>
 <p>Recommended property: <a href="http://www.w3.org/2004/02/skos/core#altLabel">http://www.w3.org/2004/02/skos/core#altLabel</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
     skos:altLabel &quot;intelligent grid&quot;@en .
 </div></code></pre>
 <p>Alternative properties:</p>
-<!-- see also: https://git.tib.eu/terminology/terminology-system-config/-/blob/master/docs/ontology_metadata_overview.md?ref_type=heads#synonym_property -->
 <ul>
 <li><a href="http://www.geneontology.org/formats/oboInOwl#hasExactSynonym">http://www.geneontology.org/formats/oboInOwl#hasExactSynonym</a></li>
 <li><a href="http://purl.obolibrary.org/obo/IAO_0000118">http://purl.obolibrary.org/obo/IAO_0000118</a></li>
 </ul>
-<!-- * <http://purl.org/ppeo/PPEO.owl#hasExactSynonym> -->
-<!-- does not resolve! -->
-<!-- * <http://purl.bioontology.org/ontology/npo#FULL_SYN>  -->
-<!-- unparsable -->
-<!-- * <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> -->
-<!-- 404 -->
-<!-- * <https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym> -->
-<!-- * <http://www.ontology-of-units-of-measure.org/resource/om-2/alternativeLabel> -->
-<!-- * <> -->
-<!-- * <> -->
-<!-- * <> -->
-<!-- * <> -->
 <p>SHACL validation rules:</p>
 <ul>
 <li><code>sh:datatype rdf:langString</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h4 id="422-date-modified">4.2.2 Date modified</h4>
+<p>A useful information for editors and users of a term is also when the term was last modified.
+This may be informative for editorial processes and update cycles but also to assess whether a term is still up to date.</p>
+<p>Recommended property: <a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></p>
+<p>Example (text/turtle):</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
+  dcterms:modified &quot;2025-04-15T10:13:00&quot;^^xsd:dateTime .
+</div></code></pre>
+<p>Alternative properties: n/a</p>
+<p>SHACL validation rules:</p>
+<ul>
+<li>
+<pre class="hljs"><code><div>sh:xone (
+  [sh:datatype xsd:date;]
+  [sh:datatype xsd:dateTime ;]
+  [sh:datatype xsd:dateTimeStamp;]
+)
+</div></code></pre>
+</li>
+</ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h4 id="423-editor-note">4.2.3 Editor note</h4>
+<p>For the editing process, it may be helpful to add notes about the current editorial status of a term or tasks that still need to be performed.
+The editorial comment should be tagged for a language.
+There may be several editorial comments for a term.
+We recommend to publsish them as part of the ontology and also maintain them after they are completed, so that editorial decisions reamin accessible and traceable to editors and users of the ontology.
+The editorial notes could also carry a date, an editor information and information about the current status.
+This could be accomplished via a structured note containing respective elements or via annotations on the editorial note statement.
+We would recommend the latter for reasons of granularity and parsability.
+However, since not all graphical inteerfaces for OWL and RDF data support annotations well, the final decision should be based on where the ontology will be displayed in the end.</p>
+<p>Recommended property: <a href="http://www.w3.org/2004/02/skos/core#editorialNote">skos:editorialNote</a></p>
+<p>Example 1 (text/turtle):</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
+  skos:editorialNote &quot;[2025-04-17T14:26:00][https://orcid.org/0000-0002-1584-4316] The class should be deprecated.&quot;@en .
+</div></code></pre>
+<p>Example 2 (text/turtle)</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
+  &lt;http://www.w3.org/2004/02/skos/core#editorialNote&gt; &quot;The classe's definition is too vague.&quot;@en .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource &lt;https://www.purl.org/SomeOntologyClass&gt; ;
+   owl:annotatedProperty &lt;http://www.w3.org/2004/02/skos/core#editorialNote&gt; ;
+   owl:annotatedTarget &quot;The classe's definition is too vague.&quot;@en ;
+   &lt;http://purl.org/dc/elements/1.1/creator&gt; &lt;https://orcid.org/0000-0002-1584-4316&gt; ;
+   &lt;http://purl.org/dc/elements/1.1/date&gt; &quot;2025-04-17T14:26:00&quot;^^xsd:dateTime ;
+   bibo:status &quot;done&quot;@en
+ ] .
+</div></code></pre>
+<p>Alternative properties:</p>
+<ul>
+<li><a href="http://purl.obolibrary.org/obo/IAO_0000116">editor note (IAO:0000116)</a></li>
+</ul>
+<p>SHACL validation rules:</p>
+<ul>
+<li><code>sh:datatype rdf:langString</code></li>
+</ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h4 id="424-term-tracker-item">4.2.4 Term tracker item</h4>
+<p>A term tracker item should be added to each term.
+This could be</p>
+<ul>
+<li>an issue on the ontology repository containing a term request and a discussion about the term,</li>
+<li>an scientific paper discussing the concept,</li>
+<li>other external sources legitmising the term.</li>
+</ul>
+<p>The term tracker item helps making the provenance of a term transparent.</p>
+<p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000233">term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)</a></p>
+<p>Example (text/turtle):</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
+obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&gt;
+</div></code></pre>
+<p>Alternative properties:</p>
+<ul>
+<li><a href="http://www.w3.org/ns/prov#wasDerivedFrom">prov:wasDerivedFrom</a></li>
+<li><a href="http://purl.org/dc/terms/source">dcterms:source</a></li>
+</ul>
+<p>SHACL validation rules:</p>
+<ul>
+<li><code>sh:nodeKind sh:IRI</code></li>
+</ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h3 id="43-optional-metadata">4.3 Optional metadata</h3>
-<h4 id="431-term-editor">4.3.1 Term editor</h4>
+<h4 id="431-term-editor-term-contributors">4.3.1 Term editor/ term contributor(s)</h4>
 <p>When an ontology is collaboratively edited, it may help to note down the editor(s) of a term.
 Questions about the term may be directed forwarded to them.
 It is also useful to credit the contributors of ontology development.
 We recommend to provide the contributors via their <a href="https://orcid.org/">ORCIDs</a>.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/contributor">http://purl.org/dc/terms/contributor</a></p>
-<!-- dcterms/e:contributor -->
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
   dcterms:contributor &lt;https://orcid.org/0000-0002-1584-4316&gt; .
 </div></code></pre>
 <p>Alternative properties:</p>
@@ -2983,47 +3254,17 @@ We recommend to provide the contributors via their <a href="https://orcid.org/">
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
-<h4 id="432-date-modified">4.3.2 Date modified</h4>
-<p>A useful information for editors and users of a term is also when the term was last modified.
-This may be informative for editorial processes and update cycles but also to assess whether a term is still up to date.</p>
-<p>Recommended property: <a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></p>
-<p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
-  dcterms:modified &quot;2025-04-15T10:13:00&quot;^^xsd:dateTime .
-</div></code></pre>
-<p>Alternative properties: n/a</p>
-<p>SHACL validation rules:</p>
-<ul>
-<li><code>sh:xone ([sh:datatype xsd:date;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:dateTimeStamp;])</code></li>
-</ul>
-<h4 id="433-editor-note">4.3.3 Editor note</h4>
-<!-- (DISCUSSION NEEDED) -->
-<p>For the editing process, it may be helpful to add notes about the current editorial status of a term or tasks that still need to be performed.
-The editorial comment should be tagged for a language.
-There may be several editorial comments for a term.
-They do not necessarily need to be published with the ontology, but could be managed as an owl:import.
-We recommend to maintain them, so that editorial decisions reamin accessible and traceable.
-The editorial notes could also carry a date and the editor name.</p>
-<p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000116">editor note (IAO:0000116)</a></p>
-<p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
-  obo:IAO_0000116 &quot;[2024-04-14][SA] The class should be deprecated.&quot;@en .
-</div></code></pre>
-<p>Alternative properties:</p>
-<ul>
-<li><a href="http://www.w3.org/2004/02/skos/core#editorialNote">http://www.w3.org/2004/02/skos/core#editorialNote</a></li>
-</ul>
-<p>SHACL validation rules:</p>
-<ul>
-<li><code>sh:datatype rdf:langString</code></li>
-</ul>
-<h4 id="434-example-of-usage">4.3.4 Example of usage</h4>
+<p>You can discuss this recommendation with us at <a href="https://github.com/TIBHannover/terminology-metadata/issues/1">https://github.com/TIBHannover/terminology-metadata/issues/1</a>.</p>
+<h4 id="432-example-of-usage">4.3.2 Example of usage</h4>
 <p>In order to better understand how a term can be applied, an example of usage can be helpful.
 This can for example be provided in the form of a phrase describing how a term should be used, by an example instance or sub-entity of a term or by some example code.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000112">example of usage (IAO:0000112)</a></p>
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
-  obo:IAO_0000112 &quot;&quot;@en .
+<pre class="hljs"><code><div>&lt;http://purl.obolibrary.org/obo/VIBSO_0000020&gt;
+  rdf:type owl:Class ;
+  obo:IAO_0000115 &quot;A setting datum that specifies the height (length in the Y direction) of the region of interest.&quot;@en ;
+  obo:IAO_0000112 &quot;0.5 mm&quot;@en .
+
 </div></code></pre>
 <p>Alternative properties:</p>
 <ul>
@@ -3034,14 +3275,15 @@ This can for example be provided in the form of a phrase describing how a term s
 <ul>
 <li><code>sh:xone ([sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI])</code></li>
 </ul>
-<h4 id="435-defined-by">4.3.5 Defined by</h4>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h4 id="433-defined-by">4.3.3 Defined by</h4>
 <p>In some contexts it may be relevant to provide the original source of a term, e.g. if it is re-used in an ontology.
 In this case, the IRI of the original ontology should be provided.
 For maximum traceability, we recommend to not only use the ontology IRI to the latest version of an ontology, but a version IRI.
 This allows to understand which version of a term has been used.</p>
 <p>Recommended property: <a href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy">http://www.w3.org/2000/01/rdf-schema#isDefinedBy</a></p>
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
   rdfs:isDefinedBy &lt;https://www.purl.org/SomeOntology&gt; .
 </div></code></pre>
 <p>Alternative properties: n/a</p>
@@ -3049,31 +3291,21 @@ This allows to understand which version of a term has been used.</p>
 <ul>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
-<h4 id="436-issue-link">4.3.6 Issue link</h4>
-<p>Sometimes it makes sense to add the link to an issue to the annotations of a term.
-Especially if there is no consent about the term, the discussion may involve more viewpoints than a single editorial note is capable to encompass.</p>
-<p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000233">term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)</a></p>
-<p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
-obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&gt;
-</div></code></pre>
-<p>Alternative properties: n/a</p>
-<p>SHACL validation rules:</p>
-<ul>
-<li><code>sh:nodeKind sh:IRI</code></li>
-</ul>
-<h4 id="437-comments">4.3.7 Comments</h4>
-<p>If there is anything else to say about a term, this may fit into a general purpose comment.</p>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
+<h4 id="434-comments">4.3.4 Comments</h4>
+<p>If there is anything else to say about a term that does not fit into the other categories discussed so far, this may fit into a general purpose comment.
+The comment should be a short text, not an IRI to external resources.</p>
 <p>Recommended property: <a href="http://www.w3.org/2000/01/rdf-schema#comment">http://www.w3.org/2000/01/rdf-schema#comment</a></p>
 <p>Example (text/turtle):</p>
-<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:CLass ;
-  rdfs:comment &quot;Do not forget to colour some easter eggs! &lt;https://www.publicdomainpictures.net/pictures/160000/velka/oeufs-de-paques-1457782172BLx.jpg&gt;&quot;@en.
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
+  rdfs:comment &quot;a comment on this class&quot;@en.
 </div></code></pre>
 <p>Alternative properties: n/a</p>
 <p>SHACL validation rules:</p>
 <ul>
 <li><code>sh:datatype rdf:langString</code></li>
 </ul>
+<p>You can discuss this recommendation with us at &lt;&gt;.</p>
 <h3 id="44-tabular-overview---recommendations">4.4 Tabular overview - recommendations</h3>
 <table>
 <thead>
@@ -3104,7 +3336,15 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <td>1..* (only one per language)</td>
 </tr>
 <tr>
-<td><a href="#4131-deprecation-marker">Deprecation marker</a></td>
+<td><a href="#4121-definition-source">Definition source</a></td>
+<td><a href="http://purl.obolibrary.org/obo/IAO_0000119">definition source (IAO:0000119)</a></td>
+<td>x</td>
+<td></td>
+<td></td>
+<td>1..*</td>
+</tr>
+<tr>
+<td><a href="#4131-deprecation-marker-mandatory-only-if-applicable">Deprecation marker</a></td>
 <td><a href="http://www.w3.org/2002/07/owl#deprecated">http://www.w3.org/2002/07/owl#deprecated</a></td>
 <td>x (if applicable)</td>
 <td></td>
@@ -3112,7 +3352,7 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <td>0..1</td>
 </tr>
 <tr>
-<td><a href="#4132-obsoletion-reason">Obsoletion reason</a></td>
+<td><a href="#4132-obsoletion-reason-mandatory-only-if-applicable">Obsoletion reason</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0000231">has obsolescence reason (IAO:0000231)</a></td>
 <td>x (if applicable)</td>
 <td></td>
@@ -3120,7 +3360,7 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <td>0..1</td>
 </tr>
 <tr>
-<td><a href="#4133-term-replacement">Term replacement</a></td>
+<td><a href="#4133-term-replacement-mandatory-only-if-applicable">Term replacement</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0100001">term replaced by (IAO:0100001)</a></td>
 <td>x (if applicable)</td>
 <td></td>
@@ -3136,7 +3376,31 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#431-term-editor">Term editors</a></td>
+<td><a href="#422-date-modified">Date modified</a></td>
+<td><a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></td>
+<td></td>
+<td>x</td>
+<td></td>
+<td>0..1</td>
+</tr>
+<tr>
+<td><a href="#423-editor-note">Editor Note</a></td>
+<td><a href="http://purl.obolibrary.org/obo/IAO_0000116">editor note (IAO:0000116)</a></td>
+<td></td>
+<td>x</td>
+<td></td>
+<td>0..*</td>
+</tr>
+<tr>
+<td><a href="#424-term-tracker-item">Issue link</a></td>
+<td><a href="http://purl.obolibrary.org/obo/IAO_0000233">term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)</a></td>
+<td></td>
+<td>x</td>
+<td></td>
+<td>0..*</td>
+</tr>
+<tr>
+<td><a href="#431-term-editor-term-contributors">Term editors</a></td>
 <td><a href="http://purl.org/dc/terms/contributor">http://purl.org/dc/terms/contributor</a></td>
 <td></td>
 <td></td>
@@ -3144,23 +3408,7 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#432-date-modified">Date modified</a></td>
-<td><a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></td>
-<td></td>
-<td></td>
-<td>x</td>
-<td>0..1</td>
-</tr>
-<tr>
-<td><a href="#433-editor-note">Editor Note</a></td>
-<td><a href="http://purl.obolibrary.org/obo/IAO_0000116">editor note (IAO:0000116)</a></td>
-<td></td>
-<td></td>
-<td>x</td>
-<td>0..*</td>
-</tr>
-<tr>
-<td><a href="#434-example-of-usage">Example of usage</a></td>
+<td><a href="#432-example-of-usage">Example of usage</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0000112">example of usage (IAO:0000112)</a></td>
 <td></td>
 <td></td>
@@ -3168,7 +3416,7 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#435-defined-by">Defined by</a></td>
+<td><a href="#433-defined-by">Defined by</a></td>
 <td><a href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy">http://www.w3.org/2000/01/rdf-schema#isDefinedBy</a></td>
 <td></td>
 <td></td>
@@ -3176,15 +3424,7 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <td>1</td>
 </tr>
 <tr>
-<td><a href="#436-issue-link">Issue link</a></td>
-<td><a href="http://purl.obolibrary.org/obo/IAO_0000233">term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)</a></td>
-<td></td>
-<td></td>
-<td>x</td>
-<td>0..*</td>
-</tr>
-<tr>
-<td><a href="#437-comments">Comments</a></td>
+<td><a href="#434-comments">Comments</a></td>
 <td><a href="http://www.w3.org/2000/01/rdf-schema#comment">http://www.w3.org/2000/01/rdf-schema#comment</a></td>
 <td></td>
 <td></td>
@@ -3200,6 +3440,9 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <li><a href="https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term">https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term</a></li>
 <li><a href="https://obofoundry.org/principles/fp-012-naming-conventions.html">https://obofoundry.org/principles/fp-012-naming-conventions.html</a></li>
 <li><a href="https://obofoundry.org/principles/fp-019-term-stability.html">https://obofoundry.org/principles/fp-019-term-stability.html</a></li>
+<li><a href="https://obofoundry.org/principles/fp-006-textual-definitions.html">https://obofoundry.org/principles/fp-006-textual-definitions.html</a></li>
+<li><a href="https://obofoundry.org/principles/fp-019-term-stability.html">OBO Principle 19</a></li>
+<li><a href="https://oboacademy.github.io/obook/howto/obsolete-term/">Obsoleting an Existing Ontology Term</a></li>
 </ul>
 <h2 id="5-sources">5 Sources</h2>
 <ol>
@@ -3271,6 +3514,27 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 </li>
 <li>
 <p><a name="source23"></a> Schema.Org Community Group (n/a): DefinedTermSet. A Schema.org Type. URL: <a href="https://schema.org/DefinedTermSet">https://schema.org/DefinedTermSet</a> (last access: 04 April 2024).</p>
+</li>
+<li>
+<p><a name="source24"></a> Seppälä, S., Ruttenberg, A., &amp; Smith, B. (2017). Guidelines for writing definitions in ontologies. Ciência Da Informação, 46(1). retrieved via <a href="https://philpapers.org/archive/SEPGFW.pdf">https://philpapers.org/archive/SEPGFW.pdf</a> on: 19 February 2024.</p>
+</li>
+<li>
+<p><a name="source25"></a> Strömert et al. (2024): Guidance on how to use the IUPAC Gold Book as a canonical source for textual definitions in chemical ontologies. ChemRxiv. DOI: <a href="https://doi.org/10.26434/chemrxiv-2024-fvzpq">https://doi.org/10.26434/chemrxiv-2024-fvzpq</a>. (Preprint)</p>
+</li>
+<li>
+<p><a name="source26"></a> OBO Foundry (n/a): Principle: Notification of Changes (principle 13). URL: <a href="https://obofoundry.org/principles/fp-013-notification.html">https://obofoundry.org/principles/fp-013-notification.html</a> (last access: 25 April 2025).</p>
+</li>
+<li>
+<p><a name="source27"></a> DCMI Usage Board (2020): DCMI Metadata Terms. URI: <a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a>. Version: <a href="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/">http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/</a> (last access: 25 April 2025).</p>
+</li>
+<li>
+<p><a name="source28"></a> OBO Foundry (n/a): Principle: Stability of Term Meaning (principle 19). URL: <a href="https://obofoundry.org/principles/fp-019-term-stability.html">https://obofoundry.org/principles/fp-019-term-stability.html</a> (last access: 25 April 2025).</p>
+</li>
+<li>
+<p><a name="source29"></a> <a href="https://oboacademy.github.io/obook/howto/obsolete-term/">Obsoleting an Existing Ontology Term</a> in <a href="#source30">[30]</a> (last access: 25 April 2025).</p>
+</li>
+<li>
+<p><a name="source30"></a> <a href="https://oboacademy.github.io/obook/">OBO Semantic Engineering Training</a> (last access: 25 April 2025).</p>
 </li>
 </ol>
 <!-- 24. <a name="source24"></a>  -->

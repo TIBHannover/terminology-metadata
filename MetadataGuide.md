@@ -103,20 +103,21 @@ Zenodo archive: <https://www.doi.org/10.5281/zenodo.11103071>
 * [4.1 Mandatory metadata](#41-mandatory-metadata)
   * [Preferred label](#411-preferred-label)
   * [Definition](#412-definition)
-  * [Term deprecation/ obsoletion](#413-term-deprecation-obsoletion)
-    * [Deprecation marker](#4131-deprecation-marker)
-    * [Obsoletion reason](#4132-obsoletion-reason)
-    * [Term replacement](#4133-term-replacement)
+    * [Definition source](#4121-definition-source)
+  * [Term deprecation/ obsoletion](#413-term-deprecation-obsoletion-mandatory-only-if-applicable)
+    * [Deprecation marker](#4131-deprecation-marker-mandatory-only-if-applicable)
+    * [Obsoletion reason](#4132-obsoletion-reason-mandatory-only-if-applicable)
+    * [Term replacement](#4133-term-replacement-mandatory-only-if-applicable)
 * [4.2 Recommended metadata](#42-recommended-metadata)
   * [Synonyms/ alternative labels](#421-synonyms-alternative-labels)
+  * [Date modified](#422-date-modified)
+  * [Editor note](#423-editor-note)
+  * [Term tracker item](#424-term-tracker-item)
 * [4.3 Optional metadata](#43-optional-metadata)
-  * [Term editor](#431-term-editor)
-  * [Date modified](#432-date-modified)
-  * [Editor note](#433-editor-note)
-  * [Example of usage](#434-example-of-usage)
-  * [Defined by](#435-defined-by)
-  * [Issue link](#436-issue-link)
-  * [Comments](#437-comments)
+  * [Term editor](#431-term-editor-term-contributors)
+  * [Example of usage](#432-example-of-usage)
+  * [Defined by](#433-defined-by)
+  * [4.3.4 Comments](#434-comments)
 * [4.4 Tabular overview - recommendations](#44-tabular-overview---recommendations)
 * [4.5 Relations to related work](#45-relations-to-related-work)
 
@@ -211,10 +212,12 @@ Code examples will usually provide full IRIs of statement subjects and objects. 
 |idot|<http://identifiers.org/idot/>|
 |mod|<https://w3id.org/mod#>|
 |obo|<http://purl.obolibrary.org/obo/>|
+|oio|<http://www.geneontology.org/formats/oboInOwl#>|
 |omv|<http://omv.ontoware.org/2005/05/ontology#>|
 |owl|<http://www.w3.org/2002/07/owl#>|
 |pav|<http://purl.org/pav/>|
 |premis|<http://www.loc.gov/premis/rdf/v3/>|
+|prov|<http://www.w3.org/ns/prov#>|
 |rdf|<http://www.w3.org/1999/02/22-rdf-syntax-ns#>|
 |rdfs|<http://www.w3.org/2000/01/rdf-schema#>|
 |sdo|<https://schema.org/>|
@@ -1761,30 +1764,34 @@ The following table shows the relation of the recommendations in this guide to r
 
 ## 4 Term-level Metadata
 
-Not only the ontology itself should have rich metadata:
-In order to better understand the scope and purpose of an ontology term, it should be annotated as well.
+Not only the ontology itself must have rich metadata:
+In order to better understand the scope and purpose of an ontology term, it must be annotated as well.
 This, in turn, helps to assess whether the element is fit for re-use in a different context.
-<!-- should we refer to owl: ? -->
 With *term* we refer to classes, properties and individuals.
 A term's annotations could include all information that tells the ontology audience what the term is about or how it may be used.
 In the following sections we discuss some annotations we deem mandatory, some that we would recommend and a limited number of optional ones.
 
 ### 4.1 Mandatory metadata
 
-#### 4.1.1 (Preferred) label
+#### 4.1.1 Preferred label
 
-<!-- (DISCUSSION NEEDED) -->
-<!-- especially about cardinality. suggestion: if one language is used: max 1 rdfs:label, if multiple languages shall be used: use skos:prefLabel instead to provide max 1 label for each language; since some fair checkers require rdfs:label provide max 1 rdfs:label in any language - the preferred language of choice, if need be English-->
-
-Each ontoloy entity should have a label in at least one natural language.
+Each ontoloy entity must have a label in at least one natural language.
 A label can be either a single word, compound or other kinds of multi-word expressions.
 The de facto *lingua franca* in ontology development is English but there are also multi-lingual ontologies.
-Regardless of how many languages an ontolgy supports, the labels should always be explicitly language-tagged - even if the ontology only provides data in only one language!
-The label should be the preferred label of an entity.
-<!-- check with labeling conventions in OBO https://obofoundry.org/principles/fp-012-naming-conventions.html -->
-There should only be one preferred label per entity and language.
+Regardless of how many languages an ontolgy supports, the labels must always be explicitly language-tagged - even if the ontology only provides data in only one language!
+The label must be the preferred label of an entity.
+There must only be one preferred label per entity and language.
 
-Recommended property: <http://www.w3.org/2000/01/rdf-schema#label>
+> Excursion on labels<br>
+>
+> 1. Labels should be written as if they would be used in a normal text and should follow orthographic conventions of the language.
+> 2. CamelCase or underscores should be avoided.
+> 3. Use a full form as the preferred label.
+> The use of an acronym or short form is only acceptable, if they are more commonly used than the full form.
+> 4. If avoidable, do not repeat labels that were already used for other entities.
+> If it cannot be avoided, use an addition to the labels of both entities, which make them distinguishable, e.g. *morphology (biology)* vs. *morphology (linguistics)*.
+
+Recommended property: [rdfs:label](http://www.w3.org/2000/01/rdf-schema#label)
 
 Example (text/turtle):
 
@@ -1812,21 +1819,24 @@ You can discuss this recommendation with us at <>.
 
 #### 4.1.2 Definition
 
-<!-- todo see also: https://obofoundry.org/principles/fp-006-textual-definitions.html -->
-
 Each ontology term must have a short description defining it.
 A typical definition usually consists of two parts:
 a reference to a super-ordinate term and a statement naming its defining characteristics.
 The characteristics usually serve to distinguish the term from related terms.
-The definiton should explicitly be language-tagged even if the ontology only serves data in one language!
+This makes it easier for users of the ontology to decide whether any individual object belongs to the term.
+The definition should be consistent with logical axioms that are also used to define a term.
+The definiton must explicitly be language-tagged even if the ontology only serves data in one language!
 There must only be one definition per term and language.
+Definitions must not be repeated within one ontology since terms represent unique mental units.
 
-Recommended property: <http://www.w3.org/2004/02/skos/core#definition>
+> Find out more about how to write a good definition in Seppälä, Ruttenberg, & Smith 2017 [[24]](#source24).
+
+Recommended property: [skos:definition](http://www.w3.org/2004/02/skos/core#definition)
 
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
     skos:definiton "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en .
 ```
 
@@ -1842,7 +1852,11 @@ Alternative properties:
 
 Unaccepted properties:
 
-* <http://www.w3.org/2000/01/rdf-schema#comment>
+* [rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment)
+
+We are aware that it is a common practice to provide definitions with [rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment).
+However, we would like to discourage this practice, since the property may be and is being used for other types of comments on entities, that are not necessarily definitions or descriptions about the entity.
+We strongly recommend to use a more specific property dedicated to providing definitions like [skos:definition](http://www.w3.org/2004/02/skos/core#definition)!
 
 SHACL validation rules:
 
@@ -1850,31 +1864,150 @@ SHACL validation rules:
 * `sh:datatype rdf:langString`
 * `sh:uniqueLang true`
 
-<!-- add recommendation to combine this with [definition source (IAO:0000119)](http://purl.obolibrary.org/obo/IAO_0000119) -->
-
 You can discuss this recommendation with us at <>.
 
-#### 4.1.3 Term deprecation/ obsoletion
+##### 4.1.2.1 Definition source
 
-<!-- (DISCUSSION NEEDED) -->
-<!-- todo see also https://obofoundry.org/principles/fp-019-term-stability.html -->
-<!-- todo see also https://obofoundry.org/principles/fp-013-notification.html -->
+We recommend to provide sources for definitions, especially if a definition is quoted from some reference work.
+This is mandatory to meet the code of conduct for good scientific practice and also to properly credit the copyright holder.
+The sources should also be provided if the text of a definition is freely phrased by the ontology maintainers but based on the information of reference works.
+This also has the added value that the definition is backed up by authoritative sources from the respective domain.
 
-Terms that shall no longer be used, must be marked with respective deprecation information.
-The deprecation annotations are only considered mandatory if the term is deprecated.
-The following sections describe which elements are needed in order to deprecate a term.
-<!-- SA: do we recommend to move deprecated entities to deprecated class or property? should subentity-relations be removed or kept (either as is, or as a comment?) -->
+Providing the source(s) of a definition could be done with annotations on the definition annotation of a term.
+Example 1 demonstrates this with reification and properties from the OWL namespace that identifiy the subject, predicate and object of the annotated axiom for the definition and the property [definition source (IAO:0000119)](http://purl.obolibrary.org/obo/IAO_0000119).
+In Protégé, the properties from OWL will automatically be used when the axiom annotations editor is used to annotate a statement.
 
-##### 4.1.3.1 Deprecation marker
+Recommended property: [definition source (IAO:0000119)](http://purl.obolibrary.org/obo/IAO_0000119)
 
-The deprecation marker is a boolean value intended to indicate the fact that a term is deprecated and should not be used any longer.
+<!-- einleitenden satz ergänzen - verschiedene styles mit verschiedenen shacl regeln, muss man sich aussuchen -->
 
-Recommended property: <http://www.w3.org/2002/07/owl#deprecated>
+Example 1 (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> 
+  rdf:type owl:Class ;
+  skos:definition "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
+  skos:prefLabel "smart grid"@de .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://www.purl.org/SomeOntologyClass> ;
+   owl:annotatedProperty <http://www.w3.org/2004/02/skos/core#definition> ;
+   owl:annotatedTarget "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
+   <http://purl.obolibrary.org/obo/IAO_0000119> <https://en.wikipedia.org/wiki/Smart_grid>
+ ] .
+```
+
+SHACL validation rules:
+<!-- add here! -->
+
+Alternative approaches:
+
+Strömert et al. 2024 [[25]](#source25) also demonstrate this using a set of properties from the [DCMI Metadata Terms](http://purl.org/dc/terms/) [[27]](#source27) vocabulary and [prov:hadPrimarySource](http://www.w3.org/ns/prov#hadPrimarySource).
+They distinguish two use cases:
+(a) verbatim quotes of a definition from an authorized source (see Example 2),
+(b) indirect re-use of definitions from authoritative sources that result in a new definition (see Example 3).
+
+Example 2 demonstrates a very rich description of the source, including its license, its DOI, its rights holder and its bibliographic citations.
+It allows for maximum transparency in the context of a scientific ontology.
+
+Example 2 (text/ turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+                     <http://www.w3.org/2004/02/skos/core#definition> ""electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "smart grid"@de .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://www.purl.org/SomeOntologyClass> ;
+   owl:annotatedProperty <http://www.w3.org/2004/02/skos/core#definition> ;
+   owl:annotatedTarget "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
+   <http://purl.org/dc/terms/bibliographicCitation> "Jane Doe et al. (2025): The Smart Grid - theory vs. reality. In: John Doe et al. (eds.): Smart Grid and the energy of tomorrow, pp. 1-28. DOI: https://doi.org/10.3794/reposi.1234567 (last accessed: 00.00.0000)" ;
+   <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/3.0/> ;
+   <http://purl.org/dc/terms/rightsHolder> <https://ror.org/20ßgle32> ;
+   <http://purl.org/dc/terms/source> <https://doi.org/10.3794/reposi.1234567>
+ ] .
+
+```
+
+SHACL validation rules:
+<!-- add here! -->
+
+Example 3 demonstrates a shorter reference to the source by providing only the DOI of the source with the property [prov:hadPrimarySource](http://www.w3.org/ns/prov#hadPrimarySource)
+
+Example 3 (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+                     <http://www.w3.org/2004/02/skos/core#definition> ""electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
+                     <http://www.w3.org/2004/02/skos/core#prefLabel> "smart grid"@de .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://www.purl.org/SomeOntologyClass> ;
+   owl:annotatedProperty <http://www.w3.org/2004/02/skos/core#definition> ;
+   owl:annotatedTarget "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
+   prov:hadPrimarySource <https://doi.org/10.3794/reposi.1234567> ;
+   prov:hadPrimarySource <https://doi.org/10.3794/reposi.0987654> ;
+ ] .
+
+```
+
+If the primary source of a defintion is one or several domain experts, the same mechanism can be used here.
+Instead of a DOI, an ORCID should then be presented instead.
+
+SHACL validation rules:
+<!-- add here! -->
+
+Please be aware, that not all systems processing and displaying ontology information are able to display such axiom annotations correctly since they are blank nodes.
+The system may display a generic placeholder instead of all the statements about this anonymous element.
+<!-- add picture from tool, wo es nicht angezeigt wird? -->
+We strongly encourage all developers of such tools to add such features to their systems.
+
+#### 4.1.3 Term deprecation/ obsoletion (mandatory only if applicable!)
+
+Usually, terms are part of an ontology to be used, so they are understood as active.
+The recommendations in this section are therefore not mandatory for all terms, but only those that shall no longer be used.
+If this is the case for any term, they *must* be marked with respective deprecation information.
+All logical axioms should be removed from a deprecated term - it should no longer have any usages.
+The textual definiton of the term, on the other hand, should remain.
+Optionally, the deprecated term could be made a subclass of [oio:ObsoleteClass](http://www.geneontology.org/formats/oboInOwl#ObsoleteClass).
+You should also consider how you will notify users of your ontologies about terms scheduled for deprecation well in advance.
+We are not discussing this in detail here, but need to refer to [OBO Principle 13: Notification of Changes](https://obofoundry.org/principles/fp-013-notification.html) [[26]](#source26) that discusses several options to implement such a process.
+We encourage you to use the process that best suits your user base and your own resources.
+
+The following sub-sections describe which elements must be added to such a term in order properly mark it as deprecated, explain the reasons for deprecation and to point users to replacement terms.
+
+There are also two very severe malpractices we would strongly like to **discourage**.
+
+The first concerns the repurposing of identifiers.
+> :warning: DO NOT REUSE IDENTIFIERS!<br>
+> Identifiers that are already in use for a specific domain concept with a clear range of referents MUST NOT be repurposed once this concept is no longer relevant to the ontology or the domain.
+> Also its description MUST NOT be changed in a way that changes the range of referents it is supposed to represent.
+> If an ontology term is no longer fit to adequately represent domain knowledge, it should be deprecated and replaced by one or more adequate terms.
+> Such new terms need to be referenced via their own unique identifiers.
+> For more practical examples on this, see also [OBO Principle 19](https://obofoundry.org/principles/fp-019-term-stability.html) [[28]](#source28) and the section about [Obsoleting an Existing Ontology Term](https://oboacademy.github.io/obook/howto/obsolete-term/) [[29]](#source29) at [OBO Semantic Engineering Training](https://oboacademy.github.io/obook/) [[30]](#source30).
+
+The second concerns the deprecation of terms from a different ontology, i.e. a namespace that is not under your control.
+> :warning: DO NOT DEPRECATE TERMS OUTSIDE OF YOUR OWN NAMESPACE :warning:<br>
+> If your ontology imports terms from other ontologies and you no longer want to use these terms, you MUST NOT deprecate them!
+> This is the job of the maintainers of the source ontology, not yours!
+> You MUST only deprecate entities in your own namespace!
+> If you would like to no longer use terms from an external ontology, you should not import them.
+> If you would like to make users of your ontology aware of terms to be used instead of formerly imported terms, you should comment these new terms, referring back to the formerly used term via its IRI string.
+> You can also make users of your ontology aware of such changes in the ontology metadata, e.g. in the [3.3.23 Textual version information](#3323-textual-version-information)
+
+##### 4.1.3.1 Deprecation marker (mandatory only if applicable!)
+
+The deprecation marker is a boolean value intended to indicate the fact that a term is deprecated and must not be used any longer.
+We do not recommend to prepend strings like "obsolete " to labels or "OBSOLETE. " to the definition.
+A statement with [owl:depracted](http://www.w3.org/2002/07/owl#deprecated) is sufficient to render the term with a clear graphicaal obsoletion marker at TIB Terminology Service, as is shown below.
+![alt text](images/Obsoleted-Term-On-TIB-TS.png)
+
+Recommended property: [owl:depracted](http://www.w3.org/2002/07/owl#deprecated)
 
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
     owl:deprecated true .
 ```
 
@@ -1883,50 +2016,71 @@ Alternative properties: n/a
 SHACL validation rules:
 
 * `sh:datatype xsd:boolean`
+* `sh:maxCount 1`
 
 You can discuss this recommendation with us at <>.
 
-##### 4.1.3.2 Obsoletion reason
+##### 4.1.3.2 Obsoletion reason (mandatory only if applicable!)
 
-<!-- (DISCUSSION NEEDED) -->
-
-<!-- should we recommend [IAO:0000231](http://purl.obolibrary.org/obo/IAO_0000231)? by definition, it wants instances of http://purl.obolibrary.org/obo/IAO_0000225 - is it open for free text? -->
 For users of the ontology it may be helpful to understand why a term has been deprecated.
-The reason should be explained with a few words.
-The IAO property we recommend to use for this cause expects items from a controlled list, i.e. instances of the class [*obsolescence reason specification* (IAO:0000225)](http://purl.obolibrary.org/obo/IAO_0000225).
+We recommend to use an IAO property to provide values from a controlled list of obsolescence reasons.
+The items of this list are instances of the class [obsolescence reason specification (IAO:0000225)](http://purl.obolibrary.org/obo/IAO_0000225).
 If any of these suit your ontology, we recommend to use these items.
-However, we would also like to leave the possibility open to provide some free text explaining the reason for obsoleting a term.
 
 Recommended property: [has obsolescence reason (IAO:0000231)](http://purl.obolibrary.org/obo/IAO_0000231)
+
+Recommended controlled values:
+
+* [failed exploratory term](http://purl.obolibrary.org/obo/IAO_0000103)
+* [placeholder removed](http://purl.obolibrary.org/obo/IAO_0000226)
+* [term imported](http://purl.obolibrary.org/obo/IAO_0000228)
+* [term split](http://purl.obolibrary.org/obo/IAO_0000229)
+* [terms merged](http://purl.obolibrary.org/obo/IAO_0000227)
+* [out of scope](http://purl.obolibrary.org/obo/OMO_0001000)
 
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
     obo:IAO_0000231 <http://purl.obolibrary.org/obo/IAO_0000103>.
 ```
 
-Alternative properties: n/a
+However, we would also like to leave the possibility open to provide free-text explanations for obsoleting a term.
+We therefore allow the alternative property [rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment).
+For both properties we provide seperate property shapes in our SHACL validation.
+
+Alternative properties: [rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment)
 
 SHACL validation rules:
 
-<!-- what should we recommend? I'd suggest combine both - or use different property for free text... e.g. combine obsoletion reason with http://purl.obolibrary.org/obo/IAO_0000116 -->
-* `sh:xone ( [sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI ;])`
-* `sh:in ( <http://purl.obolibrary.org/obo/IAO_0000103> <http://purl.obolibrary.org/obo/IAO_0000226> <http://purl.obolibrary.org/obo/IAO_0000228> <http://purl.obolibrary.org/obo/IAO_0000229> <http://purl.obolibrary.org/obo/IAO_0000227> <http://purl.obolibrary.org/obo/OMO_0001000>)`
+* for use with [has obsolescence reason (IAO:0000231)](http://purl.obolibrary.org/obo/IAO_0000231):
+
+  ```Turtle
+  sh:in (
+    <http://purl.obolibrary.org/obo/IAO_0000103>
+    <http://purl.obolibrary.org/obo/IAO_0000226>
+    <http://purl.obolibrary.org/obo/IAO_0000228>
+    <http://purl.obolibrary.org/obo/IAO_0000229>
+    <http://purl.obolibrary.org/obo/IAO_0000227>
+    <http://purl.obolibrary.org/obo/OMO_0001000>)
+  ```
+
+* for use with [rdfs:comment](http://www.w3.org/2000/01/rdf-schema#comment):
+  `sh:datatype rdf:langString`
 
 You can discuss this recommendation with us at <>.
 
-##### 4.1.3.3 Term replacement
+##### 4.1.3.3 Term replacement (mandatory only if applicable!)
 
 In some cases there may be a replacement term that can be used instead of an obsoleted term.
-The deprecated term should point to this replacement.
+The deprecated term must point to this replacement.
 
 Recommended property: [term replaced by (IAO:0100001)](http://purl.obolibrary.org/obo/IAO_0100001)
 
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
     obo:IAO_0100001 <https://www.purl.org/SomeOtherOntologyClass>.
 ```
 
@@ -1946,7 +2100,6 @@ An ontology term may have more than just one label which it can be referred by.
 Since synonyms are an obstacle not only to understanding but also to finding information, an ontology is a good place to collect frequent synonyms of a term.
 These can be leveraged in search applications over text in order to intercept with linguistic variation that is inevitable when different communicators interact.
 We recommend to list only very close synonyms with the properties suggested here.
-Short forms, acronyms, near synonyms, related synonyms, broad synonyms, narrow synonyms etc. should be provided using a dedicated property.
 
 Recommended property: <http://www.w3.org/2004/02/skos/core#altLabel>
 
@@ -1959,25 +2112,117 @@ Example (text/turtle):
 
 Alternative properties:
 
-<!-- see also: https://git.tib.eu/terminology/terminology-system-config/-/blob/master/docs/ontology_metadata_overview.md?ref_type=heads#synonym_property -->
 * <http://www.geneontology.org/formats/oboInOwl#hasExactSynonym>
 * <http://purl.obolibrary.org/obo/IAO_0000118>
-<!-- * <http://purl.org/ppeo/PPEO.owl#hasExactSynonym> -->
-<!-- does not resolve! -->
-<!-- * <http://purl.bioontology.org/ontology/npo#FULL_SYN>  -->
-<!-- unparsable -->
-<!-- * <http://www.ontologyrepository.com/CommonCoreOntologies/alternative_label> -->
-<!-- 404 -->
-<!-- * <https://www.omg.org/spec/Commons/AnnotationVocabulary/synonym> -->
-<!-- * <http://www.ontology-of-units-of-measure.org/resource/om-2/alternativeLabel> -->
-<!-- * <> -->
-<!-- * <> -->
-<!-- * <> -->
-<!-- * <> -->
 
 SHACL validation rules:
 
 * `sh:datatype rdf:langString`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.2.2 Date modified
+
+A useful information for editors and users of a term is also when the term was last modified.
+This may be informative for editorial processes and update cycles but also to assess whether a term is still up to date.
+
+Recommended property: <http://purl.org/dc/terms/modified>
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+  dcterms:modified "2025-04-15T10:13:00"^^xsd:dateTime .
+```
+
+Alternative properties: n/a
+
+SHACL validation rules:
+
+* ```Turtle
+  sh:xone (
+    [sh:datatype xsd:date;]
+    [sh:datatype xsd:dateTime ;]
+    [sh:datatype xsd:dateTimeStamp;]
+  )
+  ```
+
+You can discuss this recommendation with us at <>.
+
+#### 4.2.3 Editor note
+
+For the editing process, it may be helpful to add notes about the current editorial status of a term or tasks that still need to be performed.
+The editorial comment should be tagged for a language.
+There may be several editorial comments for a term.
+We recommend to publsish them as part of the ontology and also maintain them after they are completed, so that editorial decisions reamin accessible and traceable to editors and users of the ontology.
+The editorial notes could also carry a date, an editor information and information about the current status.
+This could be accomplished via a structured note containing respective elements or via annotations on the editorial note statement.
+We would recommend the latter for reasons of granularity and parsability.
+However, since not all graphical inteerfaces for OWL and RDF data support annotations well, the final decision should be based on where the ontology will be displayed in the end.
+
+Recommended property: [skos:editorialNote](http://www.w3.org/2004/02/skos/core#editorialNote)
+
+Example 1 (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+  skos:editorialNote "[2025-04-17T14:26:00][https://orcid.org/0000-0002-1584-4316] The class should be deprecated."@en .
+```
+
+Example 2 (text/turtle)
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+  <http://www.w3.org/2004/02/skos/core#editorialNote> "The classe's definition is too vague."@en .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://www.purl.org/SomeOntologyClass> ;
+   owl:annotatedProperty <http://www.w3.org/2004/02/skos/core#editorialNote> ;
+   owl:annotatedTarget "The classe's definition is too vague."@en ;
+   <http://purl.org/dc/elements/1.1/creator> <https://orcid.org/0000-0002-1584-4316> ;
+   <http://purl.org/dc/elements/1.1/date> "2025-04-17T14:26:00"^^xsd:dateTime ;
+   bibo:status "done"@en
+ ] .
+```
+
+Alternative properties:
+
+* [editor note (IAO:0000116)](http://purl.obolibrary.org/obo/IAO_0000116)
+
+SHACL validation rules:
+
+* `sh:datatype rdf:langString`
+
+You can discuss this recommendation with us at <>.
+
+#### 4.2.4 Term tracker item
+
+A term tracker item should be added to each term.
+This could be
+
+* an issue on the ontology repository containing a term request and a discussion about the term,
+* an scientific paper discussing the concept,
+* other external sources legitmising the term.
+
+The term tracker item helps making the provenance of a term transparent.
+
+Recommended property: [term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)](http://purl.obolibrary.org/obo/IAO_0000233)
+
+Example (text/turtle):
+
+```Turtle
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+obo:IAO_0000233 <https://github.com/SomeOrganisation/SomeOntology/issues#12>
+```
+
+Alternative properties:
+
+* [prov:wasDerivedFrom](http://www.w3.org/ns/prov#wasDerivedFrom)
+* [dcterms:source](http://purl.org/dc/terms/source)
+
+SHACL validation rules:
+
+* `sh:nodeKind sh:IRI`
 
 You can discuss this recommendation with us at <>.
 
@@ -1991,12 +2236,11 @@ It is also useful to credit the contributors of ontology development.
 We recommend to provide the contributors via their [ORCIDs](https://orcid.org/).
 
 Recommended property: <http://purl.org/dc/terms/contributor>
-<!-- dcterms/e:contributor -->
 
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
   dcterms:contributor <https://orcid.org/0000-0002-1584-4316> .
 ```
 
@@ -2011,59 +2255,7 @@ SHACL validation rules:
 
 You can discuss this recommendation with us at <https://github.com/TIBHannover/terminology-metadata/issues/1>.
 
-#### 4.3.2 Date modified
-
-A useful information for editors and users of a term is also when the term was last modified.
-This may be informative for editorial processes and update cycles but also to assess whether a term is still up to date.
-
-Recommended property: <http://purl.org/dc/terms/modified>
-
-Example (text/turtle):
-
-```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
-  dcterms:modified "2025-04-15T10:13:00"^^xsd:dateTime .
-```
-
-Alternative properties: n/a
-
-SHACL validation rules:
-
-* `sh:xone ([sh:datatype xsd:date;] [sh:datatype xsd:dateTime ;] [sh:datatype xsd:dateTimeStamp;])`
-
-You can discuss this recommendation with us at <>.
-
-#### 4.3.3 Editor note
-
-<!-- (DISCUSSION NEEDED) -->
-
-For the editing process, it may be helpful to add notes about the current editorial status of a term or tasks that still need to be performed.
-The editorial comment should be tagged for a language.
-There may be several editorial comments for a term.
-They do not necessarily need to be published with the ontology, but could be managed as an owl:import.
-We recommend to maintain them, so that editorial decisions reamin accessible and traceable.
-The editorial notes could also carry a date and the editor name.
-
-Recommended property: [editor note (IAO:0000116)](http://purl.obolibrary.org/obo/IAO_0000116)
-
-Example (text/turtle):
-
-```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
-  obo:IAO_0000116 "[2024-04-14][SA] The class should be deprecated."@en .
-```
-
-Alternative properties:
-
-* <http://www.w3.org/2004/02/skos/core#editorialNote>
-
-SHACL validation rules:
-
-* `sh:datatype rdf:langString`
-
-You can discuss this recommendation with us at <>.
-
-#### 4.3.4 Example of usage
+#### 4.3.2 Example of usage
 
 In order to better understand how a term can be applied, an example of usage can be helpful.
 This can for example be provided in the form of a phrase describing how a term should be used, by an example instance or sub-entity of a term or by some example code.
@@ -2073,8 +2265,11 @@ Recommended property: [example of usage (IAO:0000112)](http://purl.obolibrary.or
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
-  obo:IAO_0000112 ""@en .
+<http://purl.obolibrary.org/obo/VIBSO_0000020>
+  rdf:type owl:Class ;
+  obo:IAO_0000115 "A setting datum that specifies the height (length in the Y direction) of the region of interest."@en ;
+  obo:IAO_0000112 "0.5 mm"@en .
+
 ```
 
 Alternative properties:
@@ -2088,7 +2283,7 @@ SHACL validation rules:
 
 You can discuss this recommendation with us at <>.
 
-#### 4.3.5 Defined by
+#### 4.3.3 Defined by
 
 In some contexts it may be relevant to provide the original source of a term, e.g. if it is re-used in an ontology.
 In this case, the IRI of the original ontology should be provided.
@@ -2100,7 +2295,7 @@ Recommended property: <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
   rdfs:isDefinedBy <https://www.purl.org/SomeOntology> .
 ```
 
@@ -2112,39 +2307,18 @@ SHACL validation rules:
 
 You can discuss this recommendation with us at <>.
 
-#### 4.3.6 Issue link
+#### 4.3.4 Comments
 
-Sometimes it makes sense to add the link to an issue to the annotations of a term.
-Especially if there is no consent about the term, the discussion may involve more viewpoints than a single editorial note is capable to encompass.
-
-Recommended property: [term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)](http://purl.obolibrary.org/obo/IAO_0000233)
-
-Example (text/turtle):
-
-```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
-obo:IAO_0000233 <https://github.com/SomeOrganisation/SomeOntology/issues#12>
-```
-
-Alternative properties: n/a
-
-SHACL validation rules:
-
-* `sh:nodeKind sh:IRI`
-
-You can discuss this recommendation with us at <>.
-
-#### 4.3.7 Comments
-
-If there is anything else to say about a term, this may fit into a general purpose comment.
+If there is anything else to say about a term that does not fit into the other categories discussed so far, this may fit into a general purpose comment.
+The comment should be a short text, not an IRI to external resources.
 
 Recommended property: <http://www.w3.org/2000/01/rdf-schema#comment>
 
 Example (text/turtle):
 
 ```Turtle
-<https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ;
-  rdfs:comment "Do not forget to colour some easter eggs! <https://www.publicdomainpictures.net/pictures/160000/velka/oeufs-de-paques-1457782172BLx.jpg>"@en.
+<https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ;
+  rdfs:comment "a comment on this class"@en.
 ```
 
 Alternative properties: n/a
@@ -2161,17 +2335,18 @@ You can discuss this recommendation with us at <>.
 |---------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|-------------------|---------------|-----------|-------------------------------|
 |[Preferred label](#411-preferred-label)                                                            |<http://www.w3.org/2000/01/rdf-schema#label>                                                                   |x                  |               |           |1..* (only one per language)   |
 |[Definition](#412-definition)                                                                      |<http://www.w3.org/2004/02/skos/core#definition>                                                               |x                  |               |           |1..* (only one per language)   |
-|[Deprecation marker](#4131-deprecation-marker)                                                     |<http://www.w3.org/2002/07/owl#deprecated>                                                                     |x (if applicable)  |               |           |0..1                           |
-|[Obsoletion reason](#4132-obsoletion-reason)                                                       |[has obsolescence reason (IAO:0000231)](http://purl.obolibrary.org/obo/IAO_0000231)                            |x (if applicable)  |               |           |0..1                           |
-|[Term replacement](#4133-term-replacement)                                                         |[term replaced by (IAO:0100001)](http://purl.obolibrary.org/obo/IAO_0100001)                                   |x (if applicable)  |               |           |0..*                           |
+|[Definition source](#4121-definition-source)                                                       |[definition source (IAO:0000119)](http://purl.obolibrary.org/obo/IAO_0000119)                                  |x                  |               |           |1..*                           |
+|[Deprecation marker](#4131-deprecation-marker-mandatory-only-if-applicable)                        |<http://www.w3.org/2002/07/owl#deprecated>                                                                     |x (if applicable)  |               |           |0..1                           |
+|[Obsoletion reason](#4132-obsoletion-reason-mandatory-only-if-applicable)                          |[has obsolescence reason (IAO:0000231)](http://purl.obolibrary.org/obo/IAO_0000231)                            |x (if applicable)  |               |           |0..1                           |
+|[Term replacement](#4133-term-replacement-mandatory-only-if-applicable)                            |[term replaced by (IAO:0100001)](http://purl.obolibrary.org/obo/IAO_0100001)                                   |x (if applicable)  |               |           |0..*                           |
 |[Synonyms/ alternative labels](#421-synonyms-alternative-labels)                                   |<http://www.w3.org/2004/02/skos/core#altLabel>                                                                 |                   |x              |           |0..*                           |
-|[Term editors](#431-term-editor)                                                                   |<http://purl.org/dc/terms/contributor>                                                                         |                   |               |x          |0..*                           |
-|[Date modified](#432-date-modified)                                                                |<http://purl.org/dc/terms/modified>                                                                            |                   |               |x          |0..1                           |
-|[Editor Note](#433-editor-note)                                                                    |[editor note (IAO:0000116)](http://purl.obolibrary.org/obo/IAO_0000116)                                        |                   |               |x          |0..*                           |
-|[Example of usage](#434-example-of-usage)                                                          |[example of usage (IAO:0000112)](http://purl.obolibrary.org/obo/IAO_0000112)                                   |                   |               |x          |0..*                           |
-|[Defined by](#435-defined-by)                                                                      |<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>                                                             |                   |               |x          |1                              |
-|[Issue link](#436-issue-link)                                                                      |[term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)](http://purl.obolibrary.org/obo/IAO_0000233)   |                   |               |x          |0..*                           |
-|[Comments](#437-comments)                                                                          |<http://www.w3.org/2000/01/rdf-schema#comment>                                                                 |                   |               |x          |0..*                           |
+|[Date modified](#422-date-modified)                                                                |<http://purl.org/dc/terms/modified>                                                                            |                   |x              |           |0..1                           |
+|[Editor Note](#423-editor-note)                                                                    |[editor note (IAO:0000116)](http://purl.obolibrary.org/obo/IAO_0000116)                                        |                   |x              |           |0..*                           |
+|[Issue link](#424-term-tracker-item)                                                               |[term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)](http://purl.obolibrary.org/obo/IAO_0000233)   |                   |x              |           |0..*                           |
+|[Term editors](#431-term-editor-term-contributors)                                                 |<http://purl.org/dc/terms/contributor>                                                                         |                   |               |x          |0..*                           |
+|[Example of usage](#432-example-of-usage)                                                          |[example of usage (IAO:0000112)](http://purl.obolibrary.org/obo/IAO_0000112)                                   |                   |               |x          |0..*                           |
+|[Defined by](#433-defined-by)                                                                      |<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>                                                             |                   |               |x          |1                              |
+|[Comments](#434-comments)                                                                          |<http://www.w3.org/2000/01/rdf-schema#comment>                                                                 |                   |               |x          |0..*                           |
 
 ### 4.5 Relations to related work
 
@@ -2181,6 +2356,9 @@ You can discuss this recommendation with us at <>.
 * <https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term>
 * <https://obofoundry.org/principles/fp-012-naming-conventions.html>
 * <https://obofoundry.org/principles/fp-019-term-stability.html>
+* <https://obofoundry.org/principles/fp-006-textual-definitions.html>
+* [OBO Principle 19](https://obofoundry.org/principles/fp-019-term-stability.html)
+* [Obsoleting an Existing Ontology Term](https://oboacademy.github.io/obook/howto/obsolete-term/)
 
 ## 5 Sources
 
@@ -2229,6 +2407,20 @@ You can discuss this recommendation with us at <>.
 22. <a name="source22"></a> Charles Tapley Hoyt (2024): Bioregistry JSON Schema. URL (latest): <https://bioregistry.io/schema.json>, URL (v0.10.190): <https://github.com/biopragmatics/bioregistry/blob/v0.10.190/src/bioregistry/schema/schema.json>  (last access: 04 April 2024).
 
 23. <a name="source23"></a> Schema.Org Community Group (n/a): DefinedTermSet. A Schema.org Type. URL: <https://schema.org/DefinedTermSet> (last access: 04 April 2024).
+
+24. <a name="source24"></a> Seppälä, S., Ruttenberg, A., & Smith, B. (2017). Guidelines for writing definitions in ontologies. Ciência Da Informação, 46(1). retrieved via <https://philpapers.org/archive/SEPGFW.pdf> on: 19 February 2024.
+
+25. <a name="source25"></a> Strömert et al. (2024): Guidance on how to use the IUPAC Gold Book as a canonical source for textual definitions in chemical ontologies. ChemRxiv. DOI: [https://doi.org/10.26434/chemrxiv-2024-fvzpq](https://doi.org/10.26434/chemrxiv-2024-fvzpq). (Preprint)
+
+26. <a name="source26"></a> OBO Foundry (n/a): Principle: Notification of Changes (principle 13). URL: <https://obofoundry.org/principles/fp-013-notification.html> (last access: 25 April 2025).
+
+27. <a name="source27"></a> DCMI Usage Board (2020): DCMI Metadata Terms. URI: <http://purl.org/dc/terms/>. Version: <http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/> (last access: 25 April 2025).
+
+28. <a name="source28"></a> OBO Foundry (n/a): Principle: Stability of Term Meaning (principle 19). URL: <https://obofoundry.org/principles/fp-019-term-stability.html> (last access: 25 April 2025).
+
+29. <a name="source29"></a> [Obsoleting an Existing Ontology Term](https://oboacademy.github.io/obook/howto/obsolete-term/) in [[30]](#source30) (last access: 25 April 2025).
+
+30. <a name="source30"></a> [OBO Semantic Engineering Training](https://oboacademy.github.io/obook/) (last access: 25 April 2025).
 
 <!-- 24. <a name="source24"></a>  -->
 
