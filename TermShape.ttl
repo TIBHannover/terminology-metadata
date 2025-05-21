@@ -202,7 +202,7 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
       obo:IAO_0000227
       obo:OMO_0001000
     );
-    sh:message """The value for \"obsoletion reason\" is not in the recommended list of values. These are: [failed exploratory term](http://purl.obolibrary.org/obo/IAO_0000103), [placeholder removed](http://purl.obolibrary.org/obo/IAO_0000226), [term imported](http://purl.obolibrary.org/obo/IAO_0000228), [term split](http://purl.obolibrary.org/obo/IAO_0000229), [terms merged](http://purl.obolibrary.org/obo/IAO_0000227), [out of scope](http://purl.obolibrary.org/obo/OMO_0001000). Please select an appropriate obsolesence reason and provide it as an IRI. Recommended property: \'has obsolescence reason\' <http://purl.obolibrary.org/obo/IAO_0000231>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0000231 <http://purl.obolibrary.org/obo/IAO_0000103>."""@en ;
+    sh:message """The value for 'obsoletion reason' is not in the recommended list of values. These are: [failed exploratory term](http://purl.obolibrary.org/obo/IAO_0000103), [placeholder removed](http://purl.obolibrary.org/obo/IAO_0000226), [term imported](http://purl.obolibrary.org/obo/IAO_0000228), [term split](http://purl.obolibrary.org/obo/IAO_0000229), [terms merged](http://purl.obolibrary.org/obo/IAO_0000227), [out of scope](http://purl.obolibrary.org/obo/OMO_0001000). Please select an appropriate obsolesence reason and provide it as an IRI. Recommended property: 'has obsolescence reason' <http://purl.obolibrary.org/obo/IAO_0000231>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0000231 <http://purl.obolibrary.org/obo/IAO_0000103>."""@en ;
   ];
 
 ### 4.1.3.3 Term replacement (mandatory only if applicable!)
@@ -214,7 +214,7 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
     sh:path obo:IAO_0100001 ;
     sh:nodeKind sh:IRI ;
     sh:minCount 0 ; # mandatory only if applicable
-    sh:message """The replacement term must be provdided as an IRI. Please check if it was provided in another format. If so, please make sure to reference the replacement term with its identifier. Recommended property: \'term replaced by\' <http://purl.obolibrary.org/obo/IAO_0100001)>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0100001 <https://www.purl.org/SomeOtherOntologyClass>."""@en
+    sh:message """The replacement term must be provdided as an IRI. Please check if it was provided in another format. If so, please make sure to reference the replacement term with its identifier. Recommended property: 'term replaced by' <http://purl.obolibrary.org/obo/IAO_0100001)>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0100001 <https://www.purl.org/SomeOtherOntologyClass>."""@en
   ];
 
 ## 4.2 Recommended metadata
@@ -293,7 +293,7 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
       )
     ] ;
     sh:nodeKind sh:IRI ;
-    sh:message """The term tracker item should be provided as an IRI. If the term was discussed on an issue tracker, you should provide the link to that issue, in particular any parts of the conversation, that were decisive for the final definition of the term. If the term was derived from another ontology, you should link to the respective term identifier. If the term and its definition was mainly informed by a domain expert, you should provide their ORCID. If the term and its definition are based on a scholarly publication, you should provide the DOI. Recommended property: \'term tracker item\' <http://purl.obolibrary.org/obo/IAO_0000233>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0000233 <https://github.com/SomeOrganisation/SomeOntology/issues#12>"""@en ;
+    sh:message """The term tracker item should be provided as an IRI. If the term was discussed on an issue tracker, you should provide the link to that issue, in particular any parts of the conversation, that were decisive for the final definition of the term. If the term was derived from another ontology, you should link to the respective term identifier. If the term and its definition was mainly informed by a domain expert, you should provide their ORCID. If the term and its definition are based on a scholarly publication, you should provide the DOI. Recommended property: 'term tracker item' <http://purl.obolibrary.org/obo/IAO_0000233>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0000233 <https://github.com/SomeOrganisation/SomeOntology/issues#12>"""@en ;
   ];
 
 ## 4.3 Optional metadata
