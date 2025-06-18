@@ -1,5 +1,5 @@
-@base <https://www.purl.org/termmetadata/DummyTermPASSES> .
-@prefix : <https://www.purl.org/termmetadata/DummyTermPASSES> .
+@base <https://purl.org/ontologymetadata/DummyTermFAILS> .
+@prefix : <https://purl.org/ontologymetadata/DummyTermFAILS#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <http://schema.org/> .
@@ -23,66 +23,103 @@
 @prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
 @prefix emmo: <http://emmo.info/emmo#> .
 @prefix ex: <https://www.example.com/SomeOntology>.
-@prefix termmeta: <https://www.purl.org/termmetadata/shape> .
 
-ex: a owl:Ontology ;
-rdfs:Label "anonymous ontology"@en.
+<https://purl.org/ontologymetadata/DummyTermFAILS> a owl:Ontology ;
+  rdfs:label "Anonymous Ontology"@en;
+  dc:description "This demo ontology demonstrates missing and non-conformant metadata for terms (i.e. classes, individuals, properties)."@en ;
+  rdfs:seeAlso <https://doi.org/10.5281/zenodo.11103070> ;
+  dcterms:modified "2025-06-30"^^xsd:date ;
+  .
 
-<https://www.purl.org/termmetadata/DummyTermPASSES> a owl:Class ;
-skos:prefLabel "label"@en ;
-rdfs:label "label"@en ;
-skos:definition "mwah"@de, "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
-# owl:deprecated false ;
-obo:IAO_0000231 <http://purl.obolibrary.org/obo/IAO_0000103>;
-obo:IAO_0100001 <bumm>;
-skos:altLabel "möp"@de;
-dcterms:modified "2025-04-25"^^xsd:date;
-skos:editorialNote "mlp"@en.
+<https://purl.org/ontologymetadata/DummyTermFAILS#1> a owl:Class ;
+skos:definition "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources" ;
+obo:IAO_0000231 "final" ;
+dcterms:modified "2025-04-25";
+.
 
-[ rdf:type owl:Axiom , termmeta:DefinitionSourceAxiom ;
-   owl:annotatedSource <https://www.purl.org/termmetadata/DummyTermPASSES> ;
+## Demonstration of different styles to add sources for entity definitions + failures
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://purl.org/ontologymetadata/DummyTermFAILS#1> ;
    owl:annotatedProperty <http://www.w3.org/2004/02/skos/core#definition> ;
    owl:annotatedTarget "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
-   <http://purl.obolibrary.org/obo/IAO_0000119> <https://en.wikipedia.org/wiki/Smart_grid> ;
-   rdfs:label "providing defintion source - style 1"@en 
+  #  <http://purl.obolibrary.org/obo/IAO_0000119> <https://en.wikipedia.org/wiki/Smart_grid> ;
+   rdfs:label "providing defintion source - style 1"@en ;
  ] .
 
-[ rdf:type owl:Axiom, termmeta:DefinitionSourceAxiom ;
-   owl:annotatedSource <https://www.purl.org/termmetadata/DummyTermPASSES> ;
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://purl.org/ontologymetadata/DummyTermFAILS#1> ;
    owl:annotatedProperty <http://www.w3.org/2004/02/skos/core#definition> ;
    owl:annotatedTarget "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
    <http://purl.org/dc/terms/bibliographicCitation> "Jane Doe et al. (2025): The Smart Grid - theory vs. reality. In: John Doe et al. (eds.): Smart Grid and the energy of tomorrow, pp. 1-28. DOI: https://doi.org/10.3794/reposi.1234567 (last accessed: 00.00.0000)" ;
    <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/3.0/> ;
-   <http://purl.org/dc/terms/rightsHolder> <https://ror.org/20ßgle32> ;
+  #  <http://purl.org/dc/terms/rightsHolder> <https://ror.org/20ßgle32> ;
    <http://purl.org/dc/terms/source> <https://doi.org/10.3794/reposi.1234567> ;
    rdfs:label "providing defintion source - style 2"@en 
  ] .
 
-[ rdf:type owl:Axiom, termmeta:DefinitionSourceAxiom ;
-   owl:annotatedSource <https://www.purl.org/termmetadata/DummyTermPASSES> ;
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource <https://purl.org/ontologymetadata/DummyTermFAILS#1> ;
    owl:annotatedProperty skos:definition ;
    owl:annotatedTarget "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
    prov:hadPrimarySource <https://doi.org/10.3794/reposi.1234567> ;
-   prov:hadPrimarySource <https://doi.org/10.3794/reposi.0987654> ;
+   prov:hadPrimarySource "https://doi.org/10.3794/reposi.0987654" ;
    rdfs:label "providing defintion source - style 3"@en 
  ] .
 
- [ rdf:type owl:Axiom, termmeta:DefinitionSourceAxiom ;
-   owl:annotatedSource <https://www.purl.org/termmetadata/DummyTermPASSES> ;
+ [ rdf:type owl:Axiom ;
+   #owl:annotatedSource <https://purl.org/ontologymetadata/DummyTermFAILS#1> ;
    owl:annotatedProperty <http://www.w3.org/2004/02/skos/core#definition> ;
    owl:annotatedTarget "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ;
    prov:hadPrimarySource <https://orcid.org/0000-0000-0000-0000> ;
    rdfs:label "providing defintion source - style 4"@en 
  ] .
 
- prov:hadPrimarySource a owl:AnnotationProperty .
 
-<http://purl.org/dc/terms/bibliographicCitation> a owl:AnnotationProperty .
+### Used entities from other vocabs
 
-<http://purl.org/dc/terms/license> a owl:AnnotationProperty .
+prov:hadPrimarySource a owl:AnnotationProperty ;
+  a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/prov-o#> ;
+  rdfs:label "hadPrimarySource" ;
+.
 
-<http://purl.org/dc/terms/rightsHolder> a owl:AnnotationProperty .
+<http://purl.org/dc/terms/bibliographicCitation> a owl:AnnotationProperty ;
+    dcterms:description "Recommended practice is to include sufficient bibliographic detail to identify the resource as unambiguously as possible."@en ;
+    a rdf:Property ;
+    rdfs:comment "A bibliographic reference for the resource."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Bibliographic Citation"@en ;
+.
 
-<http://purl.org/dc/terms/source> a owl:AnnotationProperty . 
+<http://purl.org/dc/terms/license> a owl:AnnotationProperty ;
+  dcterms:description "Recommended practice is to identify the license document with a URI. If this is not possible or feasible, a literal value that identifies the license may be provided."@en ;
+  rdfs:comment "A legal document giving official permission to do something with the resource."@en ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+  rdfs:label "License"@en ;
+.
 
-<http://purl.obolibrary.org/obo/IAO_0000119> a owl:AnnotationProperty .
+<http://purl.org/dc/terms/rightsHolder> a owl:AnnotationProperty ;
+  dcterms:description "Recommended practice is to refer to the rights holder with a URI. If this is not possible or feasible, a literal value that identifies the rights holder may be provided."@en ;
+  a rdf:Property ;
+  rdfs:comment "A person or organization owning or managing rights over the resource."@en ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+  rdfs:label "Rights Holder"@en .
+
+<http://purl.org/dc/terms/source> a owl:AnnotationProperty ;
+    dcterms:description "This property is intended to be used with non-literal values. The described resource may be derived from the related resource in whole or in part. Best practice is to identify the related resource by means of a URI or a string conforming to a formal identification system."@en ;
+    a rdf:Property ;
+    rdfs:comment "A related resource from which the described resource is derived."@en ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> ;
+    rdfs:label "Source"@en ;
+. 
+
+<http://purl.obolibrary.org/obo/IAO_0000119> 
+  a owl:AnnotationProperty ;
+  rdfs:label "definition source"@en ;
+  # obo:IAO_0000119 "Discussion on obo-discuss mailing-list, see http://bit.ly/hgm99w"@en, "GROUP:OBI:<http://purl.obolibrary.org/obo/obi>"@en ;
+  # obo:IAO_0000115 "Formal citation, e.g. identifier in external database to indicate / attribute source(s) for the definition. Free text indicate / attribute source(s) for the definition. EXAMPLE: Author Name, URI, MeSH Term C04, PUBMED ID, Wiki uri on 31.01.2007"@en ;
+  obo:IAO_0000117 "PERSON:Daniel Schober"@en ;
+  obo:IAO_0000111 "definition source"@en ;
+  obo:IAO_0000114 obo:IAO_0000122 ;
+  rdfs:isDefinedBy obo:iao.owl .

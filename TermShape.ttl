@@ -1,5 +1,5 @@
-@base <https://www.purl.org/termmetadata/shape> .
-@prefix termmeta: <https://www.purl.org/termmetadata/shape> .
+@base <https://purl.org/ontologymetadata/TermShape> .
+@prefix termmeta: <https://purl.org/ontologymetadata/TermShape> .
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -8,7 +8,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
-@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://www.schema.org/> .
@@ -19,26 +18,63 @@
 @prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
 @prefix emmo: <http://emmo.info/emmo#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
-
-# TODOS
-## make nicer termgraph with more meaningful values
-## make failing termgraph
-## ein paar worte zu den term-shapes im metadaten guide einbringen
-
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix sdo: <https://schema.org/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+ 
 # Term-level metadata
 
-termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
-  sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
+termmeta: 
+  rdf:type sh:NodeShape ;
+  rdf:type owl:Ontology ;
+  # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
+  dcterms:created "2025-06-30"^^xsd:date ;
+  dcterms:modified "2025-06-30"^^xsd:date ;
+  owl:versionIRI <https://purl.org/ontologymetadata/TermShape/20250630> ;
+  owl:versionIRI <https://raw.githubusercontent.com/TIBHannover/terminology-metadata/refs/tags/20250630/TermShape.ttl> ;
+  dcterms:title "SHACL Shape by TIB for validating term-level metadata of entities in ontologies."@en ;
+  dcterms:title "SHACL Shape der TIB zur Validierung termbezogener Metadaten für Entitäten in Ontologien"@de ;
+  dcterms:abstract "This shape is intended to be used with online SHACL validators, e.g. SHACL PLay! at <https://shacl-play.sparna.fr/play/validate>. The specification checks whether expected metadata are provided for ontology entities (i.e. owl:Class, owl:NamedIndividual, owl:ObjectProperty, owl:AnnotationProperty, owl:DatatypeProperty). If you have any remarks, questions or suggestions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
+  dcterms:created "2024-06-30T00:00:00"^^xsd:dateTime;
+  dcterms:modified "2025-06-30T00:00:00"^^xsd:dateTime;
+  dcterms:creator <https://orcid.org/0000-0002-1019-9151> ;
+  dcterms:creator <https://orcid.org/0000-0003-1043-4964> ;
+  dcterms:creator <https://orcid.org/0000-0003-2499-7741> ;
+  dcterms:creator <https://orcid.org/0000-0002-1595-3213> ;
+  dcterms:creator <https://orcid.org/0000-0002-8280-0487> ;
+  vann:preferredNamespacePrefix "termmeta";
+  doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues> ;
+  premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md> ;
+  bibo:status "active"@en ;
+  doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+  sdo:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+  dcterms:subject <http://d-nb.info/gnd/4827894-4> ;
+  dcterms:subject <http://d-nb.info/gnd/4410512-5> ;
+  doap:repository <https://github.com/TIBHannover/terminology-metadata>;
+  mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
+  mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en ;
+  dcterms:references <https://doi.org/10.5281/zenodo.11103070> ;
+  dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)" ;
+  adms:versionNotes "The shape provides a first draft for a SHACL specification for term-level metadata."@en;
+  mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md#45-relations-to-related-work>;
+  #sh:targetClass owl:Class , rdfs:Class , sh:targetClass, owl:ObjectProperty , owl:NamedIndividual , owl:AnnotationProperty , owl:DatatypeProperty ; # will be selected by each property shape - open question: how can we prevent selecting anonymous classes and bnodes?
   sh:closed false;
 
-## Mandatory metadata
+## Mandatory term-level metadata
 
-### 4.1.1 Preferred label - minCount
+### 4.1.1 Term-level metadata - preferred label - minCount
+# this shape will also select blank nodes and items not in your direct namespace, which likely are not listed with a label or usually do not get one - we recommend to scan the validation repors for your namespace and ignore the rest
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.1 Preferred label - minCount"@en ;
+    sh:name "4.1.1 Term-level metadata - preferred label - minCount (mandatory)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#411-term-level-metadata---preferred-label> ;
     sh:severity sh:Violation ;
+    sh:targetClass owl:Class , rdfs:Class , owl:ObjectProperty , owl:AnnotationProperty , owl:DatatypeProperty , owl:NamedIndividual ;
     sh:path [
       sh:alternativePath (
         rdfs:label
@@ -54,55 +90,52 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
    sh:message """The entity does not have a label. At least one preferred label is required. When you add a label, make sure to add it as an rdf:langString and to tag it with a language tag that conforms to <http://id.loc.gov/vocabulary/iso639-2>. Please do this, even if you provide the ontology in one language only! Recommended property: <http://www.w3.org/2000/01/rdf-schema#label>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; rdfs:label "smart grid"@en ."""@en ;
   ];
 
-### 4.1.1 Preferred label - datatype
+### 4.1.1 Term-level metadata - preferred label - datatype
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.1 Preferred label - datatype"@en ;
+    sh:name "4.1.1 Term-level metadata - preferred label - datatype (mandatory)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md##411-term-level-metadata---preferred-label> ;
     sh:severity sh:Warning ;
-    sh:path [
-      sh:alternativePath (
-        rdfs:label
-        skos:prefLabel
-        dcterms:title
-        dc:title
-        schema:name
-        gndo:preferredNameForTheSubjectHeading
-        physh:prefLabel
-      )
-     ];
-    sh:datatype rdf:langString ;
-    sh:message """The entity's label is not an rdf:langString. Add a language tag to the label that conforms to <http://id.loc.gov/vocabulary/iso639-2>. Recommended property: <http://www.w3.org/2000/01/rdf-schema#label>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; rdfs:label "smart grid"@en ."""@en ;
+    sh:or (
+      [sh:targetObjectsOf rdfs:label ; sh:datatype rdf:langString ; sh:message "Values of [rdfs:label](http://www.w3.org/2000/01/rdf-schema#label) should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; rdfs:label \"smart grid\"@en ."@en ;] #sh:targetObjectsOf is sufficient to select affcted nodes
+      [sh:targetObjectsOf skos:prefLabel ; sh:datatype rdf:langString ; sh:message "Values of [skos:prefLabel](http://www.w3.org/2004/02/skos/core#prefLabel) should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:prefLabel \"smart grid\"@en ."@en ;]
+      [sh:targetObjectsOf dcterms:title ; sh:datatype rdf:langString ;sh:message "Values of [dcterms:title](http://purl.org/dc/terms/title) should have a language tag.  Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dcterms:title \"smart grid\"@en ."@en ;]
+      [sh:targetObjectsOf dc:title ; sh:datatype rdf:langString ; sh:message "Values of [dc:title](http://purl.org/dc/elements/1.1/title) should have a language tag.  Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dc:title \"smart grid\"@en ."@en ;]
+      [sh:targetObjectsOf schema:name ; sh:datatype rdf:langString ; sh:message "Values of [schema:name](https://schema.org/name) should have a language tag.  Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; schema:name \"smart grid\"@en ."@en ;]
+      [sh:targetObjectsOf gndo:preferredNameForTheSubjectHeading ; sh:datatype rdf:langString ; sh:message "Values of [gndo:preferredNameForTheSubjectHeading](https://d-nb.info/standards/elementset/gnd#preferredNameForTheSubjectHeading) should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; gndo:preferredNameForTheSubjectHeading \"smart grid\"@en ."@en ;]
+      [sh:targetObjectsOf physh:prefLabel ; sh:datatype rdf:langString ; sh:message "Values of physh:prefLabel should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; physh:prefLabel \"smart grid\"@en ."@en ;]
+    ) ;
   ];
 
-### 4.1.1 Preferred label - unique language
+### 4.1.1 Term-level metadata - preferred label - unique language
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.1 Preferred label - unique language"@en ;
+    sh:name "4.1.1 Term-level metadata - preferred label - unique language (mandatory)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md##411-term-level-metadata---preferred-label> ;
     sh:severity sh:Warning ;
-    sh:path [
-      sh:alternativePath (
-        rdfs:label
-        skos:prefLabel
-        dcterms:title
-        dc:title
-        schema:name
-        gndo:preferredNameForTheSubjectHeading
-        physh:prefLabel
-      )
-    ];
-    sh:uniqueLang true ;
+    sh:or (
+      [sh:targetObjectsOf rdfs:label ; sh:uniqueLang true ;] #sh:targetObjectsOf is sufficient to select affcted nodes
+      [sh:targetObjectsOf skos:prefLabel ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf dcterms:title ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf dc:title ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf schema:name ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf gndo:preferredNameForTheSubjectHeading ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf physh:prefLabel ; sh:uniqueLang true ;]
+    ) ;
     sh:message """The entity has more than one preferred label in the same language. There must be only one preferred label per language. Please check, if all labels carry the correct language tag. If there are several labels for the same entity, make sure to choose one as the preferred label and set the other as a synonym. (e.g. with skos:altLabel)."""@en ;
   ];
 
 
-### 4.1.2 Definition - min Count
+### 4.1.2 Term-level metadata - definition - minCount
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.2 Definition - min Count"@en ;
+    sh:name "4.1.2 Term-level metadata - definition - minCount (mandatory)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#412-term-level-metadata---definition> ;
     sh:severity sh:Violation ;
+    sh:targetClass owl:Class , rdfs:Class , owl:ObjectProperty , owl:AnnotationProperty , owl:DatatypeProperty , owl:NamedIndividual ;
     sh:path [
       sh:alternativePath (
         skos:definition
@@ -119,80 +152,98 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
     sh:message """The entity is not defined. A definition must be added. There must only be one definition per language. The definition must be an intensional definition (see also <https://en.wikipedia.org/wiki/Extensional_and_intensional_definitions#Intensional_definition>). Recommended property: <http://www.w3.org/2004/02/skos/core#definition>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:definition "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ."""@en ;
   ];
 
-### 4.1.2 Definition - datatype
+### 4.1.2 Term-level metadata - definition - datatype
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.2 Definition - datatype"@en ;
+    sh:name "4.1.2 Term-level metadata - definition - datatype (mandatory)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#412-term-level-metadata---definition> ;
     sh:severity sh:Warning ;
-    sh:path [
-      sh:alternativePath (
-        skos:definition
-        obo:IAO_0000115
-        dcterms:description
-        gndo:definition
-        prov:definition
-        dc:description
-        oio:hasDefinition
-        emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84
-      )
-    ];
-    sh:datatype rdf:langString ;
-    sh:message """The entity's definition is not an rdf:langString. Add a language tag to the definition that conforms to <http://id.loc.gov/vocabulary/iso639-2>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:definition "electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources"@en ."""@en ;
+    sh:or (
+      [sh:targetObjectsOf skos:definition ; sh:datatype rdf:langString ; sh:message "Values of skos:definition should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:definition \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+      [sh:targetObjectsOf obo:IAO_0000115 ; sh:datatype rdf:langString ; sh:message "Values of ['definition' (obo:IAO_0000115)](http://purl.obolibrary.org/obo/IAO_0000115) should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; obo:IAO_0000115 \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+      [sh:targetObjectsOf dcterms:description ; sh:datatype rdf:langString ; sh:message "Values of dcterms:description should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dcterms:description \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+      [sh:targetObjectsOf gndo:definition ; sh:datatype rdf:langString ; sh:message "Values of gndo:definition should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; gndo:definition \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+      [sh:targetObjectsOf prov:definition ; sh:datatype rdf:langString ; sh:message "Values of prov:definition should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; prov:definition \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+      [sh:targetObjectsOf dc:description ; sh:datatype rdf:langString ; sh:message "Values of dc:description should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dc:description \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+      [sh:targetObjectsOf oio:hasDefinition ; sh:datatype rdf:langString ; sh:message "Values of oio:hasDefinition should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; oio:hasDefinition \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+      [sh:targetObjectsOf emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84 ; sh:datatype rdf:langString ; sh:message "Values of ['definition' (emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84)](http://emmo.info/emmo#EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84) should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84 \"electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources\"@en ."@en ;]
+    ) ;
   ] ;
 
-### 4.1.2 Definition - unique language
+### 4.1.2 Term-level metadata - definition - unique language
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.2 Definition - unique language"@en ;
+    sh:name "4.1.2 Term-level metadata - definition - unique language (mandatory)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#412-term-level-metadata---definition> ;
     sh:severity sh:Warning ;
-    sh:path [
-      sh:alternativePath (
-        skos:definition
-        obo:IAO_0000115
-        dcterms:description
-        gndo:definition
-        prov:definition
-        dc:description
-        oio:hasDefinition
-        emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84
-      )
-    ];
+    sh:or (
+      [sh:targetObjectsOf skos:definition ; sh:uniqueLang true ;] #sh:targetObjectsOf is sufficient to select affcted nodes
+      [sh:targetObjectsOf obo:IAO_0000115 ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf dcterms:description ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf gndo:definition ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf prov:definition ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf dc:description ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf oio:hasDefinition ; sh:uniqueLang true ;]
+      [sh:targetObjectsOf emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84 ; sh:uniqueLang true ;]
+    ) ;
     sh:uniqueLang true ;
     sh:message """The entity has more than one definition in the same language. There must be only one definition per language. Please check, if all definitions carry the correct language tag. If there are several definitions for the same entity, make sure to choose only one that is adequate to describe the entity."""@en ;
   ];
 
-##### 4.1.2.1 Definition source
+##### 4.1.2.1 Term-level metadata - definition source
 
-# we offer a range of possibilities to provide definition sources - would require several shapes
-# requires the introduction of subclasses of owl:Axiom > the owl:Axioms are seperate, anonymous entities and cannot be selected via sh:path > cannot be part of the TermShape
-# see termmeta:DefinitionSourceAxiomShapeStyle1, termmeta:DefinitionSourceAxiomShapeStyle2 and termmeta:DefinitionSourceAxiomShapeStyle3and4
-
-### 4.1.3 Term deprecation/ obsoletion (mandatory only if applicable!)
-
-### 4.1.3.1 Deprecation marker (mandatory only if applicable!)
+# we offer a range of possibilities to provide definition sources - requires several shapes
+# need to be seperate from TermShape, since sources are given as owl:Axioms
+# see DefinitionSourceAxiomShapeStyle1.ttl, DefinitionSourceAxiomShapeStyle2.ttl and DefinitionSourceAxiomShapeStyle3and4.ttl in this repo
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.3.1 Deprecation marker (mandatory only if applicable!)"@en ;
+    sh:name "4.1.2 Term-level metadata - definition source (mandatory)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#4121-term-level-metadata---definition-source> ;
     sh:severity sh:Info ;
-    sh:path owl:deprecated ;
-    sh:datatype xsd:boolean ;
+    sh:minCount 1 ;
+    sh:targetClass owl:Class , owl:NamedIndividual, owl:AnnotationProperty , owl:ObjectProperty , owl:DatatypeProperty ;
+    sh:path obo:IAO_0000119 ;
+    sh:message "You should provide a source for the definition. The source can be provided as a free text, a PID, a versioned link or an owl:Axiom (referring to annotated source, annotated target, i.e. the definition, the annotation property, e.g. skos:definition and information about the source). Recommended property: 'definition source' [obo:IAO_0000119](http://purl.obolibrary.org/obo/IAO_0000119). For different styles providing the definiton source as an owl:Axiom cf. Strömert et al. (2024): Guidance on how to use the IUPAC Gold Book as a canonical source for textual definitions in chemical ontologies. ChemRxiv. DOI: [https://doi.org/10.26434/chemrxiv-2024-fvzpq](https://doi.org/10.26434/chemrxiv-2024-fvzpq). (Preprint) and corresponding SHACL specificiations at <https://doi.org/10.5281/zenodo.11103070>. Attention: If you provide definition sources as instances of owl:Axiom, this shape will continue generating an info message!"@en ;
+  ];
+
+### 4.1.3 Term-level metadata - term deprecation/ obsoletion (mandatory only if applicable!)
+
+### 4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!) - minCount
+
+  sh:property [
+    rdf:type sh:PropertyShape ;
+    sh:name "4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#4131-term-level-metadata---deprecation-marker-mandatory-only-if-applicable> ;
+    sh:severity sh:Info ;
+    sh:targetClass owl:Class , owl:NamedIndividual, owl:AnnotationProperty , owl:ObjectProperty , owl:DatatypeProperty ;
     sh:minCount 0 ; # mandatory only if applicable
     sh:maxCount 1 ;
     sh:message """There is more than one deprecation marker for the entity. There must only be one. Recommended property: <http://www.w3.org/2002/07/owl#deprecated>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; owl:deprecated true ."""@en
   ];
 
-### 4.1.3.2 Obsoletion reason (mandatory only if applicable!)
-# does not trigger anything, even if value is not in list, check whether sh:in is properly applied! > was not declared as an sh:PropertyShape > test again
+### 4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!) - datatype
+  sh:property [
+    rdf:type sh:PropertyShape ;
+    sh:name "4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#4131-term-level-metadata---deprecation-marker-mandatory-only-if-applicable> ;
+    sh:severity sh:Info ;
+    sh:targetObjectsOf owl:deprecated ;
+    sh:datatype xsd:boolean ;
+    sh:message """Values of owl:deprecated should be provided as xsd:boolean. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; owl:deprecated true ."""@en
+  ];
+
+### 4.1.3.2 Term-level metadata - obsoletion reason (mandatory only if applicable!)
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.3.2 Obsoletion reason (mandatory only if applicable!)"@en ;
+    sh:name "4.1.3.2 Term-level metadata - obsoletion reason (mandatory only if applicable!)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#4132-term-level-metadata---obsoletion-reason-mandatory-only-if-applicable> ;
     sh:severity sh:Warning ;
-    sh:path obo:IAO_0000231 ;
-    sh:nodeKind sh:IRI ; # eigenständige shape machen? oder passt eher so...
+    sh:targetObjectsOf obo:IAO_0000231 ;
+    sh:nodeKind sh:IRI ;
     sh:minCount 0 ; # mandatory only if applicable, minimal requirements is that it is one of the list items
     sh:in (
       obo:IAO_0000103
@@ -202,125 +253,118 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
       obo:IAO_0000227
       obo:OMO_0001000
     );
-    sh:message """The value for 'obsoletion reason' is not in the recommended list of values. These are: [failed exploratory term](http://purl.obolibrary.org/obo/IAO_0000103), [placeholder removed](http://purl.obolibrary.org/obo/IAO_0000226), [term imported](http://purl.obolibrary.org/obo/IAO_0000228), [term split](http://purl.obolibrary.org/obo/IAO_0000229), [terms merged](http://purl.obolibrary.org/obo/IAO_0000227), [out of scope](http://purl.obolibrary.org/obo/OMO_0001000). Please select an appropriate obsolesence reason and provide it as an IRI. Recommended property: 'has obsolescence reason' <http://purl.obolibrary.org/obo/IAO_0000231>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0000231 <http://purl.obolibrary.org/obo/IAO_0000103>."""@en ;
+    sh:message """The value for ['obsoletion reason' (obo:IAO_0000231)](http://purl.obolibrary.org/obo/IAO_0000231) is not in the recommended list of values. Choose one of: [failed exploratory term](http://purl.obolibrary.org/obo/IAO_0000103), [placeholder removed](http://purl.obolibrary.org/obo/IAO_0000226), [term imported](http://purl.obolibrary.org/obo/IAO_0000228), [term split](http://purl.obolibrary.org/obo/IAO_0000229), [terms merged](http://purl.obolibrary.org/obo/IAO_0000227), [out of scope](http://purl.obolibrary.org/obo/OMO_0001000). Please select an appropriate obsolesence reason and provide it as an IRI. Recommended property: 'has obsolescence reason' <http://purl.obolibrary.org/obo/IAO_0000231>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; obo:IAO_0000231 <http://purl.obolibrary.org/obo/IAO_0000103>."""@en ;
   ];
 
-### 4.1.3.3 Term replacement (mandatory only if applicable!)
+### 4.1.3.3 Term-level metadata - term replacement (mandatory only if applicable!)
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.1.3.3 Term replacement (mandatory only if applicable!)"@en ;
+    sh:name "4.1.3.3 Term-level metadata - term replacement (mandatory only if applicable!)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#4133-term-level-metadata---term-replacement-mandatory-only-if-applicable> ;
     sh:severity sh:Warning ;
-    sh:path obo:IAO_0100001 ;
+    sh:targetObjectsOf obo:IAO_0100001 ;
     sh:nodeKind sh:IRI ;
     sh:minCount 0 ; # mandatory only if applicable
-    sh:message """The replacement term must be provdided as an IRI. Please check if it was provided in another format. If so, please make sure to reference the replacement term with its identifier. Recommended property: 'term replaced by' <http://purl.obolibrary.org/obo/IAO_0100001)>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0100001 <https://www.purl.org/SomeOtherOntologyClass>."""@en
+    sh:message """Values of ['term replaced by' (obo:IAO_0100001)](http://purl.obolibrary.org/obo/IAO_0100001) must be IRIs. Please check if it it provided in another format (e.g. xsd:string). If so, please make sure to reference the replacement term with its identifier. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0100001 <https://www.purl.org/SomeOtherOntologyClass>."""@en
   ];
 
-## 4.2 Recommended metadata
+## 4.2 Recommended term-level metadata
 
-### 4.2.1 Synonyms/ alternative labels
+### 4.2.1 Term-level metadata - synonyms/ alternative labels
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.2.1 Synonyms/ alternative labels"@en ;
+    sh:name "4.2.1 Term-level metadata - synonyms/ alternative labels (recommended)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#421-term-level-metadata---synonyms-alternative-labels> ;
     sh:severity sh:Warning ;
-    sh:path [
-      sh:alternativePath (
-        skos:altLabel
-        oio:hasExactSynonym
-        obo:IAO_0000118
-      )
-    ];
-    sh:datatype rdf:langString ;
-    sh:message """The synonym should be an rdf:langString. You should add a language tag to the comment that conforms to <http://id.loc.gov/vocabulary/iso639-2>. Recommended property: <http://www.w3.org/2004/02/skos/core#altLabel>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:altLabel "intelligent grid"@en ."""@en ;
+    sh:or (
+      [sh:targetObjectsOf skos:altLabel; sh:datatype rdf:langString ; sh:message "Values of skos:altLabel should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:altLabel \"intelligent grid\"@en ."@en ;]
+      [sh:targetObjectsOf oio:hasExactSynonym; sh:datatype rdf:langString ; sh:message "Values of oio:hasExactSynonym should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:altLabel \"intelligent grid\"@en ."@en ;]
+      [sh:targetObjectsOf obo:IAO_0000118; sh:datatype rdf:langString ; sh:message "Values of ['alternative term' (obo:IAO_0000118)](http://purl.obolibrary.org/obo/IAO_0000118) should have a language tag. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:altLabel \"intelligent grid\"@en ."@en ;]
+    );
   ];
 
-### 4.2.2 Date modified
-# can i combine the current naming pattern with this alternative naming pattern? Term metadata - date modified (recommended)
+### 4.2.2 Term-level metadata - date modified (recommended)
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.2.2 Date modified"@en ;
+    sh:name "4.2.2 Term-level metadata - date modified (recommended)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#422-term-level-metadata---date-modified> ;
     sh:severity sh:Warning ;
     sh:path dcterms:modified ;
+    sh:targetClass owl:Class , rdfs:Class , owl:ObjectProperty , owl:AnnotationProperty , owl:DatatypeProperty , owl:NamedIndividual ;
     sh:minCount 1 ; # we recommend it and I would expect it on every item, so the aim of this constraint is to trigger a message at least to raise awareness
     sh:message """You should provide the date on which the term has last been modified. Please provide the date as xsd:date, xsd:dateTime or xsd:dateTimeStamp. Recommended property: <http://purl.org/dc/terms/modified>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dcterms:modified "2025-04-15T10:13:00"^^xsd:dateTime ."""@en
   ];
 
-### 4.2.2 Date modified - datatype
+### 4.2.2 Term-level metadata - date modified - datatype
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.2.2 Date modified - datatype"@en ;
+    sh:name "4.2.2 Term-level metadata - date modified - datatype (recommended)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#422-term-level-metadata---date-modified> ;
     sh:severity sh:Warning ;
-    sh:path dcterms:modified ;
+    sh:targetObjectsOf dcterms:modified ;
     sh:xone (
       [sh:datatype xsd:date ;]
       [sh:datatype xsd:dateTime ;]
       [sh:datatype xsd:dateTimeStamp ;]
     );
-    sh:message """The date modified of the term is not provided as an xsd:date, an xsd:dateTime or xsd:dateTimeStamp. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dcterms:modified "2025-04-15T10:13:00"^^xsd:dateTime ."""@en
+    sh:message """Values of dcterms:modified should be provided as xsd:date, xsd:dateTime or xsd:dateTimeStamp. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dcterms:modified "2025-04-15T10:13:00"^^xsd:dateTime ."""@en
   ];
 
-#### 4.2.3 Editor note
+#### 4.2.3 Term-level metadata - editor note
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.2.3 Editor note"@en ;
+    sh:name "4.2.3 Term-level metadata - editor note (recommended)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#423-term-level-metadata---editor-note> ;
     sh:severity sh:Warning ;
-    sh:path [
-      sh:alternativePath (
-        skos:editorialNote
-        obo:IAO_0000116
-      )
-    ];
-    sh:datatype rdf:langString ;
-    sh:message """The editor note is not provided as an rdf:langString. You should add a language tag to the comment that conforms to <http://id.loc.gov/vocabulary/iso639-2>. Recommended property: <http://www.w3.org/2004/02/skos/core#editorialNote>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:editorialNote "[2025-04-17T14:26:00][https://orcid.org/0000-0002-1584-4316] The class should be deprecated."@en ."""@en ;
+    sh:or (
+      [sh:targetObjectsOf skos:editorialNote ; sh:datatype rdf:langString ; sh:message "Values of skos:editorialNote should have language tags. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; skos:editorialNote \"[2025-04-17T14:26:00][https://orcid.org/0000-0002-1584-4316] The class should be deprecated.\"@en ."@en ;]
+      [sh:targetObjectsOf obo:IAO_0000116 ; sh:datatype rdf:langString ; sh:message "Values of [editor note](http://purl.obolibrary.org/obo/IAO_0000116) should have language tags. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; obo:IAO_0000116 \"[2025-04-17T14:26:00][https://orcid.org/0000-0002-1584-4316] The class should be deprecated.\"@en ."@en ;]
+    );
   ] ;
 
-#### 4.2.4 Term tracker item - datatype
+#### 4.2.4 Term-level metadata - term tracker item - datatype
 
 # I would not necessarily expect a term tracker item for every term, so I did not add a minCoun 1 constraint with severity sh:Info
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:severity sh:Warning ; 
-    sh:name "4.2.4 Term tracker item - datatype"@en ;
-    sh:path [
-      sh:alternativePath (
-        obo:IAO_0000233
-        prov:wasDerivedFrom
-        dcterms:source
-      )
-    ] ;
-    sh:nodeKind sh:IRI ;
-    sh:message """The term tracker item should be provided as an IRI. If the term was discussed on an issue tracker, you should provide the link to that issue, in particular any parts of the conversation, that were decisive for the final definition of the term. If the term was derived from another ontology, you should link to the respective term identifier. If the term and its definition was mainly informed by a domain expert, you should provide their ORCID. If the term and its definition are based on a scholarly publication, you should provide the DOI. Recommended property: 'term tracker item' <http://purl.obolibrary.org/obo/IAO_0000233>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0000233 <https://github.com/SomeOrganisation/SomeOntology/issues#12>"""@en ;
+    sh:name "4.2.4 Term-level metadata - term tracker item - datatype (recommended)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#424-term-level-metadata---term-tracker-item> ;
+    sh:or (
+      [sh:targetObjectsOf obo:IAO_0000233 ; sh:nodeKind sh:IRI ; sh:message "Values of [term tracker item](http://purl.obolibrary.org/obo/IAO_0000233) should be IRIs. Please check, whether the link was given in another format, e.g. xsd:string, xsd:anyURI). Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; obo:IAO_0000233 <https://github.com/SomeOrganisation/SomeOntology/issues#12>"@en ;]
+      [sh:targetObjectsOf prov:wasDerivedFrom ; sh:nodeKind sh:IRI ; sh:message "Values of [prov:wasDerivedFrom](http://www.w3.org/ns/prov#wasDerivedFrom) should be IRIs. Please check, whether the link was given in another format, e.g. xsd:string, xsd:anyURI). Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; prov:wasDerivedFrom <https://github.com/SomeOrganisation/SomeOntology/issues#12>"@en ;]
+      [sh:targetObjectsOf dcterms:source; sh:nodeKind sh:IRI ; sh:message "Values of [dcterms:source](http://purl.org/dc/terms/source) should be IRIs. Please check, whether the link was given in another format, e.g. xsd:string, xsd:anyURI). Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; dcterms:source <https://github.com/SomeOrganisation/SomeOntology/issues#12>"@en ;]
+    ) ;
   ];
 
-## 4.3 Optional metadata
+## 4.3 Optional term-level metadata
 
-#### 4.3.1 Term editor/ term contributor(s)
+#### 4.3.1 Term-level metadata - term editor/ term contributor(s)
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "Term editor / term contributors - data type"@en ;
+    sh:name "4.3.1 Term-level metadata - term editor / term contributors - data type (optional)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#431-term-level-metadata---term-editor-term-contributors> ;
     sh:severity sh:Warning ;
-    sh:path [
-      sh:alternativePath (
-        dcterms:contributor
-        dc:contributor
-        schema:contributor
-      )
-    ] ;
-    sh:nodeKind sh:IRI ;
-    sh:message """The term editor should be provided as an IRI, e.g. an Orcid, GND or Wikidata item may be used. Recommended property: <http://purl.org/dc/terms/contributor>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; dcterms:contributor <https://orcid.org/0000-0002-1584-4316> ."""@en ;
+    sh:or (
+      [sh:targetObjectsOf dcterms:contributor; sh:nodeKind sh:IRI ; sh:message "Values of [dcterms:contributor](http://purl.org/dc/terms/contributor) should be provided as an IRI, e.g. an Orcid, GND or Wikidata item may be used. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; <http://purl.org/dc/terms/contributor> <https://orcid.org/0000-0002-1584-4316> ."@en ;]
+      [sh:targetObjectsOf dc:contributor; sh:nodeKind sh:IRI ; sh:message "Values of [dc:contributor](http://purl.org/dc/elements/1.1/contributor) should be provided as an IRI, e.g. an Orcid, GND or Wikidata item may be used. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; dc:contributor <https://orcid.org/0000-0002-1584-4316> ."@en ;]
+      [sh:targetObjectsOf schema:contributor; sh:nodeKind sh:IRI ; sh:message "Values of [schema:contributor](https://schema.org/contributor) should be provided as an IRI, e.g. an Orcid, GND or Wikidata item may be used. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; schema:contributor <https://orcid.org/0000-0002-1584-4316> ."@en ;]
+    ) ;
   ];
 
-#### 4.3.2 Example of usage
+#### 4.3.2 Term-level metadata - example of usage - minCount
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:severity sh:Warning ;
-    sh:name "example of usage - data type"@en ;
+    sh:severity sh:Info ;
+    sh:targetClass owl:Class , rdfs:Class , owl:ObjectProperty , owl:AnnotationProperty , owl:DatatypeProperty , owl:NamedIndividual ; # kick indiiduals from this list, they are the examples! or should they have some as well? > what is Larsens opinion on this?
+    sh:name "4.3.2 Term-level metadata - example of usage - minCount (optional)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#432-term-level-metadata---example-of-usage> ;
     sh:path [
       sh:alternativePath (
         obo:IAO_0000112
@@ -328,233 +372,47 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
         vann:example
       )
     ];
-    sh:xone (
-      [sh:datatype rdf:langString ;]
-      [sh:nodeKind sh:IRI]
-    ) ;
-    sh:message """The example of usage should either be given as an rdf:langString or as an IRI pointing to an external source, where the application examples is discussed or demonstrated in detail. Recommended property: \\'example of usage\\' <http://purl.obolibrary.org/obo/IAO_0000112>. Example (text/turtle): <http://purl.obolibrary.org/obo/VIBSO_0000020> rdf:type owl:Class ; obo:IAO_0000115 "A setting datum that specifies the height (length in the Y direction) of the region of interest."@en ; obo:IAO_0000112 "0.5 mm"@en ."""@en ;
+    sh:minCount 1 ;
+    sh:message """Please consider providing an example for the entity. An example should be given as an xsd:string, an rdf:langString or as an IRI pointing to an external source, where the application examples is discussed or demonstrated in detail. Recommended property: \\'example of usage\\' <http://purl.obolibrary.org/obo/IAO_0000112>. Example (text/turtle): <http://purl.obolibrary.org/obo/VIBSO_0000020> rdf:type owl:Class ; obo:IAO_0000115 "A setting datum that specifies the height (length in the Y direction) of the region of interest."@en ; obo:IAO_0000112 "0.5 mm"@en ."""@en ;
   ];
 
-#### 4.3.3 Defined by - data type
+#### 4.3.2 Term-level metadata - example of usage - data type
 
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:severity sh:Warning ;
-    sh:name "4.3.3 Defined by - data type"@en ;
-    sh:path <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>;
-    sh:nodeKind sh:IRI ;
-    sh:message """The value provided with rdfs:isDefinedBy should be provided as an IRI. We expect an ontology IRI here, so you should provide the canonocial identifier of an ontology. To achieve maximum precision and traceability, we recommend to provide the version IRI of the ontology a term has been taken from. Recommended property: <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; rdfs:isDefinedBy <https://www.purl.org/SomeOntology> ."""@en ;
+    sh:name "4.3.2 Term-level metadata - example of usage - data type (optional)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#432-term-level-metadata---example-of-usage> ;
+    sh:or (
+      [sh:targetObjectsOf obo:IAO_0000112 ; sh:xone ( [sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI] [sh:datatype xsd:string] )]
+      [sh:targetObjectsOf skos:example ; sh:xone ( [sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI] [sh:datatype xsd:string] ) ]
+      [sh:targetObjectsOf vann:example ; sh:xone ( [sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI] [sh:datatype xsd:string] ) ]
+    ) ;
+    sh:message """The example of usage should either be given as an xsd:string, an rdf:langString or as an IRI pointing to an external source, where the application examples is discussed or demonstrated in detail. Recommended property: \\'example of usage\\' <http://purl.obolibrary.org/obo/IAO_0000112>. Example (text/turtle): <http://purl.obolibrary.org/obo/VIBSO_0000020> rdf:type owl:Class ; obo:IAO_0000115 "A setting datum that specifies the height (length in the Y direction) of the region of interest."@en ; obo:IAO_0000112 "0.5 mm"@en ."""@en ;
   ];
 
-
-#### 4.3.4 Comments - datatype
+#### 4.3.3 Term-level metadata - defined by - data type
 
   sh:property [
     rdf:type sh:PropertyShape ;
-    sh:name "4.3.4 Comments - datatype"@en ;
+    sh:severity sh:Warning ;
+    sh:name "4.3.3 Term-level metadata - defined by - data type (optional)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#433-term-level-metadata---defined-by> ;
+    sh:path <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>;
+    sh:nodeKind sh:IRI ;
+    sh:message """Values of rdfs:isDefinedBy should be provided as an IRI. We expect an ontology IRI here, so you should provide the canonocial identifier of an ontology. To achieve maximum precision and traceability, we recommend to provide the version IRI of the ontology a term has been taken from. Recommended property: <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>. Example (text/turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:CLass ; rdfs:isDefinedBy <https://www.purl.org/SomeOntology> ."""@en ;
+  ];
+
+ 
+#### 4.3.4 Term-level metadata - comments - datatype
+
+  sh:property [
+    rdf:type sh:PropertyShape ;
+    sh:name "4.3.4 Term-level metadata - comments - datatype (optional)"@en ;
+    rdfs:seeAlso <https://github.com/TIBHannover/terminology-metadata/blob/main/MetadataGuide.md#434-term-level-metadata---comments> ;
     sh:severity sh:Warning ;
     sh:path rdfs:comment ;
     sh:datatype rdf:langString ;
-    sh:message """The comment is not an rdf:langString. You should add a language tag to the comment that conforms to <http://id.loc.gov/vocabulary/iso639-2>. Recommended property: <http://www.w3.org/2000/01/rdf-schema#comment>. Example (text/ turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; rdfs:comment "a comment on this class"@en."""@en ;
+    sh:message """Values of rdfs:comment should have a language tab. The tag must conform to <http://id.loc.gov/vocabulary/iso639-2>. Example (text/ turtle): <https://www.purl.org/SomeOntologyClass> rdf:type owl:Class ; rdfs:comment "a comment on this class"@en."""@en ;
   ]
 .
-
-##### 4.1.2.1 Definition source
-
-## TODOS
-# noch in den metadataguide einbauen
-# macht sh:node hier sinn?
-# alternative path for sh:targetSubjectsOf? > only with props specific for defs!
-
-# we offer a range of possibilities to provide definition sources; these need to be seperate node shapes
-
-## Style 1 with 'definition source' <http://purl.obolibrary.org/obo/IAO_0000119> + DOI
-
-termmeta:DefinitionSourceAxiomShapeStyle1 a sh:NodeShape ;
-    sh:targetSubjectsOf skos:definition ; # Will pick entities that are the subject of statements with  skos:definition as the node whose statements will be validated against the property shapes
-    sh:closed false ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
-        ] ;
-        rdfs:label "annotated source" ;
-        sh:minCount 1 ;
-        sh:nodeKind sh:IRI ;
-        sh:maxCount 1 ; 
-        sh:class owl:Axiom ; # the selected node must be an owl:Axiom
-        sh:description "Each entitity that is defined with skos:definition must have at least one owl:Axiom providing the source of the definition."
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        rdfs:label "annotaetd property"@en ;
-        sh:maxCount 1 ;
-        sh:nodeKind sh:IRI ;
-        # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
-        sh:property [
-            sh:path owl:annotatedProperty ;
-            sh:hasValue skos:definition ;
-            sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is skos:definition)."@en
-        ]
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
-        sh:property [
-            sh:path owl:annotatedTarget;
-            sh:minCount 1;
-            sh:description "An owl:Axiom on entities that are defined with skos:definition must have an owl:annotatedTarget."
-        ];
-        sh:maxCount 1 ;
-        rdfs:label "annotated target"@en ;
-    ];
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        # our style 1 recommends to use obo:IAO_0000119 as the property to declare the definitions's source; we want to see at least one source, more are also okay, if that applies
-        sh:property [
-            sh:path obo:IAO_0000119 ;
-            sh:minCount 1 ;
-            sh:description "In recommeded defintiony source style 1, the owl:Axiom must provide the definition source with \\'definition source\\' <http://purl.obolibrary.org/obo/IAO_0000119>."
-        ] ;
-        rdfs:label "definition source"@en ; 
-    ] 
-    .
-
-## Style 2 using DCMI Metadata Terms 
-
-termmeta:DefinitionSourceAxiomShapeStyle2 a sh:NodeShape ;
-    sh:targetSubjectsOf skos:definition ; # Will pick entities that are the subject of statements with  skos:definition as the focus node on which the validation against the property shapes will be performed
-    sh:closed false ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
-        ] ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ; 
-        sh:class owl:Axiom ; # the selected node must be an owl:Axiom
-        sh:description "Each entitity that is defined with skos:definition must have at least one owl:Axiom providing the source of the definition."
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
-        sh:property [
-            sh:path owl:annotatedProperty ;
-            sh:hasValue skos:definition ;
-            sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is skos:definition)."@en
-        ]
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
-        sh:property [
-            sh:path owl:annotatedTarget;
-            sh:minCount 1;
-            sh:description "An owl:Axiom on entities that are defined with skos:definition must have an owl:annotatedTarget."
-        ]
-    ];
-        # our style 2 recommends to use various properties from DCMI Metadata Terms
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        sh:property [
-            sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
-            sh:minCount 1 ;
-            sh:datatype xsd:string ;
-            sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
-        ]
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        sh:property [
-            sh:path <http://purl.org/dc/terms/license> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
-        ]
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        sh:property [
-            sh:path <http://purl.org/dc/terms/rightsHolder> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
-        ]
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        sh:property [
-            sh:path <http://purl.org/dc/terms/source> ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
-        ]
-    ] 
-    . 
-
-## Style 3 + 4 - using prov:hadPrimarySource + DOI or ORCID
-
-### gemini
-termmeta:DefinitionSourceAxiomShapeStyle3and4 a sh:NodeShape ;
-    sh:targetSubjectsOf skos:definition ; # Will pick entities that are the subject of statements with  skos:definition as the focus node on which the validation against the property shapes will be performed
-    sh:closed false ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
-        ] ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ; 
-        sh:class owl:Axiom ;             # the selected node must be an owl:Axiom
-        sh:description "Each entitity that is defined with skos:definition must have at least one owl:Axiom providing the source of the definition."
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
-        sh:property [
-            sh:path owl:annotatedProperty ;
-            sh:hasValue skos:definition ;
-            sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is skos:definition)."@en
-        ]
-    ] ;
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy
-        sh:property [
-            sh:path owl:annotatedTarget;
-            sh:minCount 1;
-            sh:description "An owl:Axiom on entities that are defined with skos:definition must have an owl:annotatedTarget."
-        ]
-    ];
-        # our styles 3 and 4 recommends to provide the definition source using the property prov:hadPrimarySource; we require to provide at least one definition source; more are also okay if it is applicable  
-    sh:property [
-        sh:path [
-            sh:inversePath owl:annotatedSource
-        ] ;
-        sh:property [
-            sh:path prov:hadPrimarySource ;
-            sh:minCount 1 ;
-            sh:nodeKind sh:IRI ;
-            sh:description "The definition source axiom must have at least one statement with <http://www.w3.org/ns/prov#hadPrimarySource>. The source should be provided via an IRI, e.g. a DOI."@en 
-        ]
-    ] 
-    .

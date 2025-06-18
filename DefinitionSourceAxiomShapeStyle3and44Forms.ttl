@@ -1,0 +1,108 @@
+@base <https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle3and44Forms> .
+@prefix dss344forms: <https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle3and44Forms> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://www.schema.org/> .
+@prefix gndo: <https://d-nb.info/standards/elementset/gnd#> .
+@prefix physh: <https://physh.org/rdf/2018/01/01/core#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix emmo: <http://emmo.info/emmo#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix sdo: <https://schema.org/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+
+# usage with sh:node is not preferred, see 4.1.2 in TermShape4Forms.ttl for reaons
+
+## Style 3 + 4 - using prov:hadPrimarySource + DOI or ORCID
+
+### Differs from TermShape.ttl since we want to generate data graphs that are as explicit as possible and not using blank nodes, which is unfortunately the case if we were to employ the shapes from TestShape.ttl
+dss344forms: 
+  rdf:type sh:NodeShape ;
+  rdf:type owl:Ontology ;
+  # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
+  dcterms:title "SHACL Shape by TIB for generating definition sources employing prov:hadPrimarySource"@en ;
+  dcterms:title "SHACL Shape der TIB zur Generierung von Quellenangaben mit prov:hadPrimarySource zu Definitionen"@de ;
+  dcterms:abstract "The file provides a SHACL shape for a particular style of providing some source information for ontology entity definitions (employing prov:hadPrimarySource). It is intended for use in SHACL form generators. If you have any remarks, questions or suggestions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
+  dcterms:created "2024-06-30T00:00:00"^^xsd:dateTime;
+  dcterms:modified "2025-06-30T00:00:00"^^xsd:dateTime;
+  owl:versionIRI <https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle3and44Forms/20250630>;
+  owl:versionIRI <https://raw.githubusercontent.com/TIBHannover/terminology-metadata/refs/tags/20250630/DefinitionSourceAxiomShapeStyle3and44Forms>;
+  dcterms:creator <https://orcid.org/0000-0002-1019-9151>,
+    <https://orcid.org/0000-0003-1043-4964>,
+    <https://orcid.org/0000-0003-2499-7741>,
+    <https://orcid.org/0000-0002-1595-3213>,
+      <https://orcid.org/0000-0002-8280-0487> ;
+    vann:preferredNamespacePrefix "dss344forms";
+    doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues> ;
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md> ;
+    bibo:status "active"@en ;
+    doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+    sdo:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+    dcterms:subject <http://d-nb.info/gnd/4827894-4>,
+      <http://d-nb.info/gnd/4410512-5> ;
+    doap:repository <https://github.com/TIBHannover/terminology-metadata>;
+    mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
+    mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en ;
+    dcterms:references <https://doi.org/10.5281/zenodo.11103070> ;
+    dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)" ;
+    adms:versionNotes "In this shape, the definition source will be provided as an annotation axiom using prov:hadPrimarySource."@en;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md#45-relations-to-related-work>;
+    rdfs:seeAlso <https://doi.org/10.26434/chemrxiv-2024-fvzpq> ;
+  sh:targetClass owl:Axiom ;
+  sh:closed false;
+  sh:property [
+    rdf:type sh:PropertyShape ;
+    sh:severity sh:Violation ;
+    sh:path owl:annotatedSource ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:description "The definition source axiom must have exactly one annotated source. This is the identifier of the entity whose definition source shall be added."@en ;
+    rdfs:label "annotated source"@en ;
+  ];
+  sh:property [
+    rdf:type sh:PropertyShape ;
+    sh:severity sh:Violation ;
+    sh:path owl:annotatedTarget ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:datatype rdf:langString ;
+    sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
+    sh:description "The definition source axiom must have exactly one annotated target. This is the exact text of the definition whose source shall be provided. The annotated target of the definition source axiom must be provided as an rdf:langString."@en ;
+    rdfs:label "annotated target"@en ;
+  ];
+  sh:property [
+    rdf:type sh:PropertyShape ;
+    sh:severity sh:Violation ;
+    sh:path owl:annotatedProperty ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:description "The definition source axiom must have exactly one annotated property. This is the property used to provide your definitions - preferrably the recommended property skos:definition."@en ;
+    rdfs:label "annotated property"@en ;
+  ];
+  sh:property [
+    rdf:type sh:PropertyShape ;
+    sh:severity sh:Violation ;
+    sh:path prov:hadPrimarySource ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:description "The definition source axiom must have at least one statement with <http://www.w3.org/ns/prov#hadPrimarySource>. The object of <http://www.w3.org/ns/prov#hadPrimarySource> in the definition source axiom must be provided as an sh:IRI. If you want to refer to a publication, use the DOI, if you want to refer to an expert, use the ORCID."@en ;
+    rdfs:label "had primary source"@en ;
+  ] ;
+.

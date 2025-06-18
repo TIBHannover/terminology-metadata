@@ -1,5 +1,6 @@
-@base <https://www.purl.org/termmetadata/shape4forms> .
-@prefix termmeta: <https://www.purl.org/termmetadata/shape4forms> .
+@base <https://purl.org/ontologymetadata/TermShape4Forms> .
+@prefix termmeta4forms: <https://purl.org/ontologymetadata/TermShape4Forms#> .
+@prefix dss14forms: <https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle14Forms> .
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -8,7 +9,6 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
-@prefix dc: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://www.schema.org/> .
@@ -19,15 +19,54 @@
 @prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
 @prefix emmo: <http://emmo.info/emmo#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix sdo: <https://schema.org/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
 
 # Term-level metadata
 
 # if used in ULB Darmstadt's <shacl-form demo> blank nodes will be the subject of all statements generated with this shape - these should be replaced by an identifier in ALL occurrences 
 
-termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
-  sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
+termmeta4forms: 
+  rdf:type sh:NodeShape ;
+  rdf:type owl:Ontology ;
+  # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
+  dcterms:created "2025-06-30"^^xsd:date ;
+  dcterms:modified "2025-06-30"^^xsd:date ;
+  owl:versionIRI <https://purl.org/ontologymetadata/TermShape4Forms/20250630> ;
+  owl:versionIRI <https://raw.githubusercontent.com/TIBHannover/terminology-metadata/refs/tags/20250630/TermShape4Forms.ttl> ;
+  dcterms:title "SHACL Shape by TIB for generating term-level metadata of entities in ontologies."@en ;
+  dcterms:title "SHACL Shape der TIB zur Generierung termbezogener Metadaten für Entitäten in Ontologien"@de ;
+  dcterms:abstract "This shape is intended to be used in a form generator, e.g. the live demo tool of ULB Darmstadt at <https://ulb-darmstadt.github.io/shacl-form/#try-your-own>. The tool will generate a form from the SHACL specifciation in which users may enter metadata while the tool generates Turtle code from the user input and validates it at the same time. If you have any remarks, questions or suggestions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en ;
+  # This shape is intended to be used with .
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
+  dcterms:created "2024-06-30T00:00:00"^^xsd:dateTime;
+  dcterms:modified "2025-06-30T00:00:00"^^xsd:dateTime;
+  dcterms:creator <https://orcid.org/0000-0002-1019-9151> ;
+  dcterms:creator <https://orcid.org/0000-0003-1043-4964> ;
+  dcterms:creator <https://orcid.org/0000-0003-2499-7741> ;
+  dcterms:creator <https://orcid.org/0000-0002-1595-3213> ;
+  dcterms:creator <https://orcid.org/0000-0002-8280-0487> ;
+  vann:preferredNamespacePrefix "termmeta4forms";
+  doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues> ;
+  premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md> ;
+  bibo:status "active"@en ;
+  doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+  sdo:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+  dcterms:subject <http://d-nb.info/gnd/4827894-4> ;
+  dcterms:subject <http://d-nb.info/gnd/4410512-5> ;
+  doap:repository <https://github.com/TIBHannover/terminology-metadata>;
+  mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
+  mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en ;
+  dcterms:references <https://doi.org/10.5281/zenodo.11103070> ;
+  dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)" ;
+  adms:versionNotes "The shape provides a first draft for a SHACL specification for term-level metadata to be used in a form generator."@en;
+  mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md#45-relations-to-related-work>;
   sh:closed false;
-  # add metadata
+;
 
 ## Mandatory metadata
 
@@ -36,6 +75,7 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
  sh:property [
    a sh:PropertyShape ;
    sh:name "entity type"@en ;
+   sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
    sh:path rdf:type ;
    sh:nodeKind sh:IRI ;
    sh:minCount 1 ;
@@ -46,7 +86,7 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
     owl:AnnotationProperty 
     owl:DatatypeProperty
   ) ;
-    sh:group termmeta:EntityTypeGroup ;
+    sh:group termmeta4forms:EntityTypeGroup ;
     sh:name "entity type"@en ;
     sh:description "The entity needs to be typed."@en ;
  ];
@@ -57,19 +97,21 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
     rdf:type sh:PropertyShape ;
     sh:name "preferred label"@en ;
     sh:severity sh:Violation ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:path rdfs:label ;
     sh:minCount 1 ;
     sh:datatype rdf:langString ;
     sh:uniqueLang true ;
     sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
     sh:description """The entity should have a label. The label should be the entity's preferred label. You should provide only one label per language. There may be a preferred label in each annotation language of the ontology, though."""@en ;
-    sh:group termmeta:LabelsGroup ;
+    sh:group termmeta4forms:LabelsGroup ;
   ];
 
 ### 4.1.2 Definition
 
   sh:property [
     rdf:type sh:PropertyShape ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:name "definition"@en ;
     sh:severity sh:Violation ;
     sh:path skos:definition ;
@@ -77,11 +119,11 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
     sh:datatype rdf:langString ;
     sh:uniqueLang true ;
     sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
-    sh:description """The entity should be defined. The definition should be an intensional defintion. Please visit section 4.1.2 in the [metadata guide](<https://www.doi.org/10.5281/zenodo.11103071>) for more information about how to write a good definition. You will also find recommendations on how to provide sources for the definition in this chapter."""@en ;
-    sh:group termmeta:DefinitionGroup ;
+    sh:description """The entity should be defined. The definition should be an intensional defintion. Please visit section 4.1.2 in the [metadata guide](<https://doi.org/10.5281/zenodo.11103070>) for more information about how to write a good definition. You will also find recommendations on how to provide sources for the definition in this chapter."""@en ;
+    sh:group termmeta4forms:DefinitionGroup ;
   ];
 
-# alternative to the shape directoly above, do not want to use it for several reasons:
+# alternative to the shape directly above, do not want to use it for several reasons:
 # (1) <shacl-form> demo will generate a statement with skos:definition and a blank node as its object
 # (2) referencing the generated entity requires user to copypaste bnode id from generated code to form
 # (3) since for the owl:Axiom a bnode like _:e45de023-010f-4c32-8d13-c38d02aa983c is generated, the definition is shown twice in the ontology - once readable with skos:definition and an annotation and once as an unreadable blank node ; to change this, the explicit definition statement needs to be removed to show this exactly as it would have been created with Protege
@@ -93,12 +135,16 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   #   sh:severity sh:Violation ;
   #   sh:path skos:definition ;
   #   sh:minCount 1;
-  #   sh:node termmeta:DefinitionSourceAxiomShapeStyle1 ; 
-  #   sh:description """The entity should be defined. The definition should be an intensional defintion. Please visit section 4.1.2 in the [metadata guide](<https://www.doi.org/10.5281/zenodo.11103071>) for more information about how to write a good definition. You will also find recommendations on how to provide sources for the definition in this chapter."""@en ;
-  #   sh:group termmeta:DefinitionGroup ;
+  #   sh:node dss14forms ; 
+  #   sh:description """The entity should be defined. The definition should be an intensional defintion. Please visit section 4.1.2 in the [metadata guide](<https://doi.org/10.5281/zenodo.11103070>) for more information about how to write a good definition. You will also find recommendations on how to provide sources for the definition in this chapter."""@en ;
+  #   sh:group termmeta4forms:DefinitionGroup ;
   # ];
 
-## for definition source shapes see below (4.1.2.1)
+##### 4.1.2.1 Definition source
+
+# we offer a range of possibilities to provide definition sources; these need to be seperate node shapes
+# they can be used seperately in <shacl-form> demo to generate instances of owl:Axiom that refer to existing entities
+# cf. DefinitionSourceAxiomShapeStyle14Forms.ttl, DefinitionSourceAxiomShapeStyle24Forms.ttl, DefinitionSourceAxiomShapeStyle3and44Forms.ttl
 
 ### 4.1.3 Term deprecation/ obsoletion (mandatory only if applicable!)
 
@@ -106,13 +152,14 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
 
   sh:property [
     rdf:type sh:PropertyShape ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:name "is deprecated"@en ;
     sh:severity sh:Info ;
     sh:path owl:deprecated ;
     sh:datatype xsd:boolean ;
     sh:minCount 0 ; # mandatory only if applicable
     sh:maxCount 1 ;
-    sh:group termmeta:ObsoletionGroup ;
+    sh:group termmeta4forms:ObsoletionGroup ;
     sh:description """If the entitity shall be considered deprecated, please check the box."""@en
   ];
 
@@ -121,10 +168,11 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:name "obsoletion reason"@en ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:path obo:IAO_0000231 ;
     sh:nodeKind sh:IRI ;
-    sh:group termmeta:ObsoletionGroup ;
+    sh:group termmeta4forms:ObsoletionGroup ;
     sh:minCount 0 ; # mandatory only if applicable, minimal requirements is that it is one of the list items
     sh:in (
       <http://purl.obolibrary.org/obo/IAO_0000103>
@@ -142,10 +190,11 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:name "replaced by"@en ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:path obo:IAO_0100001 ;
     sh:nodeKind sh:IRI ;
-    sh:group termmeta:ObsoletionGroup ;
+    sh:group termmeta4forms:ObsoletionGroup ;
     sh:minCount 0 ; # mandatory only if applicable
     sh:description """If the entity is deprecated, please indicate if there is a replacement term that should be used instead."""@en
   ];
@@ -157,12 +206,13 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:name "synonyms/ alternative labels"@en ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:path skos:altLabel ;
     sh:datatype rdf:langString ;
     sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
     sh:description """Add further labels for the entities - may include synonyms, short forms and other alternative signifiers of the entity. Please only add strict synonyms, i.e. labels that represent the same concept as the preferred label. Do not add near-synonyms or related terms."""@en ;
-    sh:group termmeta:LabelsGroup ;
+    sh:group termmeta4forms:LabelsGroup ;
   ];
 
 ### 4.2.2 Date modified
@@ -170,12 +220,13 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:name "date modified"@en ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:path dcterms:modified ;
     sh:minCount 1 ; # we recommend it and I would expect it on every item, so the aim of this constraint is to trigger a message at least to raise awareness
     sh:datatype xsd:dateTime ;
     sh:description """Add the current date to indicate that the entity is modified today."""@en ;
-    sh:group termmeta:EditorialMetadataGroup ;
+    sh:group termmeta4forms:EditorialMetadataGroup ;
   ];
 
 #### 4.2.3 Editor note
@@ -183,12 +234,13 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:name "editor note"@en ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:path skos:editorialNote ;
     sh:datatype rdf:langString ;
     sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
     sh:description """Add an editorial note, e.g. stating an open task to finalize the description of the entity."""@en ;
-    sh:group termmeta:EditorialMetadataGroup ;
+    sh:group termmeta4forms:EditorialMetadataGroup ;
   ] ;
 
 #### 4.2.4 Term tracker item - datatype
@@ -196,12 +248,13 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
 # I would not necessarily expect a term tracker item for every term, so I did not add a minCoun 1 constraint with severity sh:Info
   sh:property [
     rdf:type sh:PropertyShape ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ; 
     sh:name "term tracker item"@en ;
     sh:path obo:IAO_0000233 ;
     sh:nodeKind sh:IRI ;
     sh:description """Indicate a place where the entity is discussed and where new suggestions for its development can be made."""@en ;
-    sh:group termmeta:EditorialMetadataGroup ;
+    sh:group termmeta4forms:EditorialMetadataGroup ;
   ];
 
 ## 4.3 Optional metadata
@@ -211,16 +264,18 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:name "term editor / term contributors"@en ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:path dcterms:contributor ;
     sh:nodeKind sh:IRI ;
     sh:description """Provide all term contributors via their Orcid. If no Orcid is available, try alternative identifiers like GND, Wikidata, or other scientific identification systems."""@en ;
-    sh:group termmeta:EditorialMetadataGroup ;
+    sh:group termmeta4forms:EditorialMetadataGroup ;
   ];
 
 #### 4.3.2 Example of usage
   sh:property [
     rdf:type sh:PropertyShape ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:name "example of usage"@en ;
     sh:path obo:IAO_0000112 ;
@@ -228,7 +283,7 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
     sh:minCount 0 ;
     sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
     sh:description """Describe how the entity can be applied. If the usage example is too complex, point to a paper or documentation for further discussion."""@en ;
-    sh:group termmeta:OtherTermAnnotationsShape ;
+    sh:group termmeta4forms:OtherTermAnnotationsShape ;
   ];
 
 # in a shape to be used with ULB Darmstadts form generator, I cannot use both > both shapes will validate each other invalid, and the sh:xone construct is not supported in a way that users can decide which data type to use and what to evaluate as valid afaik
@@ -246,12 +301,13 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
 
   sh:property [
     rdf:type sh:PropertyShape ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:name "defined by"@en ;
     sh:path <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>;
     sh:nodeKind sh:IRI ;
     sh:description """State the IRI of the ontology that defines the entity. The field can be repeated. For maximum precision, state both the canonical IRI of the defining ontology and its version IRI."""@en ;
-    sh:group termmeta:EditorialMetadataGroup ;
+    sh:group termmeta4forms:EditorialMetadataGroup ;
   ];
 
 
@@ -260,12 +316,13 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
   sh:property [
     rdf:type sh:PropertyShape ;
     sh:name "comments"@en ;
+    sh:targetClass owl:Class, rdfs:Class, owl:ObjectProperty, owl:NamedIndividual, owl:AnnotationProperty, owl:DatatypeProperty ;
     sh:severity sh:Warning ;
     sh:path rdfs:comment ;
     sh:datatype rdf:langString ;
     sh:description """Repeatable field to add any further comments on the entity."""@en ;
     sh:languageIn ("de" "en" "fr") ;
-    sh:group termmeta:OtherTermAnnotationsShape ;
+    sh:group termmeta4forms:OtherTermAnnotationsShape ;
   ]
 .
 
@@ -280,200 +337,26 @@ termmeta:TermShape rdf:type sh:NodeShape , owl:Ontology ;
 
 
 #### SHACL Groups for a nicer ordering of the form
-termmeta:EntityTypeGroup a sh:PropertyGroup ;
+termmeta4forms:EntityTypeGroup a sh:PropertyGroup ;
 rdfs:label "Entity Type"@en ;
 sh:order 1. 
 
-termmeta:LabelsGroup a sh:PropertyGroup ;
+termmeta4forms:LabelsGroup a sh:PropertyGroup ;
 rdfs:label "Entity Labels"@en ;
 sh:order 2 .
 
-termmeta:DefinitionGroup a sh:PropertyGroup ;
+termmeta4forms:DefinitionGroup a sh:PropertyGroup ;
 rdfs:label "Entity Definition"@en ;
 sh:order 3 .
 
-termmeta:ObsoletionGroup a sh:PropertyGroup ;
+termmeta4forms:ObsoletionGroup a sh:PropertyGroup ;
 rdfs:label "Term obsoletion"@en ;
 sh:order 4. 
 
-termmeta:OtherTermAnnotationsShape a sh:PropertyGroup ;
+termmeta4forms:OtherTermAnnotationsShape a sh:PropertyGroup ;
 rdfs:label "Other Term Annotations"@en ;
 sh:order 5 .
 
-termmeta:EditorialMetadataGroup a sh:PropertyGroup ;
+termmeta4forms:EditorialMetadataGroup a sh:PropertyGroup ;
 rdfs:label "Editorial Metadata"@en ;
 sh:order 6 .
-
-
-##### 4.1.2.1 Definition source
-
-# we offer a range of possibilities to provide definition sources; these need to be seperate node shapes
-# they can be used seperately in <shacl-form> demo to generate instances of owl:Axiom that refer to existing entities
-# usage with sh:node is not preferred, see 4.1.2 for reaons
-
-## Style 1 with 'definition source' <http://purl.obolibrary.org/obo/IAO_0000119> + DOI
-
-### Differs from TermShape.ttl since we want to generate data graphs that are as explicit as possible and not using blank nodes, which is unfortunately the case if we were to employ the shapes from TestShape.ttl
-termmeta:DefinitionSourceAxiomShapeStyle1 rdf:type sh:NodeShape ;
-  sh:targetClass owl:Axiom ;
-  sh:closed false;
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Info ;
-    sh:path owl:annotatedSource ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have exactly one annotated source. This is the identifier of the entity whose definition source shall be added."@en ;
-    rdfs:label "annotated source"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedTarget ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:datatype rdf:langString ;
-    sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
-    sh:description "The definition source axiom must have exactly one annotated target. This is the exact text of the definition whose source shall be provided. The annotated target of the definition source axiom must be provided as an rdf:langString."@en ;
-    rdfs:label "annotated target"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedProperty ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have exactly one annotated property. This is the property used to provide your definitions - preferrably the recommended property skos:definition."@en ;
-    rdfs:label "annotated property"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path <http://purl.obolibrary.org/obo/IAO_0000119> ;
-    sh:minCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have at least one statement with the property \'definition source\' <http://purl.obolibrary.org/obo/IAO_0000119>. The source should be provided by a persistent identifier to the source, e.g. a DOI."@en ;
-    rdfs:label "definition source"@en ;
-  ];
-  .
-
-## Style 2 using DCMI Metadata Terms 
-
-### Differs from TermShape.ttl since we want to generate data graphs that are as explicit as possible and not using blank nodes, which is unfortunately the case if we were to employ the shapes from TestShape.ttl
-termmeta:DefinitionSourceAxiomShapeStyle2 rdf:type sh:NodeShape ;
-  sh:targetClass owl:Axiom ;
-  sh:closed false;
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedSource ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have exactly one annotated source. This is the identifier of the entity whose definition source shall be added."@en ;
-    rdfs:label "annotated source"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedTarget ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:datatype rdf:langString ;
-    sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
-    sh:description "The definition source axiom must have exactly one annotated target. This is the exact text of the definition whose source shall be provided. The annotated target of the definition source axiom must be provided as an rdf:langString."@en ;
-    rdfs:label "annotated target"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedProperty ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have exactly one annotated property. This is the property used to provide your definitions - preferrably the recommended property skos:definition."@en ;
-    rdfs:label "annotated property"@en ;
-  ];
-  sh:property [
-    sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
-    sh:minCount 1 ;
-    sh:datatype xsd:string ;
-    sh:severity sh:Violation ;
-    sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."@en ;
-    rdfs:label "bibliographic citation"@en ;
-  ];
-  sh:property [
-    sh:path <http://purl.org/dc/terms/license>;
-    sh:minCount 1 ;
-    sh:severity sh:Violation ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."@en ;
-    rdfs:label "license"@en ;
-  ];
-  sh:property [
-    sh:path <http://purl.org/dc/terms/rightsHolder>;
-    sh:minCount 1 ;
-    sh:severity sh:Violation ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."@en ;
-    rdfs:label "rights holder"@en ;
-  ];
-  sh:property [
-    sh:path <http://purl.org/dc/terms/source>;
-    sh:minCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:severity sh:Violation ;
-    sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en ;
-    rdfs:label "source"@en ;
-  ];
-.
-
-## Style 3 + 4 - using prov:hadPrimarySource + DOI or ORCID
-
-### Differs from TermShape.ttl since we want to generate data graphs that are as explicit as possible and not using blank nodes, which is unfortunately the case if we were to employ the shapes from TestShape.ttl
-termmeta:DefinitionSourceAxiomShapeStyle3and4 rdf:type sh:NodeShape ;
-  sh:targetClass termmeta:DefinitionSourceAxiomShapeStyle3and4 ;
-  sh:closed false;
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedSource ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have exactly one annotated source. This is the identifier of the entity whose definition source shall be added."@en ;
-    rdfs:label "annotated source"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedTarget ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:datatype rdf:langString ;
-    sh:languageIn ("en" "de" "fr") ; # add more # only needed for forms or if test shall be very restrictive
-    sh:description "The definition source axiom must have exactly one annotated target. This is the exact text of the definition whose source shall be provided. The annotated target of the definition source axiom must be provided as an rdf:langString."@en ;
-    rdfs:label "annotated target"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path owl:annotatedProperty ;
-    sh:minCount 1 ;
-    sh:maxCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have exactly one annotated property. This is the property used to provide your definitions - preferrably the recommended property skos:definition."@en ;
-    rdfs:label "annotated property"@en ;
-  ];
-  sh:property [
-    rdf:type sh:PropertyShape ;
-    sh:severity sh:Violation ;
-    sh:path prov:hadPrimarySource ;
-    sh:minCount 1 ;
-    sh:nodeKind sh:IRI ;
-    sh:description "The definition source axiom must have at least one statement with <http://www.w3.org/ns/prov#hadPrimarySource>. The object of <http://www.w3.org/ns/prov#hadPrimarySource> in the definition source axiom must be provided as an sh:IRI. If you want to refer to a publication, use the DOI, if you want to refer to an expert, use the ORCID."@en ;
-    rdfs:label "had primary source"@en ;
-  ] ;
-.

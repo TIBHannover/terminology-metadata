@@ -1,0 +1,730 @@
+@base <https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle2> .
+@prefix dss2: <https://purl.org/ontologymetadataDefinitionSourceAxiomShapeStyle2> .
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>. 
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix schema: <https://www.schema.org/> .
+@prefix gndo: <https://d-nb.info/standards/elementset/gnd#> .
+@prefix physh: <https://physh.org/rdf/2018/01/01/core#> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix oio: <http://www.geneontology.org/formats/oboInOwl#> .
+@prefix emmo: <http://emmo.info/emmo#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix sdo: <https://schema.org/> .
+@prefix mod: <https://w3id.org/mod#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+
+# Shape checking a certain style of providing the source of a defintion with DCMI Metadata Terms
+
+# See for detailed discussion: Strömert et al. (2024): Guidance on how to use the IUPAC Gold Book as a canonical source for textual definitions in chemical ontologies. ChemRxiv. DOI: [https://doi.org/10.26434/chemrxiv-2024-fvzpq](https://doi.org/10.26434/chemrxiv-2024-fvzpq). (Preprint)
+
+dss2: 
+  a sh:NodeShape ;
+  a owl:Ontology ;
+  # owl:imports <http://www.w3.org/ns/shacl#> ; #when last imported (2024-04-05), SHACL was inconsistent
+  dcterms:title "SHACL Shape by TIB for validation of definition source with DCMI Metadata Terms"@en ;
+  dcterms:title "SHACL Shape der TIB zur Validierung von Quellenangaben basierend auf DCMI Metadata Terms zu Definitionen"@de ;
+  dcterms:abstract "The file provides a SHACL shape for a particular style of providing some source information for ontology entity definitions (employing DCMI Metadata Terms). It is intended for use in SHACL validators by ontology engineers. If you have any remarks, questions or suggestions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
+  dcterms:created "2024-06-30T00:00:00"^^xsd:dateTime;
+  dcterms:modified "2025-06-30T00:00:00"^^xsd:dateTime;
+  owl:versionIRI <https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle2/20250630>;
+  owl:versionIRI <https://raw.githubusercontent.com/TIBHannover/terminology-metadata/refs/tags/20250630/DefinitionSourceAxiomShapeStyle2.ttl>;
+  dcterms:creator <https://orcid.org/0000-0002-1019-9151>,
+    <https://orcid.org/0000-0003-1043-4964>,
+    <https://orcid.org/0000-0003-2499-7741>,
+    <https://orcid.org/0000-0002-1595-3213>,
+      <https://orcid.org/0000-0002-8280-0487> ;
+    vann:preferredNamespacePrefix "dss2";
+    doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues> ;
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md> ;
+    bibo:status "active"@en ;
+    doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
+    sdo:inLanguage <http://id.loc.gov/vocabulary/iso639-2/eng>;
+    dcterms:subject <http://d-nb.info/gnd/4827894-4>,
+      <http://d-nb.info/gnd/4410512-5> ;
+    doap:repository <https://github.com/TIBHannover/terminology-metadata>;
+    mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
+    mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en ;
+    dcterms:references <https://doi.org/10.5281/zenodo.11103070> ;
+    dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)" ;
+    adms:versionNotes "In this shape, the definition source will be provided as an annotation axiom using properties from DCMI Metadata Terms."@en;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md#45-relations-to-related-work>;
+    rdfs:seeAlso <https://doi.org/10.26434/chemrxiv-2024-fvzpq> ;
+  sh:or (
+    [
+        sh:targetSubjectsOf skos:definition ; # Will pick entities that are the subject of statements with skos:definition as the focus node on which the validation against the property shapes will be performed
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with skos:definition must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue skos:definition ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is skos:definition)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with skos:definition must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+    [
+        sh:targetSubjectsOf obo:IAO_0000115 ;
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with obo:IAO_0000115 must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue obo:IAO_0000115 ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is obo:IAO_0000115)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with obo:IAO_0000115 must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+    [
+        sh:targetSubjectsOf dcterms:description ;
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with dcterms:description must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue dcterms:description ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is dcterms:description)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with obo:IAO_0000115 must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+    [
+        sh:targetSubjectsOf gndo:definition ;
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with gndo:definition must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue gndo:definition ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is gndo:definition)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with obo:IAO_0000115 must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+    [
+        sh:targetSubjectsOf prov:definition ;
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with prov:definition must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue prov:definition ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is prov:definition)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with obo:IAO_0000115 must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+    [
+        sh:targetSubjectsOf dc:description ;
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with dc:description must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue dc:description ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is dc:description)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with obo:IAO_0000115 must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+    [
+        sh:targetSubjectsOf oio:hasDefinition ;
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with oio:hasDefinition must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue oio:hasDefinition ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is oio:hasDefinition)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with obo:IAO_0000115 must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+    [
+        sh:targetSubjectsOf emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84 ;
+        sh:closed false ;
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource  # selects a blank node that is subject of the owl:annotatedSource property
+            ];
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:BlankNode ; 
+            sh:class owl:Axiom ; # the selected node must be an owl:Axiom
+            sh:description "Each entitity that is defined with emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84 must have at least one owl:Axiom providing the source of the definition."
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource ;
+                # the selected node that is an owl:Axiom must have a statement about its owl:annotatedProperty; the object value must be skos:definition
+                sh:property [
+                    sh:path owl:annotatedProperty ;
+                    sh:hasValue emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84 ;
+                    sh:nodeKind sh:IRI ;
+                    sh:description "An owl:Axiom on entities that are defined with skos:defintion must have an owl:annotatedProperty (which is emmo:EMMO_70fe84ff_99b6_4206_a9fc_9a8931836d84)."@en
+                ];
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ];
+            # the selected node must have at least one statement declaring the annotated target, i.e. the definition of the entitiy 
+        ];
+        sh:property [
+            sh:path owl:annotatedTarget;
+            sh:minCount 1;
+            sh:datatype rdf:langString ;
+            sh:description "An owl:Axiom on entities that are defined with obo:IAO_0000115 must have an owl:annotatedTarget."
+        ];
+        # our style 2 recommends to use various properties from DCMI Metadata Terms
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/bibliographicCitation> ;
+                sh:minCount 1 ;
+                sh:datatype xsd:string ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/bibliographicCitation>. The object of that statement must be provided as an xsd:string."
+            ]
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/license> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/license>. The object of that statement must be provided as an sh:IRI."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/rightsHolder> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/rightsHolder>. The object of that statement must be provided as an sh:IRI, e.g. via a ROR identifier."
+            ];
+        ];
+        sh:property [
+            sh:path [
+                sh:inversePath owl:annotatedSource
+            ] ;
+            sh:property [
+                sh:path <http://purl.org/dc/terms/source> ;
+                sh:minCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:description "The definition source axiom must have a statement with <http://purl.org/dc/terms/source>. The object of that statement must be provided as an sh:IRI, e.g. via a DOI."@en
+            ];
+        ];
+    ]
+  ).

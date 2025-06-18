@@ -367,7 +367,7 @@ code {
   </script>
 <h1 id="ontology-metadata-recommendations-by-tib">Ontology metadata recommendations by TIB</h1>
 <p>Document status: <strong>DRAFT</strong></p>
-<p>Modification date: 2025-01-31</p>
+<p>Modification date: 2025-06-30</p>
 <p>Creators and contributors:</p>
 <!-- * [Last name, First Name  (Affiliation)](https://orcid.org/) -->
 <ul>
@@ -378,7 +378,7 @@ code {
 <li><a href="https://orcid.org/0000-0002-8280-0487">Vogt, Lars (Technische Informationsbibliothek)</a></li>
 </ul>
 <p>License: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0 Deed Attribution 4.0 International</a></p>
-<p>Zenodo archive: <a href="https://www.doi.org/10.5281/zenodo.11103071">https://www.doi.org/10.5281/zenodo.11103071</a></p>
+<p>Zenodo archive: <a href="https://doi.org/10.5281/zenodo.11103070">https://doi.org/10.5281/zenodo.11103070</a></p>
 <div style="page-break-after: always;"></div>
 <h2 id="table-of-contents">Table of contents</h2>
 <p><a href="#0-executive-summary">0 Executive summary</a></p>
@@ -390,7 +390,12 @@ code {
 <p><a href="#2-how-to-read-this-document">2 How to read this document</a></p>
 <ul>
 <li><a href="#21-chapter-structure-and-wording">2.1 Chapter structure and wording</a></li>
-<li><a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a></li>
+<li><a href="#22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</a>
+<ul>
+<li><a href="#221-ontology-level-metadata">2.2.1 Ontology-level metadata</a></li>
+<li><a href="#222-term-level-metadata">2.2.2 Term-level metadata</a></li>
+</ul>
+</li>
 <li><a href="#23-prefixes-used-in-this-document">2.3 Prefixes used in this document</a></li>
 <li><a href="#24-acronyms">2.4 Acronyms</a></li>
 </ul>
@@ -474,37 +479,37 @@ code {
 </ul>
 <p><a href="#4-term-level-metadata">4 Term-level Metadata</a></p>
 <ul>
-<li><a href="#41-mandatory-metadata">4.1 Mandatory metadata</a>
+<li><a href="#41-mandatory-term-level-metadata">4.1 Mandatory metadata</a>
 <ul>
-<li><a href="#411-preferred-label">Preferred label</a></li>
-<li><a href="#412-definition">Definition</a>
+<li><a href="#411-term-level-metadata---preferred-label">4.1.1 Preferred label</a></li>
+<li><a href="#412-term-level-metadata---definition">4.1.2 Definition</a>
 <ul>
-<li><a href="#4121-definition-source">Definition source</a></li>
+<li><a href="#4121-term-level-metadata---definition-source">4.1.2.1 Definition source</a></li>
 </ul>
 </li>
-<li><a href="#413-term-deprecation-obsoletion-mandatory-only-if-applicable">Term deprecation/ obsoletion</a>
+<li><a href="#413-term-level-metadata---term-deprecation-obsoletion-mandatory-only-if-applicable">4.1.3 Term deprecation/ obsoletion</a>
 <ul>
-<li><a href="#4131-deprecation-marker-mandatory-only-if-applicable">Deprecation marker</a></li>
-<li><a href="#4132-obsoletion-reason-mandatory-only-if-applicable">Obsoletion reason</a></li>
-<li><a href="#4133-term-replacement-mandatory-only-if-applicable">Term replacement</a></li>
+<li><a href="#4131-term-level-metadata---deprecation-marker-mandatory-only-if-applicable">4.1.3.1 Deprecation marker</a></li>
+<li><a href="#4132-term-level-metadata---obsoletion-reason-mandatory-only-if-applicable">4.1.3.2 Obsoletion reason</a></li>
+<li><a href="#4133-term-level-metadata---term-replacement-mandatory-only-if-applicable">4.1.3.3 Term replacement</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#42-recommended-metadata">4.2 Recommended metadata</a>
+<li><a href="#42-recommended-term-level-metadata">4.2 Recommended metadata</a>
 <ul>
-<li><a href="#421-synonyms-alternative-labels">Synonyms/ alternative labels</a></li>
-<li><a href="#422-date-modified">Date modified</a></li>
-<li><a href="#423-editor-note">Editor note</a></li>
-<li><a href="#424-term-tracker-item">Term tracker item</a></li>
+<li><a href="#421-term-level-metadata---synonyms-alternative-labels">4.2.1 Synonyms/ alternative labels</a></li>
+<li><a href="#422-term-level-metadata---date-modified">4.2.2 Date modified</a></li>
+<li><a href="#423-term-level-metadata---editor-note">4.2.3 Editor note</a></li>
+<li><a href="#424-term-level-metadata---term-tracker-item">4.2.4 Term tracker item</a></li>
 </ul>
 </li>
-<li><a href="#43-optional-metadata">4.3 Optional metadata</a>
+<li><a href="#43-optional-term-level-metadata">4.3 Optional metadata</a>
 <ul>
-<li><a href="#431-term-editor-term-contributors">Term editor</a></li>
-<li><a href="#432-example-of-usage">Example of usage</a></li>
-<li><a href="#433-defined-by">Defined by</a></li>
-<li><a href="#434-comments">4.3.4 Comments</a></li>
+<li><a href="#431-term-level-metadata---term-editor-term-contributors">4.3.1 Term editor</a></li>
+<li><a href="#432-term-level-metadata---example-of-usage">4.3.2 Example of usage</a></li>
+<li><a href="#433-term-level-metadata---defined-by">4.3.3 Defined by</a></li>
+<li><a href="#434-term-level-metadata---comments">4.3.4 Comments</a></li>
 </ul>
 </li>
 <li><a href="#44-tabular-overview---recommendations">4.4 Tabular overview - recommendations</a></li>
@@ -554,7 +559,9 @@ code {
 </ul>
 <p>Subproperties to any properties mentioned will not be implied, but explicitly listed in the &quot;alternative properties&quot; part of each section.</p>
 <h3 id="22-metadata-recommendations-and-shacl">2.2 Metadata recommendations and SHACL</h3>
-<p>This guide is a human-readable specification. In addition, we also provide SHACL specifications of these recommendations that can be/are used for three different purposes.</p>
+<p>This guide is a human-readable specification. In addition, we also provide SHACL specifications of these recommendations.</p>
+<h4 id="221-ontology-level-metadata">2.2.1 Ontology-level metadata</h4>
+<p>The SHACL specification for ontology-level metadata can be/are used for three different purposes.</p>
 <ol>
 <li>
 <p>Data validation <br>
@@ -571,6 +578,68 @@ A shape for form generators and code generation can be retrieved from <a href="h
 </li>
 </ol>
 <p>All three versions of the shape have the target class owl:Ontology, so that they can only be used to validate entities that declare themselves as an instance of owl:Ontology, and also code generated with these shapes, will declare entities as instances of owl:Ontology.</p>
+<h4 id="222-term-level-metadata">2.2.2 Term-level metadata</h4>
+<p>As for the ontology-level metadata, we provide several SHACL specifications for term-level metadata that serve different purposes.</p>
+<ol>
+<li>Data validation
+The shape <a href="https://purl.org/ontologymetadata/TermShape">https://purl.org/ontologymetadata/TermShape</a> is intended for data validation with SHACL validators.
+The shape checks if entities of an ontology bring the expected term-level metadata in the expected form.
+The validation report will show you violations and also provide you with suggestions on metadata you could add to your terms.
+We recommend the online SHACL validator <a href="https://shacl-play.sparna.fr/play/">SHACL Play!</a> for performing evaluations.
+For a more readable report, you should check the option &quot;Avoid resolving targets&quot; to prevent SHACL Play! from checking that every resource in the data graph is targeted by at least one shape, and that each shape targets at least one resource. The result of such checks would otherwise appear as extra validation results in the report and may also take a long time if the file is large.
+You should also be aware that the current specification - at least its minCount constraints - is targeting all instances of owl:Class, owl:NamedIndividual, owl:ObjectProperty, owl:AnnotationProperty and owl:DatatypeProperty.
+This also selects entities that are anonymous nodes or entities that are imported from other namespaces and likely do not carry any of the recommended metadata.
+To navigate the validation result, you should download the report and look for validation results relating to items in your own namespace and focus on adding metadata for these.
+When you are importing from other ontologies, please make sure to import metadata/ annotations of the terms as well.</li>
+</ol>
+<!-- should we also give a hint on importing terms? e.g. at http://pato-ontology.github.io/pato/odk-workflows/UpdateImports/? -->
+<ol start="2">
+<li>
+<p>Data generation
+The shape <a href="https://purl.org/ontologymetadata/TermShape4Forms">https://purl.org/ontologymetadata/TermShape4Forms</a> can be used with the <a href="https://github.com/ULB-Darmstadt/shacl-form">form generator tool by ULB Darmstadt</a> which has a <a href="https://ulb-darmstadt.github.io/shacl-form/#try-your-own">live demo instance</a>.
+With the shape, a form can be generated, that users can use to enter values.
+The user input is validated immediately for all criteria and the metadata code is generated.
+Only the recommended properties will be used to do so: This version of the recommendation does not make use of <code>sh:alternativePath</code> constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes.</p>
+</li>
+<li>
+<p>Accompanying shapes for definition sources (data validation)</p>
+</li>
+</ol>
+<p>Strömert et al. (2024) <a href="#source25">[25]</a> discuss ways of providing sources to term definitions in ontologies.
+An expressive option is using instances of owl:Axiom to do so.
+In such axioms, the definition statements will be annotated and supplemented with information describing the scientific source of a definition.
+An example employing DCMI Metadata Terms could look like this:</p>
+<pre class="hljs"><code><div>@base &lt;https://purl.org/ontologymetadata/DummyTermPASSES&gt; .
+@prefix : &lt;https://purl.org/ontologymetadata/DummyTermPASSES#&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix owl: &lt;http://www.w3.org/2002/07/owl#&gt;.
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;. 
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;.
+
+&lt;https://purl.org/ontologymetadata/DummyTermPASSES#1&gt; a owl:Class ;
+  skos:definition &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+.
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource &lt;https://purl.org/ontologymetadata/DummyTermPASSES#1&gt; ;
+   owl:annotatedProperty &lt;http://www.w3.org/2004/02/skos/core#definition&gt; ;
+   owl:annotatedTarget &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+   dcterms:bibliographicCitation &quot;Jane Doe et al. (2025): The Smart Grid - theory vs. reality. In: John Doe et al. (eds.): Smart Grid and the energy of tomorrow, pp. 1-28. DOI: https://doi.org/10.3794/reposi.1234567 (last accessed: 00.00.0000)&quot; ;
+   dcterms:license &lt;https://creativecommons.org/licenses/by/3.0/&gt; ;
+   dcterms:rightsHolder &lt;https://ror.org/20ßgle32&gt; ;
+   dcterms:source &lt;https://doi.org/10.3794/reposi.1234567&gt; ;
+   rdfs:label &quot;providing defintion source - style 2&quot;@en ;
+ ] .
+
+</div></code></pre>
+<p>We provide three different shapes to validate different styles of providing term definition sources:</p>
+<ul>
+<li><a href="https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle1">https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle1</a></li>
+<li><a href="https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle2">https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle2</a></li>
+<li><a href="https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle3and4">https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle3and4</a></li>
+</ul>
 <h3 id="23-prefixes-used-in-this-document">2.3 Prefixes used in this document</h3>
 <p>Code examples will usually provide full IRIs of statement subjects and objects. Properties will be presented in prefixed notation. The table provides the prefix definitions:</p>
 <table>
@@ -2873,8 +2942,8 @@ This, in turn, helps to assess whether the element is fit for re-use in a differ
 With <em>term</em> we refer to classes, properties and individuals.
 A term's annotations could include all information that tells the ontology audience what the term is about or how it may be used.
 In the following sections we discuss some annotations we deem mandatory, some that we would recommend and a limited number of optional ones.</p>
-<h3 id="41-mandatory-metadata">4.1 Mandatory metadata</h3>
-<h4 id="411-preferred-label">4.1.1 Preferred label</h4>
+<h3 id="41-mandatory-term-level-metadata">4.1 Mandatory term-level metadata</h3>
+<h4 id="411-term-level-metadata---preferred-label">4.1.1 Term-level metadata - preferred label</h4>
 <p>Each ontoloy entity must have a label in at least one natural language.
 A label can be either a single word, compound or other kinds of multi-word expressions.
 The de facto <em>lingua franca</em> in ontology development is English but there are also multi-lingual ontologies.
@@ -2913,7 +2982,7 @@ If it cannot be avoided, use an addition to the labels of both entities, which m
 <li><code>sh:uniqueLang true</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h4 id="412-definition">4.1.2 Definition</h4>
+<h4 id="412-term-level-metadata---definition">4.1.2 Term-level metadata - definition</h4>
 <p>Each ontology term must have a short description defining it.
 A typical definition usually consists of two parts:
 a reference to a super-ordinate term and a statement naming its defining characteristics.
@@ -2955,7 +3024,7 @@ We strongly recommend to use a more specific property dedicated to providing def
 <li><code>sh:uniqueLang true</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h5 id="4121-definition-source">4.1.2.1 Definition source</h5>
+<h5 id="4121-term-level-metadata---definition-source">4.1.2.1 Term-level metadata - definition source</h5>
 <p>We recommend to provide sources for definitions, especially if a definition is quoted from some reference work.
 This is mandatory to meet the code of conduct for good scientific practice and also to properly credit the copyright holder.
 The sources should also be provided if the text of a definition is freely phrased by the ontology maintainers but based on the information of reference works.
@@ -2964,7 +3033,24 @@ This also has the added value that the definition is backed up by authoritative 
 Example 1 demonstrates this with reification and properties from the OWL namespace that identifiy the subject, predicate and object of the annotated axiom for the definition and the property <a href="http://purl.obolibrary.org/obo/IAO_0000119">definition source (IAO:0000119)</a>.
 In Protégé, the properties from OWL will automatically be used when the axiom annotations editor is used to annotate a statement.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000119">definition source (IAO:0000119)</a></p>
-<!-- einleitenden satz ergänzen - verschiedene styles mit verschiedenen shacl regeln, muss man sich aussuchen -->
+<p>SHACL validation rules:</p>
+<ul>
+<li><code>sh:minCount 1</code></li>
+<li><code>sh:severity sh:Info</code></li>
+</ul>
+<p>We request at least one definition source for each entity.
+If a definition source is missing, will be tested via the recommended property <a href="http://purl.obolibrary.org/obo/IAO_0000119">definition source (IAO:0000119)</a>.
+We do not set further restrictions on the form of the source.</p>
+<p>Example 0 demonstrates this very simple solution.</p>
+<p>Example 0 (text/turtle):</p>
+<pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; 
+  rdf:type owl:Class ;
+  skos:definition &quot;electrical grid with information and communication technology as well as automation mechanisms that includes a great number of decentralized electrical energy sources&quot;@en ;
+  skos:prefLabel &quot;smart grid&quot;@de ;
+  &lt;http://purl.obolibrary.org/obo/IAO_0000119&gt; &lt;https://en.wikipedia.org/wiki/Smart_grid&gt;.
+
+</div></code></pre>
+<p>A more elaborate approach would be to set an annotation on the definition statement of an entity as demonstrated by Example 1.</p>
 <p>Example 1 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; 
   rdf:type owl:Class ;
@@ -2978,9 +3064,7 @@ In Protégé, the properties from OWL will automatically be used when the axiom 
    &lt;http://purl.obolibrary.org/obo/IAO_0000119&gt; &lt;https://en.wikipedia.org/wiki/Smart_grid&gt;
  ] .
 </div></code></pre>
-<p>SHACL validation rules:</p>
-<!-- add here! -->
-<p>Alternative approaches:</p>
+<p>SHACL validation rules: cf. <a href="DefinitionSourceAxiomShapeStyle1.ttl">DefinitionSourceAxiomShapeStyle1.ttl</a></p>
 <p>Strömert et al. 2024 <a href="#source25">[25]</a> also demonstrate this using a set of properties from the <a href="http://purl.org/dc/terms/">DCMI Metadata Terms</a> <a href="#source27">[27]</a> vocabulary and <a href="http://www.w3.org/ns/prov#hadPrimarySource">prov:hadPrimarySource</a>.
 They distinguish two use cases:
 (a) verbatim quotes of a definition from an authorized source (see Example 2),
@@ -3003,8 +3087,7 @@ It allows for maximum transparency in the context of a scientific ontology.</p>
  ] .
 
 </div></code></pre>
-<p>SHACL validation rules:</p>
-<!-- add here! -->
+<p>SHACL validation rules: cf. <a href="DefinitionSourceAxiomShapeStyle2.ttl">DefinitionSourceAxiomShapeStyle2.ttl</a></p>
 <p>Example 3 demonstrates a shorter reference to the source by providing only the DOI of the source with the property <a href="http://www.w3.org/ns/prov#hadPrimarySource">prov:hadPrimarySource</a></p>
 <p>Example 3 (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
@@ -3022,13 +3105,14 @@ It allows for maximum transparency in the context of a scientific ontology.</p>
 </div></code></pre>
 <p>If the primary source of a defintion is one or several domain experts, the same mechanism can be used here.
 Instead of a DOI, an ORCID should then be presented instead.</p>
-<p>SHACL validation rules:</p>
-<!-- add here! -->
+<p>SHACL validation rules: cf. <a href="DefinitionSourceAxiomShapeStyle3and4.ttl">DefinitionSourceAxiomShapeStyle3and4.ttl</a></p>
+<p>Please be aware, that the basic SHACL rules for the definition source in <a href="TermShape.ttl">TermShape.ttl</a> will continue to be triggered when you provide definiton sources as instances of owl:Axiom.
+In this case you should use the appropriate shape for the citation style you chose to provide the definition source.</p>
 <p>Please be aware, that not all systems processing and displaying ontology information are able to display such axiom annotations correctly since they are blank nodes.
 The system may display a generic placeholder instead of all the statements about this anonymous element.</p>
 <!-- add picture from tool, wo es nicht angezeigt wird? -->
 <p>We strongly encourage all developers of such tools to add such features to their systems.</p>
-<h4 id="413-term-deprecation-obsoletion-mandatory-only-if-applicable">4.1.3 Term deprecation/ obsoletion (mandatory only if applicable!)</h4>
+<h4 id="413-term-level-metadata---term-deprecation-obsoletion-mandatory-only-if-applicable">4.1.3 Term-level metadata - term deprecation/ obsoletion (mandatory only if applicable!)</h4>
 <p>Usually, terms are part of an ontology to be used, so they are understood as active.
 The recommendations in this section are therefore not mandatory for all terms, but only those that shall no longer be used.
 If this is the case for any term, they <em>must</em> be marked with respective deprecation information.
@@ -3059,11 +3143,11 @@ If you would like to no longer use terms from an external ontology, you should n
 If you would like to make users of your ontology aware of terms to be used instead of formerly imported terms, you should comment these new terms, referring back to the formerly used term via its IRI string.
 You can also make users of your ontology aware of such changes in the ontology metadata, e.g. in the <a href="#3323-textual-version-information">3.3.23 Textual version information</a></p>
 </blockquote>
-<h5 id="4131-deprecation-marker-mandatory-only-if-applicable">4.1.3.1 Deprecation marker (mandatory only if applicable!)</h5>
+<h5 id="4131-term-level-metadata---deprecation-marker-mandatory-only-if-applicable">4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!)</h5>
 <p>The deprecation marker is a boolean value intended to indicate the fact that a term is deprecated and must not be used any longer.
 We do not recommend to prepend strings like &quot;obsolete &quot; to labels or &quot;OBSOLETE. &quot; to the definition.
 A statement with <a href="http://www.w3.org/2002/07/owl#deprecated">owl:depracted</a> is sufficient to render the term with a clear graphicaal obsoletion marker at TIB Terminology Service, as is shown below.
-<img src="images/Obsoleted-Term-On-TIB-TS.png" alt="alt text"></p>
+<img src="images/Obsoleted-Term-On-TIB-TS.png" alt="Screenshot of an ontology term that is marked as obsoleted demonstrating the visualisation of obsoletion on TIB Terminology Service"></p>
 <p>Recommended property: <a href="http://www.w3.org/2002/07/owl#deprecated">owl:depracted</a></p>
 <p>Example (text/turtle):</p>
 <pre class="hljs"><code><div>&lt;https://www.purl.org/SomeOntologyClass&gt; rdf:type owl:Class ;
@@ -3076,7 +3160,7 @@ A statement with <a href="http://www.w3.org/2002/07/owl#deprecated">owl:depracte
 <li><code>sh:maxCount 1</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h5 id="4132-obsoletion-reason-mandatory-only-if-applicable">4.1.3.2 Obsoletion reason (mandatory only if applicable!)</h5>
+<h5 id="4132-term-level-metadata---obsoletion-reason-mandatory-only-if-applicable">4.1.3.2 Term-level metadata - obsoletion reason (mandatory only if applicable!)</h5>
 <p>For users of the ontology it may be helpful to understand why a term has been deprecated.
 We recommend to use an IAO property to provide values from a controlled list of obsolescence reasons.
 The items of this list are instances of the class <a href="http://purl.obolibrary.org/obo/IAO_0000225">obsolescence reason specification (IAO:0000225)</a>.
@@ -3118,7 +3202,7 @@ For both properties we provide seperate property shapes in our SHACL validation.
 </li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h5 id="4133-term-replacement-mandatory-only-if-applicable">4.1.3.3 Term replacement (mandatory only if applicable!)</h5>
+<h5 id="4133-term-level-metadata---term-replacement-mandatory-only-if-applicable">4.1.3.3 Term-level metadata - term replacement (mandatory only if applicable!)</h5>
 <p>In some cases there may be a replacement term that can be used instead of an obsoleted term.
 The deprecated term must point to this replacement.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0100001">term replaced by (IAO:0100001)</a></p>
@@ -3132,8 +3216,8 @@ The deprecated term must point to this replacement.</p>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h3 id="42-recommended-metadata">4.2 Recommended metadata</h3>
-<h4 id="421-synonyms-alternative-labels">4.2.1 Synonyms/ alternative labels</h4>
+<h3 id="42-recommended-term-level-metadata">4.2 Recommended term-level metadata</h3>
+<h4 id="421-term-level-metadata---synonyms-alternative-labels">4.2.1 Term-level metadata - synonyms/ alternative labels</h4>
 <p>An ontology term may have more than just one label which it can be referred by.
 Since synonyms are an obstacle not only to understanding but also to finding information, an ontology is a good place to collect frequent synonyms of a term.
 These can be leveraged in search applications over text in order to intercept with linguistic variation that is inevitable when different communicators interact.
@@ -3153,7 +3237,7 @@ We recommend to list only very close synonyms with the properties suggested here
 <li><code>sh:datatype rdf:langString</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h4 id="422-date-modified">4.2.2 Date modified</h4>
+<h4 id="422-term-level-metadata---date-modified">4.2.2 Term-level metadata - date modified</h4>
 <p>A useful information for editors and users of a term is also when the term was last modified.
 This may be informative for editorial processes and update cycles but also to assess whether a term is still up to date.</p>
 <p>Recommended property: <a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></p>
@@ -3174,7 +3258,7 @@ This may be informative for editorial processes and update cycles but also to as
 </li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h4 id="423-editor-note">4.2.3 Editor note</h4>
+<h4 id="423-term-level-metadata---editor-note">4.2.3 Term-level metadata - editor note</h4>
 <p>For the editing process, it may be helpful to add notes about the current editorial status of a term or tasks that still need to be performed.
 The editorial comment should be tagged for a language.
 There may be several editorial comments for a term.
@@ -3210,7 +3294,7 @@ However, since not all graphical inteerfaces for OWL and RDF data support annota
 <li><code>sh:datatype rdf:langString</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h4 id="424-term-tracker-item">4.2.4 Term tracker item</h4>
+<h4 id="424-term-level-metadata---term-tracker-item">4.2.4 Term-level metadata - term tracker item</h4>
 <p>A term tracker item should be added to each term.
 This could be</p>
 <ul>
@@ -3234,8 +3318,8 @@ obo:IAO_0000233 &lt;https://github.com/SomeOrganisation/SomeOntology/issues#12&g
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h3 id="43-optional-metadata">4.3 Optional metadata</h3>
-<h4 id="431-term-editor-term-contributors">4.3.1 Term editor/ term contributor(s)</h4>
+<h3 id="43-optional-term-level-metadata">4.3 Optional term-level metadata</h3>
+<h4 id="431-term-level-metadata---term-editor-term-contributors">4.3.1 Term-level metadata - term editor/ term contributor(s)</h4>
 <p>When an ontology is collaboratively edited, it may help to note down the editor(s) of a term.
 Questions about the term may be directed forwarded to them.
 It is also useful to credit the contributors of ontology development.
@@ -3255,7 +3339,7 @@ We recommend to provide the contributors via their <a href="https://orcid.org/">
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
 <p>You can discuss this recommendation with us at <a href="https://github.com/TIBHannover/terminology-metadata/issues/1">https://github.com/TIBHannover/terminology-metadata/issues/1</a>.</p>
-<h4 id="432-example-of-usage">4.3.2 Example of usage</h4>
+<h4 id="432-term-level-metadata---example-of-usage">4.3.2 Term-level metadata - example of usage</h4>
 <p>In order to better understand how a term can be applied, an example of usage can be helpful.
 This can for example be provided in the form of a phrase describing how a term should be used, by an example instance or sub-entity of a term or by some example code.</p>
 <p>Recommended property: <a href="http://purl.obolibrary.org/obo/IAO_0000112">example of usage (IAO:0000112)</a></p>
@@ -3276,7 +3360,7 @@ This can for example be provided in the form of a phrase describing how a term s
 <li><code>sh:xone ([sh:datatype rdf:langString ;] [sh:nodeKind sh:IRI])</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h4 id="433-defined-by">4.3.3 Defined by</h4>
+<h4 id="433-term-level-metadata---defined-by">4.3.3 Term-level metadata - defined by</h4>
 <p>In some contexts it may be relevant to provide the original source of a term, e.g. if it is re-used in an ontology.
 In this case, the IRI of the original ontology should be provided.
 For maximum traceability, we recommend to not only use the ontology IRI to the latest version of an ontology, but a version IRI.
@@ -3292,7 +3376,7 @@ This allows to understand which version of a term has been used.</p>
 <li><code>sh:nodeKind sh:IRI</code></li>
 </ul>
 <p>You can discuss this recommendation with us at &lt;&gt;.</p>
-<h4 id="434-comments">4.3.4 Comments</h4>
+<h4 id="434-term-level-metadata---comments">4.3.4 Term-level metadata - comments</h4>
 <p>If there is anything else to say about a term that does not fit into the other categories discussed so far, this may fit into a general purpose comment.
 The comment should be a short text, not an IRI to external resources.</p>
 <p>Recommended property: <a href="http://www.w3.org/2000/01/rdf-schema#comment">http://www.w3.org/2000/01/rdf-schema#comment</a></p>
@@ -3320,7 +3404,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="#411-preferred-label">Preferred label</a></td>
+<td><a href="#411-term-level-metadata---preferred-label">4.1.1 Term-level metadata - preferred label</a></td>
 <td><a href="http://www.w3.org/2000/01/rdf-schema#label">http://www.w3.org/2000/01/rdf-schema#label</a></td>
 <td>x</td>
 <td></td>
@@ -3328,7 +3412,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>1..* (only one per language)</td>
 </tr>
 <tr>
-<td><a href="#412-definition">Definition</a></td>
+<td><a href="#412-term-level-metadata---definition">4.1.2 Term-level metadata - definition</a></td>
 <td><a href="http://www.w3.org/2004/02/skos/core#definition">http://www.w3.org/2004/02/skos/core#definition</a></td>
 <td>x</td>
 <td></td>
@@ -3336,7 +3420,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>1..* (only one per language)</td>
 </tr>
 <tr>
-<td><a href="#4121-definition-source">Definition source</a></td>
+<td><a href="#4121-term-level-metadata---definition-source">4.1.2.1 Term-level metadata - definition source</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0000119">definition source (IAO:0000119)</a></td>
 <td>x</td>
 <td></td>
@@ -3344,7 +3428,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>1..*</td>
 </tr>
 <tr>
-<td><a href="#4131-deprecation-marker-mandatory-only-if-applicable">Deprecation marker</a></td>
+<td><a href="#4131-term-level-metadata---deprecation-marker-mandatory-only-if-applicable">4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!)</a></td>
 <td><a href="http://www.w3.org/2002/07/owl#deprecated">http://www.w3.org/2002/07/owl#deprecated</a></td>
 <td>x (if applicable)</td>
 <td></td>
@@ -3352,7 +3436,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..1</td>
 </tr>
 <tr>
-<td><a href="#4132-obsoletion-reason-mandatory-only-if-applicable">Obsoletion reason</a></td>
+<td><a href="#4132-term-level-metadata---obsoletion-reason-mandatory-only-if-applicable">4.1.3.2 Term-level metadata - obsoletion reason (mandatory only if applicable!)</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0000231">has obsolescence reason (IAO:0000231)</a></td>
 <td>x (if applicable)</td>
 <td></td>
@@ -3360,7 +3444,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..1</td>
 </tr>
 <tr>
-<td><a href="#4133-term-replacement-mandatory-only-if-applicable">Term replacement</a></td>
+<td><a href="#4133-term-level-metadata---term-replacement-mandatory-only-if-applicable">4.1.3.3 Term-level metadata - term replacement (mandatory only if applicable!)</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0100001">term replaced by (IAO:0100001)</a></td>
 <td>x (if applicable)</td>
 <td></td>
@@ -3368,7 +3452,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#421-synonyms-alternative-labels">Synonyms/ alternative labels</a></td>
+<td><a href="#421-term-level-metadata---synonyms-alternative-labels">4.2.1 Term-level metadata - synonyms/ alternative labels</a></td>
 <td><a href="http://www.w3.org/2004/02/skos/core#altLabel">http://www.w3.org/2004/02/skos/core#altLabel</a></td>
 <td></td>
 <td>x</td>
@@ -3376,7 +3460,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#422-date-modified">Date modified</a></td>
+<td><a href="#422-term-level-metadata---date-modified">4.2.2 Term-level metadata - date modified</a></td>
 <td><a href="http://purl.org/dc/terms/modified">http://purl.org/dc/terms/modified</a></td>
 <td></td>
 <td>x</td>
@@ -3384,7 +3468,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..1</td>
 </tr>
 <tr>
-<td><a href="#423-editor-note">Editor Note</a></td>
+<td><a href="#423-term-level-metadata---editor-note">4.2.3 Term-level metadata - editor note</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0000116">editor note (IAO:0000116)</a></td>
 <td></td>
 <td>x</td>
@@ -3392,7 +3476,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#424-term-tracker-item">Issue link</a></td>
+<td><a href="#424-term-level-metadata---term-tracker-item">4.2.4 Term-level metadata - term tracker item</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0000233">term tracker item (http://purl.obolibrary.org/obo/IAO_0000233)</a></td>
 <td></td>
 <td>x</td>
@@ -3400,7 +3484,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#431-term-editor-term-contributors">Term editors</a></td>
+<td><a href="#431-term-level-metadata---term-editor-term-contributors">4.3.1 Term-level metadata - term editor/ term contributor(s)</a></td>
 <td><a href="http://purl.org/dc/terms/contributor">http://purl.org/dc/terms/contributor</a></td>
 <td></td>
 <td></td>
@@ -3408,7 +3492,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#432-example-of-usage">Example of usage</a></td>
+<td><a href="#432-term-level-metadata---example-of-usage">4.3.2 Term-level metadata - example of usage</a></td>
 <td><a href="http://purl.obolibrary.org/obo/IAO_0000112">example of usage (IAO:0000112)</a></td>
 <td></td>
 <td></td>
@@ -3416,7 +3500,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>0..*</td>
 </tr>
 <tr>
-<td><a href="#433-defined-by">Defined by</a></td>
+<td><a href="#433-term-level-metadata---defined-by">4.3.3 Term-level metadata - defined by</a></td>
 <td><a href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy">http://www.w3.org/2000/01/rdf-schema#isDefinedBy</a></td>
 <td></td>
 <td></td>
@@ -3424,7 +3508,7 @@ The comment should be a short text, not an IRI to external resources.</p>
 <td>1</td>
 </tr>
 <tr>
-<td><a href="#434-comments">Comments</a></td>
+<td><a href="#434-term-level-metadata---comments">4.3.4 Term-level metadata - comments</a></td>
 <td><a href="http://www.w3.org/2000/01/rdf-schema#comment">http://www.w3.org/2000/01/rdf-schema#comment</a></td>
 <td></td>
 <td></td>
@@ -3436,14 +3520,141 @@ The comment should be a short text, not an IRI to external resources.</p>
 <h3 id="45-relations-to-related-work">4.5 Relations to related work</h3>
 <!-- todo which related work? -->
 <ul>
-<li><a href="https://dgarijo.github.io/Widoco/doc/metadataGuide/guide.html">https://dgarijo.github.io/Widoco/doc/metadataGuide/guide.html</a></li>
 <li><a href="https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term">https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term</a></li>
+<li><a href="https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#">https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#</a></li>
 <li><a href="https://obofoundry.org/principles/fp-012-naming-conventions.html">https://obofoundry.org/principles/fp-012-naming-conventions.html</a></li>
 <li><a href="https://obofoundry.org/principles/fp-019-term-stability.html">https://obofoundry.org/principles/fp-019-term-stability.html</a></li>
 <li><a href="https://obofoundry.org/principles/fp-006-textual-definitions.html">https://obofoundry.org/principles/fp-006-textual-definitions.html</a></li>
 <li><a href="https://obofoundry.org/principles/fp-019-term-stability.html">OBO Principle 19</a></li>
 <li><a href="https://oboacademy.github.io/obook/howto/obsolete-term/">Obsoleting an Existing Ontology Term</a></li>
 </ul>
+<p>The following table shows the relation of the recommendations in this guide to related works. If these works recommend the same metadatum for an terms, the corresponding cell will be marked as <em>true</em>, if the metadatum could not be identified in the source, the corresponding cell will be marked as <em>false</em>.</p>
+<table>
+<thead>
+<tr>
+<th>section</th>
+<th><a href="#source31">[31]</a></th>
+<th><a href="http://purl.obolibrary.org/meta/context.jsonld" title="OBO Foundry (2021): Derived registry files - context file for the generation of rdf-based ontology metadata. URL: &lt;http://purl.obolibrary.org/meta/context.jsonld&gt;, &lt;https://github.com/OBOFoundry/OBOFoundry.github.io/blob/5ba7e5db94565691853db7b476637fd303c4fb94/registry/context.jsonld&gt; (last access: 04 April 2024).">[13]</a></th>
+<th><a href="#source13">[13]</a></th>
+<th><a href="#source13">[13]</a></th>
+<th><a href="#source13">[13]</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#411-term-level-metadata---preferred-label">4.1.1 Term-level metadata - preferred label</a></td>
+<td>true</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#412-term-level-metadata---definition">4.1.2 Term-level metadata - definition</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#4121-term-level-metadata---definition-source">4.1.2.1 Term-level metadata - definition source</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#4131-term-level-metadata---deprecation-marker-mandatory-only-if-applicable">4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!)</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#4132-term-level-metadata---obsoletion-reason-mandatory-only-if-applicable">4.1.3.2 Term-level metadata - obsoletion reason (mandatory only if applicable!)</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#4133-term-level-metadata---term-replacement-mandatory-only-if-applicable">4.1.3.3 Term-level metadata - term replacement (mandatory only if applicable!)</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#421-term-level-metadata---synonyms-alternative-labels">4.2.1 Term-level metadata - synonyms/ alternative labels</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#422-term-level-metadata---date-modified">4.2.2 Term-level metadata - date modified</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#423-term-level-metadata---editor-note">4.2.3 Term-level metadata - editor note</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#424-term-level-metadata---term-tracker-item">4.2.4 Term-level metadata - term tracker item</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#431-term-level-metadata---term-editor-term-contributors">4.3.1 Term-level metadata - term editor/ term contributor(s)</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#432-term-level-metadata---example-of-usage">4.3.2 Term-level metadata - example of usage</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#433-term-level-metadata---defined-by">4.3.3 Term-level metadata - defined by</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="#434-term-level-metadata---comments">4.3.4 Term-level metadata - comments</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="5-sources">5 Sources</h2>
 <ol>
 <li>
@@ -3535,6 +3746,9 @@ The comment should be a short text, not an IRI to external resources.</p>
 </li>
 <li>
 <p><a name="source30"></a> <a href="https://oboacademy.github.io/obook/">OBO Semantic Engineering Training</a> (last access: 25 April 2025).</p>
+</li>
+<li>
+<p><a name="source31"></a> Garijo, D. (2017). WIDOCO: A wizard for documenting ontologies. <a href="https://doi.org/10.1007/978-3-319-68204-4_9">https://doi.org/10.1007/978-3-319-68204-4_9</a>, in particular <a href="https://dgarijo.github.io/Widoco/doc/metadataGuide/guide.html">https://dgarijo.github.io/Widoco/doc/metadataGuide/guide.html</a> (last access: 17 June 2025).</p>
 </li>
 </ol>
 <!-- 24. <a name="source24"></a>  -->

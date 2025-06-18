@@ -36,8 +36,8 @@ ontometa4ts: rdf:type owl:Ontology ;
     dcterms:abstract "OntoMeta4TS provides SHACL shapes for ontology metadata validation at TIB Terminology Service. If you have any remarks, questions or questions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en ;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
     dcterms:created "2024-05-02T11:42:00"^^xsd:dateTime;
-    dcterms:modified "2025-01-31T00:00:00"^^xsd:dateTime;
-    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4ts/20250131>;
+    dcterms:modified "2025-06-30T00:00:00"^^xsd:dateTime;
+    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4ts/20250630>;
     dcterms:creator <https://orcid.org/0000-0002-1019-9151>,
       <https://orcid.org/0000-0003-1043-4964>,
       <https://orcid.org/0000-0003-2499-7741>,
@@ -45,7 +45,7 @@ ontometa4ts: rdf:type owl:Ontology ;
       <https://orcid.org/0000-0002-8280-0487> ;
     vann:preferredNamespacePrefix "ontometa4ts";
     doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues> ;
-    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md> ,
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md> ,
       <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-at-tib-terminology-service>;
     bibo:status "active"@en ;
     doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
@@ -55,12 +55,12 @@ ontometa4ts: rdf:type owl:Ontology ;
     doap:repository <https://github.com/TIBHannover/terminology-metadata>;
     mod:hasSyntax <http://www.w3.org/ns/formats/Turtle> ;
     mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en ;
-    dcterms:references <https://www.doi.org/10.5281/zenodo.11103071> ;
+    dcterms:references <https://doi.org/10.5281/zenodo.11103070> ;
     dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
     dcat:distribution <https://www.purl.org/ontologymetadata/shape4forms> , <https://www.purl.org/ontologymetadata/shape> ;
     vann:example <https://github.com/TIBHannover/terminology-metadata/tree/main#for-ontology-validation-at-tib-terminology-service>;
     adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for TIB Terminology Service."@en;
-    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md#7-relations-to-related-work>;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md#7-relations-to-related-work>;
 .
 
 # Start of the Ontology Metadata Shape
@@ -170,100 +170,6 @@ Example statement (text/turtle):
 ## Ontology license
 ### status: developer and external review needed
 ### <http://purl.org/dc/terms/licence> has been added, since licence is a variant of license and thus the property may easily occur as a common mistake
-
-#### ORIGINAL SHAPE TO BE DELETED IF THE NEW ONES TURN OUT FINE
-
-#     sh:property [
-#         sh:path [sh:alternativePath (dcterms:license  sdo:license cc:license dbo:license dcterms:licence)] ;
-#         sh:severity sh:Warning ;
-#         sh:minCount 1;
-#         sh:maxCount 1;
-#         # tbd/todo: add further licenses to the list of accepted licenses? 
-#         sh:xone (
-#             [sh:hasValue <http://opendatacommons.org/licenses/by/summary/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/by/summary/> ;] 
-#             [sh:hasValue <http://opendatacommons.org/licenses/by/1-0/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/by/1-0/> ;] 
-#             [sh:hasValue <http://opendatacommons.org/licenses/by/1.0/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/by/1.0/> ;] 
-
-#             [sh:hasValue <http://opendatacommons.org/licenses/pddl/1-0/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/pddl/1-0/> ;] 
-#             [sh:hasValue <http://opendatacommons.org/licenses/pddl/summary/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/pddl/summary/> ;] 
-#             [sh:hasValue <http://opendatacommons.org/licenses/pddl/1.0/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/pddl/1.0/> ;] 
-
-#             [sh:hasValue <http://opendatacommons.org/licenses/odbl/summary/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/odbl/summary/> ;] 
-#             [sh:hasValue <http://opendatacommons.org/licenses/odbl/1-0/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/odbl/1-0/> ;] 
-#             [sh:hasValue <http://opendatacommons.org/licenses/odbl/1.0/> ;] 
-#             [sh:hasValue <https://opendatacommons.org/licenses/odbl/1.0/> ;] 
-
-#             [sh:hasValue <http://spdx.org/licenses/Unlicense.html> ;]
-#             [sh:hasValue <https://spdx.org/licenses/Unlicense.html> ;]
-#             [sh:hasValue <http://unlicense.org/> ;]
-#             [sh:hasValue <https://unlicense.org/> ;]
-
-#             [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/> ;] 
-#             [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/> ;] 
-#             [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
-#             [sh:hasValue <http://creativecommons.org/publicdomain/zero/1.0/deed> ;] 
-            
-#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/deed> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/deed> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/> ;]
-
-#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/deed> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/deed> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/3.0/de/> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by/3.0/de/> ;] 
-
-#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/deed> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/3.0/> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/3.0/> ;] 
-
-#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by/4.0/> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by/4.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0/deed> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by/4.0> ;] 
-
-#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/legalcode> ;] 
-#             [sh:hasValue <http://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
-#             [sh:hasValue <https://creativecommons.org/licenses/by-sa/4.0/deed> ;] 
-
-#             # [sh:hasValue <> ;] 
-#             );
-#         sh:message """
-# <p>
-# The ontology does not declare its own license. Please provide it, if known.
-# </p>
-# <p>
-# Recommended property: http://purl.org/dc/terms/license
-# </p>
-# <p>
-# Example value: https://creativecommons.org/licenses/by/4.0/
-# </p>
-# """@en ;
-#         sh:name "Ontology license"@en ;
-#     ] ;
 
 #### test for too many (n > 2) ontology licenses
 
