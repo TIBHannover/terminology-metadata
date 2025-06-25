@@ -1,4 +1,4 @@
-@base <https://www.purl.org/ontologymetadata/shape4forms> .
+@base <https://purl.org/ontologymetadata/shape4forms> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix cc: <http://creativecommons.org/ns#> .
@@ -12,7 +12,7 @@
 @prefix idot: <http://identifiers.org/idot/> .
 @prefix mod: <https://w3id.org/mod#> .
 @prefix obo: <http://purl.obolibrary.org/obo/>.
-@prefix ontometa4forms:    <https://www.purl.org/ontologymetadata/shape4forms#> .
+@prefix ontometa4forms:    <https://purl.org/ontologymetadata/shape4forms#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix pav: <http://purl.org/pav/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -34,8 +34,8 @@ ontometa4forms: rdf:type owl:Ontology ;
     dcterms:abstract "OntoMeta4Forms provides SHACL shapes for ontology metadata. It is intended for use in form generator applications, e.g. <https://ulb-darmstadt.github.io/shacl-form/#try-your-own>. If you have any remarks, questions or suggestions get in touch with us at https://github.com/TIBHannover/terminology-metadata/issues"@en;
     dcterms:license <https://creativecommons.org/licenses/by/4.0/legalcode>;
     dcterms:created "2025-01-31T00:00:00"^^xsd:dateTime;
-    dcterms:modified "2025-01-31T00:00:00"^^xsd:dateTime;
-    owl:versionIRI <https://www.purl.org/ontologymetadata/shape4forms/20250131>;
+    dcterms:modified "2025-06-30T00:00:00"^^xsd:dateTime;
+    owl:versionIRI <https://purl.org/ontologymetadata/shape4forms/20250630>;
     dcterms:creator <https://orcid.org/0000-0002-1019-9151>,
       <https://orcid.org/0000-0003-1043-4964>,
       <https://orcid.org/0000-0003-2499-7741>,
@@ -43,7 +43,7 @@ ontometa4forms: rdf:type owl:Ontology ;
       <https://orcid.org/0000-0002-8280-0487>;
     vann:preferredNamespacePrefix "ontometa4forms";
     doap:bug-database <https://github.com/TIBHannover/terminology-metadata/issues>;
-    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md>, 
+    premis:documentation <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md>, 
       <https://github.com/TIBHannover/terminology-metadata/tree/main#for-metadata-form-generators>;
     bibo:status "active";
     doap:audience "Ontology engineers, ontology publishers, terminology service providers, terminology service curators"@en;
@@ -55,10 +55,10 @@ ontometa4forms: rdf:type owl:Ontology ;
     mod:hasFormalityLevel "RDF(S), OWL, SHACL"@en;
     dcterms:references <https://doi.org/10.5281/zenodo.11103070>;
     dcterms:bibliographicCitation "Arndt, S., Ganske, A., Hauschke, C., Strömert, P., & Vogt, L. (2024). Terminology Metadata Recommendations by TIB. Zenodo. https://doi.org/10.5281/zenodo.11103070 (latest version)";
-    dcat:distribution <https://www.purl.org/ontologymetadata/shape4ts> , <https://www.purl.org/ontologymetadata/shape> ;
+    dcat:distribution <https://purl.org/ontologymetadata/shape4ts> , <https://www.purl.org/ontologymetadata/shape> ;
     vann:example <https://github.com/TIBHannover/terminology-metadata/tree/main#for-metadata-form-generators> ;
     adms:versionNotes "In this version of OntoMeta, the sh:NodeShape is optimized for form generarators."@en;
-    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250131/MetadataGuide.md#7-relations-to-related-work>;
+    mod:hasEquivalencesWith <https://github.com/TIBHannover/terminology-metadata/blob/20250630/MetadataGuide.md#7-relations-to-related-work>;
 .
 
 # Start of the Ontology Metadata Shape
