@@ -570,11 +570,11 @@ The shape can also be used to evaluate metadata of instances of skos:ConceptSche
 </li>
 <li>
 <p>Data validation at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a><br>
-The shape at <a href="https://www.purl.org/ontologymetadata/shape4ts">https://www.purl.org/ontologymetadata/shape4ts</a> is applied in the Ontology Suggestion Feature at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>. The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code. A video demonstration on how this is applied is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7">https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7</a></p>
+The shape at <a href="https://purl.org/ontologymetadata/shape4ts">https://purl.org/ontologymetadata/shape4ts</a> is applied in the Ontology Suggestion Feature at <a href="https://terminology.tib.eu/ts" title="TIB Terminology Service. URL: https://terminology.tib.eu/. Last accessed: 22 April 2024.">TIB Terminology Service</a>. The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code. A video demonstration on how this is applied is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7">https://github.com/user-attachments/assets/847cfd39-0823-4a83-9c8a-0cf3d23d38a7</a></p>
 </li>
 <li>
 <p>Data generation <br>
-A shape for form generators and code generation can be retrieved from <a href="https://www.purl.org/ontologymetadata/shape4forms">https://www.purl.org/ontologymetadata/shape4forms</a>. It can for example be used with the <a href="https://github.com/ULB-Darmstadt/shacl-form">form generator tool by ULB Darmstadt</a> which has a <a href="https://ulb-darmstadt.github.io/shacl-form/#try-your-own">live demo instance</a>. This shape is not as granular as the one for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of <code>sh:alternativePath</code> constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes. A video demonstration on how to apply this is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418">https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418</a>.</p>
+A shape for form generators and code generation can be retrieved from <a href="https://purl.org/ontologymetadata/shape4forms">https://purl.org/ontologymetadata/shape4forms</a>. It can for example be used with the <a href="https://github.com/ULB-Darmstadt/shacl-form">form generator tool by ULB Darmstadt</a> which has a <a href="https://ulb-darmstadt.github.io/shacl-form/#try-your-own">live demo instance</a>. This shape is not as granular as the one for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of <code>sh:alternativePath</code> constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes. A video demonstration on how to apply this is given at our GitHub repository: <a href="https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418">https://github.com/user-attachments/assets/55cdf44f-5289-4989-9014-5e670fd73418</a>.</p>
 </li>
 </ol>
 <p>All three versions of the shape have the target class owl:Ontology, so that they can only be used to validate entities that declare themselves as an instance of owl:Ontology, and also code generated with these shapes, will declare entities as instances of owl:Ontology.</p>
@@ -640,6 +640,7 @@ An example employing DCMI Metadata Terms could look like this:</p>
 <li><a href="https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle2">https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle2</a></li>
 <li><a href="https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle3and4">https://purl.org/ontologymetadata/DefinitionSourceAxiomShapeStyle3and4</a></li>
 </ul>
+<div style="page-break-after: always;"></div>
 <h3 id="23-prefixes-used-in-this-document">2.3 Prefixes used in this document</h3>
 <p>Code examples will usually provide full IRIs of statement subjects and objects. Properties will be presented in prefixed notation. The table provides the prefix definitions:</p>
 <table>
@@ -2935,6 +2936,7 @@ An example employing DCMI Metadata Terms could look like this:</p>
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 <h2 id="4-term-level-metadata">4 Term-level Metadata</h2>
 <p>Not only the ontology itself must have rich metadata:
 In order to better understand the scope and purpose of an ontology term, it must be annotated as well.
@@ -3519,142 +3521,162 @@ The comment should be a short text, not an IRI to external resources.</p>
 </table>
 <h3 id="45-relations-to-related-work">4.5 Relations to related work</h3>
 <!-- todo which related work? -->
-<ul>
-<li><a href="https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term">https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#desc-term</a></li>
-<li><a href="https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#">https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#</a></li>
-<li><a href="https://obofoundry.org/principles/fp-012-naming-conventions.html">https://obofoundry.org/principles/fp-012-naming-conventions.html</a></li>
-<li><a href="https://obofoundry.org/principles/fp-019-term-stability.html">https://obofoundry.org/principles/fp-019-term-stability.html</a></li>
-<li><a href="https://obofoundry.org/principles/fp-006-textual-definitions.html">https://obofoundry.org/principles/fp-006-textual-definitions.html</a></li>
-<li><a href="https://obofoundry.org/principles/fp-019-term-stability.html">OBO Principle 19</a></li>
-<li><a href="https://oboacademy.github.io/obook/howto/obsolete-term/">Obsoleting an Existing Ontology Term</a></li>
-</ul>
-<p>The following table shows the relation of the recommendations in this guide to related works. If these works recommend the same metadatum for an terms, the corresponding cell will be marked as <em>true</em>, if the metadatum could not be identified in the source, the corresponding cell will be marked as <em>false</em>.</p>
+<!-- MOD focusses on ontology level -->
+<!-- * MOD? -->
+<!-- not mentioned, checks term metadata qualities, e.g. no duplicate labels > corresponds roughly to our suggestions -->
+<!-- * robot? report > http://robot.obolibrary.org/report_queries/ -->
+<p>The following table shows the relation of the recommendations in this guide to related works. If these works discuss the same metadatum for a terms, the corresponding cell will be marked as <em>true</em>, if the metadatum could not be identified in the source, the corresponding cell will be marked as <em>false</em>.</p>
+<p><img class="emoji" alt="warning" src="data:image/png;base64,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" /> The recommendations of these sources may not be fully equivalent, e.g. some metadatum may be optional while here it is mandatory, sometimes a different property is requested as preferred, or a different datatype is required etc.
+What this table tries to achieve is to show whether a metadatum is discussed at all in these sources.</p>
+<!-- [[31]](#source31) add rationale?, [[32]](#source32) https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#rationale -->
+<!-- [[31]](#source31) add status, [[32]](#source32) add status https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#status1 ?-->
+<!-- [[31]](#source31) add scope note -->
 <table>
 <thead>
 <tr>
 <th>section</th>
 <th><a href="#source31">[31]</a></th>
-<th><a href="http://purl.obolibrary.org/meta/context.jsonld" title="OBO Foundry (2021): Derived registry files - context file for the generation of rdf-based ontology metadata. URL: &lt;http://purl.obolibrary.org/meta/context.jsonld&gt;, &lt;https://github.com/OBOFoundry/OBOFoundry.github.io/blob/5ba7e5db94565691853db7b476637fd303c4fb94/registry/context.jsonld&gt; (last access: 04 April 2024).">[13]</a></th>
-<th><a href="#source13">[13]</a></th>
-<th><a href="#source13">[13]</a></th>
-<th><a href="#source13">[13]</a></th>
+<th><a href="#source32">[32]</a></th>
+<th><a href="#source33">[33]</a><sup>2</sup></th>
+<th><a href="#source34">[34]</a><sup>2</sup></th>
+<th><a href="#source28">[28]</a><sup>3</sup></th>
+<th><a href="#source29">[29]</a><sup>4</sup></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="#411-term-level-metadata---preferred-label">4.1.1 Term-level metadata - preferred label</a></td>
 <td>true</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#412-term-level-metadata---definition">4.1.2 Term-level metadata - definition</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
+<td>true</td>
 </tr>
 <tr>
 <td><a href="#4121-term-level-metadata---definition-source">4.1.2.1 Term-level metadata - definition source</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#4131-term-level-metadata---deprecation-marker-mandatory-only-if-applicable">4.1.3.1 Term-level metadata - deprecation marker (mandatory only if applicable!)</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
 </tr>
 <tr>
 <td><a href="#4132-term-level-metadata---obsoletion-reason-mandatory-only-if-applicable">4.1.3.2 Term-level metadata - obsoletion reason (mandatory only if applicable!)</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
 </tr>
 <tr>
 <td><a href="#4133-term-level-metadata---term-replacement-mandatory-only-if-applicable">4.1.3.3 Term-level metadata - term replacement (mandatory only if applicable!)</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>true</td>
 </tr>
 <tr>
 <td><a href="#421-term-level-metadata---synonyms-alternative-labels">4.2.1 Term-level metadata - synonyms/ alternative labels</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#422-term-level-metadata---date-modified">4.2.2 Term-level metadata - date modified</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#423-term-level-metadata---editor-note">4.2.3 Term-level metadata - editor note</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#424-term-level-metadata---term-tracker-item">4.2.4 Term-level metadata - term tracker item</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false<sup>1</sup></td>
+<td>false<sup>1</sup></td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>true</td>
 </tr>
 <tr>
 <td><a href="#431-term-level-metadata---term-editor-term-contributors">4.3.1 Term-level metadata - term editor/ term contributor(s)</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#432-term-level-metadata---example-of-usage">4.3.2 Term-level metadata - example of usage</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#433-term-level-metadata---defined-by">4.3.3 Term-level metadata - defined by</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>true</td>
+<td>true</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
 </tr>
 <tr>
 <td><a href="#434-term-level-metadata---comments">4.3.4 Term-level metadata - comments</a></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
+<td>false</td>
 </tr>
 </tbody>
 </table>
+<p>Notes:<br>
+<sup>1</sup> The <a href="https://dgarijo.github.io/Widoco/doc/bestPractices/index-en.html#rationale">term rationale</a> could have a comparable function. It shall be used to discuss why a term has been added to a vocabulary.<br>
+<sup>2</sup> The scope of this principle are labels, not the full spectrum of term metadata.<br>
+<sup>3</sup> The scope of this principle is the stability of term meanings, which is also concerned with deprecating items and the information related to such deprecations as well as the form of labels of deprecated entities.
+<sup>4</sup> The scope of this document is to demonstrate the deprecation of an entity in Protégé, but it also makes assumptions on which kind of information to add to deprecated terms.</p>
 <h2 id="5-sources">5 Sources</h2>
 <ol>
 <li>
@@ -3750,7 +3772,19 @@ The comment should be a short text, not an IRI to external resources.</p>
 <li>
 <p><a name="source31"></a> Garijo, D. (2017). WIDOCO: A wizard for documenting ontologies. <a href="https://doi.org/10.1007/978-3-319-68204-4_9">https://doi.org/10.1007/978-3-319-68204-4_9</a>, in particular <a href="https://dgarijo.github.io/Widoco/doc/metadataGuide/guide.html">https://dgarijo.github.io/Widoco/doc/metadataGuide/guide.html</a> (last access: 17 June 2025).</p>
 </li>
+<li>
+<p><a name="source32"></a> Daniel Garijo, María Poveda-Villalón. A checklist for complete vocabulary metadata. URL: <a href="https://w3id.org/widoco/bestPractices">https://w3id.org/widoco/bestPractices</a> (lasst access: 17 June 2025).</p>
+</li>
+<li>
+<p><a name="source33"></a> OBO Foundry (n/a): Principle: Naming Conventions (principle 12). URL: <a href="https://obofoundry.org/principles/fp-012-naming-conventions.html">https://obofoundry.org/principles/fp-012-naming-conventions.html</a> (last access: 17 June 2025).</p>
+</li>
+<li>
+<p><a name="source34"></a> OBO Foundry (n/a): Principle: Textual Definitions (principle 6). URL: <a href="https://obofoundry.org/principles/fp-006-textual-definitions.html">https://obofoundry.org/principles/fp-006-textual-definitions.html</a> (last access: 18 June 2025).</p>
+</li>
 </ol>
+<!-- 24. <a name="source24"></a>  -->
+<!-- 24. <a name="source24"></a>  -->
+<!-- 24. <a name="source24"></a>  -->
 <!-- 24. <a name="source24"></a>  -->
 <!-- Reference style links -->
 <!-- []: <> "tbd" -->

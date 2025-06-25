@@ -40,7 +40,7 @@ See how you can use online validators with our shape:
 
 #### For ontology validation at TIB Terminology Service
 
-In [OntoMetadataShape4TS.ttl](/OntoMetadataShape4TS.ttl) (also <https://www.purl.org/ontologymetadata/shape4ts>) we provide a version of the recommendations that is adapted to the Ontology Suggestion Feature at [TIB Terminology Service](https://terminology.tib.eu). The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code.
+In [OntoMetadataShape4TS.ttl](/OntoMetadataShape4TS.ttl) (also <https://purl.org/ontologymetadata/shape4ts>) we provide a version of the recommendations that is adapted to the Ontology Suggestion Feature at [TIB Terminology Service](https://terminology.tib.eu). The messages are adapted to the context of use and the particular use case: The person suggesting an ontology is not necessarily involved in its development. On TIB Terminology Service, they will be asked to provide metadata of the ontology if these are not present in the ontology, and if known to the user. These users are not required to provide the meatdata as code.
 
 See how the shape is used in the suggestion feature:
 
@@ -48,7 +48,7 @@ See how the shape is used in the suggestion feature:
 
 #### For metadata form generators
 
-In [OntoMetadataShape4Forms.ttl](/OntoMetadataShape4Forms.ttl) (also <https://www.purl.org/ontologymetadata/shape4forms>) you find a version of the shape that is optimized for the [form generator tool by ULB Darmstadt](https://github.com/ULB-Darmstadt/shacl-form). You can try it out on their [live demo instance](https://ulb-darmstadt.github.io/shacl-form/#try-your-own).
+In [OntoMetadataShape4Forms.ttl](/OntoMetadataShape4Forms.ttl) (also <https://purl.org/ontologymetadata/shape4forms>) you find a version of the shape that is optimized for the [form generator tool by ULB Darmstadt](https://github.com/ULB-Darmstadt/shacl-form). You can try it out on their [live demo instance](https://ulb-darmstadt.github.io/shacl-form/#try-your-own).
 
 The shapes are not as granular as the ones for validation: All constraints are bundled in one shape in order to generate a form, that users can use to enter values. The user input is validated immediately for all criteria and the metadata code is generated. Only the recommended properties will be used to do so: This version of the recommendation does not make use of `sh:alternativePath` constructs, in order to generate valid RDF code with named properties, not anonymous/ blank nodes.
 
